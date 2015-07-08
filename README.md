@@ -1,5 +1,7 @@
-# 一博Oneblog
-开源的博客客户端iOS版，支持Wordpress及metaWeblog Api博客。An open source blog client for ios plantform.It supports Wordpress and other blogs which uses metaWeblog Api.
+# 一博
+开源的博客客户端iOS版，支持Wordpress及metaWeblog Api博客。
+
+An open source blog client for ios plantform.It supports Wordpress and other blogs which uses metaWeblog Api.
 
 [![Build Status](https://api.travis-ci.org/terwer/OneblogiOS.svg)](https://travis-ci.org/terwer/OneblogiOS)
 
