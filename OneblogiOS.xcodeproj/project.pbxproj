@@ -1,0 +1,521 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BE4592EE1B4D4AE90052228E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4592ED1B4D4AE90052228E /* main.m */; };
+		BE4592F11B4D4AE90052228E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4592F01B4D4AE90052228E /* AppDelegate.m */; };
+		BE4592F41B4D4AE90052228E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4592F31B4D4AE90052228E /* ViewController.m */; };
+		BE4592F71B4D4AE90052228E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE4592F51B4D4AE90052228E /* Main.storyboard */; };
+		BE4592F91B4D4AE90052228E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE4592F81B4D4AE90052228E /* Assets.xcassets */; };
+		BE4592FC1B4D4AE90052228E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE4592FA1B4D4AE90052228E /* LaunchScreen.storyboard */; };
+		BE4593071B4D4AE90052228E /* OneblogiOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4593061B4D4AE90052228E /* OneblogiOSTests.m */; };
+		BE4593121B4D4AE90052228E /* OneblogiOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4593111B4D4AE90052228E /* OneblogiOSUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BE4593031B4D4AE90052228E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE4592E11B4D4AE80052228E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BE4592E81B4D4AE80052228E;
+			remoteInfo = OneblogiOS;
+		};
+		BE45930E1B4D4AE90052228E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE4592E11B4D4AE80052228E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BE4592E81B4D4AE80052228E;
+			remoteInfo = OneblogiOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BE4592E91B4D4AE90052228E /* OneblogiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneblogiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE4592ED1B4D4AE90052228E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BE4592EF1B4D4AE90052228E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BE4592F01B4D4AE90052228E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BE4592F21B4D4AE90052228E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		BE4592F31B4D4AE90052228E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		BE4592F61B4D4AE90052228E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BE4592F81B4D4AE90052228E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BE4592FB1B4D4AE90052228E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BE4592FD1B4D4AE90052228E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE4593021B4D4AE90052228E /* OneblogiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneblogiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE4593061B4D4AE90052228E /* OneblogiOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OneblogiOSTests.m; sourceTree = "<group>"; };
+		BE4593081B4D4AE90052228E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE45930D1B4D4AE90052228E /* OneblogiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneblogiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE4593111B4D4AE90052228E /* OneblogiOSUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OneblogiOSUITests.m; sourceTree = "<group>"; };
+		BE4593131B4D4AE90052228E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BE4592E61B4D4AE80052228E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE4592FF1B4D4AE90052228E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE45930A1B4D4AE90052228E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BE4592E01B4D4AE80052228E = {
+			isa = PBXGroup;
+			children = (
+				BE4592EB1B4D4AE90052228E /* OneblogiOS */,
+				BE4593051B4D4AE90052228E /* OneblogiOSTests */,
+				BE4593101B4D4AE90052228E /* OneblogiOSUITests */,
+				BE4592EA1B4D4AE90052228E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BE4592EA1B4D4AE90052228E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BE4592E91B4D4AE90052228E /* OneblogiOS.app */,
+				BE4593021B4D4AE90052228E /* OneblogiOSTests.xctest */,
+				BE45930D1B4D4AE90052228E /* OneblogiOSUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BE4592EB1B4D4AE90052228E /* OneblogiOS */ = {
+			isa = PBXGroup;
+			children = (
+				BE4592EF1B4D4AE90052228E /* AppDelegate.h */,
+				BE4592F01B4D4AE90052228E /* AppDelegate.m */,
+				BE4592F21B4D4AE90052228E /* ViewController.h */,
+				BE4592F31B4D4AE90052228E /* ViewController.m */,
+				BE4592F51B4D4AE90052228E /* Main.storyboard */,
+				BE4592F81B4D4AE90052228E /* Assets.xcassets */,
+				BE4592FA1B4D4AE90052228E /* LaunchScreen.storyboard */,
+				BE4592FD1B4D4AE90052228E /* Info.plist */,
+				BE4592EC1B4D4AE90052228E /* Supporting Files */,
+			);
+			path = OneblogiOS;
+			sourceTree = "<group>";
+		};
+		BE4592EC1B4D4AE90052228E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BE4592ED1B4D4AE90052228E /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BE4593051B4D4AE90052228E /* OneblogiOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				BE4593061B4D4AE90052228E /* OneblogiOSTests.m */,
+				BE4593081B4D4AE90052228E /* Info.plist */,
+			);
+			path = OneblogiOSTests;
+			sourceTree = "<group>";
+		};
+		BE4593101B4D4AE90052228E /* OneblogiOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BE4593111B4D4AE90052228E /* OneblogiOSUITests.m */,
+				BE4593131B4D4AE90052228E /* Info.plist */,
+			);
+			path = OneblogiOSUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BE4592E81B4D4AE80052228E /* OneblogiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE4593161B4D4AE90052228E /* Build configuration list for PBXNativeTarget "OneblogiOS" */;
+			buildPhases = (
+				BE4592E51B4D4AE80052228E /* Sources */,
+				BE4592E61B4D4AE80052228E /* Frameworks */,
+				BE4592E71B4D4AE80052228E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OneblogiOS;
+			productName = OneblogiOS;
+			productReference = BE4592E91B4D4AE90052228E /* OneblogiOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BE4593011B4D4AE90052228E /* OneblogiOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE4593191B4D4AE90052228E /* Build configuration list for PBXNativeTarget "OneblogiOSTests" */;
+			buildPhases = (
+				BE4592FE1B4D4AE90052228E /* Sources */,
+				BE4592FF1B4D4AE90052228E /* Frameworks */,
+				BE4593001B4D4AE90052228E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BE4593041B4D4AE90052228E /* PBXTargetDependency */,
+			);
+			name = OneblogiOSTests;
+			productName = OneblogiOSTests;
+			productReference = BE4593021B4D4AE90052228E /* OneblogiOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BE45930C1B4D4AE90052228E /* OneblogiOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE45931C1B4D4AE90052228E /* Build configuration list for PBXNativeTarget "OneblogiOSUITests" */;
+			buildPhases = (
+				BE4593091B4D4AE90052228E /* Sources */,
+				BE45930A1B4D4AE90052228E /* Frameworks */,
+				BE45930B1B4D4AE90052228E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BE45930F1B4D4AE90052228E /* PBXTargetDependency */,
+			);
+			name = OneblogiOSUITests;
+			productName = OneblogiOSUITests;
+			productReference = BE45930D1B4D4AE90052228E /* OneblogiOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BE4592E11B4D4AE80052228E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Terwer Green";
+				TargetAttributes = {
+					BE4592E81B4D4AE80052228E = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					BE4593011B4D4AE90052228E = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = BE4592E81B4D4AE80052228E;
+					};
+					BE45930C1B4D4AE90052228E = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = BE4592E81B4D4AE80052228E;
+					};
+				};
+			};
+			buildConfigurationList = BE4592E41B4D4AE80052228E /* Build configuration list for PBXProject "OneblogiOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BE4592E01B4D4AE80052228E;
+			productRefGroup = BE4592EA1B4D4AE90052228E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BE4592E81B4D4AE80052228E /* OneblogiOS */,
+				BE4593011B4D4AE90052228E /* OneblogiOSTests */,
+				BE45930C1B4D4AE90052228E /* OneblogiOSUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BE4592E71B4D4AE80052228E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE4592FC1B4D4AE90052228E /* LaunchScreen.storyboard in Resources */,
+				BE4592F91B4D4AE90052228E /* Assets.xcassets in Resources */,
+				BE4592F71B4D4AE90052228E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE4593001B4D4AE90052228E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE45930B1B4D4AE90052228E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BE4592E51B4D4AE80052228E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE4592F41B4D4AE90052228E /* ViewController.m in Sources */,
+				BE4592F11B4D4AE90052228E /* AppDelegate.m in Sources */,
+				BE4592EE1B4D4AE90052228E /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE4592FE1B4D4AE90052228E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE4593071B4D4AE90052228E /* OneblogiOSTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE4593091B4D4AE90052228E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE4593121B4D4AE90052228E /* OneblogiOSUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BE4593041B4D4AE90052228E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BE4592E81B4D4AE80052228E /* OneblogiOS */;
+			targetProxy = BE4593031B4D4AE90052228E /* PBXContainerItemProxy */;
+		};
+		BE45930F1B4D4AE90052228E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BE4592E81B4D4AE80052228E /* OneblogiOS */;
+			targetProxy = BE45930E1B4D4AE90052228E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BE4592F51B4D4AE90052228E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE4592F61B4D4AE90052228E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BE4592FA1B4D4AE90052228E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE4592FB1B4D4AE90052228E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BE4593141B4D4AE90052228E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BE4593151B4D4AE90052228E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BE4593171B4D4AE90052228E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = OneblogiOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.terwer.OneblogiOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BE4593181B4D4AE90052228E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = OneblogiOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.terwer.OneblogiOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		BE45931A1B4D4AE90052228E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = OneblogiOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.terwer.OneblogiOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OneblogiOS.app/OneblogiOS";
+			};
+			name = Debug;
+		};
+		BE45931B1B4D4AE90052228E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = OneblogiOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.terwer.OneblogiOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OneblogiOS.app/OneblogiOS";
+			};
+			name = Release;
+		};
+		BE45931D1B4D4AE90052228E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = OneblogiOSUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.terwer.OneblogiOSUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = OneblogiOS;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		BE45931E1B4D4AE90052228E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = OneblogiOSUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.terwer.OneblogiOSUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = OneblogiOS;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BE4592E41B4D4AE80052228E /* Build configuration list for PBXProject "OneblogiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE4593141B4D4AE90052228E /* Debug */,
+				BE4593151B4D4AE90052228E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE4593161B4D4AE90052228E /* Build configuration list for PBXNativeTarget "OneblogiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE4593171B4D4AE90052228E /* Debug */,
+				BE4593181B4D4AE90052228E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BE4593191B4D4AE90052228E /* Build configuration list for PBXNativeTarget "OneblogiOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE45931A1B4D4AE90052228E /* Debug */,
+				BE45931B1B4D4AE90052228E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BE45931C1B4D4AE90052228E /* Build configuration list for PBXNativeTarget "OneblogiOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE45931D1B4D4AE90052228E /* Debug */,
+				BE45931E1B4D4AE90052228E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BE4592E11B4D4AE80052228E /* Project object */;
+}
