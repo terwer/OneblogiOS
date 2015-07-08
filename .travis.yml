@@ -2,4 +2,4 @@ language: objective-c
 xcode_project: OneblogiOS.xcodeproj # path to your xcodeproj folder
 xcode_scheme: OneblogiOS # SchemeName
 script:
-  - xcodebuild [DEFAULT_OPTIONS] CODE_SIGNING_REQUIRED=NO
+  - xctool -project OneblogiOS.xcodeproj -scheme OneblogiOS build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO

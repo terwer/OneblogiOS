@@ -23,3 +23,7 @@ pkg
 
 #App icon folder
 icon/*
+
+#Tests
+OneblogiOSTests/*
+OneblogiOSUITests/*
