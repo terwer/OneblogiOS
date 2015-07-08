@@ -18,7 +18,7 @@ _site
 !OneblogiOS.xcworkspace
 run
 pkg
-.DS_Stor
+.DS_Store
 
-#icon
+#App icon folder
 icon/*
