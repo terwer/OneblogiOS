@@ -9,9 +9,6 @@
 /* Begin PBXBuildFile section */
 		BE4592EE1B4D4AE90052228E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4592ED1B4D4AE90052228E /* main.m */; };
 		BE4592F11B4D4AE90052228E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4592F01B4D4AE90052228E /* AppDelegate.m */; };
-		BE4592F41B4D4AE90052228E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4592F31B4D4AE90052228E /* ViewController.m */; };
-		BE4592F71B4D4AE90052228E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE4592F51B4D4AE90052228E /* Main.storyboard */; };
-		BE4592FC1B4D4AE90052228E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE4592FA1B4D4AE90052228E /* LaunchScreen.storyboard */; };
 		BE4593071B4D4AE90052228E /* OneblogiOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4593061B4D4AE90052228E /* OneblogiOSTests.m */; };
 		BE4593121B4D4AE90052228E /* OneblogiOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4593111B4D4AE90052228E /* OneblogiOSUITests.m */; };
 		BE4F4DF21B4D717C00D8B0A7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE4F4DF11B4D717C00D8B0A7 /* Images.xcassets */; };
@@ -39,10 +36,6 @@
 		BE4592ED1B4D4AE90052228E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BE4592EF1B4D4AE90052228E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BE4592F01B4D4AE90052228E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		BE4592F21B4D4AE90052228E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		BE4592F31B4D4AE90052228E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		BE4592F61B4D4AE90052228E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BE4592FB1B4D4AE90052228E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE4592FD1B4D4AE90052228E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE4593021B4D4AE90052228E /* OneblogiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneblogiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE4593061B4D4AE90052228E /* OneblogiOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OneblogiOSTests.m; sourceTree = "<group>"; };
@@ -103,10 +96,6 @@
 			children = (
 				BE4592EF1B4D4AE90052228E /* AppDelegate.h */,
 				BE4592F01B4D4AE90052228E /* AppDelegate.m */,
-				BE4592F21B4D4AE90052228E /* ViewController.h */,
-				BE4592F31B4D4AE90052228E /* ViewController.m */,
-				BE4592F51B4D4AE90052228E /* Main.storyboard */,
-				BE4592FA1B4D4AE90052228E /* LaunchScreen.storyboard */,
 				BE4592FD1B4D4AE90052228E /* Info.plist */,
 				BE4F4DF11B4D717C00D8B0A7 /* Images.xcassets */,
 				BE4592EC1B4D4AE90052228E /* Supporting Files */,
@@ -244,9 +233,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE4592FC1B4D4AE90052228E /* LaunchScreen.storyboard in Resources */,
 				BE4F4DF21B4D717C00D8B0A7 /* Images.xcassets in Resources */,
-				BE4592F71B4D4AE90052228E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,7 +258,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE4592F41B4D4AE90052228E /* ViewController.m in Sources */,
 				BE4592F11B4D4AE90052228E /* AppDelegate.m in Sources */,
 				BE4592EE1B4D4AE90052228E /* main.m in Sources */,
 			);
@@ -307,25 +293,6 @@
 			targetProxy = BE45930E1B4D4AE90052228E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		BE4592F51B4D4AE90052228E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BE4592F61B4D4AE90052228E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		BE4592FA1B4D4AE90052228E /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BE4592FB1B4D4AE90052228E /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BE4593141B4D4AE90052228E /* Debug */ = {
