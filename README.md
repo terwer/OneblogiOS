@@ -6,15 +6,15 @@
 版本信息
 -------
 >版本: V1.1  
-  
+
 >开发工具：XCode Version 6.3.2 (6D2105) iOS7
-      
->作者: Terwer Green    
 
->作者博客：http://www.terwer.com   
+>作者: Terwer Green
 
->作者邮箱: cbgtyw@gmail.com,cyutyw@126.com   
- 
+>作者博客：http://www.terwer.com
+
+>作者邮箱: cbgtyw@gmail.com,cyutyw@126.com
+
 演示
 ---
 
@@ -47,6 +47,9 @@ OneblogiOS app is under the GPL license. See the LICENSE file for more details.
 
 更新记录
 ======
+v0.9 2015-07-08
+>1、项目重新规划。  
+>2、完善启动界面。
 
 参考资料  
 =======
