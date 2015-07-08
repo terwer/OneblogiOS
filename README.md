@@ -7,7 +7,9 @@
 -------
 >版本: V0.9
 
->开发工具：Version 7.0 beta (7A121l) iOS7.0+
+>开发工具：XCode Version 7.0 beta (7A121l) iOS7.0+
+
+>开发环境：Mac Pro OS X Yosemite 10.10.4
 
 >作者: Terwer Green
 
