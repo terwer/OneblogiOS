@@ -5,9 +5,9 @@
 
 版本信息
 -------
->版本: V1.1  
+>版本: V0.9
 
->开发工具：XCode Version 6.3.2 (6D2105) iOS7
+>开发工具：Version 7.0 beta (7A121l) iOS7.6.0+
 
 >作者: Terwer Green
 

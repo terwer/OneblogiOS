@@ -11,10 +11,10 @@
 		BE4592F11B4D4AE90052228E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4592F01B4D4AE90052228E /* AppDelegate.m */; };
 		BE4592F41B4D4AE90052228E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4592F31B4D4AE90052228E /* ViewController.m */; };
 		BE4592F71B4D4AE90052228E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE4592F51B4D4AE90052228E /* Main.storyboard */; };
-		BE4592F91B4D4AE90052228E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE4592F81B4D4AE90052228E /* Assets.xcassets */; };
 		BE4592FC1B4D4AE90052228E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE4592FA1B4D4AE90052228E /* LaunchScreen.storyboard */; };
 		BE4593071B4D4AE90052228E /* OneblogiOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4593061B4D4AE90052228E /* OneblogiOSTests.m */; };
 		BE4593121B4D4AE90052228E /* OneblogiOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4593111B4D4AE90052228E /* OneblogiOSUITests.m */; };
+		BE4F4DF21B4D717C00D8B0A7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE4F4DF11B4D717C00D8B0A7 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +42,6 @@
 		BE4592F21B4D4AE90052228E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		BE4592F31B4D4AE90052228E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		BE4592F61B4D4AE90052228E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BE4592F81B4D4AE90052228E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE4592FB1B4D4AE90052228E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE4592FD1B4D4AE90052228E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE4593021B4D4AE90052228E /* OneblogiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneblogiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +50,7 @@
 		BE45930D1B4D4AE90052228E /* OneblogiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneblogiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE4593111B4D4AE90052228E /* OneblogiOSUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OneblogiOSUITests.m; sourceTree = "<group>"; };
 		BE4593131B4D4AE90052228E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE4F4DF11B4D717C00D8B0A7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,9 +106,9 @@
 				BE4592F21B4D4AE90052228E /* ViewController.h */,
 				BE4592F31B4D4AE90052228E /* ViewController.m */,
 				BE4592F51B4D4AE90052228E /* Main.storyboard */,
-				BE4592F81B4D4AE90052228E /* Assets.xcassets */,
 				BE4592FA1B4D4AE90052228E /* LaunchScreen.storyboard */,
 				BE4592FD1B4D4AE90052228E /* Info.plist */,
+				BE4F4DF11B4D717C00D8B0A7 /* Images.xcassets */,
 				BE4592EC1B4D4AE90052228E /* Supporting Files */,
 			);
 			path = OneblogiOS;
@@ -207,6 +207,7 @@
 				TargetAttributes = {
 					BE4592E81B4D4AE80052228E = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = ZR32MYTPH3;
 					};
 					BE4593011B4D4AE90052228E = {
 						CreatedOnToolsVersion = 7.0;
@@ -244,7 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE4592FC1B4D4AE90052228E /* LaunchScreen.storyboard in Resources */,
-				BE4592F91B4D4AE90052228E /* Assets.xcassets in Resources */,
+				BE4F4DF21B4D717C00D8B0A7 /* Images.xcassets in Resources */,
 				BE4592F71B4D4AE90052228E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,7 +414,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = OneblogiOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.terwer.OneblogiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -424,7 +428,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = OneblogiOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.terwer.OneblogiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -498,6 +505,7 @@
 				BE4593181B4D4AE90052228E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BE4593191B4D4AE90052228E /* Build configuration list for PBXNativeTarget "OneblogiOSTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +514,7 @@
 				BE45931B1B4D4AE90052228E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BE45931C1B4D4AE90052228E /* Build configuration list for PBXNativeTarget "OneblogiOSUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +523,7 @@
 				BE45931E1B4D4AE90052228E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
