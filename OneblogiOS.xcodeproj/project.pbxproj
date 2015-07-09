@@ -33,6 +33,8 @@
 		BEB8C6321B4EAF39007A9985 /* UIImage+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C6291B4EAF39007A9985 /* UIImage+Util.m */; };
 		BEB8C6331B4EAF39007A9985 /* UIImageView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C62B1B4EAF39007A9985 /* UIImageView+Util.m */; };
 		BEB8C6341B4EAF39007A9985 /* UIView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C62D1B4EAF39007A9985 /* UIView+Util.m */; };
+		BEB8C63A1B4EB124007A9985 /* EmojiPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C6371B4EB124007A9985 /* EmojiPageVC.m */; };
+		BEB8C63B1B4EB124007A9985 /* EmojiPanelVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C6391B4EB124007A9985 /* EmojiPanelVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,10 @@
 		BEB8C62B1B4EAF39007A9985 /* UIImageView+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Util.m"; sourceTree = "<group>"; };
 		BEB8C62C1B4EAF39007A9985 /* UIView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Util.h"; sourceTree = "<group>"; };
 		BEB8C62D1B4EAF39007A9985 /* UIView+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Util.m"; sourceTree = "<group>"; };
+		BEB8C6361B4EB124007A9985 /* EmojiPageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmojiPageVC.h; sourceTree = "<group>"; };
+		BEB8C6371B4EB124007A9985 /* EmojiPageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmojiPageVC.m; sourceTree = "<group>"; };
+		BEB8C6381B4EB124007A9985 /* EmojiPanelVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmojiPanelVC.h; sourceTree = "<group>"; };
+		BEB8C6391B4EB124007A9985 /* EmojiPanelVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmojiPanelVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +209,7 @@
 		1E1D263F1B4E5D0400CD7A7F /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				BEB8C6351B4EB0F2007A9985 /* EmojiPanel */,
 			);
 			name = Component;
 			sourceTree = "<group>";
@@ -272,6 +279,17 @@
 				BEB8C61B1B4EAC5E007A9985 /* UIImage+FontAwesome.m */,
 			);
 			name = FontAwesome;
+			sourceTree = "<group>";
+		};
+		BEB8C6351B4EB0F2007A9985 /* EmojiPanel */ = {
+			isa = PBXGroup;
+			children = (
+				BEB8C6361B4EB124007A9985 /* EmojiPageVC.h */,
+				BEB8C6371B4EB124007A9985 /* EmojiPageVC.m */,
+				BEB8C6381B4EB124007A9985 /* EmojiPanelVC.h */,
+				BEB8C6391B4EB124007A9985 /* EmojiPanelVC.m */,
+			);
+			name = EmojiPanel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,8 +432,10 @@
 				1E1D263A1B4E5BA500CD7A7F /* Config.m in Sources */,
 				BEB8C6321B4EAF39007A9985 /* UIImage+Util.m in Sources */,
 				BEB8C61D1B4EAC5E007A9985 /* NSString+FontAwesome.m in Sources */,
+				BEB8C63B1B4EB124007A9985 /* EmojiPanelVC.m in Sources */,
 				BEB8C6311B4EAF39007A9985 /* UIColor+Util.m in Sources */,
 				BEB8C61E1B4EAC5E007A9985 /* UIFont+FontAwesome.m in Sources */,
+				BEB8C63A1B4EB124007A9985 /* EmojiPageVC.m in Sources */,
 				1E1D26361B4E5AE200CD7A7F /* OBTabBarController.m in Sources */,
 				1E1D26421B4E5D1D00CD7A7F /* Utils.m in Sources */,
 				1E1D263D1B4E5CDC00CD7A7F /* OBThread.m in Sources */,
