@@ -65,3 +65,5 @@ v0.9 2015-07-08
 1、[浅析利用MetaWeblog接口同步多个博客](http://developer.51cto.com/art/200907/135453.htm)
 
 2、[Launch Screen在iOS7/8中的实现](http://blog.shiqichan.com/Launch-Screen-in-iOS-7-and-8/)
+
+3、[Xcode6后手动添加.pch文件](http://www.bkjia.com/Androidjc/979939.html)
