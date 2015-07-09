@@ -3,7 +3,8 @@
 
 An open source blog client for ios plantform.It supports Wordpress and other blogs which uses metaWeblog Api.
 
-[![Build Status](https://api.travis-ci.org/terwer/OneblogiOS.svg)](https://travis-ci.org/terwer/OneblogiOS) [![Coverage Status](https://coveralls.io/repos/terwer/OneblogiOS/badge.svg?branch=master&service=github)](https://coveralls.io/github/terwer/OneblogiOS?branch=master)
+[![Build Status](https://api.travis-ci.org/terwer/OneblogiOS.svg)](https://travis-ci.org/terwer/OneblogiOS) [![Coverage Status](https://coveralls.io/repos/terwer/OneblogiOS/badge.svg?branch=master&service=github)](https://coveralls.io/github/terwer/OneblogiOS?branch=master) [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/OneblogiOS/OneblogiOS/master/LICENSE.md)
+
 
 版本信息
 -------
@@ -50,7 +51,7 @@ An open source blog client for ios plantform.It supports Wordpress and other blo
 
 
 ## 开源协议
-OneblogiOS app is under the GPL license. See the LICENSE file for more details.
+OneblogiOS app is under the MIT License. See the LICENSE file for more details.
 
 更新记录
 ======
