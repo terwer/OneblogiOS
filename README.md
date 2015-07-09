@@ -17,7 +17,7 @@ An open source blog client for ios plantform.It supports Wordpress and other blo
 
 >作者博客：http://www.terwer.com
 
->作者邮箱: cbgtyw@gmail.com,cyutyw@126.com
+>作者邮箱: cbgtyw@gmail.com
 
 演示
 ---
