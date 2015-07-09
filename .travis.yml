@@ -3,4 +3,3 @@ xcode_project: OneblogiOS.xcodeproj # path to your xcodeproj folder
 xcode_scheme: OneblogiOS # SchemeName
 script:
   - xctool -workspace OneblogiOS.xcworkspace -scheme OneblogiOS build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
-after_success: coveralls
