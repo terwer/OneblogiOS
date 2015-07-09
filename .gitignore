@@ -20,10 +20,3 @@ _site
 run
 pkg
 .DS_Store
-
-#App icon folder
-icon/*
-
-#Tests
-OneblogiOSTests/*
-OneblogiOSUITests/*
