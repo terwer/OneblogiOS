@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "Config.h"
 #import "OBTabBarController.h"
+#import "RESideMenu.h"
+#import "SideMenuViewController.h"
 
 @interface AppDelegate () <UIApplicationDelegate, UITabBarControllerDelegate>
 
@@ -27,8 +29,7 @@
     
     OBTabBarController *tabBarController = [OBTabBarController new];
     tabBarController.delegate = self;
-    
-    /*
+
     RESideMenu *sideMenuTabBarViewController = [[RESideMenu alloc] initWithContentViewController:tabBarController
                                                                           leftMenuViewController:[SideMenuViewController new]
                                                                          rightMenuViewController:nil];
@@ -41,7 +42,6 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = sideMenuTabBarViewController;
     [self.window makeKeyAndVisible];
-    */
     
     return YES;
 }

@@ -14,7 +14,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BE4592E81B4D4AE80052228E"
-               BuildableName = "OneblogiOS.app"
+               BuildableName = "OneblogiOS"
                BlueprintName = "OneblogiOS"
                ReferencedContainer = "container:OneblogiOS.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BE4592E81B4D4AE80052228E"
-            BuildableName = "OneblogiOS.app"
+            BuildableName = "OneblogiOS"
             BlueprintName = "OneblogiOS"
             ReferencedContainer = "container:OneblogiOS.xcodeproj">
          </BuildableReference>

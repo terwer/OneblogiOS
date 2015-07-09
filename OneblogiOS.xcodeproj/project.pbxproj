@@ -44,6 +44,7 @@
 		BEB8C6571B4EB61D007A9985 /* MZDay.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C6521B4EB61D007A9985 /* MZDay.m */; };
 		BEB8C6581B4EB61D007A9985 /* MZDayPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C6541B4EB61D007A9985 /* MZDayPicker.m */; };
 		BEB8C6591B4EB61D007A9985 /* MZDayPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C6561B4EB61D007A9985 /* MZDayPickerCell.m */; };
+		CBB703A86C9FF38C7A0A885E /* SideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB7056F7BFE7BA40F86735B /* SideMenuViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +130,8 @@
 		BEB8C6541B4EB61D007A9985 /* MZDayPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZDayPicker.m; path = MZDayPicker/MZDayPicker.m; sourceTree = "<group>"; };
 		BEB8C6551B4EB61D007A9985 /* MZDayPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZDayPickerCell.h; path = MZDayPicker/MZDayPickerCell.h; sourceTree = "<group>"; };
 		BEB8C6561B4EB61D007A9985 /* MZDayPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZDayPickerCell.m; path = MZDayPicker/MZDayPickerCell.m; sourceTree = "<group>"; };
+		CBB7056F7BFE7BA40F86735B /* SideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuViewController.m; sourceTree = "<group>"; };
+		CBB7072524F69078165DE984 /* SideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				1E1D26331B4E5AA200CD7A7F /* Tab Bar */,
+				CBB70FFFDFA8B5BD6592CC52 /* 侧拉菜单 */,
 			);
 			name = "Main ViewControllers";
 			sourceTree = "<group>";
@@ -361,6 +365,15 @@
 			name = MZDayPicker;
 			sourceTree = "<group>";
 		};
+		CBB70FFFDFA8B5BD6592CC52 /* 侧拉菜单 */ = {
+			isa = PBXGroup;
+			children = (
+				CBB7056F7BFE7BA40F86735B /* SideMenuViewController.m */,
+				CBB7072524F69078165DE984 /* SideMenuViewController.h */,
+			);
+			name = "侧拉菜单";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -524,6 +537,7 @@
 				BEB8C62F1B4EAF39007A9985 /* NSTextAttachment+Util.m in Sources */,
 				BEB8C61F1B4EAC5E007A9985 /* UIImage+FontAwesome.m in Sources */,
 				BEB8C6581B4EB61D007A9985 /* MZDayPicker.m in Sources */,
+				CBB703A86C9FF38C7A0A885E /* SideMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,6 +662,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.terwer.OneblogiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 			};
 			name = Debug;
 		};
@@ -667,6 +682,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.terwer.OneblogiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 			};
 			name = Release;
 		};
