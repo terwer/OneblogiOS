@@ -7,8 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "Config.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <UIApplicationDelegate, UITabBarControllerDelegate>
 
 @end
 
@@ -22,6 +23,24 @@
     //http://www.tingyun.com/
     //http://doc.tingyun.com/help/html/doc/28.html
     [NBSAppAgent startWithAppID:@"586b37551c3e4f02b0a8b579970195b7"];
+    
+    //OBTabBarController *tabBarController = [OBabBarController new];
+    //tabBarController.delegate = self;
+    
+    /*
+    RESideMenu *sideMenuTabBarViewController = [[RESideMenu alloc] initWithContentViewController:tabBarController
+                                                                          leftMenuViewController:[SideMenuViewController new]
+                                                                         rightMenuViewController:nil];
+    sideMenuTabBarViewController.scaleContentView = YES;
+    sideMenuTabBarViewController.contentViewScaleValue = 0.95;
+    sideMenuTabBarViewController.scaleMenuView = NO;
+    sideMenuTabBarViewController.contentViewShadowEnabled = YES;
+    sideMenuTabBarViewController.contentViewShadowRadius = 4.5;
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = sideMenuTabBarViewController;
+    [self.window makeKeyAndVisible];
+    */
     
     return YES;
 }
