@@ -38,6 +38,7 @@ An open source blog client for ios plantform.It supports Wordpress and other blo
 * Main ViewControllers ——— 主要的视图控制器（作为基类或使用较广的控制器）
 
 ## 项目用到的开源类库、组件
+
 序号|类库名称|说明
 -|-|-
 1|AFNetworking|网络请求
