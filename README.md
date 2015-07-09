@@ -39,9 +39,11 @@ An open source blog client for ios plantform.It supports Wordpress and other blo
 
 ## 项目用到的开源类库、组件
 
-序号|类库名称|说明
--|-|-
-1|AFNetworking|网络请求
+序号 | 类库名称 | 说明
+-- | ---- | --
+1 | AFNetworking | 网络请求
+
+
 2|AFOnoSerializer|序列化XML和HTML
 3|Ono|解析XML
 4|RESideMenu|侧拉栏
@@ -51,7 +53,7 @@ An open source blog client for ios plantform.It supports Wordpress and other blo
 8|TTTAttributedLabel|支持富文本显示的label
 9|ReactiveCocoa|函数式编程和响应式编程框架
 10|GPUImage|实现模糊效果
-11|libNBSAppAgent|App性能监控（ http://www.tingyun.com/ ）    
+11|libNBSAppAgent|App性能监控（ http://www.tingyun.com/ ）
 
 First Header  | Second Header
 ------------- | -------------
