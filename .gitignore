@@ -20,3 +20,6 @@ _site
 run
 pkg
 .DS_Store
+
+#AppCode
+.idea/*
