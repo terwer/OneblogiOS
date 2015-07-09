@@ -3,8 +3,7 @@
 
 An open source blog client for ios plantform.It supports Wordpress and other blogs which uses metaWeblog Api.
 
-[![Build Status](https://api.travis-ci.org/terwer/OneblogiOS.svg)](https://travis-ci.org/terwer/OneblogiOS) [![GitHub license](	https://img.shields.io/hexpm/l/plug.svg)](https://raw.githubusercontent.com/OneblogiOS/OneblogiOS/master/LICENSE.md)
-
+[![Build Status](https://api.travis-ci.org/terwer/OneblogiOS.svg)](https://travis-ci.org/terwer/OneblogiOS)
 
 版本信息
 -------
