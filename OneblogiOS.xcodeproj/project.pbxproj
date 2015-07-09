@@ -16,6 +16,7 @@
 		1E1D263A1B4E5BA500CD7A7F /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1D26391B4E5BA400CD7A7F /* Config.m */; };
 		1E1D263D1B4E5CDC00CD7A7F /* OBThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1D263C1B4E5CDC00CD7A7F /* OBThread.m */; };
 		1E1D26421B4E5D1D00CD7A7F /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1D26411B4E5D1D00CD7A7F /* Utils.m */; };
+		1E1D26451B4E73FF00CD7A7F /* UIBarButtonItem+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1D26441B4E73FF00CD7A7F /* UIBarButtonItem+Badge.m */; };
 		A0987FEFC92BD7CF7D39920E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A720E564F9DDE9C4B737D2DF /* libPods.a */; };
 		BE4592EE1B4D4AE90052228E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4592ED1B4D4AE90052228E /* main.m */; };
 		BE4592F11B4D4AE90052228E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4592F01B4D4AE90052228E /* AppDelegate.m */; };
@@ -49,6 +50,8 @@
 		1E1D263C1B4E5CDC00CD7A7F /* OBThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBThread.m; sourceTree = "<group>"; };
 		1E1D26401B4E5D1D00CD7A7F /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		1E1D26411B4E5D1D00CD7A7F /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		1E1D26431B4E73FF00CD7A7F /* UIBarButtonItem+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Badge.h"; sourceTree = "<group>"; };
+		1E1D26441B4E73FF00CD7A7F /* UIBarButtonItem+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Badge.m"; sourceTree = "<group>"; };
 		79FD55F2D64AB4B4F05B96CB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A720E564F9DDE9C4B737D2DF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE4592E91B4D4AE90052228E /* OneblogiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneblogiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +146,8 @@
 		1E1D263E1B4E5CFA00CD7A7F /* Catagory */ = {
 			isa = PBXGroup;
 			children = (
+				1E1D26431B4E73FF00CD7A7F /* UIBarButtonItem+Badge.h */,
+				1E1D26441B4E73FF00CD7A7F /* UIBarButtonItem+Badge.m */,
 			);
 			name = Catagory;
 			sourceTree = "<group>";
@@ -345,6 +350,7 @@
 				1E1D26361B4E5AE200CD7A7F /* OBTabBarController.m in Sources */,
 				1E1D26421B4E5D1D00CD7A7F /* Utils.m in Sources */,
 				1E1D263D1B4E5CDC00CD7A7F /* OBThread.m in Sources */,
+				1E1D26451B4E73FF00CD7A7F /* UIBarButtonItem+Badge.m in Sources */,
 				BE4592EE1B4D4AE90052228E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
