@@ -22,17 +22,11 @@
 			remoteGlobalIDString = BE4592E81B4D4AE80052228E;
 			remoteInfo = OneblogiOS;
 		};
-		BE45930E1B4D4AE90052228E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BE4592E11B4D4AE80052228E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BE4592E81B4D4AE80052228E;
-			remoteInfo = OneblogiOS;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		150DF0AE053CEFE3F3A9DF8C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		1E1D26251B4E2A4A00CD7A7F /* OneblogiOS copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "OneblogiOS copy-Info.plist"; path = "/Users/szgxa30/Documents/iOSWorkplace/OneblogiOS/OneblogiOS copy-Info.plist"; sourceTree = "<absolute>"; };
 		79FD55F2D64AB4B4F05B96CB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A720E564F9DDE9C4B737D2DF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE4592E91B4D4AE90052228E /* OneblogiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneblogiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,7 +37,6 @@
 		BE4593021B4D4AE90052228E /* OneblogiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneblogiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE4593061B4D4AE90052228E /* OneblogiOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OneblogiOSTests.m; sourceTree = "<group>"; };
 		BE4593081B4D4AE90052228E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BE45930D1B4D4AE90052228E /* OneblogiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneblogiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE4F4DF11B4D717C00D8B0A7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,13 +50,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BE4592FF1B4D4AE90052228E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BE45930A1B4D4AE90052228E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -98,6 +84,7 @@
 				BE4592EA1B4D4AE90052228E /* Products */,
 				158038DD4E487643F6FC02BD /* Pods */,
 				1DF914FCC9B71EF0641C8346 /* Frameworks */,
+				1E1D26251B4E2A4A00CD7A7F /* OneblogiOS copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,7 +93,6 @@
 			children = (
 				BE4592E91B4D4AE90052228E /* OneblogiOS.app */,
 				BE4593021B4D4AE90052228E /* OneblogiOSTests.xctest */,
-				BE45930D1B4D4AE90052228E /* OneblogiOSUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,24 +166,6 @@
 			productReference = BE4593021B4D4AE90052228E /* OneblogiOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		BE45930C1B4D4AE90052228E /* OneblogiOSUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BE45931C1B4D4AE90052228E /* Build configuration list for PBXNativeTarget "OneblogiOSUITests" */;
-			buildPhases = (
-				BE4593091B4D4AE90052228E /* Sources */,
-				BE45930A1B4D4AE90052228E /* Frameworks */,
-				BE45930B1B4D4AE90052228E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BE45930F1B4D4AE90052228E /* PBXTargetDependency */,
-			);
-			name = OneblogiOSUITests;
-			productName = OneblogiOSUITests;
-			productReference = BE45930D1B4D4AE90052228E /* OneblogiOSUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -212,10 +180,6 @@
 						DevelopmentTeam = ZR32MYTPH3;
 					};
 					BE4593011B4D4AE90052228E = {
-						CreatedOnToolsVersion = 7.0;
-						TestTargetID = BE4592E81B4D4AE80052228E;
-					};
-					BE45930C1B4D4AE90052228E = {
 						CreatedOnToolsVersion = 7.0;
 						TestTargetID = BE4592E81B4D4AE80052228E;
 					};
@@ -236,7 +200,6 @@
 			targets = (
 				BE4592E81B4D4AE80052228E /* OneblogiOS */,
 				BE4593011B4D4AE90052228E /* OneblogiOSTests */,
-				BE45930C1B4D4AE90052228E /* OneblogiOSUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -251,13 +214,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BE4593001B4D4AE90052228E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BE45930B1B4D4AE90052228E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -317,13 +273,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BE4593091B4D4AE90052228E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -331,11 +280,6 @@
 			isa = PBXTargetDependency;
 			target = BE4592E81B4D4AE80052228E /* OneblogiOS */;
 			targetProxy = BE4593031B4D4AE90052228E /* PBXContainerItemProxy */;
-		};
-		BE45930F1B4D4AE90052228E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BE4592E81B4D4AE80052228E /* OneblogiOS */;
-			targetProxy = BE45930E1B4D4AE90052228E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -478,32 +422,6 @@
 			};
 			name = Release;
 		};
-		BE45931D1B4D4AE90052228E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = OneblogiOSUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.terwer.OneblogiOSUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = OneblogiOS;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		BE45931E1B4D4AE90052228E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = OneblogiOSUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.terwer.OneblogiOSUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = OneblogiOS;
-				USES_XCTRUNNER = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -530,15 +448,6 @@
 			buildConfigurations = (
 				BE45931A1B4D4AE90052228E /* Debug */,
 				BE45931B1B4D4AE90052228E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BE45931C1B4D4AE90052228E /* Build configuration list for PBXNativeTarget "OneblogiOSUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BE45931D1B4D4AE90052228E /* Debug */,
-				BE45931E1B4D4AE90052228E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

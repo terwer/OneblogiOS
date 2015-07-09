@@ -9,4 +9,3 @@ pod 'MBProgressHUD', '~> 0.8'
 pod 'RESideMenu', '~> 4.0.7'
 pod 'Reachability'
 pod 'TTTAttributedLabel'
-
