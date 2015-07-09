@@ -50,7 +50,8 @@ An open source blog client for ios plantform.It supports Wordpress and other blo
 8             | TTTAttributedLabel | 支持富文本显示的label
 9             | ReactiveCocoa    | 函数式编程和响应式编程框架
 10            | GPUImage         | 实现模糊效果
-11            | libNBSAppAgent| App性能监控（ http://www.tingyun.com/ ）
+11            | libNBSAppAgent | App性能监控（ http://www.tingyun.com/ ）
+12            | FontAwesome      | 图标字体（ http://fortawesome.github.io/Font-Awesome/icons/ ）
 
 ## 开源协议
 Oneblog app is under the Apache License V2. See [the LICENSE file](https://github.com/terwer/OneblogiOS/blob/master/LICENSE.md) for more details.

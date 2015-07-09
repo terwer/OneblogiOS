@@ -22,6 +22,10 @@
 		BE4592F11B4D4AE90052228E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4592F01B4D4AE90052228E /* AppDelegate.m */; };
 		BE4593071B4D4AE90052228E /* OneblogiOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4593061B4D4AE90052228E /* OneblogiOSTests.m */; };
 		BE4F4DF21B4D717C00D8B0A7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE4F4DF11B4D717C00D8B0A7 /* Images.xcassets */; };
+		BEB8C61C1B4EAC5E007A9985 /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C6151B4EAC5E007A9985 /* FAImageView.m */; };
+		BEB8C61D1B4EAC5E007A9985 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C6171B4EAC5E007A9985 /* NSString+FontAwesome.m */; };
+		BEB8C61E1B4EAC5E007A9985 /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C6191B4EAC5E007A9985 /* UIFont+FontAwesome.m */; };
+		BEB8C61F1B4EAC5E007A9985 /* UIImage+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C61B1B4EAC5E007A9985 /* UIImage+FontAwesome.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +67,14 @@
 		BE4593061B4D4AE90052228E /* OneblogiOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OneblogiOSTests.m; sourceTree = "<group>"; };
 		BE4593081B4D4AE90052228E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE4F4DF11B4D717C00D8B0A7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BEB8C6141B4EAC5E007A9985 /* FAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAImageView.h; sourceTree = "<group>"; };
+		BEB8C6151B4EAC5E007A9985 /* FAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAImageView.m; sourceTree = "<group>"; };
+		BEB8C6161B4EAC5E007A9985 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
+		BEB8C6171B4EAC5E007A9985 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
+		BEB8C6181B4EAC5E007A9985 /* UIFont+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+FontAwesome.h"; sourceTree = "<group>"; };
+		BEB8C6191B4EAC5E007A9985 /* UIFont+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+FontAwesome.m"; sourceTree = "<group>"; };
+		BEB8C61A1B4EAC5E007A9985 /* UIImage+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FontAwesome.h"; sourceTree = "<group>"; };
+		BEB8C61B1B4EAC5E007A9985 /* UIImage+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FontAwesome.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +158,7 @@
 		1E1D263E1B4E5CFA00CD7A7F /* Catagory */ = {
 			isa = PBXGroup;
 			children = (
+				BEB8C6131B4EABB1007A9985 /* FontAwesome */,
 				1E1D26431B4E73FF00CD7A7F /* UIBarButtonItem+Badge.h */,
 				1E1D26441B4E73FF00CD7A7F /* UIBarButtonItem+Badge.m */,
 			);
@@ -209,6 +222,21 @@
 				BE4593081B4D4AE90052228E /* Info.plist */,
 			);
 			path = OneblogiOSTests;
+			sourceTree = "<group>";
+		};
+		BEB8C6131B4EABB1007A9985 /* FontAwesome */ = {
+			isa = PBXGroup;
+			children = (
+				BEB8C6141B4EAC5E007A9985 /* FAImageView.h */,
+				BEB8C6151B4EAC5E007A9985 /* FAImageView.m */,
+				BEB8C6161B4EAC5E007A9985 /* NSString+FontAwesome.h */,
+				BEB8C6171B4EAC5E007A9985 /* NSString+FontAwesome.m */,
+				BEB8C6181B4EAC5E007A9985 /* UIFont+FontAwesome.h */,
+				BEB8C6191B4EAC5E007A9985 /* UIFont+FontAwesome.m */,
+				BEB8C61A1B4EAC5E007A9985 /* UIImage+FontAwesome.h */,
+				BEB8C61B1B4EAC5E007A9985 /* UIImage+FontAwesome.m */,
+			);
+			name = FontAwesome;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,11 +375,15 @@
 			files = (
 				BE4592F11B4D4AE90052228E /* AppDelegate.m in Sources */,
 				1E1D263A1B4E5BA500CD7A7F /* Config.m in Sources */,
+				BEB8C61D1B4EAC5E007A9985 /* NSString+FontAwesome.m in Sources */,
+				BEB8C61E1B4EAC5E007A9985 /* UIFont+FontAwesome.m in Sources */,
 				1E1D26361B4E5AE200CD7A7F /* OBTabBarController.m in Sources */,
 				1E1D26421B4E5D1D00CD7A7F /* Utils.m in Sources */,
 				1E1D263D1B4E5CDC00CD7A7F /* OBThread.m in Sources */,
+				BEB8C61C1B4EAC5E007A9985 /* FAImageView.m in Sources */,
 				1E1D26451B4E73FF00CD7A7F /* UIBarButtonItem+Badge.m in Sources */,
 				BE4592EE1B4D4AE90052228E /* main.m in Sources */,
+				BEB8C61F1B4EAC5E007A9985 /* UIImage+FontAwesome.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
