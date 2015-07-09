@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>FEF6C0AF-B12A-414A-966A-645ABBA25D35</string>
+	<key>IDESourceControlProjectName</key>
+	<string>OneblogiOS</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>4769E0600936F30C171719179DA97A1A955B3C04</key>
+		<string>https://github.com/terwer/OneblogiOS.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>OneblogiOS.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>4769E0600936F30C171719179DA97A1A955B3C04</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/terwer/OneblogiOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>4769E0600936F30C171719179DA97A1A955B3C04</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4769E0600936F30C171719179DA97A1A955B3C04</string>
+			<key>IDESourceControlWCCName</key>
+			<string>OneblogiOS</string>
+		</dict>
+	</array>
+</dict>
+</plist>
