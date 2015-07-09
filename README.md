@@ -24,7 +24,7 @@ An open source blog client for ios plantform.It supports Wordpress and other blo
 ---
 1、启动界面
 　
-![](1.png)
+![](Images/1.png)
 
 ## 运行项目
 1. 安装CocoaPods (关于CocoaPods的安装和使用，可参考[这个教程](http://blog.devtang.com/blog/2014/05/25/use-cocoapod-to-manage-ios-lib-dependency/))
