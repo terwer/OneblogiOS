@@ -11,7 +11,6 @@
 		BE4592EE1B4D4AE90052228E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4592ED1B4D4AE90052228E /* main.m */; };
 		BE4592F11B4D4AE90052228E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4592F01B4D4AE90052228E /* AppDelegate.m */; };
 		BE4593071B4D4AE90052228E /* OneblogiOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4593061B4D4AE90052228E /* OneblogiOSTests.m */; };
-		BE4593121B4D4AE90052228E /* OneblogiOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4593111B4D4AE90052228E /* OneblogiOSUITests.m */; };
 		BE4F4DF21B4D717C00D8B0A7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE4F4DF11B4D717C00D8B0A7 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -45,8 +44,6 @@
 		BE4593061B4D4AE90052228E /* OneblogiOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OneblogiOSTests.m; sourceTree = "<group>"; };
 		BE4593081B4D4AE90052228E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE45930D1B4D4AE90052228E /* OneblogiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneblogiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE4593111B4D4AE90052228E /* OneblogiOSUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OneblogiOSUITests.m; sourceTree = "<group>"; };
-		BE4593131B4D4AE90052228E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE4F4DF11B4D717C00D8B0A7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,7 +95,6 @@
 			children = (
 				BE4592EB1B4D4AE90052228E /* OneblogiOS */,
 				BE4593051B4D4AE90052228E /* OneblogiOSTests */,
-				BE4593101B4D4AE90052228E /* OneblogiOSUITests */,
 				BE4592EA1B4D4AE90052228E /* Products */,
 				158038DD4E487643F6FC02BD /* Pods */,
 				1DF914FCC9B71EF0641C8346 /* Frameworks */,
@@ -120,7 +116,6 @@
 			children = (
 				BE4592EF1B4D4AE90052228E /* AppDelegate.h */,
 				BE4592F01B4D4AE90052228E /* AppDelegate.m */,
-				BE4592FD1B4D4AE90052228E /* Info.plist */,
 				BE4F4DF11B4D717C00D8B0A7 /* Images.xcassets */,
 				BE4592EC1B4D4AE90052228E /* Supporting Files */,
 			);
@@ -130,6 +125,7 @@
 		BE4592EC1B4D4AE90052228E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BE4592FD1B4D4AE90052228E /* Info.plist */,
 				BE4592ED1B4D4AE90052228E /* main.m */,
 			);
 			name = "Supporting Files";
@@ -142,15 +138,6 @@
 				BE4593081B4D4AE90052228E /* Info.plist */,
 			);
 			path = OneblogiOSTests;
-			sourceTree = "<group>";
-		};
-		BE4593101B4D4AE90052228E /* OneblogiOSUITests */ = {
-			isa = PBXGroup;
-			children = (
-				BE4593111B4D4AE90052228E /* OneblogiOSUITests.m */,
-				BE4593131B4D4AE90052228E /* Info.plist */,
-			);
-			path = OneblogiOSUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,7 +321,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE4593121B4D4AE90052228E /* OneblogiOSUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

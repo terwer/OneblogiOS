@@ -14,6 +14,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D441A80CAD5EC68E24F9E068"
+               BuildableName = "libPods-AFNetworking.a"
+               BlueprintName = "Pods-AFNetworking"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "BE4592E81B4D4AE80052228E"
                BuildableName = "OneblogiOS.app"
                BlueprintName = "OneblogiOS"
@@ -35,16 +49,6 @@
                BlueprintIdentifier = "BE4593011B4D4AE90052228E"
                BuildableName = "OneblogiOSTests.xctest"
                BlueprintName = "OneblogiOSTests"
-               ReferencedContainer = "container:OneblogiOS.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BE45930C1B4D4AE90052228E"
-               BuildableName = "OneblogiOSUITests.xctest"
-               BlueprintName = "OneblogiOSUITests"
                ReferencedContainer = "container:OneblogiOS.xcodeproj">
             </BuildableReference>
          </TestableReference>
