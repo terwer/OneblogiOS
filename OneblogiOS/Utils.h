@@ -7,7 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UIView+Util.h"
+#import "UIColor+Util.h"
+#import "UIImageView+Util.h"
+#import "UIImage+Util.h"
+#import "NSTextAttachment+Util.h"
+#import "AFHTTPRequestOperationManager+Util.h"
+
+@class MBProgressHUD;
 
 @interface Utils : NSObject
+
++ (NSDictionary *)emojiDict;
++ (MBProgressHUD *)createHUD;
 
 @end

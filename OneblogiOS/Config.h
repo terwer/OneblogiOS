@@ -11,4 +11,6 @@
 
 @interface Config : NSObject
 
++ (BOOL)getMode;
+
 @end
