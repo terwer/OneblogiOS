@@ -2,8 +2,8 @@
 //  AFHTTPRequestOperationManager+Util.m
 //  iosapp
 //
-//  Created by AeternChan on 6/18/15.
-//  Copyright (c) 2015 oschina. All rights reserved.
+//  Created by Terwer Green on 6/18/15.
+//  Copyright (c) 2015 Terwer Green. All rights reserved.
 //
 
 #import "AFHTTPRequestOperationManager+Util.h"
@@ -12,7 +12,7 @@
 
 @implementation AFHTTPRequestOperationManager (Util)
 
-+ (instancetype)OSCManager
++ (instancetype)OBManager
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFOnoResponseSerializer XMLResponseSerializer];
@@ -27,7 +27,7 @@
     NSString *appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
     NSString *IDFV = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     
-    return [NSString stringWithFormat:@"OSChina.NET/%@/%@/%@/%@/%@", appVersion,
+    return [NSString stringWithFormat:@"terwer.com/%@/%@/%@/%@/%@", appVersion,
             [UIDevice currentDevice].systemName,
             [UIDevice currentDevice].systemVersion,
             [UIDevice currentDevice].model,

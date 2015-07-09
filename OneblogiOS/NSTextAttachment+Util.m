@@ -2,8 +2,8 @@
 //  NSTextAttachment+Util.m
 //  iosapp
 //
-//  Created by ChanAetern on 4/10/15.
-//  Copyright (c) 2015 oschina. All rights reserved.
+//  Created by Terwer Green on 4/10/15.
+//  Copyright (c) 2015 Terwer Green. All rights reserved.
 //
 
 #import "NSTextAttachment+Util.h"

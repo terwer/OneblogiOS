@@ -2,8 +2,8 @@
 //  UIView+Util.m
 //  iosapp
 //
-//  Created by chenhaoxiang on 14-10-17.
-//  Copyright (c) 2014年 oschina. All rights reserved.
+//  Created by Terwer Green on 14-10-17.
+//  Copyright (c) 2014年 Terwer Green. All rights reserved.
 //
 
 #import "UIView+Util.h"
