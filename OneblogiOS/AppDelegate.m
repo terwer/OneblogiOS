@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Config.h"
+#import "OBTabBarController.h"
 
 @interface AppDelegate () <UIApplicationDelegate, UITabBarControllerDelegate>
 
@@ -24,8 +25,8 @@
     //http://doc.tingyun.com/help/html/doc/28.html
     [NBSAppAgent startWithAppID:@"586b37551c3e4f02b0a8b579970195b7"];
     
-    //OBTabBarController *tabBarController = [OBabBarController new];
-    //tabBarController.delegate = self;
+    OBTabBarController *tabBarController = [OBTabBarController new];
+    tabBarController.delegate = self;
     
     /*
     RESideMenu *sideMenuTabBarViewController = [[RESideMenu alloc] initWithContentViewController:tabBarController
