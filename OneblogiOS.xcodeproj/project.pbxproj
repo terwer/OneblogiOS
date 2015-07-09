@@ -26,6 +26,13 @@
 		BEB8C61D1B4EAC5E007A9985 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C6171B4EAC5E007A9985 /* NSString+FontAwesome.m */; };
 		BEB8C61E1B4EAC5E007A9985 /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C6191B4EAC5E007A9985 /* UIFont+FontAwesome.m */; };
 		BEB8C61F1B4EAC5E007A9985 /* UIImage+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C61B1B4EAC5E007A9985 /* UIImage+FontAwesome.m */; };
+		BEB8C62E1B4EAF39007A9985 /* AFHTTPRequestOperationManager+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C6211B4EAF39007A9985 /* AFHTTPRequestOperationManager+Util.m */; };
+		BEB8C62F1B4EAF39007A9985 /* NSTextAttachment+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C6231B4EAF39007A9985 /* NSTextAttachment+Util.m */; };
+		BEB8C6301B4EAF39007A9985 /* UIButton+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C6251B4EAF39007A9985 /* UIButton+Badge.m */; };
+		BEB8C6311B4EAF39007A9985 /* UIColor+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C6271B4EAF39007A9985 /* UIColor+Util.m */; };
+		BEB8C6321B4EAF39007A9985 /* UIImage+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C6291B4EAF39007A9985 /* UIImage+Util.m */; };
+		BEB8C6331B4EAF39007A9985 /* UIImageView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C62B1B4EAF39007A9985 /* UIImageView+Util.m */; };
+		BEB8C6341B4EAF39007A9985 /* UIView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C62D1B4EAF39007A9985 /* UIView+Util.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +82,20 @@
 		BEB8C6191B4EAC5E007A9985 /* UIFont+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+FontAwesome.m"; sourceTree = "<group>"; };
 		BEB8C61A1B4EAC5E007A9985 /* UIImage+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FontAwesome.h"; sourceTree = "<group>"; };
 		BEB8C61B1B4EAC5E007A9985 /* UIImage+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FontAwesome.m"; sourceTree = "<group>"; };
+		BEB8C6201B4EAF39007A9985 /* AFHTTPRequestOperationManager+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPRequestOperationManager+Util.h"; sourceTree = "<group>"; };
+		BEB8C6211B4EAF39007A9985 /* AFHTTPRequestOperationManager+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPRequestOperationManager+Util.m"; sourceTree = "<group>"; };
+		BEB8C6221B4EAF39007A9985 /* NSTextAttachment+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextAttachment+Util.h"; sourceTree = "<group>"; };
+		BEB8C6231B4EAF39007A9985 /* NSTextAttachment+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextAttachment+Util.m"; sourceTree = "<group>"; };
+		BEB8C6241B4EAF39007A9985 /* UIButton+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Badge.h"; sourceTree = "<group>"; };
+		BEB8C6251B4EAF39007A9985 /* UIButton+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Badge.m"; sourceTree = "<group>"; };
+		BEB8C6261B4EAF39007A9985 /* UIColor+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Util.h"; sourceTree = "<group>"; };
+		BEB8C6271B4EAF39007A9985 /* UIColor+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Util.m"; sourceTree = "<group>"; };
+		BEB8C6281B4EAF39007A9985 /* UIImage+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Util.h"; sourceTree = "<group>"; };
+		BEB8C6291B4EAF39007A9985 /* UIImage+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Util.m"; sourceTree = "<group>"; };
+		BEB8C62A1B4EAF39007A9985 /* UIImageView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Util.h"; sourceTree = "<group>"; };
+		BEB8C62B1B4EAF39007A9985 /* UIImageView+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Util.m"; sourceTree = "<group>"; };
+		BEB8C62C1B4EAF39007A9985 /* UIView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Util.h"; sourceTree = "<group>"; };
+		BEB8C62D1B4EAF39007A9985 /* UIView+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Util.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,9 +179,23 @@
 		1E1D263E1B4E5CFA00CD7A7F /* Catagory */ = {
 			isa = PBXGroup;
 			children = (
-				BEB8C6131B4EABB1007A9985 /* FontAwesome */,
 				1E1D26431B4E73FF00CD7A7F /* UIBarButtonItem+Badge.h */,
 				1E1D26441B4E73FF00CD7A7F /* UIBarButtonItem+Badge.m */,
+				BEB8C6201B4EAF39007A9985 /* AFHTTPRequestOperationManager+Util.h */,
+				BEB8C6211B4EAF39007A9985 /* AFHTTPRequestOperationManager+Util.m */,
+				BEB8C6221B4EAF39007A9985 /* NSTextAttachment+Util.h */,
+				BEB8C6231B4EAF39007A9985 /* NSTextAttachment+Util.m */,
+				BEB8C6241B4EAF39007A9985 /* UIButton+Badge.h */,
+				BEB8C6251B4EAF39007A9985 /* UIButton+Badge.m */,
+				BEB8C6261B4EAF39007A9985 /* UIColor+Util.h */,
+				BEB8C6271B4EAF39007A9985 /* UIColor+Util.m */,
+				BEB8C6281B4EAF39007A9985 /* UIImage+Util.h */,
+				BEB8C6291B4EAF39007A9985 /* UIImage+Util.m */,
+				BEB8C62A1B4EAF39007A9985 /* UIImageView+Util.h */,
+				BEB8C62B1B4EAF39007A9985 /* UIImageView+Util.m */,
+				BEB8C62C1B4EAF39007A9985 /* UIView+Util.h */,
+				BEB8C62D1B4EAF39007A9985 /* UIView+Util.m */,
+				BEB8C6131B4EABB1007A9985 /* FontAwesome */,
 			);
 			name = Catagory;
 			sourceTree = "<group>";
@@ -373,16 +408,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEB8C6341B4EAF39007A9985 /* UIView+Util.m in Sources */,
 				BE4592F11B4D4AE90052228E /* AppDelegate.m in Sources */,
+				BEB8C6301B4EAF39007A9985 /* UIButton+Badge.m in Sources */,
 				1E1D263A1B4E5BA500CD7A7F /* Config.m in Sources */,
+				BEB8C6321B4EAF39007A9985 /* UIImage+Util.m in Sources */,
 				BEB8C61D1B4EAC5E007A9985 /* NSString+FontAwesome.m in Sources */,
+				BEB8C6311B4EAF39007A9985 /* UIColor+Util.m in Sources */,
 				BEB8C61E1B4EAC5E007A9985 /* UIFont+FontAwesome.m in Sources */,
 				1E1D26361B4E5AE200CD7A7F /* OBTabBarController.m in Sources */,
 				1E1D26421B4E5D1D00CD7A7F /* Utils.m in Sources */,
 				1E1D263D1B4E5CDC00CD7A7F /* OBThread.m in Sources */,
 				BEB8C61C1B4EAC5E007A9985 /* FAImageView.m in Sources */,
+				BEB8C6331B4EAF39007A9985 /* UIImageView+Util.m in Sources */,
+				BEB8C62E1B4EAF39007A9985 /* AFHTTPRequestOperationManager+Util.m in Sources */,
 				1E1D26451B4E73FF00CD7A7F /* UIBarButtonItem+Badge.m in Sources */,
 				BE4592EE1B4D4AE90052228E /* main.m in Sources */,
+				BEB8C62F1B4EAF39007A9985 /* NSTextAttachment+Util.m in Sources */,
 				BEB8C61F1B4EAC5E007A9985 /* UIImage+FontAwesome.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
