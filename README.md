@@ -51,7 +51,7 @@ An open source blog client for ios plantform.It supports Wordpress and other blo
 
 
 ## 开源协议
-Oneblog app is under the Apache License V2. See the LICENSE file for more details.
+Oneblog app is under the Apache License V2. See [the LICENSE file](https://github.com/terwer/OneblogiOS/blob/master/LICENSE.md) for more details.
 
 更新记录
 ======
