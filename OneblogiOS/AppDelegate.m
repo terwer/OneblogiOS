@@ -39,11 +39,11 @@
     //http://doc.tingyun.com/help/html/doc/28.html
     [NBSAppAgent startWithAppID:@"586b37551c3e4f02b0a8b579970195b7"];
 
-    //下面的按钮切换
+    //主界面视图
     OBTabBarController *tabBarController = [OBTabBarController new];
     tabBarController.delegate = self;
 
-    //初始化侧边菜单，这是整个视图的入口
+    //初始化布局，这是整个视图的入口
     RESideMenu *sideMenuTabBarViewController = [[RESideMenu alloc] initWithContentViewController:tabBarController
                                                                           leftMenuViewController:[SideMenuViewController new]
                                                                         rightMenuViewController:nil];

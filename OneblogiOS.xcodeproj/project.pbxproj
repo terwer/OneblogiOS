@@ -17,6 +17,18 @@
 		1E1D263D1B4E5CDC00CD7A7F /* OBThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1D263C1B4E5CDC00CD7A7F /* OBThread.m */; };
 		1E1D26421B4E5D1D00CD7A7F /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1D26411B4E5D1D00CD7A7F /* Utils.m */; };
 		1E1D26451B4E73FF00CD7A7F /* UIBarButtonItem+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1D26441B4E73FF00CD7A7F /* UIBarButtonItem+Badge.m */; };
+		1E6549D21B4F675D004AEAE7 /* BlogsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6549D11B4F675D004AEAE7 /* BlogsViewController.m */; };
+		1E6549D51B4F67E2004AEAE7 /* OBObjsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6549D41B4F67E2004AEAE7 /* OBObjsViewController.m */; };
+		1E6549D81B4F6875004AEAE7 /* BlogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6549D71B4F6875004AEAE7 /* BlogCell.m */; };
+		1E6549DD1B4F6974004AEAE7 /* OBBlog.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6549DC1B4F6974004AEAE7 /* OBBlog.m */; };
+		1E6549E01B4F698F004AEAE7 /* OBBlogDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6549DF1B4F698F004AEAE7 /* OBBlogDetails.m */; };
+		1E6549E41B4F69EE004AEAE7 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6549E31B4F69EE004AEAE7 /* DetailsViewController.m */; };
+		1E6549E71B4F6ADC004AEAE7 /* OBBaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6549E61B4F6ADC004AEAE7 /* OBBaseObject.m */; };
+		1E6549EA1B4F6B60004AEAE7 /* BottomBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6549E91B4F6B60004AEAE7 /* BottomBarViewController.m */; };
+		1E6549EE1B4F6C2F004AEAE7 /* SwipableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6549ED1B4F6C2F004AEAE7 /* SwipableViewController.m */; };
+		1E6549F11B4F6C7B004AEAE7 /* TitleBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6549F01B4F6C7B004AEAE7 /* TitleBarView.m */; };
+		1E6549F41B4F6C94004AEAE7 /* HorizonalTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6549F31B4F6C94004AEAE7 /* HorizonalTableViewController.m */; };
+		1E6549F71B4F6EAA004AEAE7 /* OBAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6549F61B4F6EAA004AEAE7 /* OBAPI.m */; };
 		A0987FEFC92BD7CF7D39920E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A720E564F9DDE9C4B737D2DF /* libPods.a */; };
 		BE4592EE1B4D4AE90052228E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4592ED1B4D4AE90052228E /* main.m */; };
 		BE4592F11B4D4AE90052228E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4592F01B4D4AE90052228E /* AppDelegate.m */; };
@@ -75,6 +87,30 @@
 		1E1D26411B4E5D1D00CD7A7F /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		1E1D26431B4E73FF00CD7A7F /* UIBarButtonItem+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Badge.h"; sourceTree = "<group>"; };
 		1E1D26441B4E73FF00CD7A7F /* UIBarButtonItem+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Badge.m"; sourceTree = "<group>"; };
+		1E6549D01B4F675D004AEAE7 /* BlogsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogsViewController.h; sourceTree = "<group>"; };
+		1E6549D11B4F675D004AEAE7 /* BlogsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogsViewController.m; sourceTree = "<group>"; };
+		1E6549D31B4F67E2004AEAE7 /* OBObjsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBObjsViewController.h; sourceTree = "<group>"; };
+		1E6549D41B4F67E2004AEAE7 /* OBObjsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBObjsViewController.m; sourceTree = "<group>"; };
+		1E6549D61B4F6875004AEAE7 /* BlogCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogCell.h; sourceTree = "<group>"; };
+		1E6549D71B4F6875004AEAE7 /* BlogCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogCell.m; sourceTree = "<group>"; };
+		1E6549DB1B4F6974004AEAE7 /* OBBlog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBBlog.h; sourceTree = "<group>"; };
+		1E6549DC1B4F6974004AEAE7 /* OBBlog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBBlog.m; sourceTree = "<group>"; };
+		1E6549DE1B4F698F004AEAE7 /* OBBlogDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBBlogDetails.h; sourceTree = "<group>"; };
+		1E6549DF1B4F698F004AEAE7 /* OBBlogDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBBlogDetails.m; sourceTree = "<group>"; };
+		1E6549E21B4F69EE004AEAE7 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		1E6549E31B4F69EE004AEAE7 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		1E6549E51B4F6ADC004AEAE7 /* OBBaseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBBaseObject.h; sourceTree = "<group>"; };
+		1E6549E61B4F6ADC004AEAE7 /* OBBaseObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBBaseObject.m; sourceTree = "<group>"; };
+		1E6549E81B4F6B60004AEAE7 /* BottomBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomBarViewController.h; sourceTree = "<group>"; };
+		1E6549E91B4F6B60004AEAE7 /* BottomBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomBarViewController.m; sourceTree = "<group>"; };
+		1E6549EC1B4F6C2F004AEAE7 /* SwipableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipableViewController.h; sourceTree = "<group>"; };
+		1E6549ED1B4F6C2F004AEAE7 /* SwipableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipableViewController.m; sourceTree = "<group>"; };
+		1E6549EF1B4F6C7B004AEAE7 /* TitleBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleBarView.h; sourceTree = "<group>"; };
+		1E6549F01B4F6C7B004AEAE7 /* TitleBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleBarView.m; sourceTree = "<group>"; };
+		1E6549F21B4F6C94004AEAE7 /* HorizonalTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizonalTableViewController.h; sourceTree = "<group>"; };
+		1E6549F31B4F6C94004AEAE7 /* HorizonalTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizonalTableViewController.m; sourceTree = "<group>"; };
+		1E6549F51B4F6EAA004AEAE7 /* OBAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBAPI.h; sourceTree = "<group>"; };
+		1E6549F61B4F6EAA004AEAE7 /* OBAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBAPI.m; sourceTree = "<group>"; };
 		79FD55F2D64AB4B4F05B96CB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A720E564F9DDE9C4B737D2DF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE4592E91B4D4AE90052228E /* OneblogiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneblogiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,8 +219,12 @@
 		1E1D26321B4E5A9700CD7A7F /* Main ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1E6549EB1B4F6C16004AEAE7 /* SwipableViewController */,
+				1E6549E11B4F69BA004AEAE7 /* 详情页面 */,
 				1E1D26331B4E5AA200CD7A7F /* Tab Bar */,
 				CBB70FFFDFA8B5BD6592CC52 /* 侧拉菜单 */,
+				1E6549D31B4F67E2004AEAE7 /* OBObjsViewController.h */,
+				1E6549D41B4F67E2004AEAE7 /* OBObjsViewController.m */,
 			);
 			name = "Main ViewControllers";
 			sourceTree = "<group>";
@@ -253,6 +293,64 @@
 			name = Component;
 			sourceTree = "<group>";
 		};
+		1E6549CF1B4F670E004AEAE7 /* 博客 */ = {
+			isa = PBXGroup;
+			children = (
+				1E6549D01B4F675D004AEAE7 /* BlogsViewController.h */,
+				1E6549D11B4F675D004AEAE7 /* BlogsViewController.m */,
+				1E6549D61B4F6875004AEAE7 /* BlogCell.h */,
+				1E6549D71B4F6875004AEAE7 /* BlogCell.m */,
+			);
+			name = "博客";
+			sourceTree = "<group>";
+		};
+		1E6549D91B4F6938004AEAE7 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				1E6549DA1B4F694D004AEAE7 /* Blog */,
+				1E6549E51B4F6ADC004AEAE7 /* OBBaseObject.h */,
+				1E6549E61B4F6ADC004AEAE7 /* OBBaseObject.m */,
+				1E6549F51B4F6EAA004AEAE7 /* OBAPI.h */,
+				1E6549F61B4F6EAA004AEAE7 /* OBAPI.m */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		1E6549DA1B4F694D004AEAE7 /* Blog */ = {
+			isa = PBXGroup;
+			children = (
+				1E6549DB1B4F6974004AEAE7 /* OBBlog.h */,
+				1E6549DC1B4F6974004AEAE7 /* OBBlog.m */,
+				1E6549DE1B4F698F004AEAE7 /* OBBlogDetails.h */,
+				1E6549DF1B4F698F004AEAE7 /* OBBlogDetails.m */,
+			);
+			name = Blog;
+			sourceTree = "<group>";
+		};
+		1E6549E11B4F69BA004AEAE7 /* 详情页面 */ = {
+			isa = PBXGroup;
+			children = (
+				1E6549E21B4F69EE004AEAE7 /* DetailsViewController.h */,
+				1E6549E31B4F69EE004AEAE7 /* DetailsViewController.m */,
+				1E6549E81B4F6B60004AEAE7 /* BottomBarViewController.h */,
+				1E6549E91B4F6B60004AEAE7 /* BottomBarViewController.m */,
+			);
+			name = "详情页面";
+			sourceTree = "<group>";
+		};
+		1E6549EB1B4F6C16004AEAE7 /* SwipableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1E6549EC1B4F6C2F004AEAE7 /* SwipableViewController.h */,
+				1E6549ED1B4F6C2F004AEAE7 /* SwipableViewController.m */,
+				1E6549EF1B4F6C7B004AEAE7 /* TitleBarView.h */,
+				1E6549F01B4F6C7B004AEAE7 /* TitleBarView.m */,
+				1E6549F21B4F6C94004AEAE7 /* HorizonalTableViewController.h */,
+				1E6549F31B4F6C94004AEAE7 /* HorizonalTableViewController.m */,
+			);
+			name = SwipableViewController;
+			sourceTree = "<group>";
+		};
 		BE4592E01B4D4AE80052228E = {
 			isa = PBXGroup;
 			children = (
@@ -276,6 +374,8 @@
 		BE4592EB1B4D4AE90052228E /* OneblogiOS */ = {
 			isa = PBXGroup;
 			children = (
+				1E6549D91B4F6938004AEAE7 /* API */,
+				1E6549CF1B4F670E004AEAE7 /* 博客 */,
 				1E1D26371B4E5B8F00CD7A7F /* Utils */,
 				1E1D26321B4E5A9700CD7A7F /* Main ViewControllers */,
 				BE4592EF1B4D4AE90052228E /* AppDelegate.h */,
@@ -508,6 +608,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E6549EE1B4F6C2F004AEAE7 /* SwipableViewController.m in Sources */,
+				1E6549DD1B4F6974004AEAE7 /* OBBlog.m in Sources */,
 				BEB8C6341B4EAF39007A9985 /* UIView+Util.m in Sources */,
 				BE4592F11B4D4AE90052228E /* AppDelegate.m in Sources */,
 				BEB8C6301B4EAF39007A9985 /* UIButton+Badge.m in Sources */,
@@ -516,12 +618,16 @@
 				BEB8C6461B4EB1FA007A9985 /* OperationBar.m in Sources */,
 				BEB8C61D1B4EAC5E007A9985 /* NSString+FontAwesome.m in Sources */,
 				BEB8C63B1B4EB124007A9985 /* EmojiPanelVC.m in Sources */,
+				1E6549D81B4F6875004AEAE7 /* BlogCell.m in Sources */,
 				BEB8C6311B4EAF39007A9985 /* UIColor+Util.m in Sources */,
 				BEB8C64E1B4EB295007A9985 /* LastCell.m in Sources */,
 				BEB8C61E1B4EAC5E007A9985 /* UIFont+FontAwesome.m in Sources */,
 				BEB8C63A1B4EB124007A9985 /* EmojiPageVC.m in Sources */,
 				BEB8C6571B4EB61D007A9985 /* MZDay.m in Sources */,
+				1E6549E41B4F69EE004AEAE7 /* DetailsViewController.m in Sources */,
+				1E6549D21B4F675D004AEAE7 /* BlogsViewController.m in Sources */,
 				BEB8C64D1B4EB295007A9985 /* ImageViewerController.m in Sources */,
+				1E6549D51B4F67E2004AEAE7 /* OBObjsViewController.m in Sources */,
 				1E1D26361B4E5AE200CD7A7F /* OBTabBarController.m in Sources */,
 				1E1D26421B4E5D1D00CD7A7F /* Utils.m in Sources */,
 				BEB8C6421B4EB1D8007A9985 /* EditingBar.m in Sources */,
@@ -529,14 +635,20 @@
 				1E1D263D1B4E5CDC00CD7A7F /* OBThread.m in Sources */,
 				BEB8C61C1B4EAC5E007A9985 /* FAImageView.m in Sources */,
 				BEB8C6331B4EAF39007A9985 /* UIImageView+Util.m in Sources */,
+				1E6549F11B4F6C7B004AEAE7 /* TitleBarView.m in Sources */,
 				BEB8C62E1B4EAF39007A9985 /* AFHTTPRequestOperationManager+Util.m in Sources */,
 				BEB8C6431B4EB1D8007A9985 /* GrowingTextView.m in Sources */,
 				1E1D26451B4E73FF00CD7A7F /* UIBarButtonItem+Badge.m in Sources */,
 				BE4592EE1B4D4AE90052228E /* main.m in Sources */,
+				1E6549E71B4F6ADC004AEAE7 /* OBBaseObject.m in Sources */,
+				1E6549EA1B4F6B60004AEAE7 /* BottomBarViewController.m in Sources */,
 				BEB8C64F1B4EB295007A9985 /* PlaceholderTextView.m in Sources */,
+				1E6549E01B4F698F004AEAE7 /* OBBlogDetails.m in Sources */,
 				BEB8C62F1B4EAF39007A9985 /* NSTextAttachment+Util.m in Sources */,
 				BEB8C61F1B4EAC5E007A9985 /* UIImage+FontAwesome.m in Sources */,
 				BEB8C6581B4EB61D007A9985 /* MZDayPicker.m in Sources */,
+				1E6549F71B4F6EAA004AEAE7 /* OBAPI.m in Sources */,
+				1E6549F41B4F6C94004AEAE7 /* HorizonalTableViewController.m in Sources */,
 				CBB703A86C9FF38C7A0A885E /* SideMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

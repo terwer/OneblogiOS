@@ -20,5 +20,6 @@
 
 + (NSDictionary *)emojiDict;
 + (MBProgressHUD *)createHUD;
++ (NSString *)generateUserAgent;
 
 @end
