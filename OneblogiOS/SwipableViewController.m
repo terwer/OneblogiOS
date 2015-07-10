@@ -27,6 +27,7 @@
 - (instancetype)initWithTitle:(NSString *)title andSubTitles:(NSArray *)subTitles andControllers:(NSArray *)controllers underTabbar:(BOOL)underTabbar
 {
     self = [super init];
+  
     if (self) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
         //self.navigationController.navigationBar.translucent = NO;
@@ -84,7 +85,6 @@
                 titleTo.transform = CGAffineTransformMakeScale(1 + 0.2 * (1-offsetRatio), 1 + 0.2 * (1-offsetRatio));
             } completion:nil];
         };
-        
         
 //        _titleBar.titleButtonClicked = ^(NSUInteger index) {
 //            [weakViewPager scrollToViewAtIndex:index];

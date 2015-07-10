@@ -18,7 +18,6 @@
 - (instancetype)initWithFrame:(CGRect)frame andTitles:(NSArray *)titles
 {
     self = [super initWithFrame:frame];
-    
     if (self) {
         _currentIndex = 0;
         _titleButtons = [NSMutableArray new];
@@ -41,14 +40,14 @@
             [self addSubview:button];
             [self sendSubviewToBack:button];
         }];
-        
+      
         self.contentSize = CGSizeMake(frame.size.width, 25);
         self.showsHorizontalScrollIndicator = NO;
         UIButton *firstTitle = _titleButtons[0];
-        [firstTitle setTitleColor:[UIColor colorWithHex:0x009000] forState:UIControlStateNormal];
+        [firstTitle setTitleColor:[UIColor colorWithHex:0x428BD1] forState:UIControlStateNormal];
         firstTitle.transform = CGAffineTransformMakeScale(1.15, 1.15);
+        
     }
-    
     return self;
 }
 

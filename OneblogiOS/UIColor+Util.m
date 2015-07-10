@@ -100,7 +100,7 @@
     if (((AppDelegate *)[UIApplication sharedApplication].delegate).inNightMode) {
         return [UIColor colorWithRed:0.067 green:0.282 blue:0.094 alpha:1.0];
     }
-    return [UIColor colorWithHex:0x15A230];//0x009000
+    return [UIColor colorWithHex:0x428BD1];//0x009000
 }
 
 + (UIColor *)selectCellSColor
