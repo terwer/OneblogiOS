@@ -55,9 +55,9 @@
 
     //blogViewCtl.needCache = YES;
     
-    SwipableViewController *newsSVC = [[SwipableViewController alloc] initWithTitle:@"综合"
-                                                                       andSubTitles:@[ @"博客"]
-                                                                     andControllers:@[ blogViewCtl]
+    SwipableViewController *newsSVC = [[SwipableViewController alloc] initWithTitle:@"博客"
+                                                                       andSubTitles:@[@"文章",@"页面",@"动态",@"评论",@"留言"]
+                                                                     andControllers:@[ blogViewCtl,blogViewCtl,blogViewCtl,blogViewCtl,blogViewCtl]
                                                                         underTabbar:YES];
   
     self.tabBar.translucent = NO;

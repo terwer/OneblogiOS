@@ -86,9 +86,9 @@
             } completion:nil];
         };
         
-//        _titleBar.titleButtonClicked = ^(NSUInteger index) {
-//            [weakViewPager scrollToViewAtIndex:index];
-//        };
+        _titleBar.titleButtonClicked = ^(NSUInteger index) {
+            [weakViewPager scrollToViewAtIndex:index];
+        };
     }
     
     return self;
