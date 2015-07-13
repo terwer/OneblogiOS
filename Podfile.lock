@@ -24,6 +24,9 @@ PODS:
     - AFNetworking (~> 2.2)
     - Ono (~> 1.0)
   - GPUImage (0.1.6)
+  - GRMustache (7.3.2):
+    - JRSwizzle (~> 1.0)
+  - JRSwizzle (1.0)
   - MBProgressHUD (0.9.1)
   - Ono (1.2.2)
   - Reachability (3.2)
@@ -44,6 +47,7 @@ PODS:
 DEPENDENCIES:
   - AFOnoResponseSerializer (~> 1.0.0)
   - GPUImage (~> 0.1.6)
+  - GRMustache
   - MBProgressHUD (~> 0.8)
   - Reachability
   - ReactiveCocoa (~> 2.4.7)
@@ -56,6 +60,8 @@ SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   AFOnoResponseSerializer: c02c8bef1d6742ac68f33ecaed41826c9657bc33
   GPUImage: 4675ce4a5370ca92fcea8623b2a08b8f0c51b940
+  GRMustache: ebe6104fd30a6d22c1f36af131e19e2dbf7cd292
+  JRSwizzle: dd5ead5d913a0f29e7f558200165849f006bb1e3
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   Ono: 80b1c686777d3f6d5d5ce6fcac8a74afef4ca197
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96

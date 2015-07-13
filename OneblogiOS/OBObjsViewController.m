@@ -145,6 +145,7 @@
 
 - (void)fetchObjectsOnPage:(NSUInteger)page refresh:(BOOL)refresh
 {
+    NSLog(@"Current requestUrl:%@",self.generateURL(page));
     [_manager GET:self.generateURL(page)
        parameters:nil
           success:^(AFHTTPRequestOperation *operation, ONOXMLDocument *responseDocument) {
@@ -162,7 +163,7 @@
               for (ONOXMLElement *objectXML in objectsXML) {
                   BOOL shouldBeAdded = YES;
 //                  id obj = [[_objClass alloc] initWithXML:objectXML];
-//                  
+                  
 //                  for (OBBaseObject *baseObj in _objects) {
 //                      if ([obj isEqual:baseObj]) {
 //                          shouldBeAdded = NO;

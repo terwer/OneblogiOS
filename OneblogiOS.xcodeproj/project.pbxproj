@@ -20,8 +20,6 @@
 		1E6549D21B4F675D004AEAE7 /* BlogsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6549D11B4F675D004AEAE7 /* BlogsViewController.m */; };
 		1E6549D51B4F67E2004AEAE7 /* OBObjsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6549D41B4F67E2004AEAE7 /* OBObjsViewController.m */; };
 		1E6549D81B4F6875004AEAE7 /* BlogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6549D71B4F6875004AEAE7 /* BlogCell.m */; };
-		1E6549DD1B4F6974004AEAE7 /* OBBlog.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6549DC1B4F6974004AEAE7 /* OBBlog.m */; };
-		1E6549E01B4F698F004AEAE7 /* OBBlogDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6549DF1B4F698F004AEAE7 /* OBBlogDetails.m */; };
 		1E6549E41B4F69EE004AEAE7 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6549E31B4F69EE004AEAE7 /* DetailsViewController.m */; };
 		1E6549E71B4F6ADC004AEAE7 /* OBBaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6549E61B4F6ADC004AEAE7 /* OBBaseObject.m */; };
 		1E6549EA1B4F6B60004AEAE7 /* BottomBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6549E91B4F6B60004AEAE7 /* BottomBarViewController.m */; };
@@ -30,6 +28,8 @@
 		1E6549F41B4F6C94004AEAE7 /* HorizonalTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6549F31B4F6C94004AEAE7 /* HorizonalTableViewController.m */; };
 		1E6549F71B4F6EAA004AEAE7 /* OBAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6549F61B4F6EAA004AEAE7 /* OBAPI.m */; };
 		A0987FEFC92BD7CF7D39920E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A720E564F9DDE9C4B737D2DF /* libPods.a */; };
+		BE26D0BF1B53E6A7001D06E5 /* OBBlog.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26D0BC1B53E6A7001D06E5 /* OBBlog.m */; };
+		BE26D0C01B53E6A7001D06E5 /* OBBlogDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26D0BE1B53E6A7001D06E5 /* OBBlogDetails.m */; };
 		BE4592EE1B4D4AE90052228E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4592ED1B4D4AE90052228E /* main.m */; };
 		BE4592F11B4D4AE90052228E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4592F01B4D4AE90052228E /* AppDelegate.m */; };
 		BE4593071B4D4AE90052228E /* OneblogiOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4593061B4D4AE90052228E /* OneblogiOSTests.m */; };
@@ -93,10 +93,6 @@
 		1E6549D41B4F67E2004AEAE7 /* OBObjsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBObjsViewController.m; sourceTree = "<group>"; };
 		1E6549D61B4F6875004AEAE7 /* BlogCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogCell.h; sourceTree = "<group>"; };
 		1E6549D71B4F6875004AEAE7 /* BlogCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogCell.m; sourceTree = "<group>"; };
-		1E6549DB1B4F6974004AEAE7 /* OBBlog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBBlog.h; sourceTree = "<group>"; };
-		1E6549DC1B4F6974004AEAE7 /* OBBlog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBBlog.m; sourceTree = "<group>"; };
-		1E6549DE1B4F698F004AEAE7 /* OBBlogDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBBlogDetails.h; sourceTree = "<group>"; };
-		1E6549DF1B4F698F004AEAE7 /* OBBlogDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBBlogDetails.m; sourceTree = "<group>"; };
 		1E6549E21B4F69EE004AEAE7 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		1E6549E31B4F69EE004AEAE7 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		1E6549E51B4F6ADC004AEAE7 /* OBBaseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBBaseObject.h; sourceTree = "<group>"; };
@@ -113,6 +109,10 @@
 		1E6549F61B4F6EAA004AEAE7 /* OBAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBAPI.m; sourceTree = "<group>"; };
 		79FD55F2D64AB4B4F05B96CB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A720E564F9DDE9C4B737D2DF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE26D0BB1B53E6A7001D06E5 /* OBBlog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBBlog.h; sourceTree = "<group>"; };
+		BE26D0BC1B53E6A7001D06E5 /* OBBlog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBBlog.m; sourceTree = "<group>"; };
+		BE26D0BD1B53E6A7001D06E5 /* OBBlogDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBBlogDetails.h; sourceTree = "<group>"; };
+		BE26D0BE1B53E6A7001D06E5 /* OBBlogDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBBlogDetails.m; sourceTree = "<group>"; };
 		BE4592E91B4D4AE90052228E /* OneblogiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneblogiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE4592ED1B4D4AE90052228E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BE4592EF1B4D4AE90052228E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -307,7 +307,7 @@
 		1E6549D91B4F6938004AEAE7 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				1E6549DA1B4F694D004AEAE7 /* Blog */,
+				1E6549DA1B4F694D004AEAE7 /* MetaWeblog */,
 				1E6549E51B4F6ADC004AEAE7 /* OBBaseObject.h */,
 				1E6549E61B4F6ADC004AEAE7 /* OBBaseObject.m */,
 				1E6549F51B4F6EAA004AEAE7 /* OBAPI.h */,
@@ -316,15 +316,12 @@
 			name = API;
 			sourceTree = "<group>";
 		};
-		1E6549DA1B4F694D004AEAE7 /* Blog */ = {
+		1E6549DA1B4F694D004AEAE7 /* MetaWeblog */ = {
 			isa = PBXGroup;
 			children = (
-				1E6549DB1B4F6974004AEAE7 /* OBBlog.h */,
-				1E6549DC1B4F6974004AEAE7 /* OBBlog.m */,
-				1E6549DE1B4F698F004AEAE7 /* OBBlogDetails.h */,
-				1E6549DF1B4F698F004AEAE7 /* OBBlogDetails.m */,
+				BE26D0BA1B53E5F5001D06E5 /* Blog */,
 			);
-			name = Blog;
+			name = MetaWeblog;
 			sourceTree = "<group>";
 		};
 		1E6549E11B4F69BA004AEAE7 /* 详情页面 */ = {
@@ -349,6 +346,17 @@
 				1E6549F31B4F6C94004AEAE7 /* HorizonalTableViewController.m */,
 			);
 			name = SwipableViewController;
+			sourceTree = "<group>";
+		};
+		BE26D0BA1B53E5F5001D06E5 /* Blog */ = {
+			isa = PBXGroup;
+			children = (
+				BE26D0BB1B53E6A7001D06E5 /* OBBlog.h */,
+				BE26D0BC1B53E6A7001D06E5 /* OBBlog.m */,
+				BE26D0BD1B53E6A7001D06E5 /* OBBlogDetails.h */,
+				BE26D0BE1B53E6A7001D06E5 /* OBBlogDetails.m */,
+			);
+			name = Blog;
 			sourceTree = "<group>";
 		};
 		BE4592E01B4D4AE80052228E = {
@@ -609,7 +617,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E6549EE1B4F6C2F004AEAE7 /* SwipableViewController.m in Sources */,
-				1E6549DD1B4F6974004AEAE7 /* OBBlog.m in Sources */,
 				BEB8C6341B4EAF39007A9985 /* UIView+Util.m in Sources */,
 				BE4592F11B4D4AE90052228E /* AppDelegate.m in Sources */,
 				BEB8C6301B4EAF39007A9985 /* UIButton+Badge.m in Sources */,
@@ -632,6 +639,7 @@
 				1E1D26421B4E5D1D00CD7A7F /* Utils.m in Sources */,
 				BEB8C6421B4EB1D8007A9985 /* EditingBar.m in Sources */,
 				BEB8C6591B4EB61D007A9985 /* MZDayPickerCell.m in Sources */,
+				BE26D0C01B53E6A7001D06E5 /* OBBlogDetails.m in Sources */,
 				1E1D263D1B4E5CDC00CD7A7F /* OBThread.m in Sources */,
 				BEB8C61C1B4EAC5E007A9985 /* FAImageView.m in Sources */,
 				BEB8C6331B4EAF39007A9985 /* UIImageView+Util.m in Sources */,
@@ -643,11 +651,11 @@
 				1E6549E71B4F6ADC004AEAE7 /* OBBaseObject.m in Sources */,
 				1E6549EA1B4F6B60004AEAE7 /* BottomBarViewController.m in Sources */,
 				BEB8C64F1B4EB295007A9985 /* PlaceholderTextView.m in Sources */,
-				1E6549E01B4F698F004AEAE7 /* OBBlogDetails.m in Sources */,
 				BEB8C62F1B4EAF39007A9985 /* NSTextAttachment+Util.m in Sources */,
 				BEB8C61F1B4EAC5E007A9985 /* UIImage+FontAwesome.m in Sources */,
 				BEB8C6581B4EB61D007A9985 /* MZDayPicker.m in Sources */,
 				1E6549F71B4F6EAA004AEAE7 /* OBAPI.m in Sources */,
+				BE26D0BF1B53E6A7001D06E5 /* OBBlog.m in Sources */,
 				1E6549F41B4F6C94004AEAE7 /* HorizonalTableViewController.m in Sources */,
 				CBB703A86C9FF38C7A0A885E /* SideMenuViewController.m in Sources */,
 			);

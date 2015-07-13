@@ -22,4 +22,11 @@
 + (MBProgressHUD *)createHUD;
 + (NSString *)generateUserAgent;
 
++ (NSDictionary *)timeIntervalArrayFromString:(NSString *)dateStr;
++ (NSString *)intervalSinceNow:(NSString *)dateStr;
+
++ (NSString *)escapeHTML:(NSString *)originalHTML;
+
++ (NSString *)HTMLWithData:(NSDictionary *)data usingTemplate:(NSString *)templateName;
+
 @end

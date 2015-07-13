@@ -21,25 +21,26 @@ static NSString *kBlogCellID = @"BlogCell";
 
 - (instancetype)initWithBlogsType:(BlogsType)type
 {
-//    if (self = [super init]) {
-//        NSString *blogType = type == BlogTypeLatest? @"latest" : @"recommend";
-//        self.generateURL = ^NSString * (NSUInteger page) {
-//            return [NSString stringWithFormat:@"%@%@?type=%@&pageIndex=%lu&%@", OSCAPI_PREFIX, OSCAPI_BLOGS_LIST, blogType, (unsigned long)page, OSCAPI_SUFFIX];
-//        };
-//        self.objClass = [OSCBlog class];
-//    }
+    if (self = [super init]) {
+        //NSString *blogType = type == BlogTypeLatest? @"latest" : @"recommend";
+        self.generateURL = ^NSString * (NSUInteger page) {
+        return @"http://www.oschina.net/action/api/blog_list?type=recommend&pageIndex=0&pageSize=20";
+        //    return [NSString stringWithFormat:@"%@%@?type=%@&pageIndex=%lu&%@", OSCAPI_PREFIX, OSCAPI_BLOGS_LIST, blogType, (unsigned long)page, OSCAPI_SUFFIX];
+        };
+        //self.objClass = [OSCBlog class];
+    }
     
     return self;
 }
 
 - (instancetype)initWithUserID:(int64_t)userID
 {
-//    if (self = [super init]) {
+    if (self = [super init]) {
 //        self.generateURL = ^NSString * (NSUInteger page) {
 //            return [NSString stringWithFormat:@"%@%@?authoruid=%lld&pageIndex=%lu&uid=%lld", OSCAPI_PREFIX, OSCAPI_USERBLOGS_LIST, userID, (unsigned long)page, [Config getOwnID]];
 //        };
 //        self.objClass = [OSCBlog class];
-//    }
+   }
     
     return self;
 }
@@ -47,8 +48,7 @@ static NSString *kBlogCellID = @"BlogCell";
 
 - (NSArray *)parseXML:(ONOXMLDocument *)xml
 {
-    return nil;
-//    return [[xml.rootElement firstChildWithTag:@"blogs"] childrenWithTag:@"blog"];
+    return [[xml.rootElement firstChildWithTag:@"blogs"] childrenWithTag:@"blog"];
 }
 
 #pragma mark - life cycle
@@ -74,7 +74,7 @@ static NSString *kBlogCellID = @"BlogCell";
 //    [cell.authorLabel setText:blog.author];
 //    [cell.timeLabel setAttributedText:[Utils attributedTimeString:blog.pubDate]];
 //    [cell.commentCount setAttributedText:blog.attributedCommentCount];
-    
+    NSLog(@"loading...");
     return cell;
 }
 
