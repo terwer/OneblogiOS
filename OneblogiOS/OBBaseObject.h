@@ -11,4 +11,6 @@
 
 @interface OBBaseObject : NSObject
 
+- (instancetype)initWithXML:(ONOXMLElement *)xml;
+
 @end

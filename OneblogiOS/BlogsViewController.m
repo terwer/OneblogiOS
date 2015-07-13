@@ -24,10 +24,11 @@ static NSString *kBlogCellID = @"BlogCell";
     if (self = [super init]) {
         //NSString *blogType = type == BlogTypeLatest? @"latest" : @"recommend";
         self.generateURL = ^NSString * (NSUInteger page) {
-        return @"http://www.oschina.net/action/api/blog_list?type=recommend&pageIndex=0&pageSize=20";
+        return @"http://www.oschina.net/action/api/blog_list?type=latest&pageIndex=0&pageSize=20";
         //    return [NSString stringWithFormat:@"%@%@?type=%@&pageIndex=%lu&%@", OSCAPI_PREFIX, OSCAPI_BLOGS_LIST, blogType, (unsigned long)page, OSCAPI_SUFFIX];
         };
-        //self.objClass = [OSCBlog class];
+        //当前对象设置为博客
+        self.objClass = [OBBlog class];
     }
     
     return self;
@@ -36,10 +37,12 @@ static NSString *kBlogCellID = @"BlogCell";
 - (instancetype)initWithUserID:(int64_t)userID
 {
     if (self = [super init]) {
+        self.generateURL = ^NSString * (NSUInteger page) {
+            return @"http://www.oschina.net/action/api/blog_list?type=latest&pageIndex=0&pageSize=20";
 //        self.generateURL = ^NSString * (NSUInteger page) {
 //            return [NSString stringWithFormat:@"%@%@?authoruid=%lld&pageIndex=%lu&uid=%lld", OSCAPI_PREFIX, OSCAPI_USERBLOGS_LIST, userID, (unsigned long)page, [Config getOwnID]];
-//        };
-//        self.objClass = [OSCBlog class];
+        };
+        self.objClass = [OBBlog class];
    }
     
     return self;
@@ -67,13 +70,13 @@ static NSString *kBlogCellID = @"BlogCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     BlogCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kBlogCellID forIndexPath:indexPath];
-//    OSCBlog *blog = self.objects[indexPath.row];
-//    
-//    [cell.titleLabel setAttributedText:blog.attributedTittle];
-//    [cell.bodyLabel setText:blog.body];
-//    [cell.authorLabel setText:blog.author];
-//    [cell.timeLabel setAttributedText:[Utils attributedTimeString:blog.pubDate]];
-//    [cell.commentCount setAttributedText:blog.attributedCommentCount];
+    OBBlog *blog = self.objects[indexPath.row];
+    
+    [cell.titleLabel setAttributedText:blog.attributedTittle];
+    [cell.bodyLabel setText:blog.body];
+    [cell.authorLabel setText:blog.author];
+    //[cell.timeLabel setAttributedText:[Utils attributedTimeString:blog.pubDate]];
+    [cell.commentCount setAttributedText:blog.attributedCommentCount];
     NSLog(@"loading...");
     return cell;
 }
@@ -81,27 +84,27 @@ static NSString *kBlogCellID = @"BlogCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    OSCBlog *blog = self.objects[indexPath.row];
-//    
-//    self.label.font = [UIFont boldSystemFontOfSize:15];
-//    [self.label setAttributedText:blog.attributedTittle];
-//    CGFloat height = [self.label sizeThatFits:CGSizeMake(tableView.frame.size.width - 16, MAXFLOAT)].height;
-//    
-//    self.label.text = blog.body;
-//    self.label.font = [UIFont systemFontOfSize:13];
-//    height += [self.label sizeThatFits:CGSizeMake(tableView.frame.size.width - 16, MAXFLOAT)].height;
+    OBBlog *blog = self.objects[indexPath.row];
     
-//    return height + 42;
+    self.label.font = [UIFont boldSystemFontOfSize:15];
+    [self.label setAttributedText:blog.attributedTittle];
+    CGFloat height = [self.label sizeThatFits:CGSizeMake(tableView.frame.size.width - 16, MAXFLOAT)].height;
+    
+    self.label.text = blog.body;
+    self.label.font = [UIFont systemFontOfSize:13];
+    height += [self.label sizeThatFits:CGSizeMake(tableView.frame.size.width - 16, MAXFLOAT)].height;
+    
+    return height + 42;
     return 0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    
-//    OSCBlog *blog = self.objects[indexPath.row];
-//    DetailsViewController *detailsViewController = [[DetailsViewController alloc] initWithBlog:blog];
-//    [self.navigationController pushViewController:detailsViewController animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    OBBlog *blog = self.objects[indexPath.row];
+    //DetailsViewController *detailsViewController = [[DetailsViewController alloc] initWithBlog:blog];
+    //[self.navigationController pushViewController:detailsViewController animated:YES];
 }
 
 @end

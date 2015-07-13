@@ -150,6 +150,7 @@
        parameters:nil
           success:^(AFHTTPRequestOperation *operation, ONOXMLDocument *responseDocument) {
               _allCount = [[[responseDocument.rootElement firstChildWithTag:@"allCount"] numberValue] intValue];
+              //NSLog(@"All count:%d",_allCount);
               NSArray *objectsXML = [self parseXML:responseDocument];
               
               if (refresh) {
@@ -162,17 +163,17 @@
               
               for (ONOXMLElement *objectXML in objectsXML) {
                   BOOL shouldBeAdded = YES;
-//                  id obj = [[_objClass alloc] initWithXML:objectXML];
+                  id obj = [[_objClass alloc] initWithXML:objectXML];
                   
-//                  for (OBBaseObject *baseObj in _objects) {
-//                      if ([obj isEqual:baseObj]) {
-//                          shouldBeAdded = NO;
-//                          break;
-//                      }
-//                  }
-//                  if (shouldBeAdded) {
-//                      [_objects addObject:obj];
-//                  }
+                  for (OBBaseObject *baseObj in _objects) {
+                      if ([obj isEqual:baseObj]) {
+                          shouldBeAdded = NO;
+                          break;
+                      }
+                  }
+                  if (shouldBeAdded) {
+                      [_objects addObject:obj];
+                  }
               }
               
               dispatch_async(dispatch_get_main_queue(), ^{

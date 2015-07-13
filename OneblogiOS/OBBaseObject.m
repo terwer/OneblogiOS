@@ -10,4 +10,12 @@
 
 @implementation OBBaseObject
 
+- (instancetype)initWithXML:(ONOXMLElement *)xml
+{
+    NSAssert(false, @"Over ride in subclasses");
+    return nil;
+}
+
+
+
 @end
