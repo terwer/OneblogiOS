@@ -2,8 +2,8 @@
 //  OSCBlogDetails.h
 //  iosapp
 //
-//  Created by chenhaoxiang on 10/31/14.
-//  Copyright (c) 2014 oschina. All rights reserved.
+//  Created by Terwer Green on 10/31/14.
+//  Copyright (c) 2014 Terwer Green. All rights reserved.
 //
 
 #import "OBBaseObject.h"
