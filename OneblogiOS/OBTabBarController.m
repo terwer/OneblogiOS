@@ -56,10 +56,11 @@
     
     TweetsViewController *tweetsCtl=[[TweetsViewController alloc]init];
     TweetsViewController *weiboCtl=[[TweetsViewController alloc]init];
+    TweetsViewController *myWeiboCtl=[[TweetsViewController alloc]init];
     tweetsCtl.needCache=YES;
     UIViewController *tweetsSVC = [[SwipableViewController alloc] initWithTitle:@"动态"
-                                                                   andSubTitles:@[@"最新",@"聚合"]
-                                                                 andControllers:@[ tweetsCtl,weiboCtl]
+                                                                   andSubTitles:@[@"最新动态",@"热门动态",@"我的动态"]
+                                                                 andControllers:@[ tweetsCtl,weiboCtl,myWeiboCtl]
                                                                     underTabbar:YES];
     
     

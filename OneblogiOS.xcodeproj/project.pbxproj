@@ -38,6 +38,7 @@
 		BE4F4DF21B4D717C00D8B0A7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE4F4DF11B4D717C00D8B0A7 /* Images.xcassets */; };
 		BE838C8B1B56CC2A005FCBDC /* TweetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE838C8A1B56CC2A005FCBDC /* TweetsViewController.m */; };
 		BE838C8F1B56CEA1005FCBDC /* DiscoverTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BE838C8E1B56CEA1005FCBDC /* DiscoverTableVC.m */; };
+		BE838C931B56D5C1005FCBDC /* OBMyInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BE838C921B56D5C1005FCBDC /* OBMyInfo.m */; };
 		BEB8C61C1B4EAC5E007A9985 /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C6151B4EAC5E007A9985 /* FAImageView.m */; };
 		BEB8C61D1B4EAC5E007A9985 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C6171B4EAC5E007A9985 /* NSString+FontAwesome.m */; };
 		BEB8C61E1B4EAC5E007A9985 /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C6191B4EAC5E007A9985 /* UIFont+FontAwesome.m */; };
@@ -134,6 +135,8 @@
 		BE838C8A1B56CC2A005FCBDC /* TweetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetsViewController.m; sourceTree = "<group>"; };
 		BE838C8D1B56CEA1005FCBDC /* DiscoverTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTableVC.h; sourceTree = "<group>"; };
 		BE838C8E1B56CEA1005FCBDC /* DiscoverTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTableVC.m; sourceTree = "<group>"; };
+		BE838C911B56D5C1005FCBDC /* OBMyInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBMyInfo.h; sourceTree = "<group>"; };
+		BE838C921B56D5C1005FCBDC /* OBMyInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBMyInfo.m; sourceTree = "<group>"; };
 		BEB8C6141B4EAC5E007A9985 /* FAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAImageView.h; sourceTree = "<group>"; };
 		BEB8C6151B4EAC5E007A9985 /* FAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAImageView.m; sourceTree = "<group>"; };
 		BEB8C6161B4EAC5E007A9985 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
@@ -333,6 +336,7 @@
 		1E6549DA1B4F694D004AEAE7 /* MetaWeblog */ = {
 			isa = PBXGroup;
 			children = (
+				BE838C901B56D59A005FCBDC /* User */,
 				BE26D0BA1B53E5F5001D06E5 /* Blog */,
 			);
 			name = MetaWeblog;
@@ -463,6 +467,15 @@
 				BE838C8E1B56CEA1005FCBDC /* DiscoverTableVC.m */,
 			);
 			name = "发现";
+			sourceTree = "<group>";
+		};
+		BE838C901B56D59A005FCBDC /* User */ = {
+			isa = PBXGroup;
+			children = (
+				BE838C911B56D5C1005FCBDC /* OBMyInfo.h */,
+				BE838C921B56D5C1005FCBDC /* OBMyInfo.m */,
+			);
+			name = User;
 			sourceTree = "<group>";
 		};
 		BEB8C6131B4EABB1007A9985 /* FontAwesome */ = {
@@ -713,6 +726,7 @@
 				BE26D0BF1B53E6A7001D06E5 /* OBBlog.m in Sources */,
 				1EDC8BC31B5629C300064C14 /* OptionButton.m in Sources */,
 				1E6549F41B4F6C94004AEAE7 /* HorizonalTableViewController.m in Sources */,
+				BE838C931B56D5C1005FCBDC /* OBMyInfo.m in Sources */,
 				CBB703A86C9FF38C7A0A885E /* SideMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,4 +13,10 @@
 
 + (BOOL)getMode;
 
++ (UIImage *)getPortrait;
+
++ (void)savePortrait:(UIImage *)portrait;
+
++ (NSArray *)getUsersInformation;
+
 @end
