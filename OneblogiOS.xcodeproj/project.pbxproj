@@ -27,6 +27,8 @@
 		1E6549F11B4F6C7B004AEAE7 /* TitleBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6549F01B4F6C7B004AEAE7 /* TitleBarView.m */; };
 		1E6549F41B4F6C94004AEAE7 /* HorizonalTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6549F31B4F6C94004AEAE7 /* HorizonalTableViewController.m */; };
 		1E6549F71B4F6EAA004AEAE7 /* OBAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6549F61B4F6EAA004AEAE7 /* OBAPI.m */; };
+		1EDC8BC31B5629C300064C14 /* OptionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDC8BC21B5629C300064C14 /* OptionButton.m */; };
+		1EDC8CC71B5643B300064C14 /* MyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDC8CC61B5643B300064C14 /* MyInfoViewController.m */; };
 		A0987FEFC92BD7CF7D39920E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A720E564F9DDE9C4B737D2DF /* libPods.a */; };
 		BE26D0BF1B53E6A7001D06E5 /* OBBlog.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26D0BC1B53E6A7001D06E5 /* OBBlog.m */; };
 		BE26D0C01B53E6A7001D06E5 /* OBBlogDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26D0BE1B53E6A7001D06E5 /* OBBlogDetails.m */; };
@@ -107,6 +109,10 @@
 		1E6549F31B4F6C94004AEAE7 /* HorizonalTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizonalTableViewController.m; sourceTree = "<group>"; };
 		1E6549F51B4F6EAA004AEAE7 /* OBAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBAPI.h; sourceTree = "<group>"; };
 		1E6549F61B4F6EAA004AEAE7 /* OBAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBAPI.m; sourceTree = "<group>"; };
+		1EDC8BC11B5629C300064C14 /* OptionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionButton.h; sourceTree = "<group>"; };
+		1EDC8BC21B5629C300064C14 /* OptionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionButton.m; sourceTree = "<group>"; };
+		1EDC8CC51B5643B300064C14 /* MyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoViewController.h; sourceTree = "<group>"; };
+		1EDC8CC61B5643B300064C14 /* MyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoViewController.m; sourceTree = "<group>"; };
 		79FD55F2D64AB4B4F05B96CB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A720E564F9DDE9C4B737D2DF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE26D0BB1B53E6A7001D06E5 /* OBBlog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBBlog.h; sourceTree = "<group>"; };
@@ -232,6 +238,8 @@
 		1E1D26331B4E5AA200CD7A7F /* Tab Bar */ = {
 			isa = PBXGroup;
 			children = (
+				1EDC8BC11B5629C300064C14 /* OptionButton.h */,
+				1EDC8BC21B5629C300064C14 /* OptionButton.m */,
 				1E1D26341B4E5AE200CD7A7F /* OBTabBarController.h */,
 				1E1D26351B4E5AE200CD7A7F /* OBTabBarController.m */,
 			);
@@ -348,6 +356,23 @@
 			name = SwipableViewController;
 			sourceTree = "<group>";
 		};
+		1EDC8CC31B56435100064C14 /* 用户 */ = {
+			isa = PBXGroup;
+			children = (
+				1EDC8CC41B56435800064C14 /* 我 */,
+			);
+			name = "用户";
+			sourceTree = "<group>";
+		};
+		1EDC8CC41B56435800064C14 /* 我 */ = {
+			isa = PBXGroup;
+			children = (
+				1EDC8CC51B5643B300064C14 /* MyInfoViewController.h */,
+				1EDC8CC61B5643B300064C14 /* MyInfoViewController.m */,
+			);
+			name = "我";
+			sourceTree = "<group>";
+		};
 		BE26D0BA1B53E5F5001D06E5 /* Blog */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,6 +407,7 @@
 		BE4592EB1B4D4AE90052228E /* OneblogiOS */ = {
 			isa = PBXGroup;
 			children = (
+				1EDC8CC31B56435100064C14 /* 用户 */,
 				1E6549D91B4F6938004AEAE7 /* API */,
 				1E6549CF1B4F670E004AEAE7 /* 博客 */,
 				1E1D26371B4E5B8F00CD7A7F /* Utils */,
@@ -634,6 +660,7 @@
 				1E6549E41B4F69EE004AEAE7 /* DetailsViewController.m in Sources */,
 				1E6549D21B4F675D004AEAE7 /* BlogsViewController.m in Sources */,
 				BEB8C64D1B4EB295007A9985 /* ImageViewerController.m in Sources */,
+				1EDC8CC71B5643B300064C14 /* MyInfoViewController.m in Sources */,
 				1E6549D51B4F67E2004AEAE7 /* OBObjsViewController.m in Sources */,
 				1E1D26361B4E5AE200CD7A7F /* OBTabBarController.m in Sources */,
 				1E1D26421B4E5D1D00CD7A7F /* Utils.m in Sources */,
@@ -656,6 +683,7 @@
 				BEB8C6581B4EB61D007A9985 /* MZDayPicker.m in Sources */,
 				1E6549F71B4F6EAA004AEAE7 /* OBAPI.m in Sources */,
 				BE26D0BF1B53E6A7001D06E5 /* OBBlog.m in Sources */,
+				1EDC8BC31B5629C300064C14 /* OptionButton.m in Sources */,
 				1E6549F41B4F6C94004AEAE7 /* HorizonalTableViewController.m in Sources */,
 				CBB703A86C9FF38C7A0A885E /* SideMenuViewController.m in Sources */,
 			);

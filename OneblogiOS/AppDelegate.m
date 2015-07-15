@@ -46,7 +46,7 @@
     //初始化布局，这是整个视图的入口
     RESideMenu *sideMenuTabBarViewController = [[RESideMenu alloc] initWithContentViewController:tabBarController
                                                                           leftMenuViewController:[SideMenuViewController new]
-                                                                        rightMenuViewController:nil];
+                                                                         rightMenuViewController:nil];
     //设置样式
     sideMenuTabBarViewController.scaleContentView = YES;
     sideMenuTabBarViewController.contentViewScaleValue = 0.95;

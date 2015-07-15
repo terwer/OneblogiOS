@@ -2,8 +2,8 @@
 //  OperationBar.h
 //  iosapp
 //
-//  Created by Terwer Green on 1/19/15.
-//  Copyright (c) 2015 Terwer Green. All rights reserved.
+//  Created by ChanAetern on 1/19/15.
+//  Copyright (c) 2015 oschina. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

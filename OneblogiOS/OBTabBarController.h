@@ -10,6 +10,6 @@
 
 @interface OBTabBarController : UITabBarController
 
-//@property (nonatomic, strong) UIButton *centerButton;
+@property (nonatomic, strong) UIButton *centerButton;
 
 @end

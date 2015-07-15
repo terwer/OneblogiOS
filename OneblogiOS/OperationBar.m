@@ -2,14 +2,11 @@
 //  OperationBar.m
 //  iosapp
 //
-//  Created by Terwer Green on 1/19/15.
-//  Copyright (c) 2015 Terwer Green. All rights reserved.
+//  Created by ChanAetern on 1/19/15.
+//  Copyright (c) 2015 oschina. All rights reserved.
 //
 
 #import "OperationBar.h"
-#import "AppDelegate.h"
-#import "Config.h"
-#import "Utils.h"
 #import <ReactiveCocoa.h>
 
 @implementation OperationBar
@@ -43,16 +40,6 @@
             [button setBackgroundImage:image forState:UIControlStateNormal];
             
             UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:button];
-            
-            ((AppDelegate *)[UIApplication sharedApplication].delegate).inNightMode = [Config getMode];
-            if (((AppDelegate *)[UIApplication sharedApplication].delegate).inNightMode) {
-                self.barTintColor = [UIColor colorWithRed:22.0/255 green:22.0/255 blue:22.0/255 alpha:1.0];
-                barButton.tintColor = [UIColor clearColor];
-            } else {
-                self.barTintColor = [UIColor colorWithRed:246.0/255 green:246.0/255 blue:246.0/255 alpha:1.0];
-                barButton.tintColor = [UIColor clearColor];
-            }
-            
             [items addObject:barButton];
         } else {
             UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
@@ -69,6 +56,7 @@
         }
 
     }];
+
     
     [self setItems:items];
 }
