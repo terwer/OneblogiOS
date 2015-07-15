@@ -53,15 +53,15 @@
     //文章
     BlogsViewController *blogViewCtl = [[BlogsViewController alloc] initWithBlogsType:BlogTypeLatest];
     //页面
-    BlogsViewController *pageViewCtl = [[BlogsViewController alloc] initWithBlogsType:BlogTypeLatest];
+    UIViewController *pageViewCtl = [UIViewController new];
     //动态
-    BlogsViewController *infoViewCtl = [[BlogsViewController alloc] initWithBlogsType:BlogTypeLatest];
+    UIViewController *infoViewCtl = [UIViewController new];
     //评论
-    BlogsViewController *commentViewCtl = [[BlogsViewController alloc] initWithBlogsType:BlogTypeLatest];
+    UIViewController *commentViewCtl = [UIViewController new];
     //留言
-    BlogsViewController *guestbookViewCtl = [[BlogsViewController alloc] initWithBlogsType:BlogTypeLatest];
+    UIViewController *guestbookViewCtl = [UIViewController new];
     
-    //blogViewCtl.needCache = YES;
+    blogViewCtl.needCache = YES;
     
     SwipableViewController *newsSVC = [[SwipableViewController alloc] initWithTitle:@"博客"
                                                                        andSubTitles:@[@"文章",@"页面",@"动态",@"评论",@"留言"]
@@ -84,54 +84,54 @@
                              ];
     
     
-    NSArray *titles = @[@"综合", @"动弹", @"", @"发现", @"我"];
-    NSArray *images = @[@"tabbar-news", @"tabbar-tweet", @"", @"tabbar-discover", @"tabbar-me"];
+    NSArray *titles = @[@"博客", @"动态", @"", @"发现", @"我"];
+    //NSArray *images = @[@"tabbar-news", @"tabbar-tweet", @"", @"tabbar-discover", @"tabbar-me"];
     [self.tabBar.items enumerateObjectsUsingBlock:^(UITabBarItem *item, NSUInteger idx, BOOL *stop) {
         [item setTitle:titles[idx]];
-        [item setImage:[UIImage imageNamed:images[idx]]];
-        [item setSelectedImage:[UIImage imageNamed:[images[idx] stringByAppendingString:@"-selected"]]];
+        //[item setImage:[UIImage imageNamed:images[idx]]];
+        //[item setSelectedImage:[UIImage imageNamed:[images[idx] stringByAppendingString:@"-selected"]]];
     }];
     
     [self.tabBar.items[2] setEnabled:NO];
     
-    [self addCenterButtonWithImage:[UIImage imageNamed:@"tabbar-more"]];
+    //[self addCenterButtonWithImage:[UIImage imageNamed:@"tabbar-more"]];
     
     //监控Tab切换事件
-//    [self.tabBar addObserver:self
-//                  forKeyPath:@"selectedItem"
-//                     options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew
-//                     context:nil];
+    //[self.tabBar addObserver:self
+    //              forKeyPath:@"selectedItem"
+    //                 options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew
+    //                 context:nil];
     
     // 功能键相关
-    _optionButtons = [NSMutableArray new];
-    _screenHeight = [UIScreen mainScreen].bounds.size.height;
-    _screenWidth  = [UIScreen mainScreen].bounds.size.width;
-    _length = 60;        // 圆形按钮的直径
-    _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
-    
-    NSArray *buttonTitles = @[@"文字", @"相册", @"拍照", @"语音", @"扫一扫", @"找人"];
-    NSArray *buttonImages = @[@"tweetEditing", @"picture", @"shooting", @"sound", @"scan", @"search"];
-    int buttonColors[] = {0xe69961, 0x0dac6b, 0x24a0c4, 0xe96360, 0x61b644, 0xf1c50e};
-    
-    
-    for (int i = 0; i < 6; i++) {
-        OptionButton *optionButton = [[OptionButton alloc] initWithTitle:buttonTitles[i]
-                                                                   image:[UIImage imageNamed:buttonImages[i]]
-                                                                andColor:[UIColor colorWithHex:buttonColors[i]]];
-        
-        optionButton.frame = CGRectMake((_screenWidth/6 * (i%3*2+1) - (_length+16)/2),
-                                        _screenHeight + 150 + i/3*100,
-                                        _length + 16,
-                                        _length + [UIFont systemFontOfSize:14].lineHeight + 24);
-        [optionButton.button setCornerRadius:_length/2];
-        
-        optionButton.tag = i;
-        optionButton.userInteractionEnabled = YES;
-        [optionButton addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapOptionButton:)]];
-        
-        [self.view addSubview:optionButton];
-        [_optionButtons addObject:optionButton];
-    }
+    //    _optionButtons = [NSMutableArray new];
+    //    _screenHeight = [UIScreen mainScreen].bounds.size.height;
+    //    _screenWidth  = [UIScreen mainScreen].bounds.size.width;
+    //    _length = 60;        // 圆形按钮的直径
+    //    _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+    //
+    //    NSArray *buttonTitles = @[@"文字", @"相册", @"拍照", @"语音", @"扫一扫", @"找人"];
+    //    NSArray *buttonImages = @[@"tweetEditing", @"picture", @"shooting", @"sound", @"scan", @"search"];
+    //    int buttonColors[] = {0xe69961, 0x0dac6b, 0x24a0c4, 0xe96360, 0x61b644, 0xf1c50e};
+    //
+    //
+    //    for (int i = 0; i < 6; i++) {
+    //        OptionButton *optionButton = [[OptionButton alloc] initWithTitle:buttonTitles[i]
+    //                                                                   image:[UIImage imageNamed:buttonImages[i]]
+    //                                                                andColor:[UIColor colorWithHex:buttonColors[i]]];
+    //
+    //        optionButton.frame = CGRectMake((_screenWidth/6 * (i%3*2+1) - (_length+16)/2),
+    //                                        _screenHeight + 150 + i/3*100,
+    //                                        _length + 16,
+    //                                        _length + [UIFont systemFontOfSize:14].lineHeight + 24);
+    //        [optionButton.button setCornerRadius:_length/2];
+    //
+    //        optionButton.tag = i;
+    //        optionButton.userInteractionEnabled = YES;
+    //        [optionButton addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapOptionButton:)]];
+    //
+    //        [self.view addSubview:optionButton];
+    //        [_optionButtons addObject:optionButton];
+    //       }
     
 }
 

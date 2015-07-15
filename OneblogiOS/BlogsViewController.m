@@ -77,7 +77,6 @@ static NSString *kBlogCellID = @"BlogCell";
     [cell.authorLabel setText:blog.author];
     //[cell.timeLabel setAttributedText:[Utils attributedTimeString:blog.pubDate]];
     [cell.commentCount setAttributedText:blog.attributedCommentCount];
-    NSLog(@"loading...");
     return cell;
 }
 

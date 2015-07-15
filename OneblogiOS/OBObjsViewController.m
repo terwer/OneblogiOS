@@ -149,9 +149,11 @@
     [_manager GET:self.generateURL(page)
        parameters:nil
           success:^(AFHTTPRequestOperation *operation, ONOXMLDocument *responseDocument) {
-              _allCount = [[[responseDocument.rootElement firstChildWithTag:@"allCount"] numberValue] intValue];
-              //NSLog(@"All count:%d",_allCount);
+              NSLog(@"Http request success");
               NSArray *objectsXML = [self parseXML:responseDocument];
+              //_allCount = [[[responseDocument.rootElement firstChildWithTag:@"allCount"] numberValue] intValue];
+              _allCount =(int)objectsXML.count;
+              NSLog(@"All count:%d",_allCount);
               
               if (refresh) {
                   _page = 0;
