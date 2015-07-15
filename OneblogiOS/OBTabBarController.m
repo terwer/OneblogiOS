@@ -8,25 +8,11 @@
 
 #import "OBTabBarController.h"
 #import "SwipableViewController.h"
-//#import "TweetsViewController.h"
-//#import "PostsViewController.h"
-//#import "NewsViewController.h"
+#import "TweetsViewController.h"
 #import "BlogsViewController.h"
-//#import "LoginViewController.h"
-//#import "DiscoverTableVC.h"
 #import "MyInfoViewController.h"
-//#import "Config.h"
-//#import "Utils.h"
 #import "OptionButton.h"
-//#import "TweetEditingVC.h"
-//#import "UIView+Util.h"
-//#import "PersonSearchViewController.h"
-//#import "ScanViewController.h"
-//#import "ShakingViewController.h"
-//#import "SearchViewController.h"
-//#import "VoiceTweetEditingVC.h"
-
-//#import "UIBarButtonItem+Badge.h"
+#import "DiscoverTableVC.h"
 
 #import <RESideMenu/RESideMenu.h>
 
@@ -67,9 +53,17 @@
                                                                        andSubTitles:@[@"文章",@"页面",@"动态",@"评论",@"留言"]
                                                                      andControllers:@[ blogViewCtl,pageViewCtl,infoViewCtl,commentViewCtl,guestbookViewCtl]
                                                                         underTabbar:YES];
-    UIViewController *tweetsSVC = [UIViewController new];
     
-    UIViewController *discoverVC = [UIViewController new];
+    TweetsViewController *tweetsCtl=[[TweetsViewController alloc]init];
+    TweetsViewController *weiboCtl=[[TweetsViewController alloc]init];
+    tweetsCtl.needCache=YES;
+    UIViewController *tweetsSVC = [[SwipableViewController alloc] initWithTitle:@"动态"
+                                                                   andSubTitles:@[@"最新",@"聚合"]
+                                                                 andControllers:@[ tweetsCtl,weiboCtl]
+                                                                    underTabbar:YES];
+    
+    
+    DiscoverTableVC *discoverVC = [[DiscoverTableVC alloc]init];
     
     MyInfoViewController *myInfoVC = [[MyInfoViewController alloc] initWithStyle:UITableViewStyleGrouped];
     

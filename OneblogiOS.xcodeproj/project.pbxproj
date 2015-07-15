@@ -36,6 +36,8 @@
 		BE4592F11B4D4AE90052228E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4592F01B4D4AE90052228E /* AppDelegate.m */; };
 		BE4593071B4D4AE90052228E /* OneblogiOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4593061B4D4AE90052228E /* OneblogiOSTests.m */; };
 		BE4F4DF21B4D717C00D8B0A7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE4F4DF11B4D717C00D8B0A7 /* Images.xcassets */; };
+		BE838C8B1B56CC2A005FCBDC /* TweetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE838C8A1B56CC2A005FCBDC /* TweetsViewController.m */; };
+		BE838C8F1B56CEA1005FCBDC /* DiscoverTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BE838C8E1B56CEA1005FCBDC /* DiscoverTableVC.m */; };
 		BEB8C61C1B4EAC5E007A9985 /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C6151B4EAC5E007A9985 /* FAImageView.m */; };
 		BEB8C61D1B4EAC5E007A9985 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C6171B4EAC5E007A9985 /* NSString+FontAwesome.m */; };
 		BEB8C61E1B4EAC5E007A9985 /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB8C6191B4EAC5E007A9985 /* UIFont+FontAwesome.m */; };
@@ -128,6 +130,10 @@
 		BE4593061B4D4AE90052228E /* OneblogiOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OneblogiOSTests.m; sourceTree = "<group>"; };
 		BE4593081B4D4AE90052228E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE4F4DF11B4D717C00D8B0A7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BE838C891B56CC2A005FCBDC /* TweetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetsViewController.h; sourceTree = "<group>"; };
+		BE838C8A1B56CC2A005FCBDC /* TweetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetsViewController.m; sourceTree = "<group>"; };
+		BE838C8D1B56CEA1005FCBDC /* DiscoverTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTableVC.h; sourceTree = "<group>"; };
+		BE838C8E1B56CEA1005FCBDC /* DiscoverTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTableVC.m; sourceTree = "<group>"; };
 		BEB8C6141B4EAC5E007A9985 /* FAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAImageView.h; sourceTree = "<group>"; };
 		BEB8C6151B4EAC5E007A9985 /* FAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAImageView.m; sourceTree = "<group>"; };
 		BEB8C6161B4EAC5E007A9985 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
@@ -407,6 +413,8 @@
 		BE4592EB1B4D4AE90052228E /* OneblogiOS */ = {
 			isa = PBXGroup;
 			children = (
+				BE838C8C1B56CE86005FCBDC /* 发现 */,
+				BE838C881B56CBF5005FCBDC /* 动态 */,
 				1EDC8CC31B56435100064C14 /* 用户 */,
 				1E6549D91B4F6938004AEAE7 /* API */,
 				1E6549CF1B4F670E004AEAE7 /* 博客 */,
@@ -437,6 +445,24 @@
 				BE4593081B4D4AE90052228E /* Info.plist */,
 			);
 			path = OneblogiOSTests;
+			sourceTree = "<group>";
+		};
+		BE838C881B56CBF5005FCBDC /* 动态 */ = {
+			isa = PBXGroup;
+			children = (
+				BE838C891B56CC2A005FCBDC /* TweetsViewController.h */,
+				BE838C8A1B56CC2A005FCBDC /* TweetsViewController.m */,
+			);
+			name = "动态";
+			sourceTree = "<group>";
+		};
+		BE838C8C1B56CE86005FCBDC /* 发现 */ = {
+			isa = PBXGroup;
+			children = (
+				BE838C8D1B56CEA1005FCBDC /* DiscoverTableVC.h */,
+				BE838C8E1B56CEA1005FCBDC /* DiscoverTableVC.m */,
+			);
+			name = "发现";
 			sourceTree = "<group>";
 		};
 		BEB8C6131B4EABB1007A9985 /* FontAwesome */ = {
@@ -660,6 +686,7 @@
 				1E6549E41B4F69EE004AEAE7 /* DetailsViewController.m in Sources */,
 				1E6549D21B4F675D004AEAE7 /* BlogsViewController.m in Sources */,
 				BEB8C64D1B4EB295007A9985 /* ImageViewerController.m in Sources */,
+				BE838C8F1B56CEA1005FCBDC /* DiscoverTableVC.m in Sources */,
 				1EDC8CC71B5643B300064C14 /* MyInfoViewController.m in Sources */,
 				1E6549D51B4F67E2004AEAE7 /* OBObjsViewController.m in Sources */,
 				1E1D26361B4E5AE200CD7A7F /* OBTabBarController.m in Sources */,
@@ -668,6 +695,7 @@
 				BEB8C6591B4EB61D007A9985 /* MZDayPickerCell.m in Sources */,
 				BE26D0C01B53E6A7001D06E5 /* OBBlogDetails.m in Sources */,
 				1E1D263D1B4E5CDC00CD7A7F /* OBThread.m in Sources */,
+				BE838C8B1B56CC2A005FCBDC /* TweetsViewController.m in Sources */,
 				BEB8C61C1B4EAC5E007A9985 /* FAImageView.m in Sources */,
 				BEB8C6331B4EAF39007A9985 /* UIImageView+Util.m in Sources */,
 				1E6549F11B4F6C7B004AEAE7 /* TitleBarView.m in Sources */,

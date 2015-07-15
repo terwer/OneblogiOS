@@ -145,6 +145,9 @@
 
 - (void)fetchObjectsOnPage:(NSUInteger)page refresh:(BOOL)refresh
 {
+    if (!self.generateURL) {
+        return;
+    }
     NSLog(@"Current requestUrl:%@",self.generateURL(page));
     NSLog(@"postData:%@",self.postData());
     [_manager POST:self.generateURL(page)
