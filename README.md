@@ -33,7 +33,7 @@ An open source blog client for ios plantform.It supports Wordpress and other blo
 ## 目录简介
 * API ——— 包含API和API返回数据的封装模型
 * Utils ——— 常用的工具方法、类扩展及一些控件
-* 用户、发现、动弹...... ——— 各个具体界面
+* 博客、用户、动态...... ——— 各个具体界面
 * Main ViewControllers ——— 主要的视图控制器（作为基类或使用较广的控制器）
 
 ## 项目用到的开源类库、组件

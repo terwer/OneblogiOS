@@ -146,71 +146,75 @@
 - (void)fetchObjectsOnPage:(NSUInteger)page refresh:(BOOL)refresh
 {
     NSLog(@"Current requestUrl:%@",self.generateURL(page));
-    [_manager GET:self.generateURL(page)
-       parameters:nil
-          success:^(AFHTTPRequestOperation *operation, ONOXMLDocument *responseDocument) {
-              NSLog(@"Http request success");
-              NSArray *objectsXML = [self parseXML:responseDocument];
-              //_allCount = [[[responseDocument.rootElement firstChildWithTag:@"allCount"] numberValue] intValue];
-              _allCount =(int)objectsXML.count;
-              NSLog(@"All count:%d",_allCount);
-              
-              if (refresh) {
-                  _page = 0;
-                  [_objects removeAllObjects];
-                  if (_didRefreshSucceed) {_didRefreshSucceed();}
-              }
-              
-              if (_parseExtraInfo) {_parseExtraInfo(responseDocument);}
-              
-              for (ONOXMLElement *objectXML in objectsXML) {
-                  BOOL shouldBeAdded = YES;
-                  id obj = [[_objClass alloc] initWithXML:objectXML];
-                  
-                  for (OBBaseObject *baseObj in _objects) {
-                      if ([obj isEqual:baseObj]) {
-                          shouldBeAdded = NO;
-                          break;
-                      }
-                  }
-                  if (shouldBeAdded) {
-                      [_objects addObject:obj];
-                  }
-              }
-              
-              dispatch_async(dispatch_get_main_queue(), ^{
-                  if (self.tableWillReload) {self.tableWillReload(objectsXML.count);}
-                  else {
-                      if (_page == 0 && objectsXML.count == 0) {
-                          _lastCell.status = LastCellStatusEmpty;
-                      } else if (objectsXML.count == 0 || (_page == 0 && objectsXML.count < 20)) {
-                          _lastCell.status = LastCellStatusFinished;
-                      } else {
-                          _lastCell.status = LastCellStatusMore;
-                      }
-                  }
-                  
-                  if (self.refreshControl.refreshing) {
-                      [self.refreshControl endRefreshing];
-                  }
-                  
-                  [self.tableView reloadData];
-              });
-          }
-          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-              MBProgressHUD *HUD = [Utils createHUD];
-              HUD.mode = MBProgressHUDModeCustomView;
-              HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HUD-error"]];
-              HUD.detailsLabelText = [NSString stringWithFormat:@"%@", error.userInfo[NSLocalizedDescriptionKey]];
-              
-              [HUD hide:YES afterDelay:1];
-              
-              _lastCell.status = LastCellStatusError;
-              if (self.refreshControl.refreshing) {
-                  [self.refreshControl endRefreshing];
-              }
-              [self.tableView reloadData];
-          }
+    NSLog(@"postData:%@",self.postData());
+    [_manager POST:self.generateURL(page)
+        parameters:nil
+constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    //NSLog(@"%@",self.postData());
+}
+           success:^(AFHTTPRequestOperation *operation, ONOXMLDocument *responseDocument) {
+               NSLog(@"Http request success");
+               NSArray *objectsXML = [self parseXML:responseDocument];
+               //_allCount = [[[responseDocument.rootElement firstChildWithTag:@"allCount"] numberValue] intValue];
+               _allCount =(int)objectsXML.count;
+               NSLog(@"All count:%d",_allCount);
+               
+               if (refresh) {
+                   _page = 0;
+                   [_objects removeAllObjects];
+                   if (_didRefreshSucceed) {_didRefreshSucceed();}
+               }
+               
+               if (_parseExtraInfo) {_parseExtraInfo(responseDocument);}
+               
+               for (ONOXMLElement *objectXML in objectsXML) {
+                   BOOL shouldBeAdded = YES;
+                   id obj = [[_objClass alloc] initWithXML:objectXML];
+                   
+                   for (OBBaseObject *baseObj in _objects) {
+                       if ([obj isEqual:baseObj]) {
+                           shouldBeAdded = NO;
+                           break;
+                       }
+                   }
+                   if (shouldBeAdded) {
+                       [_objects addObject:obj];
+                   }
+               }
+               
+               dispatch_async(dispatch_get_main_queue(), ^{
+                   if (self.tableWillReload) {self.tableWillReload(objectsXML.count);}
+                   else {
+                       if (_page == 0 && objectsXML.count == 0) {
+                           _lastCell.status = LastCellStatusEmpty;
+                       } else if (objectsXML.count == 0 || (_page == 0 && objectsXML.count < 20)) {
+                           _lastCell.status = LastCellStatusFinished;
+                       } else {
+                           _lastCell.status = LastCellStatusMore;
+                       }
+                   }
+                   
+                   if (self.refreshControl.refreshing) {
+                       [self.refreshControl endRefreshing];
+                   }
+                   
+                   [self.tableView reloadData];
+               });
+           }
+           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+               MBProgressHUD *HUD = [Utils createHUD];
+               HUD.mode = MBProgressHUDModeCustomView;
+               HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HUD-error"]];
+               HUD.detailsLabelText = [NSString stringWithFormat:@"%@", error.userInfo[NSLocalizedDescriptionKey]];
+               
+               [HUD hide:YES afterDelay:1];
+               
+               _lastCell.status = LastCellStatusError;
+               if (self.refreshControl.refreshing) {
+                   [self.refreshControl endRefreshing];
+               }
+               [self.tableView reloadData];
+           }
      ];
 }
 

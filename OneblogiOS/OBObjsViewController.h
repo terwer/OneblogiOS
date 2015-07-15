@@ -21,7 +21,10 @@
 @interface OBObjsViewController : UITableViewController
 
 @property (nonatomic, copy) void (^parseExtraInfo)(ONOXMLDocument *);
+//请求url
 @property (nonatomic, copy) NSString * (^generateURL)(NSUInteger page);
+//post数据（xmlrpc需要）
+@property (nonatomic,copy) NSString *(^postData)();
 @property (nonatomic, copy) void (^tableWillReload)(NSUInteger responseObjectsCount);
 @property (nonatomic, copy) void (^didRefreshSucceed)();
 

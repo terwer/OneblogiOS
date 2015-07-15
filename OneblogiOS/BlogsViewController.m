@@ -22,10 +22,30 @@ static NSString *kBlogCellID = @"BlogCell";
 - (instancetype)initWithBlogsType:(BlogsType)type
 {
     if (self = [super init]) {
+        //设置请求url
         //NSString *blogType = type == BlogTypeLatest? @"latest" : @"recommend";
         self.generateURL = ^NSString * (NSUInteger page) {
-        return @"http://www.oschina.net/action/api/blog_list?type=latest&pageIndex=0&pageSize=20";
-        //    return [NSString stringWithFormat:@"%@%@?type=%@&pageIndex=%lu&%@", OSCAPI_PREFIX, OSCAPI_BLOGS_LIST, blogType, (unsigned long)page, OSCAPI_SUFFIX];
+            return @"http://www.terwer.com/xmlrpc.php";
+            //return @"http://www.oschina.net/action/api/blog_list?type=latest&pageIndex=0&pageSize=20";
+            //    return [NSString stringWithFormat:@"%@%@?type=%@&pageIndex=%lu&%@", OSCAPI_PREFIX, OSCAPI_BLOGS_LIST, blogType, (unsigned long)page, OSCAPI_SUFFIX];
+        };
+        self.postData=^NSString*{
+            NSString *data = [NSString stringWithFormat:@"<?xml version=\"1.0\"?>"
+                              "<methodCall>"
+                              "<methodName>metaWeblog.getPost</methodName>"
+                              "<params>"
+                              "<value><i4>1</i4></value>"
+                              "</param>"
+                              "<param>"
+                              "<value>terwer</value>"
+                              "</param>"
+                              "<param>"
+                              "<value>cbgtyw2020</value>"
+                              "</param>"
+                              "</params>"
+                              "</methodCall>"
+                              ];
+            return data;
         };
         //当前对象设置为博客
         self.objClass = [OBBlog class];
@@ -34,23 +54,25 @@ static NSString *kBlogCellID = @"BlogCell";
     return self;
 }
 
-- (instancetype)initWithUserID:(int64_t)userID
-{
-    if (self = [super init]) {
-        self.generateURL = ^NSString * (NSUInteger page) {
-            return @"http://www.oschina.net/action/api/blog_list?type=latest&pageIndex=0&pageSize=20";
+//- (instancetype)initWithUserID:(int64_t)userID
+//{
+//    if (self = [super init]) {
 //        self.generateURL = ^NSString * (NSUInteger page) {
-//            return [NSString stringWithFormat:@"%@%@?authoruid=%lld&pageIndex=%lu&uid=%lld", OSCAPI_PREFIX, OSCAPI_USERBLOGS_LIST, userID, (unsigned long)page, [Config getOwnID]];
-        };
-        self.objClass = [OBBlog class];
-   }
-    
-    return self;
-}
+//            return @"http://www.terwer.com/xmlrpc.php";
+////            return @"http://www.oschina.net/action/api/blog_list?type=latest&pageIndex=0&pageSize=20";
+////        self.generateURL = ^NSString * (NSUInteger page) {
+////            return [NSString stringWithFormat:@"%@%@?authoruid=%lld&pageIndex=%lu&uid=%lld", OSCAPI_PREFIX, OSCAPI_USERBLOGS_LIST, userID, (unsigned long)page, [Config getOwnID]];
+//        };
+//        self.objClass = [OBBlog class];
+//   }
+//
+//    return self;
+//}
 
 
 - (NSArray *)parseXML:(ONOXMLDocument *)xml
 {
+    NSLog(@"%@",xml.rootElement.stringValue);
     return [[xml.rootElement firstChildWithTag:@"blogs"] childrenWithTag:@"blog"];
 }
 

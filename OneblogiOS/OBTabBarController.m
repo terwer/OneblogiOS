@@ -117,7 +117,6 @@
     NSArray *buttonImages = @[@"tweetEditing", @"picture", @"shooting", @"sound", @"scan", @"search"];
     int buttonColors[] = {0xe69961, 0x0dac6b, 0x24a0c4, 0xe96360, 0x61b644, 0xf1c50e};
     
-    
     for (int i = 0; i < 6; i++) {
         OptionButton *optionButton = [[OptionButton alloc] initWithTitle:buttonTitles[i]
                                                                    image:[UIImage imageNamed:buttonImages[i]]
@@ -155,7 +154,7 @@
     _centerButton.frame = CGRectMake(origin.x - buttonSize.height/2, origin.y - buttonSize.height/2, buttonSize.height, buttonSize.height);
     
     [_centerButton setCornerRadius:buttonSize.height/2];
-    [_centerButton setBackgroundColor:[UIColor colorWithHex:0x24a83d]];
+    [_centerButton setBackgroundColor:[UIColor colorWithHex:0x428bd1]];
     [_centerButton setImage:buttonImage forState:UIControlStateNormal];
     [_centerButton addTarget:self action:@selector(buttonPressed) forControlEvents:UIControlEventTouchUpInside];
     
