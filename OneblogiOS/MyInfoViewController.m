@@ -7,27 +7,26 @@
 //
 
 #import "MyInfoViewController.h"
-#import "OBMyInfo.h"
 #import "Config.h"
 #import "Utils.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface MyInfoViewController ()
 
-@property (nonatomic, strong) OBMyInfo *myInfo;
-@property (nonatomic, readonly, assign) int64_t myID;
-@property (nonatomic, strong) NSMutableArray *noticeCounts;
-
-@property (nonatomic, strong) UIImageView *portrait;
-@property (nonatomic, strong) UILabel *nameLabel;
-@property (nonatomic, strong) UIImageView *myQRCodeButton;
-
-@property (nonatomic, strong) UIButton *creditsBtn;
-@property (nonatomic, strong) UIButton *collectionsBtn;
-@property (nonatomic, strong) UIButton *followsBtn;
-@property (nonatomic, strong) UIButton *fansBtn;
-
-@property (nonatomic, assign) int badgeValue;
+//@property (nonatomic, strong) OBMyInfo *myInfo;
+//@property (nonatomic, readonly, assign) int64_t myID;
+//@property (nonatomic, strong) NSMutableArray *noticeCounts;
+//
+//@property (nonatomic, strong) UIImageView *portrait;
+//@property (nonatomic, strong) UILabel *nameLabel;
+//@property (nonatomic, strong) UIImageView *myQRCodeButton;
+//
+//@property (nonatomic, strong) UIButton *creditsBtn;
+//@property (nonatomic, strong) UIButton *collectionsBtn;
+//@property (nonatomic, strong) UIButton *followsBtn;
+//@property (nonatomic, strong) UIButton *fansBtn;
+//
+//@property (nonatomic, assign) int badgeValue;
 
 @end
 
@@ -62,8 +61,8 @@
     
     // Uncomment the following line to preserve selection between presentations.
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigationbar-search"] style:UIBarButtonItemStylePlain target:self action:@selector(pushSearchViewController)];
-    self.navigationItem.leftBarButtonItem  = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigationbar-sidebar"] style:UIBarButtonItemStylePlain target:self action:@selector(onClickMenuButton)];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigationbar-search"] style:UIBarButtonItemStylePlain target:self action:@selector(pushSearchViewController)];
+//    self.navigationItem.leftBarButtonItem  = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigationbar-sidebar"] style:UIBarButtonItemStylePlain target:self action:@selector(onClickMenuButton)];
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.tableView.bounces = NO;
@@ -271,24 +270,24 @@
     
     cell.textLabel.textColor = [UIColor titleColor];
     
-    if (indexPath.row == 0) {
-        if (_badgeValue == 0) {
-            cell.accessoryView = nil;
-        } else {
-            UILabel *accessoryBadge = [UILabel new];
-            accessoryBadge.backgroundColor = [UIColor redColor];
-            accessoryBadge.text = [@(_badgeValue) stringValue];
-            accessoryBadge.textColor = [UIColor whiteColor];
-            accessoryBadge.textAlignment = NSTextAlignmentCenter;
-            accessoryBadge.layer.cornerRadius = 11;
-            accessoryBadge.clipsToBounds = YES;
-            
-            CGFloat width = [accessoryBadge sizeThatFits:CGSizeMake(MAXFLOAT, 26)].width + 8;
-            width = width > 26? width: 22;
-            accessoryBadge.frame = CGRectMake(0, 0, width, 22);
-            cell.accessoryView = accessoryBadge;
-        }
-    }
+//    if (indexPath.row == 0) {
+//        if (_badgeValue == 0) {
+//            cell.accessoryView = nil;
+//        } else {
+//            UILabel *accessoryBadge = [UILabel new];
+//            accessoryBadge.backgroundColor = [UIColor redColor];
+//            accessoryBadge.text = [@(_badgeValue) stringValue];
+//            accessoryBadge.textColor = [UIColor whiteColor];
+//            accessoryBadge.textAlignment = NSTextAlignmentCenter;
+//            accessoryBadge.layer.cornerRadius = 11;
+//            accessoryBadge.clipsToBounds = YES;
+//            
+//            CGFloat width = [accessoryBadge sizeThatFits:CGSizeMake(MAXFLOAT, 26)].width + 8;
+//            width = width > 26? width: 22;
+//            accessoryBadge.frame = CGRectMake(0, 0, width, 22);
+//            cell.accessoryView = accessoryBadge;
+//        }
+//    }
     
     cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
     cell.selectedBackgroundView.backgroundColor = [UIColor selectCellSColor];

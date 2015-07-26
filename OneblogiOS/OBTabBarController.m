@@ -36,21 +36,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    //文章
+    //全部
     BlogsViewController *blogViewCtl = [[BlogsViewController alloc] initWithBlogsType:BlogTypeLatest];
-    //页面
+    //最新
     UIViewController *pageViewCtl = [UIViewController new];
-    //动态
+    //热门
     UIViewController *infoViewCtl = [UIViewController new];
-    //评论
+    //置顶
     UIViewController *commentViewCtl = [UIViewController new];
     //留言
     UIViewController *guestbookViewCtl = [UIViewController new];
     
     blogViewCtl.needCache = YES;
     
-    SwipableViewController *newsSVC = [[SwipableViewController alloc] initWithTitle:@"博客"
-                                                                       andSubTitles:@[@"文章",@"页面",@"动态",@"评论",@"留言"]
+    SwipableViewController *newsSVC = [[SwipableViewController alloc] initWithTitle:@"文章"
+                                                                       andSubTitles:@[@"最新文章",@"热门文章",@"置顶文章",@"评论",@"留言"]
                                                                      andControllers:@[ blogViewCtl,pageViewCtl,infoViewCtl,commentViewCtl,guestbookViewCtl]
                                                                         underTabbar:YES];
     
@@ -58,7 +58,7 @@
     TweetsViewController *weiboCtl=[[TweetsViewController alloc]init];
     TweetsViewController *myWeiboCtl=[[TweetsViewController alloc]init];
     tweetsCtl.needCache=YES;
-    UIViewController *tweetsSVC = [[SwipableViewController alloc] initWithTitle:@"动态"
+    UIViewController *tweetsSVC = [[SwipableViewController alloc] initWithTitle:@"消息"
                                                                    andSubTitles:@[@"最新动态",@"热门动态",@"我的动态"]
                                                                  andControllers:@[ tweetsCtl,weiboCtl,myWeiboCtl]
                                                                     underTabbar:YES];
@@ -79,7 +79,7 @@
                              ];
     
     
-    NSArray *titles = @[@"博客", @"动态", @"", @"发现", @"我"];
+    NSArray *titles = @[@"文章", @"消息", @"", @"发现", @"我"];
     NSArray *images = @[@"tabbar-news", @"tabbar-tweet", @"blank", @"tabbar-discover", @"tabbar-me"];
     [self.tabBar.items enumerateObjectsUsingBlock:^(UITabBarItem *item, NSUInteger idx, BOOL *stop) {
         [item setTitle:titles[idx]];
@@ -304,6 +304,8 @@
                      }];
 }
 
-
+-(void)onTapOptionButton:(id)sender{
+    NSLog(@"TAB");
+}
 
 @end

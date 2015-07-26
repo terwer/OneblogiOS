@@ -9,11 +9,8 @@
 #import <UIKit/UIKit.h>
 
 #import <AFNetworking.h>
-#import <AFOnoResponseSerializer.h>
-#import <Ono.h>
 
 #import "Utils.h"
-#import "OBAPI.h"
 #import "LastCell.h"
 
 @class ONOXMLDocument;

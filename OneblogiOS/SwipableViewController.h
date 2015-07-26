@@ -17,6 +17,6 @@
 
 - (instancetype)initWithTitle:(NSString *)title andSubTitles:(NSArray *)subTitles andControllers:(NSArray *)controllers underTabbar:(BOOL)underTabbar;
 - (instancetype)initWithTitle:(NSString *)title andSubTitles:(NSArray *)subTitles andControllers:(NSArray *)controllers;
-- (void)scrollToViewAtIndex:(NSUInteger)index;
+//- (void)scrollToViewAtIndex:(NSUInteger)index;
 
 @end

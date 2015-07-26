@@ -22,7 +22,7 @@ NSString * const kPortrait = @"portrait";
 
 + (NSArray *)getUsersInformation
 {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    //NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     //    NSString *userName = [userDefaults objectForKey:kUserName];
     //    NSNumber *score = [userDefaults objectForKey:kUserScore];

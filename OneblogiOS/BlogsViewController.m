@@ -8,7 +8,6 @@
 
 #import "BlogsViewController.h"
 #import "BlogCell.h"
-#import "OBBlog.h"
 #import "Config.h"
 #import "DetailsViewController.h"
 
@@ -48,7 +47,7 @@ static NSString *kBlogCellID = @"BlogCell";
             return data;
         };
         //当前对象设置为博客
-        self.objClass = [OBBlog class];
+//        self.objClass = [OBBlog class];
     }
     
     return self;
@@ -70,10 +69,8 @@ static NSString *kBlogCellID = @"BlogCell";
 //}
 
 
-- (NSArray *)parseXML:(ONOXMLDocument *)xml
-{
-    NSLog(@"%@",xml.rootElement.stringValue);
-    return [[xml.rootElement firstChildWithTag:@"blogs"] childrenWithTag:@"blog"];
+- (NSArray *)parseXML{
+   return nil;
 }
 
 #pragma mark - life cycle
@@ -92,28 +89,28 @@ static NSString *kBlogCellID = @"BlogCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     BlogCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kBlogCellID forIndexPath:indexPath];
-    OBBlog *blog = self.objects[indexPath.row];
-    
-    [cell.titleLabel setAttributedText:blog.attributedTittle];
-    [cell.bodyLabel setText:blog.body];
-    [cell.authorLabel setText:blog.author];
-    //[cell.timeLabel setAttributedText:[Utils attributedTimeString:blog.pubDate]];
-    [cell.commentCount setAttributedText:blog.attributedCommentCount];
+//    OBBlog *blog = self.objects[indexPath.row];
+//    
+//    [cell.titleLabel setAttributedText:blog.attributedTittle];
+//    [cell.bodyLabel setText:blog.body];
+//    [cell.authorLabel setText:blog.author];
+//    //[cell.timeLabel setAttributedText:[Utils attributedTimeString:blog.pubDate]];
+//    [cell.commentCount setAttributedText:blog.attributedCommentCount];
     return cell;
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    OBBlog *blog = self.objects[indexPath.row];
-    
-    self.label.font = [UIFont boldSystemFontOfSize:15];
-    [self.label setAttributedText:blog.attributedTittle];
+//    OBBlog *blog = self.objects[indexPath.row];
+//    
+//    self.label.font = [UIFont boldSystemFontOfSize:15];
+//    [self.label setAttributedText:blog.attributedTittle];
     CGFloat height = [self.label sizeThatFits:CGSizeMake(tableView.frame.size.width - 16, MAXFLOAT)].height;
-    
-    self.label.text = blog.body;
-    self.label.font = [UIFont systemFontOfSize:13];
-    height += [self.label sizeThatFits:CGSizeMake(tableView.frame.size.width - 16, MAXFLOAT)].height;
+//    
+//    self.label.text = blog.body;
+//    self.label.font = [UIFont systemFontOfSize:13];
+//    height += [self.label sizeThatFits:CGSizeMake(tableView.frame.size.width - 16, MAXFLOAT)].height;
     
     return height + 42;
     return 0;
@@ -123,7 +120,7 @@ static NSString *kBlogCellID = @"BlogCell";
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    OBBlog *blog = self.objects[indexPath.row];
+//    OBBlog *blog = self.objects[indexPath.row];
     //DetailsViewController *detailsViewController = [[DetailsViewController alloc] initWithBlog:blog];
     //[self.navigationController pushViewController:detailsViewController animated:YES];
 }

@@ -8,18 +8,17 @@
 
 #import "AFHTTPRequestOperationManager+Util.h"
 
-#import <AFOnoResponseSerializer.h>
-
 @implementation AFHTTPRequestOperationManager (Util)
 
 + (instancetype)OBManager
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer = [AFOnoResponseSerializer XMLResponseSerializer];
-    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
-    [manager.requestSerializer setValue:[self generateUserAgent] forHTTPHeaderField:@"User-Agent"];
-    
-    return manager;
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    manager.responseSerializer = [AFOnoResponseSerializer XMLResponseSerializer];
+//    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
+//    [manager.requestSerializer setValue:[self generateUserAgent] forHTTPHeaderField:@"User-Agent"];
+//    
+//    return manager;
+    return nil;
 }
 
 + (NSString *)generateUserAgent
