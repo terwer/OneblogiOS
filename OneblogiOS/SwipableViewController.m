@@ -7,9 +7,10 @@
 //
 
 #import "SwipableViewController.h"
-#import "Utils.h"
+//#import "Utils.h"
 //#import "TweetsViewController.h"
 //#import "PostsViewController.h"
+#import "UIColor+Util.h"
 
 @interface SwipableViewController ()
 

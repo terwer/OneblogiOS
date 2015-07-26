@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>OneblogiOS.xcscheme_^#shared#^_</key>
+		<key>OneblogiOS.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,17 +12,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>BE4592E81B4D4AE80052228E</key>
+		<key>BEDE59351B657063003AB347</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BE4593011B4D4AE90052228E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BE45930C1B4D4AE90052228E</key>
+		<key>BEDE594E1B657063003AB347</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -7,7 +7,7 @@
 //
 
 #import "HorizonalTableViewController.h"
-#import "Utils.h"
+#import "UIColor+Util.h"
 
 @interface HorizonalTableViewController ()
 

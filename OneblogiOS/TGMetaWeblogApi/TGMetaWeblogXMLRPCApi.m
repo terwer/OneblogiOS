@@ -83,6 +83,7 @@ static TGMetaWeblogXMLRPCApi *instance;
                  parameters:parameters
                     success:^(AFHTTPRequestOperation *operation, id responseObject) {
                         if (success) {
+                            NSLog(@"%@",responseObject);
                             success((NSArray *)responseObject);
                         }
                     }

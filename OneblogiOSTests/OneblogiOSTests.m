@@ -1,9 +1,9 @@
 //
-//  iosappTests.m
-//  iosappTests
+//  OneblogiOSTests.m
+//  OneblogiOSTests
 //
-//  Created by chenhaoxiang on 14-10-13.
-//  Copyright (c) 2014年 oschina. All rights reserved.
+//  Created by Terwer Green on 15/7/27.
+//  Copyright (c) 2015年 Terwer Green. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

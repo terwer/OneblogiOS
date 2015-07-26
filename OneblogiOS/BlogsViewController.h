@@ -2,21 +2,12 @@
 //  BlogsViewController.h
 //  OneblogiOS
 //
-//  Created by Terwer Green on 15/7/10.
+//  Created by Terwer Green on 15/7/27.
 //  Copyright (c) 2015年 Terwer Green. All rights reserved.
 //
 
-#import "OBObjsViewController.h"
+#import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUInteger, BlogsType)
-{
-    BlogTypeLatest,
-    BlogTypeRecommended,
-};
-
-@interface BlogsViewController : OBObjsViewController
-
-- (instancetype)initWithBlogsType:(BlogsType)type;
-//- (instancetype)initWithUserID:(int64_t)userID;
+@interface BlogsViewController : UITableViewController
 
 @end

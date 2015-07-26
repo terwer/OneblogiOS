@@ -7,7 +7,6 @@
 //
 
 #import "SideMenuViewController.h"
-#import "Config.h"
 #import "UIColor+Util.h"
 
 @interface SideMenuViewController ()
