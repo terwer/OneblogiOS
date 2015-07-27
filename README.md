@@ -53,6 +53,7 @@ An open source blog client for ios plantform.It supports Wordpress and other blo
 11            | libNBSAppAgent | App性能监控（ http://www.tingyun.com/ ）
 12            | FontAwesome      | 图标字体（ http://fortawesome.github.io/Font-Awesome/icons/ ）
 13            | MZDayPicker      | 日期
+14            | AttributedMarkdown | 解析文章详情
 
 ## 开源协议
 Oneblog app is under the Apache License V2. See [the LICENSE file](https://github.com/terwer/OneblogiOS/blob/master/LICENSE.md) for more details.

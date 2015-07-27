@@ -48,6 +48,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 5
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 4
 
+// AttributedMarkdown
+#define COCOAPODS_POD_AVAILABLE_AttributedMarkdown
+#define COCOAPODS_VERSION_MAJOR_AttributedMarkdown 0
+#define COCOAPODS_VERSION_MINOR_AttributedMarkdown 9
+#define COCOAPODS_VERSION_PATCH_AttributedMarkdown 2
+
 // GPUImage
 #define COCOAPODS_POD_AVAILABLE_GPUImage
 #define COCOAPODS_VERSION_MAJOR_GPUImage 0

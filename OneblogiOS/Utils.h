@@ -73,4 +73,22 @@ static NSString * const kKeyMinutes = @"minutes";
  *  @return MBProgressHUD
  */
 + (MBProgressHUD *)createHUD;
+
+/**
+ *  将Markdown字符串转换为原生的字符穿
+ *
+ *  @param markdownString markdownString
+ *
+ *  @return AttributedString
+ */
++(NSAttributedString *)attributedMarkdown:(NSString *)markdownString;
+
+/**
+ *  还原HTMl特殊字符
+ *
+ *  @param originalHTML originalHTML
+ *
+ *  @return 还原后的字符
+ */
++ (NSString *)unescapeHTML:(NSString *)originalHTML;
 @end

@@ -8,6 +8,7 @@
 
 #import "Utils.h"
 #import <Reachability.h>
+#import "markdown_lib.h"
 
 @implementation Utils
 
@@ -128,7 +129,7 @@
     } else {
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
         [df setDateFormat:@"yyyy"];
-         NSString *msg  = [df stringFromDate:date];
+        NSString *msg  = [df stringFromDate:date];
         return msg;
     }
 }
@@ -155,6 +156,19 @@
     [result replaceOccurrencesOfString:@">"  withString:@"&gt;"   options:NSLiteralSearch range:NSMakeRange(0, [result length])];
     [result replaceOccurrencesOfString:@"\"" withString:@"&quot;" options:NSLiteralSearch range:NSMakeRange(0, [result length])];
     [result replaceOccurrencesOfString:@"'"  withString:@"&#39;"  options:NSLiteralSearch range:NSMakeRange(0, [result length])];
+    return result;
+}
+
++ (NSString *)unescapeHTML:(NSString *)originalHTML
+{
+    if (!originalHTML) {return @"";}
+    
+    NSMutableString *result = [[NSMutableString alloc] initWithString:originalHTML];
+    [result replaceOccurrencesOfString:@"&amp;"  withString:@"&"  options:NSLiteralSearch range:NSMakeRange(0, [result length])];
+    [result replaceOccurrencesOfString:@"&lt;" withString:@"<"    options:NSLiteralSearch range:NSMakeRange(0, [result length])];
+    [result replaceOccurrencesOfString:@"&gt;"   withString:@">"  options:NSLiteralSearch range:NSMakeRange(0, [result length])];
+    [result replaceOccurrencesOfString:@"&quot;" withString:@"\"" options:NSLiteralSearch range:NSMakeRange(0, [result length])];
+    [result replaceOccurrencesOfString:@"&#39;"  withString:@"'"  options:NSLiteralSearch range:NSMakeRange(0, [result length])];
     return result;
 }
 
@@ -202,5 +216,33 @@
 {
     return [self networkStatus] > 0;
 }
+
+/**
+ *  将Markdown字符串转换为原生的字符穿
+ *
+ *  @param markdownString markdownString
+ *
+ *  @return AttributedString
+ */
++(NSAttributedString *)attributedMarkdown:(NSString *)markdownString{
+    // create a font attribute for emphasized text
+    //UIFont *emFont = [UIFont fontWithName:@"AvenirNext-MediumItalic" size:15.0];
+    
+    // create a color attribute for paragraph text
+    //UIColor *color = [UIColor purpleColor];
+    
+    // create a dictionary to hold your custom attributes for any Markdown types
+    NSDictionary *attributes = @{
+                                 //                           @(EMPH): @{NSFontAttributeName : emFont,},
+                                 //                          @(PARA): @{NSForegroundColorAttributeName : color,}
+                                 };
+    
+    // parse the markdown
+    NSAttributedString *prettyText = markdown_to_attr_string(markdownString,0,attributes);
+    
+    // assign it to a view object
+    return prettyText;
+}
+
 
 @end

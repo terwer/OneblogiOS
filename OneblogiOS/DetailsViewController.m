@@ -76,7 +76,13 @@
 
 - (void)fetchDetails
 {
-    self.labelDescription.text = [self.result valueForKey:@"description"];
+    //获取详情数据
+    NSString *description = [self.result valueForKey:@"description"];
+    //还原HTMl特殊字符
+    NSString *originalHTML= [Utils unescapeHTML:description];
+    //将Markdown转换为原生字符并显示
+    NSAttributedString *attributedString = [Utils attributedMarkdown:originalHTML];
+    [self.labelDescription setAttributedText: attributedString];
     NSAssert(@"override by subview",false);
 }
 @end
