@@ -151,6 +151,7 @@
  *  左侧滑动展开
  */
 -(void)onClickMenuButton{
+    [self.sideMenuViewController presentLeftMenuViewController];
     NSLog(@"side");
 }
 

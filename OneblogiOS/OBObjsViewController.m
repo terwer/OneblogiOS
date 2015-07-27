@@ -80,6 +80,7 @@
         //NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
         NSString *xmlrpc = @"http://www.terwer.com/xmlrpc.php";//[def objectForKey:@"mw_xmlrpc"];
         //NSString *xmlrpc = @"http://os.blog.163.com/api/xmlrpc/metaweblog/";
+        //NSString *xmlrpc = @"http://www.cnblogs.com/tangyouwei/services/metaweblog.aspx";
         if (xmlrpc) {
             NSString *username = @"terwer";//[def objectForKey:@"mw_username"];
             //NSString *username = @"cyutyw@126.com";

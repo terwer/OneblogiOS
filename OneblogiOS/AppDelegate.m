@@ -12,6 +12,7 @@
 #import "SideMenuViewController.h"
 #import <RESideMenu/RESideMenu.h>
 #import "Utils.h"
+#import "sideMenuViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -26,7 +27,7 @@
     OBTabBarController *tabBarController = [OBTabBarController new];
     
     //初始化布局，这是整个视图的入口
-    RESideMenu *sideMenuTabBarViewController = [[RESideMenu alloc] initWithContentViewController:tabBarController leftMenuViewController:nil rightMenuViewController:nil];
+    RESideMenu *sideMenuTabBarViewController = [[RESideMenu alloc] initWithContentViewController:tabBarController leftMenuViewController: [SideMenuViewController new] rightMenuViewController:nil];
     //设置样式
     sideMenuTabBarViewController.scaleContentView = YES;
     sideMenuTabBarViewController.contentViewScaleValue = 0.95;

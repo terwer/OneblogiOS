@@ -93,7 +93,9 @@ const int MAX_DESCRIPTION_LENGTH=60;//描述最多字数
     cell.backgroundColor = [UIColor themeColor];
     [cell.titleLabel setAttributedText:[self attributedTittle:[post objectForKey:@"title"]]];
     [cell.bodyLabel setText:[Utils shortString:[post objectForKey:@"description"] andLength:MAX_DESCRIPTION_LENGTH]];
-    [cell.authorLabel setText:@"author"];
+    //作者处理
+    NSString *author = [post objectForKey:@"wp_author_display_name"];
+    [cell.authorLabel setText:(!author||[author isEqual:@""])?@"admin":author];
     cell.titleLabel.textColor = [UIColor titleColor];
     NSDate *createdDate = [post objectForKey:@"dateCreated"];
     [cell.timeLabel setAttributedText:[Utils attributedTimeString:createdDate]];
