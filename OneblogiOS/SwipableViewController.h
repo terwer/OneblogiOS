@@ -2,7 +2,7 @@
 //  SwipableViewController.h
 //  OneblogiOS
 //
-//  Created by szgxa30 on 15/7/10.
+//  Created by Terwer Green on 15/7/10.
 //  Copyright (c) 2015年 Terwer Green. All rights reserved.
 //
 
@@ -17,6 +17,5 @@
 
 - (instancetype)initWithTitle:(NSString *)title andSubTitles:(NSArray *)subTitles andControllers:(NSArray *)controllers underTabbar:(BOOL)underTabbar;
 - (instancetype)initWithTitle:(NSString *)title andSubTitles:(NSArray *)subTitles andControllers:(NSArray *)controllers;
-//- (void)scrollToViewAtIndex:(NSUInteger)index;
 
 @end

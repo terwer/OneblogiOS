@@ -2,14 +2,11 @@
 //  SwipableViewController.m
 //  OneblogiOS
 //
-//  Created by szgxa30 on 15/7/10.
+//  Created by Terwer Green on 15/7/10.
 //  Copyright (c) 2015年 Terwer Green. All rights reserved.
 //
 
 #import "SwipableViewController.h"
-//#import "Utils.h"
-//#import "TweetsViewController.h"
-//#import "PostsViewController.h"
 #import "UIColor+Util.h"
 
 @interface SwipableViewController ()
