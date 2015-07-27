@@ -1,5 +1,5 @@
 //
-//  BlogsViewController.h
+//  OBObjsViewController.h
 //  OneblogiOS
 //
 //  Created by Terwer Green on 15/7/27.
@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "OBObjsViewController.h"
 
-@interface PostViewController : OBObjsViewController
+@interface OBObjsViewController : UITableViewController
 
 @end

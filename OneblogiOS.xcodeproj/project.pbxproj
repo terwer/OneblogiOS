@@ -13,6 +13,7 @@
 		1E0C68871B66248700AC6611 /* MyInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C68861B66248700AC6611 /* MyInfoController.m */; };
 		1E0C688C1B66258800AC6611 /* UIImage+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C68891B66258800AC6611 /* UIImage+Util.m */; };
 		1E0C688D1B66258800AC6611 /* UIImageView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C688B1B66258800AC6611 /* UIImageView+Util.m */; };
+		1E6C81591B662BEB00D4F002 /* OBObjsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6C81581B662BEB00D4F002 /* OBObjsViewController.m */; };
 		1E7407CC1B660F880011F7A5 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E7407CB1B660F880011F7A5 /* Utils.m */; };
 		1E7407CF1B66103E0011F7A5 /* UIView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E7407CE1B66103E0011F7A5 /* UIView+Util.m */; };
 		AFB8EC6920FC4627EC5B205F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFABC981ABD733EEBBE20A05 /* libPods.a */; };
@@ -56,6 +57,8 @@
 		1E0C68891B66258800AC6611 /* UIImage+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Util.m"; sourceTree = "<group>"; };
 		1E0C688A1B66258800AC6611 /* UIImageView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Util.h"; sourceTree = "<group>"; };
 		1E0C688B1B66258800AC6611 /* UIImageView+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Util.m"; sourceTree = "<group>"; };
+		1E6C81571B662BEB00D4F002 /* OBObjsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBObjsViewController.h; sourceTree = "<group>"; };
+		1E6C81581B662BEB00D4F002 /* OBObjsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBObjsViewController.m; sourceTree = "<group>"; };
 		1E7407CA1B660F880011F7A5 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		1E7407CB1B660F880011F7A5 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		1E7407CD1B66103E0011F7A5 /* UIView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Util.h"; sourceTree = "<group>"; };
@@ -233,6 +236,8 @@
 				BEDE59741B65775B003AB347 /* SwipableViewController */,
 				BEDE59671B657374003AB347 /* 侧拉菜单 */,
 				BEDE59601B6572A7003AB347 /* Tab Bar */,
+				1E6C81571B662BEB00D4F002 /* OBObjsViewController.h */,
+				1E6C81581B662BEB00D4F002 /* OBObjsViewController.m */,
 			);
 			name = "Main ViewControllers";
 			sourceTree = "<group>";
@@ -463,6 +468,7 @@
 				1E7407CF1B66103E0011F7A5 /* UIView+Util.m in Sources */,
 				1E0C68871B66248700AC6611 /* MyInfoController.m in Sources */,
 				1E0C68811B661F2D00AC6611 /* DiscoverViewController.m in Sources */,
+				1E6C81591B662BEB00D4F002 /* OBObjsViewController.m in Sources */,
 				BEDE596A1B65739C003AB347 /* SideMenuViewController.m in Sources */,
 				BEDE596F1B657575003AB347 /* UIColor+Util.m in Sources */,
 				BEDE593F1B657063003AB347 /* AppDelegate.m in Sources */,
