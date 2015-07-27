@@ -13,6 +13,7 @@
 #import "UIFont+FontAwesome.h"
 #import "NSString+FontAwesome.h"
 #import <MBProgressHUD.h>
+#import "NSTextAttachment+Util.h"
 
 static NSString * const kKeyYears = @"years";
 static NSString * const kKeyMonths = @"months";
@@ -21,6 +22,13 @@ static NSString * const kKeyHours = @"hours";
 static NSString * const kKeyMinutes = @"minutes";
 
 @interface Utils : NSObject
+
+/**
+ *  表情
+ *
+ *  @return  表情
+ */
++ (NSDictionary *)emojiDict;
 
 /**
  *  去除字符串里面的空格、换行以及Markdown特殊字符，如：＝、＃ 15-07-27 by terwer

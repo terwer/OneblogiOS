@@ -12,6 +12,7 @@
 #import "TGMetaWeblogApi.h"
 #import "PostCell.h"
 #import "Utils.h"
+#import "DetailsViewController.h"
 
 static NSString *kPostCellID = @"PostCell";
 const int MAX_DESCRIPTION_LENGTH=60;//描述最多字数
@@ -167,6 +168,16 @@ const int MAX_DESCRIPTION_LENGTH=60;//描述最多字数
  // Pass the selected object to the new view controller.
  }
  */
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSDictionary *post = [self.posts objectAtIndex:indexPath.row];
+
+    DetailsViewController *detailsViewController = [[DetailsViewController alloc] initWithPost:post];
+    [self.navigationController pushViewController:detailsViewController animated:YES];
+}
 
 #pragma mark - Custom methods
 

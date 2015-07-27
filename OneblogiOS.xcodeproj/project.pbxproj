@@ -24,6 +24,18 @@
 		BE4D37601B666D2700D56E5A /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4D375B1B666D2700D56E5A /* UIFont+FontAwesome.m */; };
 		BE4D37611B666D2700D56E5A /* UIImage+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4D375D1B666D2700D56E5A /* UIImage+FontAwesome.m */; };
 		BE4D37631B6670FC00D56E5A /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE4D37621B6670FC00D56E5A /* FontAwesome.ttf */; };
+		BE512D241B66B03700455CC7 /* BottomBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE512D231B66B03700455CC7 /* BottomBarViewController.m */; };
+		BE512D2C1B66B29C00455CC7 /* EditingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BE512D281B66B29C00455CC7 /* EditingBar.m */; };
+		BE512D2E1B66B29C00455CC7 /* GrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE512D2B1B66B29C00455CC7 /* GrowingTextView.m */; };
+		BE512D311B66B38600455CC7 /* PlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE512D301B66B38600455CC7 /* PlaceholderTextView.m */; };
+		BE512D341B66B3B800455CC7 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = BE512D331B66B3B800455CC7 /* Config.m */; };
+		BE512D371B66B57B00455CC7 /* OperationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BE512D361B66B57B00455CC7 /* OperationBar.m */; };
+		BE512D3D1B66B63D00455CC7 /* EmojiPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BE512D3A1B66B63D00455CC7 /* EmojiPageVC.m */; };
+		BE512D3E1B66B63D00455CC7 /* EmojiPanelVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BE512D3C1B66B63D00455CC7 /* EmojiPanelVC.m */; };
+		BE512D411B66B72100455CC7 /* NSTextAttachment+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = BE512D401B66B72100455CC7 /* NSTextAttachment+Util.m */; };
+		BE512D441B66B85D00455CC7 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE512D431B66B85D00455CC7 /* DetailsViewController.m */; };
+		BE512D471B66BA7400455CC7 /* emoji.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE512D451B66BA7400455CC7 /* emoji.plist */; };
+		BE512D481B66BA7400455CC7 /* emojiToText.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE512D461B66BA7400455CC7 /* emojiToText.plist */; };
 		BEDE593C1B657063003AB347 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDE593B1B657063003AB347 /* main.m */; };
 		BEDE593F1B657063003AB347 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDE593E1B657063003AB347 /* AppDelegate.m */; };
 		BEDE59471B657063003AB347 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEDE59461B657063003AB347 /* Images.xcassets */; };
@@ -84,6 +96,28 @@
 		BE4D375C1B666D2700D56E5A /* UIImage+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+FontAwesome.h"; path = "FontAwesome/UIImage+FontAwesome.h"; sourceTree = "<group>"; };
 		BE4D375D1B666D2700D56E5A /* UIImage+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+FontAwesome.m"; path = "FontAwesome/UIImage+FontAwesome.m"; sourceTree = "<group>"; };
 		BE4D37621B6670FC00D56E5A /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.ttf; path = FontAwesome/Resources/FontAwesome.ttf; sourceTree = "<group>"; };
+		BE512D221B66B03700455CC7 /* BottomBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomBarViewController.h; sourceTree = "<group>"; };
+		BE512D231B66B03700455CC7 /* BottomBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomBarViewController.m; sourceTree = "<group>"; };
+		BE512D271B66B29C00455CC7 /* EditingBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditingBar.h; sourceTree = "<group>"; };
+		BE512D281B66B29C00455CC7 /* EditingBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditingBar.m; sourceTree = "<group>"; };
+		BE512D2A1B66B29C00455CC7 /* GrowingTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrowingTextView.h; sourceTree = "<group>"; };
+		BE512D2B1B66B29C00455CC7 /* GrowingTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrowingTextView.m; sourceTree = "<group>"; };
+		BE512D2F1B66B38600455CC7 /* PlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceholderTextView.h; sourceTree = "<group>"; };
+		BE512D301B66B38600455CC7 /* PlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceholderTextView.m; sourceTree = "<group>"; };
+		BE512D321B66B3B800455CC7 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		BE512D331B66B3B800455CC7 /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
+		BE512D351B66B57B00455CC7 /* OperationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OperationBar.h; sourceTree = "<group>"; };
+		BE512D361B66B57B00455CC7 /* OperationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OperationBar.m; sourceTree = "<group>"; };
+		BE512D391B66B63D00455CC7 /* EmojiPageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmojiPageVC.h; sourceTree = "<group>"; };
+		BE512D3A1B66B63D00455CC7 /* EmojiPageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmojiPageVC.m; sourceTree = "<group>"; };
+		BE512D3B1B66B63D00455CC7 /* EmojiPanelVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmojiPanelVC.h; sourceTree = "<group>"; };
+		BE512D3C1B66B63D00455CC7 /* EmojiPanelVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmojiPanelVC.m; sourceTree = "<group>"; };
+		BE512D3F1B66B72100455CC7 /* NSTextAttachment+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextAttachment+Util.h"; sourceTree = "<group>"; };
+		BE512D401B66B72100455CC7 /* NSTextAttachment+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextAttachment+Util.m"; sourceTree = "<group>"; };
+		BE512D421B66B85D00455CC7 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		BE512D431B66B85D00455CC7 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		BE512D451B66BA7400455CC7 /* emoji.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emoji.plist; sourceTree = "<group>"; };
+		BE512D461B66BA7400455CC7 /* emojiToText.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emojiToText.plist; sourceTree = "<group>"; };
 		BEDE59361B657063003AB347 /* OneblogiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneblogiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEDE593A1B657063003AB347 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEDE593B1B657063003AB347 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -180,6 +214,10 @@
 		1E6C815A1B662CD900D4F002 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				BE512D381B66B5F000455CC7 /* EmojiPanel */,
+				BE512D251B66B24700455CC7 /* BottomBar */,
+				BE512D2F1B66B38600455CC7 /* PlaceholderTextView.h */,
+				BE512D301B66B38600455CC7 /* PlaceholderTextView.m */,
 				1E6C815B1B662CFC00D4F002 /* LastCell.h */,
 				1E6C815C1B662CFC00D4F002 /* LastCell.m */,
 			);
@@ -209,6 +247,49 @@
 				BE4D375D1B666D2700D56E5A /* UIImage+FontAwesome.m */,
 			);
 			name = FontAwesome;
+			sourceTree = "<group>";
+		};
+		BE512D211B66B00600455CC7 /* 详情页面 */ = {
+			isa = PBXGroup;
+			children = (
+				BE512D221B66B03700455CC7 /* BottomBarViewController.h */,
+				BE512D231B66B03700455CC7 /* BottomBarViewController.m */,
+				BE512D421B66B85D00455CC7 /* DetailsViewController.h */,
+				BE512D431B66B85D00455CC7 /* DetailsViewController.m */,
+			);
+			name = "详情页面";
+			sourceTree = "<group>";
+		};
+		BE512D251B66B24700455CC7 /* BottomBar */ = {
+			isa = PBXGroup;
+			children = (
+				BE512D261B66B25300455CC7 /* EditingBar */,
+				BE512D351B66B57B00455CC7 /* OperationBar.h */,
+				BE512D361B66B57B00455CC7 /* OperationBar.m */,
+			);
+			name = BottomBar;
+			sourceTree = "<group>";
+		};
+		BE512D261B66B25300455CC7 /* EditingBar */ = {
+			isa = PBXGroup;
+			children = (
+				BE512D271B66B29C00455CC7 /* EditingBar.h */,
+				BE512D281B66B29C00455CC7 /* EditingBar.m */,
+				BE512D2A1B66B29C00455CC7 /* GrowingTextView.h */,
+				BE512D2B1B66B29C00455CC7 /* GrowingTextView.m */,
+			);
+			name = EditingBar;
+			sourceTree = "<group>";
+		};
+		BE512D381B66B5F000455CC7 /* EmojiPanel */ = {
+			isa = PBXGroup;
+			children = (
+				BE512D391B66B63D00455CC7 /* EmojiPageVC.h */,
+				BE512D3A1B66B63D00455CC7 /* EmojiPageVC.m */,
+				BE512D3B1B66B63D00455CC7 /* EmojiPanelVC.h */,
+				BE512D3C1B66B63D00455CC7 /* EmojiPanelVC.m */,
+			);
+			name = EmojiPanel;
 			sourceTree = "<group>";
 		};
 		BEDE592D1B657063003AB347 = {
@@ -252,6 +333,8 @@
 		BEDE59391B657063003AB347 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BE512D451B66BA7400455CC7 /* emoji.plist */,
+				BE512D461B66BA7400455CC7 /* emojiToText.plist */,
 				BEDE593A1B657063003AB347 /* Info.plist */,
 				BEDE593B1B657063003AB347 /* main.m */,
 			);
@@ -280,6 +363,7 @@
 			children = (
 				BEDE59741B65775B003AB347 /* SwipableViewController */,
 				BEDE59671B657374003AB347 /* 侧拉菜单 */,
+				BE512D211B66B00600455CC7 /* 详情页面 */,
 				BEDE59601B6572A7003AB347 /* Tab Bar */,
 				1E6C81571B662BEB00D4F002 /* OBObjsViewController.h */,
 				1E6C81581B662BEB00D4F002 /* OBObjsViewController.m */,
@@ -314,6 +398,8 @@
 				BEDE596C1B65755F003AB347 /* Category */,
 				1E7407CA1B660F880011F7A5 /* Utils.h */,
 				1E7407CB1B660F880011F7A5 /* Utils.m */,
+				BE512D321B66B3B800455CC7 /* Config.h */,
+				BE512D331B66B3B800455CC7 /* Config.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -322,6 +408,8 @@
 			isa = PBXGroup;
 			children = (
 				BE4D37551B666CAF00D56E5A /* FontAwesome */,
+				BE512D3F1B66B72100455CC7 /* NSTextAttachment+Util.h */,
+				BE512D401B66B72100455CC7 /* NSTextAttachment+Util.m */,
 				1E0C68881B66258800AC6611 /* UIImage+Util.h */,
 				1E0C68891B66258800AC6611 /* UIImage+Util.m */,
 				1E0C688A1B66258800AC6611 /* UIImageView+Util.h */,
@@ -463,8 +551,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE512D471B66BA7400455CC7 /* emoji.plist in Resources */,
 				BEDE59471B657063003AB347 /* Images.xcassets in Resources */,
 				BE4D37631B6670FC00D56E5A /* FontAwesome.ttf in Resources */,
+				BE512D481B66BA7400455CC7 /* emojiToText.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,25 +611,35 @@
 				1E0C68811B661F2D00AC6611 /* DiscoverViewController.m in Sources */,
 				1E6C81591B662BEB00D4F002 /* OBObjsViewController.m in Sources */,
 				BEDE596A1B65739C003AB347 /* SideMenuViewController.m in Sources */,
+				BE512D3E1B66B63D00455CC7 /* EmojiPanelVC.m in Sources */,
 				BE4D375F1B666D2700D56E5A /* NSString+FontAwesome.m in Sources */,
 				BEDE596F1B657575003AB347 /* UIColor+Util.m in Sources */,
+				BE512D2E1B66B29C00455CC7 /* GrowingTextView.m in Sources */,
 				BEDE593F1B657063003AB347 /* AppDelegate.m in Sources */,
 				BEDE597C1B6577C1003AB347 /* SwipableViewController.m in Sources */,
 				1E0C688C1B66258800AC6611 /* UIImage+Util.m in Sources */,
 				BEDE59891B657A85003AB347 /* TGMetaWeblogXMLRPCApi.m in Sources */,
+				BE512D2C1B66B29C00455CC7 /* EditingBar.m in Sources */,
 				1E0C687B1B661E5000AC6611 /* MessageViewController.m in Sources */,
 				BE4D37541B665BEA00D56E5A /* PostCell.m in Sources */,
 				1E0C688D1B66258800AC6611 /* UIImageView+Util.m in Sources */,
 				1E6C815D1B662CFC00D4F002 /* LastCell.m in Sources */,
 				1E0C687E1B661F1B00AC6611 /* LoginViewController.m in Sources */,
+				BE512D341B66B3B800455CC7 /* Config.m in Sources */,
+				BE512D441B66B85D00455CC7 /* DetailsViewController.m in Sources */,
+				BE512D311B66B38600455CC7 /* PlaceholderTextView.m in Sources */,
+				BE512D411B66B72100455CC7 /* NSTextAttachment+Util.m in Sources */,
 				1E7407CC1B660F880011F7A5 /* Utils.m in Sources */,
 				BEDE59881B657A85003AB347 /* TGMetaWeblogAuthApi.m in Sources */,
+				BE512D241B66B03700455CC7 /* BottomBarViewController.m in Sources */,
 				BEDE59651B657331003AB347 /* OBTabBarController.m in Sources */,
 				BE4D37611B666D2700D56E5A /* UIImage+FontAwesome.m in Sources */,
 				BEDE59731B65771E003AB347 /* PostViewController.m in Sources */,
+				BE512D371B66B57B00455CC7 /* OperationBar.m in Sources */,
 				BEDE59661B657331003AB347 /* OptionButton.m in Sources */,
 				BEDE597D1B6577C1003AB347 /* TitleBarView.m in Sources */,
 				BEDE598A1B657A85003AB347 /* TGXMLRPCApiClient.m in Sources */,
+				BE512D3D1B66B63D00455CC7 /* EmojiPageVC.m in Sources */,
 				BEDE597B1B6577C1003AB347 /* HorizonalTableViewController.m in Sources */,
 				BEDE593C1B657063003AB347 /* main.m in Sources */,
 				BE4D37601B666D2700D56E5A /* UIFont+FontAwesome.m in Sources */,
