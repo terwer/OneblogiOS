@@ -110,14 +110,15 @@ static NSString *kBlogCellID = @"BlogCell";
 #pragma mark - Custom methods
 
 - (void)fetchObjectsOnPage:(NSUInteger)page refresh:(BOOL)refresh{
-    [self.api getRecentPosts:10
+    NSInteger currentCount = 10+page*10;
+    NSLog(@"Tring to get %lu posts...",currentCount);
+    [self.api getRecentPosts:currentCount
                      success:^(NSArray *posts) {
                          NSLog(@"We have %lu posts", (unsigned long) [posts count]);
                          
                          //处理刷新
                          if (refresh) {
                              super.page = 0;
-                             //[_posts remm];
                              if (super.didRefreshSucceed) {
                                  super.didRefreshSucceed();
                              }
