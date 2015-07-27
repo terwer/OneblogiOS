@@ -14,6 +14,7 @@
 #import "Utils.h"
 
 static NSString *kPostCellID = @"PostCell";
+const int MAX_DESCRIPTION_LENGTH=60;//描述最多字数
 
 @interface PostViewController ()
 //文章
@@ -23,14 +24,10 @@ static NSString *kPostCellID = @"PostCell";
 
 @implementation PostViewController
 
-- (instancetype)initWithBlogsType:(BlogsType)type
+- (instancetype)initWithPostType:(PostType)type
 {
     if (self = [super init]) {
-        //        NSString *blogType = type == BlogTypeLatest? @"latest" : @"recommend";
-        //        self.generateURL = ^NSString * (NSUInteger page) {
-        //            return [NSString stringWithFormat:@"%@%@?type=%@&pageIndex=%lu&%@", OSCAPI_PREFIX, OSCAPI_BLOGS_LIST, blogType, (unsigned long)page, OSCAPI_SUFFIX];
-        //        };
-        //        NSLog(@"%@",[NSString stringWithFormat:@"%@%@?type=%@&pageIndex=%lu&%@", OSCAPI_PREFIX, OSCAPI_BLOGS_LIST, blogType, (unsigned long)0, OSCAPI_SUFFIX]);
+        //TODO:do post type
     }
     
     return self;
@@ -95,7 +92,7 @@ static NSString *kPostCellID = @"PostCell";
     
     cell.backgroundColor = [UIColor themeColor];
     [cell.titleLabel setAttributedText:[self attributedTittle:[post objectForKey:@"title"]]];
-    [cell.bodyLabel setText:[self shortDescription:[post objectForKey:@"description"]]];
+    [cell.bodyLabel setText:[Utils shortString:[post objectForKey:@"description"] andLength:MAX_DESCRIPTION_LENGTH]];
     [cell.authorLabel setText:@"author"];
     cell.titleLabel.textColor = [UIColor titleColor];
     NSDate *createdDate = [post objectForKey:@"dateCreated"];
@@ -113,20 +110,14 @@ static NSString *kPostCellID = @"PostCell";
     NSDictionary *post = self.posts[indexPath.row];
     
     self.label.font = [UIFont boldSystemFontOfSize:15];
-    [self.label setText:[self shortDescription:[post objectForKey:@"description"]]];
+    [self.label setAttributedText:[self attributedTittle:[post objectForKey:@"title"]]];
     CGFloat height = [self.label sizeThatFits:CGSizeMake(tableView.frame.size.width - 16, MAXFLOAT)].height;
+    
+    self.label.text = [Utils shortString:[post objectForKey:@"description"] andLength:MAX_DESCRIPTION_LENGTH];
+    self.label.font = [UIFont systemFontOfSize:13];
     height += [self.label sizeThatFits:CGSizeMake(tableView.frame.size.width - 16, MAXFLOAT)].height;
     
-    return height+42;
-}
-
-// 提取简介
--(NSString *)shortDescription:(NSString *)description{
-    NSString *cleanedDescription = [Utils removeSpaceAndNewlineAndChars:description];
-    if ([cleanedDescription length]<45) {
-        return cleanedDescription;
-    }
-    return [[cleanedDescription substringToIndex:45] stringByAppendingString:@"..."];
+    return height + 42;
 }
 
 /*
@@ -179,7 +170,7 @@ static NSString *kPostCellID = @"PostCell";
 
 - (void)fetchObjectsOnPage:(NSUInteger)page refresh:(BOOL)refresh{
     NSInteger currentCount = 10+page*10;
-    NSLog(@"Tring to get %lu posts...",currentCount);
+    NSLog(@"Tring to get %lu posts...",(long)currentCount);
     [self.api getRecentPosts:currentCount
                      success:^(NSArray *posts) {
                          NSLog(@"We have %lu posts", (unsigned long) [posts count]);

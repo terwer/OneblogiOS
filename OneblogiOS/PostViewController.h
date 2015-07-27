@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "OBObjsViewController.h"
 
-typedef NS_ENUM(NSUInteger, BlogsType)
+typedef NS_ENUM(NSUInteger, PostType)
 {
     PostTypeLatest,//最新文章
     PostTypeRecommended,//热门文章
@@ -18,6 +18,6 @@ typedef NS_ENUM(NSUInteger, BlogsType)
 
 @interface PostViewController : OBObjsViewController
 
-- (instancetype)initWithBlogsType:(BlogsType)type;
+- (instancetype)initWithPostType:(PostType)type;
 
 @end

@@ -79,8 +79,10 @@
     if (self.api == nil) {
         //NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
         NSString *xmlrpc = @"http://www.terwer.com/xmlrpc.php";//[def objectForKey:@"mw_xmlrpc"];
+        //NSString *xmlrpc = @"http://os.blog.163.com/api/xmlrpc/metaweblog/";
         if (xmlrpc) {
             NSString *username = @"terwer";//[def objectForKey:@"mw_username"];
+            //NSString *username = @"cyutyw@126.com";
             NSString *password = @"cbgtyw2020";//[def objectForKey:@"mw_password"];
             if (username && password) {
                 self.api = [TGMetaWeblogAuthApi apiWithXMLRPCURL:[NSURL URLWithString:xmlrpc] username:username password:password];

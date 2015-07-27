@@ -32,6 +32,16 @@ static NSString * const kKeyMinutes = @"minutes";
 +(NSString *)removeSpaceAndNewlineAndChars:(NSString *)str;
 
 /**
+ *  提取字符串 15-07-27 by terwer
+ *
+ *  @param str 原始字符串
+ *  @param length  最小长度
+ *
+ *  @return 提取后的长度
+ */
++(NSString *)shortString:(NSString *)str andLength:(NSInteger)length;
+
+/**
  *  美化评论显示 15-07-27 by terwer
  *
  *  @param commentCount 评论数目

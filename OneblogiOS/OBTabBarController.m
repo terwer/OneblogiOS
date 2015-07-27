@@ -37,11 +37,11 @@
     // Do any additional setup after loading the view.
     
     //全部
-    PostViewController *postViewCtl = [PostViewController new];//[[BlogsViewController alloc] initWithBlogsType:BlogTypeLatest];
+    PostViewController *postViewCtl = [[PostViewController alloc]initWithPostType:PostTypeLatest];
     //最新
-    UIViewController *hotViewCtl = [UIViewController new];
+    UIViewController *hotViewCtl = [[PostViewController alloc]initWithPostType:PostTypeRecommended];
     //热门
-    UIViewController *digViewCtl = [UIViewController new];
+    UIViewController *digViewCtl = [[PostViewController alloc]initWithPostType:PostTypeDig];
     
     //博客
     SwipableViewController *blogSVC = [[SwipableViewController alloc] initWithTitle:@"首页"
