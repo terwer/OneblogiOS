@@ -16,7 +16,7 @@
 		BEDE59661B657331003AB347 /* OptionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDE59641B657331003AB347 /* OptionButton.m */; };
 		BEDE596A1B65739C003AB347 /* SideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDE59691B65739C003AB347 /* SideMenuViewController.m */; };
 		BEDE596F1B657575003AB347 /* UIColor+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDE596E1B657575003AB347 /* UIColor+Util.m */; };
-		BEDE59731B65771E003AB347 /* BlogsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDE59721B65771E003AB347 /* BlogsViewController.m */; };
+		BEDE59731B65771E003AB347 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDE59721B65771E003AB347 /* PostViewController.m */; };
 		BEDE597B1B6577C1003AB347 /* HorizonalTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDE59761B6577C1003AB347 /* HorizonalTableViewController.m */; };
 		BEDE597C1B6577C1003AB347 /* SwipableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDE59781B6577C1003AB347 /* SwipableViewController.m */; };
 		BEDE597D1B6577C1003AB347 /* TitleBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDE597A1B6577C1003AB347 /* TitleBarView.m */; };
@@ -54,8 +54,8 @@
 		BEDE59691B65739C003AB347 /* SideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuViewController.m; sourceTree = "<group>"; };
 		BEDE596D1B657575003AB347 /* UIColor+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Util.h"; sourceTree = "<group>"; };
 		BEDE596E1B657575003AB347 /* UIColor+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Util.m"; sourceTree = "<group>"; };
-		BEDE59711B65771E003AB347 /* BlogsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogsViewController.h; sourceTree = "<group>"; };
-		BEDE59721B65771E003AB347 /* BlogsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogsViewController.m; sourceTree = "<group>"; };
+		BEDE59711B65771E003AB347 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
+		BEDE59721B65771E003AB347 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
 		BEDE59751B6577C1003AB347 /* HorizonalTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizonalTableViewController.h; sourceTree = "<group>"; };
 		BEDE59761B6577C1003AB347 /* HorizonalTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizonalTableViewController.m; sourceTree = "<group>"; };
 		BEDE59771B6577C1003AB347 /* SwipableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipableViewController.h; sourceTree = "<group>"; };
@@ -101,6 +101,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		1E285D551B65D5D7006D3C5D /* 我 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "我";
+			sourceTree = "<group>";
+		};
+		1E285D561B65D5EC006D3C5D /* 消息 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "消息";
+			sourceTree = "<group>";
+		};
+		1E285D571B65D5F6006D3C5D /* 发现 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "发现";
+			sourceTree = "<group>";
+		};
 		566954732E19B9C5152D8DBB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +156,9 @@
 			children = (
 				BEDE597E1B657A4B003AB347 /* API */,
 				BEDE59701B657703003AB347 /* 博客 */,
+				1E285D561B65D5EC006D3C5D /* 消息 */,
+				1E285D571B65D5F6006D3C5D /* 发现 */,
+				1E285D551B65D5D7006D3C5D /* 我 */,
 				BEDE596B1B657558003AB347 /* Utils */,
 				BEDE595F1B65723E003AB347 /* Main ViewControllers */,
 				BEDE593D1B657063003AB347 /* AppDelegate.h */,
@@ -221,8 +245,8 @@
 		BEDE59701B657703003AB347 /* 博客 */ = {
 			isa = PBXGroup;
 			children = (
-				BEDE59711B65771E003AB347 /* BlogsViewController.h */,
-				BEDE59721B65771E003AB347 /* BlogsViewController.m */,
+				BEDE59711B65771E003AB347 /* PostViewController.h */,
+				BEDE59721B65771E003AB347 /* PostViewController.m */,
 			);
 			name = "博客";
 			sourceTree = "<group>";
@@ -403,7 +427,7 @@
 				BEDE59891B657A85003AB347 /* TGMetaWeblogXMLRPCApi.m in Sources */,
 				BEDE59881B657A85003AB347 /* TGMetaWeblogAuthApi.m in Sources */,
 				BEDE59651B657331003AB347 /* OBTabBarController.m in Sources */,
-				BEDE59731B65771E003AB347 /* BlogsViewController.m in Sources */,
+				BEDE59731B65771E003AB347 /* PostViewController.m in Sources */,
 				BEDE59661B657331003AB347 /* OptionButton.m in Sources */,
 				BEDE597D1B6577C1003AB347 /* TitleBarView.m in Sources */,
 				BEDE598A1B657A85003AB347 /* TGXMLRPCApiClient.m in Sources */,

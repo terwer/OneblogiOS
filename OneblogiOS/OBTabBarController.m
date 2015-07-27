@@ -9,7 +9,7 @@
 #import "OBTabBarController.h"
 #import "OptionButton.h"
 #import <RESideMenu/RESideMenu.h>
-#import "BlogsViewController.h"
+#import "PostViewController.h"
 #import "SwipableViewController.h"
 
 @interface OBTabBarController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
@@ -33,29 +33,23 @@
     // Do any additional setup after loading the view.
     
     //全部
-    BlogsViewController *blogViewCtl = [BlogsViewController new];//[[BlogsViewController alloc] initWithBlogsType:BlogTypeLatest];
+    PostViewController *postViewCtl = [PostViewController new];//[[BlogsViewController alloc] initWithBlogsType:BlogTypeLatest];
     //最新
-    UIViewController *pageViewCtl = [UIViewController new];
+    UIViewController *hotViewCtl = [UIViewController new];
     //热门
-    UIViewController *infoViewCtl = [UIViewController new];
-    //置顶
-    UIViewController *commentViewCtl = [UIViewController new];
-    //留言
-    UIViewController *guestbookViewCtl = [UIViewController new];
+    UIViewController *digViewCtl = [UIViewController new];
     
-    //blogViewCtl.needCache = YES;
-    
-    SwipableViewController *newsSVC = [[SwipableViewController alloc] initWithTitle:@"文章"
-                                                                       andSubTitles:@[@"最新文章",@"热门文章",@"置顶文章",@"评论",@"留言"]
-                                                                     andControllers:@[ blogViewCtl,pageViewCtl,infoViewCtl,commentViewCtl,guestbookViewCtl]
+    SwipableViewController *blogSVC = [[SwipableViewController alloc] initWithTitle:@"首页"
+                                                                       andSubTitles:@[@"最新文章",@"热门文章",@"置顶文章"]
+                                                                     andControllers:@[ postViewCtl,hotViewCtl,digViewCtl]
                                                                         underTabbar:YES];
     
-   
+    
     
     
     self.tabBar.translucent = NO;
     self.viewControllers = @[
-                             [self addNavigationItemForViewController:newsSVC]
+                             [self addNavigationItemForViewController:blogSVC]
                              ];
     
     

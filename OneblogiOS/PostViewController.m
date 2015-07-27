@@ -8,12 +8,12 @@
 //  Copyright (c) 2015年 Terwer Green. All rights reserved.
 //
 
-#import "BlogsViewController.h"
+#import "PostViewController.h"
 #import "TGMetaWeblogApi.h"
 
 static NSString *kBlogCellID = @"BlogCell";
 
-@interface BlogsViewController ()
+@interface PostViewController ()
 
 //MetaWeblogApi
 @property(nonatomic) id<TGMetaWeblogBaseApi> api;
@@ -22,7 +22,7 @@ static NSString *kBlogCellID = @"BlogCell";
 
 @end
 
-@implementation BlogsViewController
+@implementation PostViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
