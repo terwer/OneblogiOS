@@ -14,9 +14,6 @@
 static NSString *kBlogCellID = @"BlogCell";
 
 @interface PostViewController ()
-
-//MetaWeblogApi
-@property(nonatomic) id<TGMetaWeblogBaseApi> api;
 //文章
 @property(nonatomic) NSArray *posts;
 
@@ -27,16 +24,7 @@ static NSString *kBlogCellID = @"BlogCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //检测登陆
-    BOOL apiState=[self setupApi];
-    if (!apiState) {
-        NSLog(@"api初始化失败，请重新登录。");
-        return;
-    }
-    
-    [self refreshPosts:self];
-    
-     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kBlogCellID];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kBlogCellID];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -119,33 +107,9 @@ static NSString *kBlogCellID = @"BlogCell";
 }
 */
 
-#pragma mark - Private
-
-- (BOOL)setupApi {
-    if (self.api == nil) {
-        //NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-        NSString *xmlrpc = @"http://www.terwer.com/xmlrpc.php";//[def objectForKey:@"mw_xmlrpc"];
-        if (xmlrpc) {
-            NSString *username = @"terwer";//[def objectForKey:@"mw_username"];
-            NSString *password = @"cbgtyw2020";//[def objectForKey:@"mw_password"];
-            if (username && password) {
-                self.api = [TGMetaWeblogAuthApi apiWithXMLRPCURL:[NSURL URLWithString:xmlrpc] username:username password:password];
-            }
-        }
-        
-    }
-    
-    //api初始化成功
-    if (self.api) {
-        return YES;
-    }else{
-        return NO;
-    }
-}
-
 #pragma mark - Custom methods
 
-- (void)refreshPosts:(id)sender {
+- (void)fetchObjectsOnPage:(NSUInteger)page refresh:(BOOL)refresh{
     [self.api getRecentPosts:10
                      success:^(NSArray *posts) {
                          NSLog(@"We have %lu posts", (unsigned long) [posts count]);

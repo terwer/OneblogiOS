@@ -14,6 +14,7 @@
 		1E0C688C1B66258800AC6611 /* UIImage+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C68891B66258800AC6611 /* UIImage+Util.m */; };
 		1E0C688D1B66258800AC6611 /* UIImageView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C688B1B66258800AC6611 /* UIImageView+Util.m */; };
 		1E6C81591B662BEB00D4F002 /* OBObjsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6C81581B662BEB00D4F002 /* OBObjsViewController.m */; };
+		1E6C815D1B662CFC00D4F002 /* LastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6C815C1B662CFC00D4F002 /* LastCell.m */; };
 		1E7407CC1B660F880011F7A5 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E7407CB1B660F880011F7A5 /* Utils.m */; };
 		1E7407CF1B66103E0011F7A5 /* UIView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E7407CE1B66103E0011F7A5 /* UIView+Util.m */; };
 		AFB8EC6920FC4627EC5B205F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFABC981ABD733EEBBE20A05 /* libPods.a */; };
@@ -59,6 +60,8 @@
 		1E0C688B1B66258800AC6611 /* UIImageView+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Util.m"; sourceTree = "<group>"; };
 		1E6C81571B662BEB00D4F002 /* OBObjsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBObjsViewController.h; sourceTree = "<group>"; };
 		1E6C81581B662BEB00D4F002 /* OBObjsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBObjsViewController.m; sourceTree = "<group>"; };
+		1E6C815B1B662CFC00D4F002 /* LastCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastCell.h; sourceTree = "<group>"; };
+		1E6C815C1B662CFC00D4F002 /* LastCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LastCell.m; sourceTree = "<group>"; };
 		1E7407CA1B660F880011F7A5 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		1E7407CB1B660F880011F7A5 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		1E7407CD1B66103E0011F7A5 /* UIView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Util.h"; sourceTree = "<group>"; };
@@ -155,6 +158,15 @@
 				1E0C68801B661F2D00AC6611 /* DiscoverViewController.m */,
 			);
 			name = "发现";
+			sourceTree = "<group>";
+		};
+		1E6C815A1B662CD900D4F002 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				1E6C815B1B662CFC00D4F002 /* LastCell.h */,
+				1E6C815C1B662CFC00D4F002 /* LastCell.m */,
+			);
+			name = Component;
 			sourceTree = "<group>";
 		};
 		566954732E19B9C5152D8DBB /* Pods */ = {
@@ -265,6 +277,7 @@
 		BEDE596B1B657558003AB347 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				1E6C815A1B662CD900D4F002 /* Component */,
 				BEDE596C1B65755F003AB347 /* Category */,
 				1E7407CA1B660F880011F7A5 /* Utils.h */,
 				1E7407CB1B660F880011F7A5 /* Utils.m */,
@@ -477,6 +490,7 @@
 				BEDE59891B657A85003AB347 /* TGMetaWeblogXMLRPCApi.m in Sources */,
 				1E0C687B1B661E5000AC6611 /* MessageViewController.m in Sources */,
 				1E0C688D1B66258800AC6611 /* UIImageView+Util.m in Sources */,
+				1E6C815D1B662CFC00D4F002 /* LastCell.m in Sources */,
 				1E0C687E1B661F1B00AC6611 /* LoginViewController.m in Sources */,
 				1E7407CC1B660F880011F7A5 /* Utils.m in Sources */,
 				BEDE59881B657A85003AB347 /* TGMetaWeblogAuthApi.m in Sources */,
