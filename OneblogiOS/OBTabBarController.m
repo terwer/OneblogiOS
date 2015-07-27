@@ -66,7 +66,7 @@
                              [[UINavigationController alloc] initWithRootViewController:myInfoVC]
                              ];
     
-    
+    //底部中间按钮
     NSArray *titles = @[@"博客", @"消息", @"", @"发现", @"我"];
     NSArray *images = @[@"tabbar-news", @"tabbar-tweet", @"blank", @"tabbar-discover", @"tabbar-me"];
     [self.tabBar.items enumerateObjectsUsingBlock:^(UITabBarItem *item, NSUInteger idx, BOOL *stop) {
@@ -81,7 +81,7 @@
     
     //禁用中间标签
     [self.tabBar.items[2] setEnabled:NO];
-    
+    //添加中间按钮
     [self addCenterButtonWithImage:[UIImage imageNamed:@"tabbar-more"]];
     
     // 功能键相关
@@ -113,7 +113,7 @@
         [self.view addSubview:optionButton];
         [_optionButtons addObject:optionButton];
     }
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -121,7 +121,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+#pragma nav
+/**
+ *  添加视图控制器到导航控制器
+ *
+ *  @param viewController 视图控制器
+ *
+ *  @return 导航控制器
+ */
 - (UINavigationController *)addNavigationItemForViewController:(UIViewController *)viewController
 {
     
@@ -140,13 +147,25 @@
     return navigationController;
 }
 
+/**
+ *  左侧滑动展开
+ */
 -(void)onClickMenuButton{
+    NSLog(@"side");
 }
 
+/**
+ *  搜索
+ */
 -(void)pushSearchViewController{
+    NSLog(@"search");
 }
 
-
+/**
+ *  添加中间操作按钮
+ *
+ *  @param buttonImage 按钮图片
+ */
 -(void)addCenterButtonWithImage:(UIImage *)buttonImage
 {
     _centerButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -165,6 +184,9 @@
 }
 
 
+/**
+ *  中间按钮点击
+ */
 - (void)buttonPressed
 {
     [self changeTheButtonStateAnimatedToOpen:_isPressed];
@@ -172,7 +194,11 @@
     _isPressed = !_isPressed;
 }
 
-
+/**
+ *  中间按钮显示隐藏
+ *
+ *  @param isPressed 是否按下
+ */
 - (void)changeTheButtonStateAnimatedToOpen:(BOOL)isPressed
 {
     if (isPressed) {
@@ -215,6 +241,9 @@
     }
 }
 
+/**
+ *  添加操作按钮
+ */
 - (void)addBlurView
 {
     _centerButton.enabled = NO;
@@ -245,7 +274,9 @@
                      }];
 }
 
-
+/**
+ *  删除操作按钮
+ */
 - (void)removeBlurView
 {
     _centerButton.enabled = NO;
@@ -266,7 +297,40 @@
 }
 
 
--(void)onTapOptionButton:(id)sender{
+#pragma mark - 处理点击事件
 
+- (void)onTapOptionButton:(UIGestureRecognizer *)recognizer
+{
+    switch (recognizer.view.tag) {
+        case 0: {
+            NSLog(@"发布文字文章。");
+            break;
+        }
+        case 1: {
+            NSLog(@"发布图片。");
+            break;
+        }
+        case 2: {
+            NSLog(@"拍照。");
+            break;
+        }
+        case 3: {
+            NSLog(@"语音");
+            break;
+        }
+        case 4: {
+            NSLog(@"扫一扫");
+            break;
+        }
+        case 5: {
+            NSLog(@"搜索");
+            break;
+        }
+        default: break;
+    }
+    
+    [self buttonPressed];
 }
+
+
 @end
