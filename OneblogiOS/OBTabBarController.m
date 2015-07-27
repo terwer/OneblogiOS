@@ -11,6 +11,10 @@
 #import <RESideMenu/RESideMenu.h>
 #import "PostViewController.h"
 #import "SwipableViewController.h"
+#import "MessageViewController.h"
+#import "DiscoverViewController.h"
+#import "MyInfoController.h"
+#import "Utils.h"
 
 @interface OBTabBarController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
@@ -39,22 +43,32 @@
     //热门
     UIViewController *digViewCtl = [UIViewController new];
     
+    //博客
     SwipableViewController *blogSVC = [[SwipableViewController alloc] initWithTitle:@"首页"
                                                                        andSubTitles:@[@"最新文章",@"热门文章",@"置顶文章"]
                                                                      andControllers:@[ postViewCtl,hotViewCtl,digViewCtl]
                                                                         underTabbar:YES];
     
     
-    
+    //消息
+    MessageViewController *messageCtl = [[MessageViewController alloc]initWithStyle:UITableViewStyleGrouped];
+    //发现
+    DiscoverViewController *discoverTableVC = [[DiscoverViewController alloc]initWithStyle:UITableViewStyleGrouped];
+    //我
+    MyInfoController *myInfoVC = [[MyInfoController alloc]init];
     
     self.tabBar.translucent = NO;
     self.viewControllers = @[
-                             [self addNavigationItemForViewController:blogSVC]
+                             [self addNavigationItemForViewController:blogSVC],
+                             [self addNavigationItemForViewController:messageCtl],
+                             [UIViewController new],
+                             [self addNavigationItemForViewController:discoverTableVC],
+                             [[UINavigationController alloc] initWithRootViewController:myInfoVC]
                              ];
     
     
-    NSArray *titles = @[@"文章"];
-    NSArray *images = @[@"tabbar-news"];
+    NSArray *titles = @[@"博客", @"消息", @"", @"发现", @"我"];
+    NSArray *images = @[@"tabbar-news", @"tabbar-tweet", @"blank", @"tabbar-discover", @"tabbar-me"];
     [self.tabBar.items enumerateObjectsUsingBlock:^(UITabBarItem *item, NSUInteger idx, BOOL *stop) {
         [item setTitle:titles[idx]];
         //NSLog(@"%@",images[idx]);
@@ -65,6 +79,10 @@
         }
     }];
     
+    //禁用中间标签
+    [self.tabBar.items[2] setEnabled:NO];
+    
+    [self addCenterButtonWithImage:[UIImage imageNamed:@"tabbar-more"]];
     
 }
 
@@ -96,6 +114,28 @@
 }
 
 -(void)pushSearchViewController{
+}
+
+
+-(void)addCenterButtonWithImage:(UIImage *)buttonImage
+{
+    _centerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    CGPoint origin = [self.view convertPoint:self.tabBar.center toView:self.tabBar];
+    CGSize buttonSize = CGSizeMake(self.tabBar.frame.size.width / 5 - 6, self.tabBar.frame.size.height - 4);
+    
+    _centerButton.frame = CGRectMake(origin.x - buttonSize.height/2, origin.y - buttonSize.height/2, buttonSize.height, buttonSize.height);
+    
+    [_centerButton setCornerRadius:buttonSize.height/2];
+    [_centerButton setBackgroundColor:[UIColor colorWithHex:0x428bd1]];
+    [_centerButton setImage:buttonImage forState:UIControlStateNormal];
+    [_centerButton addTarget:self action:@selector(buttonPressed) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.tabBar addSubview:_centerButton];
+}
+
+-(void)buttonPressed{
+
 }
 
 @end

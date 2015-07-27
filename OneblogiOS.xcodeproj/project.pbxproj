@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E0C687B1B661E5000AC6611 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C687A1B661E5000AC6611 /* MessageViewController.m */; };
+		1E0C687E1B661F1B00AC6611 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C687D1B661F1B00AC6611 /* LoginViewController.m */; };
+		1E0C68811B661F2D00AC6611 /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C68801B661F2D00AC6611 /* DiscoverViewController.m */; };
+		1E0C68841B66203400AC6611 /* MyInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C68831B66203400AC6611 /* MyInfoController.m */; };
+		1E7407CC1B660F880011F7A5 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E7407CB1B660F880011F7A5 /* Utils.m */; };
+		1E7407CF1B66103E0011F7A5 /* UIView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E7407CE1B66103E0011F7A5 /* UIView+Util.m */; };
 		AFB8EC6920FC4627EC5B205F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFABC981ABD733EEBBE20A05 /* libPods.a */; };
 		BEDE593C1B657063003AB347 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDE593B1B657063003AB347 /* main.m */; };
 		BEDE593F1B657063003AB347 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDE593E1B657063003AB347 /* AppDelegate.m */; };
@@ -36,6 +42,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E0C68791B661E5000AC6611 /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
+		1E0C687A1B661E5000AC6611 /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
+		1E0C687C1B661F1B00AC6611 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		1E0C687D1B661F1B00AC6611 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		1E0C687F1B661F2D00AC6611 /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
+		1E0C68801B661F2D00AC6611 /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
+		1E0C68821B66203400AC6611 /* MyInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoController.h; sourceTree = "<group>"; };
+		1E0C68831B66203400AC6611 /* MyInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoController.m; sourceTree = "<group>"; };
+		1E7407CA1B660F880011F7A5 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		1E7407CB1B660F880011F7A5 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		1E7407CD1B66103E0011F7A5 /* UIView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Util.h"; sourceTree = "<group>"; };
+		1E7407CE1B66103E0011F7A5 /* UIView+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Util.m"; sourceTree = "<group>"; };
 		5FB39874290F4B520E0E4DEF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BEDE59361B657063003AB347 /* OneblogiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneblogiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEDE593A1B657063003AB347 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -104,6 +122,10 @@
 		1E285D551B65D5D7006D3C5D /* 我 */ = {
 			isa = PBXGroup;
 			children = (
+				1E0C687C1B661F1B00AC6611 /* LoginViewController.h */,
+				1E0C687D1B661F1B00AC6611 /* LoginViewController.m */,
+				1E0C68821B66203400AC6611 /* MyInfoController.h */,
+				1E0C68831B66203400AC6611 /* MyInfoController.m */,
 			);
 			name = "我";
 			sourceTree = "<group>";
@@ -111,6 +133,8 @@
 		1E285D561B65D5EC006D3C5D /* 消息 */ = {
 			isa = PBXGroup;
 			children = (
+				1E0C68791B661E5000AC6611 /* MessageViewController.h */,
+				1E0C687A1B661E5000AC6611 /* MessageViewController.m */,
 			);
 			name = "消息";
 			sourceTree = "<group>";
@@ -118,6 +142,8 @@
 		1E285D571B65D5F6006D3C5D /* 发现 */ = {
 			isa = PBXGroup;
 			children = (
+				1E0C687F1B661F2D00AC6611 /* DiscoverViewController.h */,
+				1E0C68801B661F2D00AC6611 /* DiscoverViewController.m */,
 			);
 			name = "发现";
 			sourceTree = "<group>";
@@ -229,6 +255,8 @@
 			isa = PBXGroup;
 			children = (
 				BEDE596C1B65755F003AB347 /* Category */,
+				1E7407CA1B660F880011F7A5 /* Utils.h */,
+				1E7407CB1B660F880011F7A5 /* Utils.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -236,6 +264,8 @@
 		BEDE596C1B65755F003AB347 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				1E7407CD1B66103E0011F7A5 /* UIView+Util.h */,
+				1E7407CE1B66103E0011F7A5 /* UIView+Util.m */,
 				BEDE596D1B657575003AB347 /* UIColor+Util.h */,
 				BEDE596E1B657575003AB347 /* UIColor+Util.m */,
 			);
@@ -420,11 +450,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E7407CF1B66103E0011F7A5 /* UIView+Util.m in Sources */,
+				1E0C68841B66203400AC6611 /* MyInfoController.m in Sources */,
+				1E0C68811B661F2D00AC6611 /* DiscoverViewController.m in Sources */,
 				BEDE596A1B65739C003AB347 /* SideMenuViewController.m in Sources */,
 				BEDE596F1B657575003AB347 /* UIColor+Util.m in Sources */,
 				BEDE593F1B657063003AB347 /* AppDelegate.m in Sources */,
 				BEDE597C1B6577C1003AB347 /* SwipableViewController.m in Sources */,
 				BEDE59891B657A85003AB347 /* TGMetaWeblogXMLRPCApi.m in Sources */,
+				1E0C687B1B661E5000AC6611 /* MessageViewController.m in Sources */,
+				1E0C687E1B661F1B00AC6611 /* LoginViewController.m in Sources */,
+				1E7407CC1B660F880011F7A5 /* Utils.m in Sources */,
 				BEDE59881B657A85003AB347 /* TGMetaWeblogAuthApi.m in Sources */,
 				BEDE59651B657331003AB347 /* OBTabBarController.m in Sources */,
 				BEDE59731B65771E003AB347 /* PostViewController.m in Sources */,

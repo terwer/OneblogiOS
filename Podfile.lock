@@ -20,16 +20,19 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - GPUImage (0.1.7)
   - RESideMenu (4.0.7)
   - wpxmlrpc (0.8)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - GPUImage (~> 0.1.6)
   - RESideMenu (~> 4.0.7)
   - wpxmlrpc (~> 0.7)
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   RESideMenu: f24c508404b49c667344c54aba7e590883533958
   wpxmlrpc: 053c9cbed13dcec08515a4ffeb51780f6e858cc7
 

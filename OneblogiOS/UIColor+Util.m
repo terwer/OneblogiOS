@@ -40,9 +40,9 @@
 + (UIColor *)nameColor
 {
     if (((AppDelegate *)[UIApplication sharedApplication].delegate).inNightMode) {
-        return [UIColor colorWithRed:37.0/255 green:147.0/255 blue:58.0/255 alpha:1.0];
+        return [UIColor colorWithRed:66.0/255 green:139.0/255 blue:209.0/255 alpha:1.0];
     }
-    return [UIColor colorWithHex:0x087221];
+    return [UIColor colorWithHex:0x267dd1];
 }
 
 + (UIColor *)titleColor
