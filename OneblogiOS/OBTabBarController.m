@@ -55,7 +55,7 @@
     //发现
     DiscoverViewController *discoverTableVC = [[DiscoverViewController alloc]initWithStyle:UITableViewStyleGrouped];
     //我
-    MyInfoController *myInfoVC = [[MyInfoController alloc]init];
+    MyInfoController *myInfoVC = [[MyInfoController alloc]initWithStyle:UITableViewStyleGrouped];
     
     self.tabBar.translucent = NO;
     self.viewControllers = @[
@@ -134,8 +134,107 @@
     [self.tabBar addSubview:_centerButton];
 }
 
--(void)buttonPressed{
 
+- (void)buttonPressed
+{
+    [self changeTheButtonStateAnimatedToOpen:_isPressed];
+    
+    _isPressed = !_isPressed;
 }
+
+
+- (void)changeTheButtonStateAnimatedToOpen:(BOOL)isPressed
+{
+    if (isPressed) {
+        [self removeBlurView];
+        
+        [_animator removeAllBehaviors];
+        for (int i = 0; i < 6; i++) {
+            UIButton *button = _optionButtons[i];
+            
+            UIAttachmentBehavior *attachment = [[UIAttachmentBehavior alloc] initWithItem:button
+                                                                         attachedToAnchor:CGPointMake(_screenWidth/6 * (i%3*2+1),
+                                                                                                      _screenHeight + 200 + i/3*100)];
+            attachment.damping = 0.65;
+            attachment.frequency = 4;
+            attachment.length = 1;
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC * (6 - i)), dispatch_get_main_queue(), ^{
+                [_animator addBehavior:attachment];
+            });
+        }
+    } else {
+        [self addBlurView];
+        
+        [_animator removeAllBehaviors];
+        for (int i = 0; i < 6; i++) {
+            UIButton *button = _optionButtons[i];
+            [self.view bringSubviewToFront:button];
+            
+            UIAttachmentBehavior *attachment = [[UIAttachmentBehavior alloc] initWithItem:button
+                                                                         attachedToAnchor:CGPointMake(_screenWidth/6 * (i%3*2+1),
+                                                                                                      _screenHeight - 200 + i/3*100)];
+            attachment.damping = 0.65;
+            attachment.frequency = 4;
+            attachment.length = 1;
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.02 * NSEC_PER_SEC * (i + 1)), dispatch_get_main_queue(), ^{
+                [_animator addBehavior:attachment];
+            });
+        }
+    }
+}
+
+- (void)addBlurView
+{
+    _centerButton.enabled = NO;
+    
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    CGRect cropRect = CGRectMake(0, screenSize.height - 270, screenSize.width, screenSize.height);
+    
+    UIImage *originalImage = [self.view updateBlur];
+    UIImage *croppedBlurImage = [originalImage cropToRect:cropRect];
+    
+    _blurView = [[UIImageView alloc] initWithImage:croppedBlurImage];
+    _blurView.frame = cropRect;
+    _blurView.userInteractionEnabled = YES;
+    [self.view addSubview:_blurView];
+    
+    _dimView = [[UIView alloc] initWithFrame:self.view.bounds];
+    _dimView.backgroundColor = [UIColor blackColor];
+    _dimView.alpha = 0.4;
+    [self.view insertSubview:_dimView belowSubview:self.tabBar];
+    
+    [_blurView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(buttonPressed)]];
+    [_dimView  addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(buttonPressed)]];
+    
+    [UIView animateWithDuration:0.25f
+                     animations:nil
+                     completion:^(BOOL finished) {
+                         if (finished) {_centerButton.enabled = YES;}
+                     }];
+}
+
+
+- (void)removeBlurView
+{
+    _centerButton.enabled = NO;
+    
+    self.view.alpha = 1;
+    [UIView animateWithDuration:0.25f
+                     animations:nil
+                     completion:^(BOOL finished) {
+                         if(finished) {
+                             [_dimView removeFromSuperview];
+                             _dimView = nil;
+                             
+                             [self.blurView removeFromSuperview];
+                             self.blurView = nil;
+                             _centerButton.enabled = YES;
+                         }
+                     }];
+}
+
+
 
 @end

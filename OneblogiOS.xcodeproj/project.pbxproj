@@ -10,7 +10,9 @@
 		1E0C687B1B661E5000AC6611 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C687A1B661E5000AC6611 /* MessageViewController.m */; };
 		1E0C687E1B661F1B00AC6611 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C687D1B661F1B00AC6611 /* LoginViewController.m */; };
 		1E0C68811B661F2D00AC6611 /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C68801B661F2D00AC6611 /* DiscoverViewController.m */; };
-		1E0C68841B66203400AC6611 /* MyInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C68831B66203400AC6611 /* MyInfoController.m */; };
+		1E0C68871B66248700AC6611 /* MyInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C68861B66248700AC6611 /* MyInfoController.m */; };
+		1E0C688C1B66258800AC6611 /* UIImage+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C68891B66258800AC6611 /* UIImage+Util.m */; };
+		1E0C688D1B66258800AC6611 /* UIImageView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C688B1B66258800AC6611 /* UIImageView+Util.m */; };
 		1E7407CC1B660F880011F7A5 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E7407CB1B660F880011F7A5 /* Utils.m */; };
 		1E7407CF1B66103E0011F7A5 /* UIView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E7407CE1B66103E0011F7A5 /* UIView+Util.m */; };
 		AFB8EC6920FC4627EC5B205F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFABC981ABD733EEBBE20A05 /* libPods.a */; };
@@ -48,8 +50,12 @@
 		1E0C687D1B661F1B00AC6611 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		1E0C687F1B661F2D00AC6611 /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
 		1E0C68801B661F2D00AC6611 /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
-		1E0C68821B66203400AC6611 /* MyInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoController.h; sourceTree = "<group>"; };
-		1E0C68831B66203400AC6611 /* MyInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoController.m; sourceTree = "<group>"; };
+		1E0C68851B66248700AC6611 /* MyInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoController.h; sourceTree = "<group>"; };
+		1E0C68861B66248700AC6611 /* MyInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoController.m; sourceTree = "<group>"; };
+		1E0C68881B66258800AC6611 /* UIImage+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Util.h"; sourceTree = "<group>"; };
+		1E0C68891B66258800AC6611 /* UIImage+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Util.m"; sourceTree = "<group>"; };
+		1E0C688A1B66258800AC6611 /* UIImageView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Util.h"; sourceTree = "<group>"; };
+		1E0C688B1B66258800AC6611 /* UIImageView+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Util.m"; sourceTree = "<group>"; };
 		1E7407CA1B660F880011F7A5 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		1E7407CB1B660F880011F7A5 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		1E7407CD1B66103E0011F7A5 /* UIView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Util.h"; sourceTree = "<group>"; };
@@ -124,8 +130,8 @@
 			children = (
 				1E0C687C1B661F1B00AC6611 /* LoginViewController.h */,
 				1E0C687D1B661F1B00AC6611 /* LoginViewController.m */,
-				1E0C68821B66203400AC6611 /* MyInfoController.h */,
-				1E0C68831B66203400AC6611 /* MyInfoController.m */,
+				1E0C68851B66248700AC6611 /* MyInfoController.h */,
+				1E0C68861B66248700AC6611 /* MyInfoController.m */,
 			);
 			name = "我";
 			sourceTree = "<group>";
@@ -181,11 +187,11 @@
 			isa = PBXGroup;
 			children = (
 				BEDE597E1B657A4B003AB347 /* API */,
+				BEDE596B1B657558003AB347 /* Utils */,
 				BEDE59701B657703003AB347 /* 博客 */,
 				1E285D561B65D5EC006D3C5D /* 消息 */,
 				1E285D571B65D5F6006D3C5D /* 发现 */,
 				1E285D551B65D5D7006D3C5D /* 我 */,
-				BEDE596B1B657558003AB347 /* Utils */,
 				BEDE595F1B65723E003AB347 /* Main ViewControllers */,
 				BEDE593D1B657063003AB347 /* AppDelegate.h */,
 				BEDE593E1B657063003AB347 /* AppDelegate.m */,
@@ -264,6 +270,10 @@
 		BEDE596C1B65755F003AB347 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				1E0C68881B66258800AC6611 /* UIImage+Util.h */,
+				1E0C68891B66258800AC6611 /* UIImage+Util.m */,
+				1E0C688A1B66258800AC6611 /* UIImageView+Util.h */,
+				1E0C688B1B66258800AC6611 /* UIImageView+Util.m */,
 				1E7407CD1B66103E0011F7A5 /* UIView+Util.h */,
 				1E7407CE1B66103E0011F7A5 /* UIView+Util.m */,
 				BEDE596D1B657575003AB347 /* UIColor+Util.h */,
@@ -451,14 +461,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E7407CF1B66103E0011F7A5 /* UIView+Util.m in Sources */,
-				1E0C68841B66203400AC6611 /* MyInfoController.m in Sources */,
+				1E0C68871B66248700AC6611 /* MyInfoController.m in Sources */,
 				1E0C68811B661F2D00AC6611 /* DiscoverViewController.m in Sources */,
 				BEDE596A1B65739C003AB347 /* SideMenuViewController.m in Sources */,
 				BEDE596F1B657575003AB347 /* UIColor+Util.m in Sources */,
 				BEDE593F1B657063003AB347 /* AppDelegate.m in Sources */,
 				BEDE597C1B6577C1003AB347 /* SwipableViewController.m in Sources */,
+				1E0C688C1B66258800AC6611 /* UIImage+Util.m in Sources */,
 				BEDE59891B657A85003AB347 /* TGMetaWeblogXMLRPCApi.m in Sources */,
 				1E0C687B1B661E5000AC6611 /* MessageViewController.m in Sources */,
+				1E0C688D1B66258800AC6611 /* UIImageView+Util.m in Sources */,
 				1E0C687E1B661F1B00AC6611 /* LoginViewController.m in Sources */,
 				1E7407CC1B660F880011F7A5 /* Utils.m in Sources */,
 				BEDE59881B657A85003AB347 /* TGMetaWeblogAuthApi.m in Sources */,

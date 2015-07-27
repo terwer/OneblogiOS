@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "UIColor+Util.h"
 #import "UIView+Util.h"
+#import "UIImage+Util.h"
 
 @interface Utils : NSObject
 
