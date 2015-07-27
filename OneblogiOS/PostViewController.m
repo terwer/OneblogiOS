@@ -10,8 +10,10 @@
 
 #import "PostViewController.h"
 #import "TGMetaWeblogApi.h"
+#import "PostCell.h"
+#import "Utils.h"
 
-static NSString *kBlogCellID = @"BlogCell";
+static NSString *kPostCellID = @"PostCell";
 
 @interface PostViewController ()
 //文章
@@ -21,10 +23,45 @@ static NSString *kBlogCellID = @"BlogCell";
 
 @implementation PostViewController
 
+- (instancetype)initWithBlogsType:(BlogsType)type
+{
+    if (self = [super init]) {
+        //        NSString *blogType = type == BlogTypeLatest? @"latest" : @"recommend";
+        //        self.generateURL = ^NSString * (NSUInteger page) {
+        //            return [NSString stringWithFormat:@"%@%@?type=%@&pageIndex=%lu&%@", OSCAPI_PREFIX, OSCAPI_BLOGS_LIST, blogType, (unsigned long)page, OSCAPI_SUFFIX];
+        //        };
+        //        NSLog(@"%@",[NSString stringWithFormat:@"%@%@?type=%@&pageIndex=%lu&%@", OSCAPI_PREFIX, OSCAPI_BLOGS_LIST, blogType, (unsigned long)0, OSCAPI_SUFFIX]);
+    }
+    
+    return self;
+}
+
+- (NSMutableAttributedString *)attributedTittle:(NSString *)title
+{
+    NSMutableAttributedString *attributeString ;
+    
+    NSTextAttachment *textAttachment = [NSTextAttachment new];
+    //转载
+    //textAttachment.image = [UIImage imageNamed:@"widget_repost"];
+    //原创
+    textAttachment.image = [UIImage imageNamed:@"widget-original"];
+    NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:textAttachment];
+    attributeString = [[NSMutableAttributedString alloc] initWithAttributedString:attachmentString];
+    [attributeString appendAttributedString:[[NSAttributedString alloc] initWithString:@" "]];
+    [attributeString appendAttributedString:[[NSAttributedString alloc] initWithString:title]];
+    
+    return attributeString;
+}
+
+-(NSAttributedString *)attributedCommentCount:(int)commentCount
+{
+    return [Utils attributedCommentCount:commentCount];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kBlogCellID];
+    [self.tableView registerClass:[PostCell class] forCellReuseIdentifier:kPostCellID];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -52,14 +89,45 @@ static NSString *kBlogCellID = @"BlogCell";
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kBlogCellID forIndexPath:indexPath];
     
-    
+    PostCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kPostCellID forIndexPath:indexPath];
     NSDictionary *post = [self.posts objectAtIndex:indexPath.row];
-    cell.textLabel.text = [post objectForKey:@"title"];
+    
+    cell.backgroundColor = [UIColor themeColor];
+    [cell.titleLabel setAttributedText:[self attributedTittle:[post objectForKey:@"title"]]];
+    [cell.bodyLabel setText:[self shortDescription:[post objectForKey:@"description"]]];
+    [cell.authorLabel setText:@"author"];
+    cell.titleLabel.textColor = [UIColor titleColor];
+    NSDate *createdDate = [post objectForKey:@"dateCreated"];
+    [cell.timeLabel setAttributedText:[Utils attributedTimeString:createdDate]];
+    [cell.commentCount setAttributedText:[self attributedCommentCount:0]];
+    
+    cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
+    cell.selectedBackgroundView.backgroundColor = [UIColor selectCellSColor];
+    
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *post = self.posts[indexPath.row];
+    
+    self.label.font = [UIFont boldSystemFontOfSize:15];
+    [self.label setText:[self shortDescription:[post objectForKey:@"description"]]];
+    CGFloat height = [self.label sizeThatFits:CGSizeMake(tableView.frame.size.width - 16, MAXFLOAT)].height;
+    height += [self.label sizeThatFits:CGSizeMake(tableView.frame.size.width - 16, MAXFLOAT)].height;
+    
+    return height+42;
+}
+
+// 提取简介
+-(NSString *)shortDescription:(NSString *)description{
+    NSString *cleanedDescription = [Utils removeSpaceAndNewlineAndChars:description];
+    if ([cleanedDescription length]<45) {
+        return cleanedDescription;
+    }
+    return [[cleanedDescription substringToIndex:45] stringByAppendingString:@"..."];
+}
 
 /*
  // Override to support conditional editing of the table view.
@@ -150,6 +218,18 @@ static NSString *kBlogCellID = @"BlogCell";
                      }
                      failure:^(NSError *error) {
                          NSLog(@"Error fetching posts: %@", [error localizedDescription]);
+                         MBProgressHUD *HUD = [Utils createHUD];
+                         HUD.mode = MBProgressHUDModeCustomView;
+                         HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HUD-error"]];
+                         HUD.detailsLabelText = [NSString stringWithFormat:@"%@", error.userInfo[NSLocalizedDescriptionKey]];
+                         
+                         [HUD hide:YES afterDelay:1];
+                         
+                         super.lastCell.status = LastCellStatusError;
+                         if (self.refreshControl.refreshing) {
+                             [self.refreshControl endRefreshing];
+                         }
+                         [self.tableView reloadData];
                      }];
 }
 

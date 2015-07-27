@@ -18,6 +18,12 @@
 		1E7407CC1B660F880011F7A5 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E7407CB1B660F880011F7A5 /* Utils.m */; };
 		1E7407CF1B66103E0011F7A5 /* UIView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E7407CE1B66103E0011F7A5 /* UIView+Util.m */; };
 		AFB8EC6920FC4627EC5B205F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFABC981ABD733EEBBE20A05 /* libPods.a */; };
+		BE4D37541B665BEA00D56E5A /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4D37531B665BEA00D56E5A /* PostCell.m */; };
+		BE4D375E1B666D2700D56E5A /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4D37571B666D2700D56E5A /* FAImageView.m */; };
+		BE4D375F1B666D2700D56E5A /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4D37591B666D2700D56E5A /* NSString+FontAwesome.m */; };
+		BE4D37601B666D2700D56E5A /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4D375B1B666D2700D56E5A /* UIFont+FontAwesome.m */; };
+		BE4D37611B666D2700D56E5A /* UIImage+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4D375D1B666D2700D56E5A /* UIImage+FontAwesome.m */; };
+		BE4D37631B6670FC00D56E5A /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE4D37621B6670FC00D56E5A /* FontAwesome.ttf */; };
 		BEDE593C1B657063003AB347 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDE593B1B657063003AB347 /* main.m */; };
 		BEDE593F1B657063003AB347 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDE593E1B657063003AB347 /* AppDelegate.m */; };
 		BEDE59471B657063003AB347 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEDE59461B657063003AB347 /* Images.xcassets */; };
@@ -67,6 +73,17 @@
 		1E7407CD1B66103E0011F7A5 /* UIView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Util.h"; sourceTree = "<group>"; };
 		1E7407CE1B66103E0011F7A5 /* UIView+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Util.m"; sourceTree = "<group>"; };
 		5FB39874290F4B520E0E4DEF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		BE4D37521B665BEA00D56E5A /* PostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
+		BE4D37531B665BEA00D56E5A /* PostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
+		BE4D37561B666D2700D56E5A /* FAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAImageView.h; path = FontAwesome/FAImageView.h; sourceTree = "<group>"; };
+		BE4D37571B666D2700D56E5A /* FAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAImageView.m; path = FontAwesome/FAImageView.m; sourceTree = "<group>"; };
+		BE4D37581B666D2700D56E5A /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+FontAwesome.h"; path = "FontAwesome/NSString+FontAwesome.h"; sourceTree = "<group>"; };
+		BE4D37591B666D2700D56E5A /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+FontAwesome.m"; path = "FontAwesome/NSString+FontAwesome.m"; sourceTree = "<group>"; };
+		BE4D375A1B666D2700D56E5A /* UIFont+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+FontAwesome.h"; path = "FontAwesome/UIFont+FontAwesome.h"; sourceTree = "<group>"; };
+		BE4D375B1B666D2700D56E5A /* UIFont+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+FontAwesome.m"; path = "FontAwesome/UIFont+FontAwesome.m"; sourceTree = "<group>"; };
+		BE4D375C1B666D2700D56E5A /* UIImage+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+FontAwesome.h"; path = "FontAwesome/UIImage+FontAwesome.h"; sourceTree = "<group>"; };
+		BE4D375D1B666D2700D56E5A /* UIImage+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+FontAwesome.m"; path = "FontAwesome/UIImage+FontAwesome.m"; sourceTree = "<group>"; };
+		BE4D37621B6670FC00D56E5A /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.ttf; path = FontAwesome/Resources/FontAwesome.ttf; sourceTree = "<group>"; };
 		BEDE59361B657063003AB347 /* OneblogiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneblogiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEDE593A1B657063003AB347 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEDE593B1B657063003AB347 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -176,6 +193,22 @@
 				5FB39874290F4B520E0E4DEF /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		BE4D37551B666CAF00D56E5A /* FontAwesome */ = {
+			isa = PBXGroup;
+			children = (
+				BE4D37621B6670FC00D56E5A /* FontAwesome.ttf */,
+				BE4D37561B666D2700D56E5A /* FAImageView.h */,
+				BE4D37571B666D2700D56E5A /* FAImageView.m */,
+				BE4D37581B666D2700D56E5A /* NSString+FontAwesome.h */,
+				BE4D37591B666D2700D56E5A /* NSString+FontAwesome.m */,
+				BE4D375A1B666D2700D56E5A /* UIFont+FontAwesome.h */,
+				BE4D375B1B666D2700D56E5A /* UIFont+FontAwesome.m */,
+				BE4D375C1B666D2700D56E5A /* UIImage+FontAwesome.h */,
+				BE4D375D1B666D2700D56E5A /* UIImage+FontAwesome.m */,
+			);
+			name = FontAwesome;
 			sourceTree = "<group>";
 		};
 		BEDE592D1B657063003AB347 = {
@@ -288,6 +321,7 @@
 		BEDE596C1B65755F003AB347 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				BE4D37551B666CAF00D56E5A /* FontAwesome */,
 				1E0C68881B66258800AC6611 /* UIImage+Util.h */,
 				1E0C68891B66258800AC6611 /* UIImage+Util.m */,
 				1E0C688A1B66258800AC6611 /* UIImageView+Util.h */,
@@ -305,6 +339,8 @@
 			children = (
 				BEDE59711B65771E003AB347 /* PostViewController.h */,
 				BEDE59721B65771E003AB347 /* PostViewController.m */,
+				BE4D37521B665BEA00D56E5A /* PostCell.h */,
+				BE4D37531B665BEA00D56E5A /* PostCell.m */,
 			);
 			name = "博客";
 			sourceTree = "<group>";
@@ -428,6 +464,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEDE59471B657063003AB347 /* Images.xcassets in Resources */,
+				BE4D37631B6670FC00D56E5A /* FontAwesome.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,27 +517,32 @@
 			files = (
 				1E7407CF1B66103E0011F7A5 /* UIView+Util.m in Sources */,
 				1E0C68871B66248700AC6611 /* MyInfoController.m in Sources */,
+				BE4D375E1B666D2700D56E5A /* FAImageView.m in Sources */,
 				1E0C68811B661F2D00AC6611 /* DiscoverViewController.m in Sources */,
 				1E6C81591B662BEB00D4F002 /* OBObjsViewController.m in Sources */,
 				BEDE596A1B65739C003AB347 /* SideMenuViewController.m in Sources */,
+				BE4D375F1B666D2700D56E5A /* NSString+FontAwesome.m in Sources */,
 				BEDE596F1B657575003AB347 /* UIColor+Util.m in Sources */,
 				BEDE593F1B657063003AB347 /* AppDelegate.m in Sources */,
 				BEDE597C1B6577C1003AB347 /* SwipableViewController.m in Sources */,
 				1E0C688C1B66258800AC6611 /* UIImage+Util.m in Sources */,
 				BEDE59891B657A85003AB347 /* TGMetaWeblogXMLRPCApi.m in Sources */,
 				1E0C687B1B661E5000AC6611 /* MessageViewController.m in Sources */,
+				BE4D37541B665BEA00D56E5A /* PostCell.m in Sources */,
 				1E0C688D1B66258800AC6611 /* UIImageView+Util.m in Sources */,
 				1E6C815D1B662CFC00D4F002 /* LastCell.m in Sources */,
 				1E0C687E1B661F1B00AC6611 /* LoginViewController.m in Sources */,
 				1E7407CC1B660F880011F7A5 /* Utils.m in Sources */,
 				BEDE59881B657A85003AB347 /* TGMetaWeblogAuthApi.m in Sources */,
 				BEDE59651B657331003AB347 /* OBTabBarController.m in Sources */,
+				BE4D37611B666D2700D56E5A /* UIImage+FontAwesome.m in Sources */,
 				BEDE59731B65771E003AB347 /* PostViewController.m in Sources */,
 				BEDE59661B657331003AB347 /* OptionButton.m in Sources */,
 				BEDE597D1B6577C1003AB347 /* TitleBarView.m in Sources */,
 				BEDE598A1B657A85003AB347 /* TGXMLRPCApiClient.m in Sources */,
 				BEDE597B1B6577C1003AB347 /* HorizonalTableViewController.m in Sources */,
 				BEDE593C1B657063003AB347 /* main.m in Sources */,
+				BE4D37601B666D2700D56E5A /* UIFont+FontAwesome.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

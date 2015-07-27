@@ -57,7 +57,7 @@
                     [button setTitleColor:[UIColor colorWithHex:0x909090] forState:UIControlStateNormal];
                     button.transform = CGAffineTransformIdentity;
                 } else {
-                    [button setTitleColor:[UIColor colorWithHex:0x009000] forState:UIControlStateNormal];
+                    [button setTitleColor:[UIColor colorWithHex:0x428bd1] forState:UIControlStateNormal];
                     button.transform = CGAffineTransformMakeScale(1.2, 1.2);
                 }
             }
