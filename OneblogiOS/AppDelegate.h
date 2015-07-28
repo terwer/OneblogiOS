@@ -11,6 +11,9 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+/**
+ *  夜间模式
+ */
 @property (nonatomic, assign) BOOL inNightMode;
 
 @end

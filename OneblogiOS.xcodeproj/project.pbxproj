@@ -17,6 +17,7 @@
 		1E6C815D1B662CFC00D4F002 /* LastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6C815C1B662CFC00D4F002 /* LastCell.m */; };
 		1E7407CC1B660F880011F7A5 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E7407CB1B660F880011F7A5 /* Utils.m */; };
 		1E7407CF1B66103E0011F7A5 /* UIView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E7407CE1B66103E0011F7A5 /* UIView+Util.m */; };
+		1EE777351B677AE00042F118 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE777341B677AE00042F118 /* HomeViewController.m */; };
 		AFB8EC6920FC4627EC5B205F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFABC981ABD733EEBBE20A05 /* libPods.a */; };
 		BE4D37541B665BEA00D56E5A /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4D37531B665BEA00D56E5A /* PostCell.m */; };
 		BE4D375E1B666D2700D56E5A /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4D37571B666D2700D56E5A /* FAImageView.m */; };
@@ -84,6 +85,8 @@
 		1E7407CB1B660F880011F7A5 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		1E7407CD1B66103E0011F7A5 /* UIView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Util.h"; sourceTree = "<group>"; };
 		1E7407CE1B66103E0011F7A5 /* UIView+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Util.m"; sourceTree = "<group>"; };
+		1EE777331B677AE00042F118 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		1EE777341B677AE00042F118 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		5FB39874290F4B520E0E4DEF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BE4D37521B665BEA00D56E5A /* PostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
 		BE4D37531B665BEA00D56E5A /* PostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
@@ -185,10 +188,11 @@
 		1E285D551B65D5D7006D3C5D /* 我 */ = {
 			isa = PBXGroup;
 			children = (
+				1EE777361B677B860042F118 /* 用户详情页 */,
 				1E0C687C1B661F1B00AC6611 /* LoginViewController.h */,
 				1E0C687D1B661F1B00AC6611 /* LoginViewController.m */,
-				1E0C68851B66248700AC6611 /* MyInfoController.h */,
-				1E0C68861B66248700AC6611 /* MyInfoController.m */,
+				1EE777331B677AE00042F118 /* HomeViewController.h */,
+				1EE777341B677AE00042F118 /* HomeViewController.m */,
 			);
 			name = "我";
 			sourceTree = "<group>";
@@ -222,6 +226,15 @@
 				1E6C815C1B662CFC00D4F002 /* LastCell.m */,
 			);
 			name = Component;
+			sourceTree = "<group>";
+		};
+		1EE777361B677B860042F118 /* 用户详情页 */ = {
+			isa = PBXGroup;
+			children = (
+				1E0C68851B66248700AC6611 /* MyInfoController.h */,
+				1E0C68861B66248700AC6611 /* MyInfoController.m */,
+			);
+			name = "用户详情页";
 			sourceTree = "<group>";
 		};
 		566954732E19B9C5152D8DBB /* Pods */ = {
@@ -643,6 +656,7 @@
 				BEDE597B1B6577C1003AB347 /* HorizonalTableViewController.m in Sources */,
 				BEDE593C1B657063003AB347 /* main.m in Sources */,
 				BE4D37601B666D2700D56E5A /* UIFont+FontAwesome.m in Sources */,
+				1EE777351B677AE00042F118 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -756,6 +770,7 @@
 				INFOPLIST_FILE = OneblogiOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 			};
 			name = Debug;
 		};
@@ -768,6 +783,7 @@
 				INFOPLIST_FILE = OneblogiOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 			};
 			name = Release;
 		};

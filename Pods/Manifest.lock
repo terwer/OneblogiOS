@@ -35,6 +35,7 @@ PODS:
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
+  - TTTAttributedLabel (1.13.4)
   - wpxmlrpc (0.8)
 
 DEPENDENCIES:
@@ -46,6 +47,7 @@ DEPENDENCIES:
   - ReactiveCocoa
   - RESideMenu (~> 4.0.7)
   - SDWebImage (~> 3.7.1)
+  - TTTAttributedLabel
   - wpxmlrpc (~> 0.7)
 
 EXTERNAL SOURCES:
@@ -66,6 +68,7 @@ SPEC CHECKSUMS:
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   RESideMenu: f24c508404b49c667344c54aba7e590883533958
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
+  TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
   wpxmlrpc: 053c9cbed13dcec08515a4ffeb51780f6e858cc7
 
 COCOAPODS: 0.38.2

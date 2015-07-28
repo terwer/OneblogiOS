@@ -8,6 +8,8 @@
 
 #import "OBObjsViewController.h"
 #import "Utils.h"
+#import "Config.h"
+#import "LoginViewController.h"
 
 @interface OBObjsViewController ()
 
@@ -32,6 +34,14 @@
 }
 
 - (void)viewDidLoad {
+    
+    if([Config getOwnID] == 0){
+        NSLog(@"api初始化失败，请重新登录。");
+        LoginViewController *loginController = [[LoginViewController alloc]init];
+        [self.navigationController presentViewController:loginController animated:YES completion:nil];
+        return;
+    }
+    
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -61,13 +71,6 @@
         [self.refreshControl beginRefreshing];
         [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentOffset.y-self.refreshControl.frame.size.height)
                                 animated:YES];
-    }
-    
-    //初始化api
-    BOOL apiState=[self setupApi];
-    if (!apiState) {
-        NSLog(@"api初始化失败，请重新登录。");
-        return;
     }
     
     [self fetchObjectsOnPage:0 refresh:NO];
