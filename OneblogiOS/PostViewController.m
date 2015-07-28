@@ -15,7 +15,8 @@
 #import "DetailsViewController.h"
 
 static NSString *kPostCellID = @"PostCell";
-const int MAX_DESCRIPTION_LENGTH=60;//描述最多字数
+const int MAX_DESCRIPTION_LENGTH = 60;//描述最多字数
+const int MAX_PAGE_SIZE = 10;//每页显示数目
 
 @interface PostViewController ()
 //文章
@@ -100,7 +101,13 @@ const int MAX_DESCRIPTION_LENGTH=60;//描述最多字数
     cell.titleLabel.textColor = [UIColor titleColor];
     NSDate *createdDate = [post objectForKey:@"dateCreated"];
     [cell.timeLabel setAttributedText:[Utils attributedTimeString:createdDate]];
-    [cell.commentCount setAttributedText:[self attributedCommentCount:0]];
+    //metaWeblog api暂时不支持评论
+    //[cell.commentCount setAttributedText:[self attributedCommentCount:0]];
+    NSArray *categories = [post objectForKey:@"categories"];
+    NSString *joinedString = [Utils shortString:[categories componentsJoinedByString:@","] andLength:18];
+    //处理分类为空的情况
+    NSString *categoriesString = [NSString stringWithFormat:@"发布在【%@】",[joinedString isEqualToString: @""]?@"默认分类":joinedString];
+    cell.categories.text =categoriesString;
     
     cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
     cell.selectedBackgroundView.backgroundColor = [UIColor selectCellSColor];
@@ -182,7 +189,7 @@ const int MAX_DESCRIPTION_LENGTH=60;//描述最多字数
 #pragma mark - Custom methods
 
 - (void)fetchObjectsOnPage:(NSUInteger)page refresh:(BOOL)refresh{
-    NSInteger currentCount = 10+page*10;
+    NSInteger currentCount = MAX_PAGE_SIZE+page*MAX_PAGE_SIZE;
     NSLog(@"Tring to get %lu posts...",(long)currentCount);
     [self.api getRecentPosts:currentCount
                      success:^(NSArray *posts) {
@@ -205,7 +212,8 @@ const int MAX_DESCRIPTION_LENGTH=60;//描述最多字数
                              else {
                                  if (super.page == 0 && posts.count == 0) {
                                      super.lastCell.status = LastCellStatusEmpty;
-                                 } else if (posts.count == 0 || (super.page == 0 && posts.count < 20)) {
+                                 } else if (posts.count == 0 || (super.page == 0 && posts.count < MAX_PAGE_SIZE)) {
+                                     //注：当前页面数目小于MAX_PAGE_SIZE或者没有结果表示全部加载完成
                                      super.lastCell.status = LastCellStatusFinished;
                                  } else {
                                      super.lastCell.status = LastCellStatusMore;

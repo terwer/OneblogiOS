@@ -174,6 +174,11 @@
 
 + (NSString *)deleteHTMLTag:(NSString *)HTML
 {
+    //修复HTML为空的情况
+    if (!HTML) {
+        return @"";
+    }
+    
     NSMutableString *trimmedHTML = [[NSMutableString alloc] initWithString:HTML];
     
     NSString *styleTagPattern = @"<style[^>]*?>[\\s\\S]*?<\\/style>";

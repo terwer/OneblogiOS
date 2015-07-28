@@ -59,6 +59,11 @@
     self.commentCount.font = [UIFont systemFontOfSize:12];
     self.commentCount.textColor = [UIColor grayColor];
     [self.contentView addSubview:self.commentCount];
+    
+    self.categories = [UILabel new];
+    self.categories.font = [UIFont systemFontOfSize:12];
+    self.categories.textColor = [UIColor nameColor];
+    [self.contentView addSubview:self.categories];
 }
 
 - (void)setLayout
@@ -67,7 +72,7 @@
         view.translatesAutoresizingMaskIntoConstraints = NO;
     }
     
-    NSDictionary *viewsDict = NSDictionaryOfVariableBindings(_titleLabel, _bodyLabel, _authorLabel, _timeLabel, _commentCount);
+    NSDictionary *viewsDict = NSDictionaryOfVariableBindings(_titleLabel, _bodyLabel, _authorLabel, _timeLabel, _commentCount,_categories);
     
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[_titleLabel]-5-[_bodyLabel]" options:NSLayoutFormatAlignAllLeft | NSLayoutFormatAlignAllRight metrics:nil views:viewsDict]];
     
@@ -81,7 +86,7 @@
                                                                              metrics:nil
                                                                                views:viewsDict]];
     
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[_authorLabel]-10-[_timeLabel]-10-[_commentCount]"
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[_authorLabel]-10-[_timeLabel]-10-[_commentCount]-0-[_categories]"
                                                                              options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom
                                                                              metrics:nil
                                                                                views:viewsDict]];
