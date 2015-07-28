@@ -8,8 +8,8 @@
 
 #import "Utils.h"
 #import <Reachability.h>
-#import "markdown_lib.h"
 
+#import "markdown_lib.h"
 @implementation Utils
 
 +(NSString *)removeSpaceAndNewlineAndChars:(NSString *)str

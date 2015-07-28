@@ -5613,7 +5613,7 @@ YY_RULE(int) yy_AtxStart(GREG *G)
   l1398:;	  G->pos= yypos1394; G->thunkpos= yythunkpos1394;  if (!yymatchString(G, "##")) goto l1399;  goto l1394;
   l1399:;	  G->pos= yypos1394; G->thunkpos= yythunkpos1394;  if (!yymatchChar(G, '#')) goto l1393;
   }
-  l1394:;	  yyText(G, G->begin, G->end);  if (!(YY_END)) goto l1393;  yyDo(G, yy_1_AtxStart, G->begin, G->end);
+  l1394:;	  yyText(G, G->begin, G->end);  if (/* DISABLES CODE */ (/* DISABLES CODE */ (!(YY_END)))) goto l1393;  yyDo(G, yy_1_AtxStart, G->begin, G->end);
   yyprintf((stderr, "  ok   %s @ %s\n", "AtxStart", G->buf+G->pos));
   return 1;
   l1393:;	  G->pos= yypos0; G->thunkpos= yythunkpos0;
