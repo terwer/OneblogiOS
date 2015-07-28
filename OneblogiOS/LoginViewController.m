@@ -66,6 +66,11 @@
     //初始化视图和布局
     [self initSubviews];
     [self setLayout];
+    
+    //测试数据
+    self.xmlrpcField.text = @"http://www.terwer.com/xmlrpc.php";
+    self.usernameField.text = @"terwer";
+    self.passwordField.text = @"cbgtyw2020";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -285,13 +290,14 @@
     sideMenuTabBarViewController.contentViewShadowRadius = 4.5;
     
     //设置根视图
-    appDelegate.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    appDelegate.window.rootViewController = sideMenuTabBarViewController;
-    [appDelegate.window makeKeyAndVisible];
+//    appDelegate.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//    appDelegate.window.rootViewController = sideMenuTabBarViewController;
+//    [appDelegate.window makeKeyAndVisible];
     
+    [self.navigationController pushViewController:sideMenuTabBarViewController animated:NO];
     
     /************ 控件外观设置 **************/
-    
+    /*
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithHex:0x428bd1]];
@@ -313,7 +319,7 @@
     
     [[UITextField appearance] setTintColor:[UIColor nameColor]];
     [[UITextView appearance]  setTintColor:[UIColor nameColor]];
-    
+    */
 }
 
 #pragma mark pickerView
@@ -339,7 +345,7 @@
     switch (row) {
         case 0:
             NSLog(@"Wordpress");
-            _xmlrpcField.text = @"http://www.terwer.com/";
+            _xmlrpcField.text = @"http://www.terwer.com/xmlrpc.php";
             break;
         case 1:
             NSLog(@"ZBlog");

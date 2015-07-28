@@ -21,9 +21,9 @@
 {
     //获取相关存储信息
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *xmlrpc = [userDefaults objectForKey:@"xmlrpc"];
-    NSString *username = [userDefaults objectForKey:@"username"];
-    NSString *password = [userDefaults objectForKey:@"password"];
+    NSString *xmlrpc = [userDefaults objectForKey:@"mw_xmlrpc"];
+    NSString *username = [userDefaults objectForKey:@"mw_username"];
+    NSString *password = [userDefaults objectForKey:@"mw_password"];
     //初始化ApiInfo
     ApiInfo *apiInfo = [[ApiInfo alloc]initWithXmlrpc:xmlrpc andUsername:username andPassword:password];
     //结果处理
