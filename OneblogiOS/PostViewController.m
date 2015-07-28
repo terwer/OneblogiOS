@@ -104,7 +104,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     //metaWeblog api暂时不支持评论
     //[cell.commentCount setAttributedText:[self attributedCommentCount:0]];
     NSArray *categories = [post objectForKey:@"categories"];
-    NSString *joinedString = [Utils shortString:[categories componentsJoinedByString:@","] andLength:18];
+    NSString *joinedString = [Utils shortString:[categories componentsJoinedByString:@","] andLength:15];
     //处理分类为空的情况
     NSString *categoriesString = [NSString stringWithFormat:@"发布在【%@】",[joinedString isEqualToString: @""]?@"默认分类":joinedString];
     cell.categories.text =categoriesString;

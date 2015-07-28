@@ -38,16 +38,22 @@
     
     //全部
     PostViewController *postViewCtl = [[PostViewController alloc]initWithPostType:PostTypeLatest];
+    //由于metaWeblog api的限制，无法筛选出热门和置顶文章
     //最新
-    UIViewController *hotViewCtl = [[PostViewController alloc]initWithPostType:PostTypeRecommended];
-    //热门
-    UIViewController *digViewCtl = [[PostViewController alloc]initWithPostType:PostTypeDig];
+    //UIViewController *hotViewCtl = [[PostViewController alloc]initWithPostType:PostTypeRecommended];
+    ////热门
+    //UIViewController *digViewCtl = [[PostViewController alloc]initWithPostType:PostTypeDig];
     
     //博客
+    //    SwipableViewController *blogSVC = [[SwipableViewController alloc] initWithTitle:@"首页"
+    //                                                                       andSubTitles:@[@"最新文章",@"热门文章",@"置顶文章"]
+    //                                                                     andControllers:@[ postViewCtl,hotViewCtl,digViewCtl]
+    //                                                                        underTabbar:YES];
     SwipableViewController *blogSVC = [[SwipableViewController alloc] initWithTitle:@"首页"
-                                                                       andSubTitles:@[@"最新文章",@"热门文章",@"置顶文章"]
-                                                                     andControllers:@[ postViewCtl,hotViewCtl,digViewCtl]
+                                                                       andSubTitles:nil
+                                                                     andControllers:@[ postViewCtl]
                                                                         underTabbar:YES];
+    
     
     
     //消息

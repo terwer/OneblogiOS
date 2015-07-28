@@ -32,11 +32,16 @@
         
         if (title) {self.title = title;}
         
-        CGFloat titleBarHeight = 36;
-        _titleBar = [[TitleBarView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, titleBarHeight) andTitles:subTitles];
-        _titleBar.backgroundColor = [UIColor clearColor];
-        [self.view addSubview:_titleBar];
-        
+        //默认不现实TitleBar
+        CGFloat titleBarHeight = 0;
+        //当传递了subTitles时才去指定TitleBar
+        if (subTitles) {
+            titleBarHeight = 36;
+            _titleBar = [[TitleBarView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, titleBarHeight) andTitles:subTitles];
+            _titleBar.backgroundColor = [UIColor clearColor];
+            [self.view addSubview:_titleBar];
+
+        }
         
         _viewPager = [[HorizonalTableViewController alloc] initWithViewControllers:controllers];
         
