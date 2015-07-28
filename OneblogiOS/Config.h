@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ApiInfo.h"
 
 @interface Config : NSObject
 
@@ -17,5 +18,5 @@
  */
 + (BOOL)getMode;
 
-+ (int64_t)getOwnID;
++(ApiInfo *)getAuthoizedApiInfo;
 @end

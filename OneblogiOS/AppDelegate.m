@@ -7,9 +7,10 @@
 //
 
 #import "AppDelegate.h"
-#import "HomeViewController.h"
+#import "LoginNavViewController.h"
+#import "LoginViewController.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<UIApplicationDelegate, UITabBarControllerDelegate>
 
 @end
 
@@ -18,59 +19,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 
-    //初始化hidenKeyboard程序入口
-    HomeViewController *homeController = [[HomeViewController alloc] init];
+    //初始化程序入口，设置登录界面为首页
+    LoginNavViewController *loginNavViewController = [[LoginNavViewController alloc] init];
+    [loginNavViewController pushViewController:[LoginViewController new] animated:YES];
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = homeController;
+    self.window.rootViewController = loginNavViewController;
     [self.window makeKeyAndVisible];
-
-
-    //    //设置样式
-    //    sideMenuTabBarViewController.scaleContentView = YES;
-    //    sideMenuTabBarViewController.contentViewScaleValue = 0.95;
-    //    sideMenuTabBarViewController.scaleMenuView = NO;
-    //    sideMenuTabBarViewController.contentViewShadowEnabled = YES;
-    //    sideMenuTabBarViewController.contentViewShadowRadius = 4.5;
-    //    //设置根视图
-    //    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    //    self.window.rootViewController = sideMenuTabBarViewController;
-    //    [self.window makeKeyAndVisible];
-    //
-    //    /************ 控件外观设置 **************/
-    //
-    //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    //
-    //    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithHex:0x428bd1]];
-    //    NSDictionary *navbarTitleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
-    //    [[UINavigationBar appearance] setTitleTextAttributes:navbarTitleTextAttributes];
-    //    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    //
-    //
-    //    [[UITabBar appearance] setTintColor:[UIColor colorWithHex:0x428bd1]];
-    //    [[UITabBar appearance] setBarTintColor:[UIColor colorWithHex:0xE1E1E1]];
-    //    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithHex:0x428bd1]} forState:UIControlStateSelected];
-    //
-    //
-    //    [UISearchBar appearance].tintColor = [UIColor colorWithHex:0x428bd1];
-    //    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setCornerRadius:14.0];
-    //    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setAlpha:0.6];
-    //
-    //
-    //    UIPageControl *pageControl = [UIPageControl appearance];
-    //    pageControl.pageIndicatorTintColor = [UIColor colorWithHex:0xDCDCDC];
-    //    pageControl.currentPageIndicatorTintColor = [UIColor grayColor];
-    //
-    //    [[UITextField appearance] setTintColor:[UIColor nameColor]];
-    //    [[UITextView appearance]  setTintColor:[UIColor nameColor]];
-    //
-    //
-    //    UIMenuController *menuController = [UIMenuController sharedMenuController];
-    //
-    //    [menuController setMenuVisible:YES animated:YES];
-    //    [menuController setMenuItems:@[
-    //                                   [[UIMenuItem alloc] initWithTitle:@"复制" action:NSSelectorFromString(@"copyText:")],
-    //                                   [[UIMenuItem alloc] initWithTitle:@"删除" action:NSSelectorFromString(@"deleteObject:")]
-    //                                   ]];
 
     return YES;
 }

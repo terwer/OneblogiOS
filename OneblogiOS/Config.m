@@ -8,8 +8,6 @@
 
 #import "Config.h"
 
-NSString * const kUserID = @"userID";
-
 @implementation Config
 
 + (BOOL)getMode
@@ -19,12 +17,17 @@ NSString * const kUserID = @"userID";
     return [[userDefaults objectForKey:@"mode"] boolValue];
 }
 
-+ (int64_t)getOwnID
++(ApiInfo *)getAuthoizedApiInfo
 {
+    //获取相关存储信息
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSNumber *userID = [userDefaults objectForKey:kUserID];
-    
-    if (userID) {return [userID longLongValue];}
-    return 0;
+    NSString *xmlrpc = [userDefaults objectForKey:@"xmlrpc"];
+    NSString *username = [userDefaults objectForKey:@"username"];
+    NSString *password = [userDefaults objectForKey:@"password"];
+    //初始化ApiInfo
+    ApiInfo *apiInfo = [[ApiInfo alloc]initWithXmlrpc:xmlrpc andUsername:username andPassword:password];
+    //结果处理
+    if (apiInfo) {return apiInfo;}
+    return nil;
 }
 @end

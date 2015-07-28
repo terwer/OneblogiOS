@@ -1,5 +1,5 @@
 //
-//  HomeViewController.h
+//  LoginNavViewController.h
 //  OneblogiOS
 //
 //  Created by szgxa30 on 15/7/28.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomeViewController : UINavigationController
+@interface LoginNavViewController : UINavigationController
 
 @end

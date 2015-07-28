@@ -257,7 +257,7 @@
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     if ([text isEqualToString: @"\n"]) {
-        if ([Config getOwnID] == 0) {
+        if (![Config getAuthoizedApiInfo]) {
             [self.navigationController pushViewController:[LoginViewController new] animated:YES];
         } else {
             [self sendContent];

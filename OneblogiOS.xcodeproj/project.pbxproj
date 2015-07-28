@@ -17,7 +17,7 @@
 		1E6C815D1B662CFC00D4F002 /* LastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6C815C1B662CFC00D4F002 /* LastCell.m */; };
 		1E7407CC1B660F880011F7A5 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E7407CB1B660F880011F7A5 /* Utils.m */; };
 		1E7407CF1B66103E0011F7A5 /* UIView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E7407CE1B66103E0011F7A5 /* UIView+Util.m */; };
-		1EE777351B677AE00042F118 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE777341B677AE00042F118 /* HomeViewController.m */; };
+		1EE777351B677AE00042F118 /* LoginNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE777341B677AE00042F118 /* LoginNavViewController.m */; };
 		AFB8EC6920FC4627EC5B205F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFABC981ABD733EEBBE20A05 /* libPods.a */; };
 		BE4D37541B665BEA00D56E5A /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4D37531B665BEA00D56E5A /* PostCell.m */; };
 		BE4D375E1B666D2700D56E5A /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4D37571B666D2700D56E5A /* FAImageView.m */; };
@@ -37,6 +37,7 @@
 		BE512D441B66B85D00455CC7 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE512D431B66B85D00455CC7 /* DetailsViewController.m */; };
 		BE512D471B66BA7400455CC7 /* emoji.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE512D451B66BA7400455CC7 /* emoji.plist */; };
 		BE512D481B66BA7400455CC7 /* emojiToText.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE512D461B66BA7400455CC7 /* emojiToText.plist */; };
+		BE5C49401B68018D008E4FDE /* ApiInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5C493F1B68018D008E4FDE /* ApiInfo.m */; };
 		BEDE593C1B657063003AB347 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDE593B1B657063003AB347 /* main.m */; };
 		BEDE593F1B657063003AB347 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDE593E1B657063003AB347 /* AppDelegate.m */; };
 		BEDE59471B657063003AB347 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEDE59461B657063003AB347 /* Images.xcassets */; };
@@ -85,8 +86,8 @@
 		1E7407CB1B660F880011F7A5 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		1E7407CD1B66103E0011F7A5 /* UIView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Util.h"; sourceTree = "<group>"; };
 		1E7407CE1B66103E0011F7A5 /* UIView+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Util.m"; sourceTree = "<group>"; };
-		1EE777331B677AE00042F118 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
-		1EE777341B677AE00042F118 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		1EE777331B677AE00042F118 /* LoginNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginNavViewController.h; sourceTree = "<group>"; };
+		1EE777341B677AE00042F118 /* LoginNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginNavViewController.m; sourceTree = "<group>"; };
 		5FB39874290F4B520E0E4DEF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BE4D37521B665BEA00D56E5A /* PostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
 		BE4D37531B665BEA00D56E5A /* PostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
@@ -121,6 +122,8 @@
 		BE512D431B66B85D00455CC7 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		BE512D451B66BA7400455CC7 /* emoji.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emoji.plist; sourceTree = "<group>"; };
 		BE512D461B66BA7400455CC7 /* emojiToText.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emojiToText.plist; sourceTree = "<group>"; };
+		BE5C493E1B68018D008E4FDE /* ApiInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiInfo.h; sourceTree = "<group>"; };
+		BE5C493F1B68018D008E4FDE /* ApiInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiInfo.m; sourceTree = "<group>"; };
 		BEDE59361B657063003AB347 /* OneblogiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneblogiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEDE593A1B657063003AB347 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEDE593B1B657063003AB347 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -191,8 +194,8 @@
 				1EE777361B677B860042F118 /* 用户详情页 */,
 				1E0C687C1B661F1B00AC6611 /* LoginViewController.h */,
 				1E0C687D1B661F1B00AC6611 /* LoginViewController.m */,
-				1EE777331B677AE00042F118 /* HomeViewController.h */,
-				1EE777341B677AE00042F118 /* HomeViewController.m */,
+				1EE777331B677AE00042F118 /* LoginNavViewController.h */,
+				1EE777341B677AE00042F118 /* LoginNavViewController.m */,
 			);
 			name = "我";
 			sourceTree = "<group>";
@@ -305,6 +308,15 @@
 			name = EmojiPanel;
 			sourceTree = "<group>";
 		};
+		BE5C493D1B680162008E4FDE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BE5C493E1B68018D008E4FDE /* ApiInfo.h */,
+				BE5C493F1B68018D008E4FDE /* ApiInfo.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		BEDE592D1B657063003AB347 = {
 			isa = PBXGroup;
 			children = (
@@ -328,6 +340,7 @@
 		BEDE59381B657063003AB347 /* OneblogiOS */ = {
 			isa = PBXGroup;
 			children = (
+				BE5C493D1B680162008E4FDE /* Models */,
 				BEDE597E1B657A4B003AB347 /* API */,
 				BEDE596B1B657558003AB347 /* Utils */,
 				BEDE59701B657703003AB347 /* 博客 */,
@@ -628,6 +641,7 @@
 				BE4D375F1B666D2700D56E5A /* NSString+FontAwesome.m in Sources */,
 				BEDE596F1B657575003AB347 /* UIColor+Util.m in Sources */,
 				BE512D2E1B66B29C00455CC7 /* GrowingTextView.m in Sources */,
+				BE5C49401B68018D008E4FDE /* ApiInfo.m in Sources */,
 				BEDE593F1B657063003AB347 /* AppDelegate.m in Sources */,
 				BEDE597C1B6577C1003AB347 /* SwipableViewController.m in Sources */,
 				1E0C688C1B66258800AC6611 /* UIImage+Util.m in Sources */,
@@ -656,7 +670,7 @@
 				BEDE597B1B6577C1003AB347 /* HorizonalTableViewController.m in Sources */,
 				BEDE593C1B657063003AB347 /* main.m in Sources */,
 				BE4D37601B666D2700D56E5A /* UIFont+FontAwesome.m in Sources */,
-				1EE777351B677AE00042F118 /* HomeViewController.m in Sources */,
+				1EE777351B677AE00042F118 /* LoginNavViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

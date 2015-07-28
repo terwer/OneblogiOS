@@ -67,7 +67,6 @@
     //((AppDelegate *)[UIApplication sharedApplication].delegate).inNightMode = [Config getMode];
 }
 
-
 - (void)refresh
 {
     [self fetchDetails];

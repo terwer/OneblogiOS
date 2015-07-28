@@ -35,7 +35,7 @@
 
 - (void)viewDidLoad {
     
-    if([Config getOwnID] == 0){
+    if(![Config getAuthoizedApiInfo]){
         NSLog(@"api初始化失败，请重新登录。");
         LoginViewController *loginController = [[LoginViewController alloc]init];
         [self.navigationController presentViewController:loginController animated:YES completion:nil];
