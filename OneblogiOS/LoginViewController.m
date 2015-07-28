@@ -7,7 +7,6 @@
 //
 
 #import "LoginViewController.h"
-#import <TTTAttributedLabel.h>
 #import "Utils.h"
 #import "OBTabBarController.h"
 #import "SideMenuViewController.h"
@@ -15,8 +14,9 @@
 #import "AppDelegate.h"
 #import "Config.h"
 #import "TGMetaWeblogApi.h"
+#import "TTTAttributedLabel.h"
 
-@interface LoginViewController ()<UITextFieldDelegate,UIGestureRecognizerDelegate,TTTAttributedLabelDelegate>
+@interface LoginViewController ()<UITextFieldDelegate,UIGestureRecognizerDelegate,TTTAttributedLabelDelegate,UIPickerViewDelegate,UIPickerViewDataSource>
 
 /**
  *  xmlrpcURL
@@ -25,7 +25,7 @@
 /**
  *  用户名
  */
-@property(nonatomic, strong) UITextField *accountField;
+@property(nonatomic, strong) UITextField *usernameField;
 /**
  *  密码
  */
@@ -38,11 +38,16 @@
 /**
  *  提示信息
  */
-@property(nonatomic, strong) TTTAttributedLabel *registerInfo;
+@property(nonatomic, strong) TTTAttributedLabel *messageInfo;
+
+@property (nonatomic, retain) UIPickerView *pickerView;
+@property (nonatomic, retain) NSMutableArray *dataArray;
 
 @end
 
 @implementation LoginViewController
+
+@synthesize pickerView = _pickerView,dataArray = _dataArray;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -71,15 +76,69 @@
 #pragma mark - about subviews
 
 - (void)initSubviews {
-    _accountField = [UITextField new];
-    _accountField.placeholder = @"Email";
-    _accountField.textColor = [UIColor colorWithRed:56.0f / 255.0f green:84.0f / 255.0f blue:135.0f / 255.0f alpha:1.0f];
-    _accountField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    _accountField.keyboardType = UIKeyboardTypeEmailAddress;
-    _accountField.delegate = self;
-    _accountField.returnKeyType = UIReturnKeyNext;
-    _accountField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    _accountField.enablesReturnKeyAutomatically = YES;
+    // Init the data array.
+    _dataArray = [[NSMutableArray alloc] init];
+    
+    // Add some data for demo purposes.
+    [_dataArray addObject:@"Wordpress"];
+    [_dataArray addObject:@"ZBlog"];
+    [_dataArray addObject:@"Cnblogs"];
+    [_dataArray addObject:@"OSChina"];
+    [_dataArray addObject:@"163"];
+    [_dataArray addObject:@"51CTO"];
+    [_dataArray addObject:@"Sina"];
+    [_dataArray addObject:@"Other"];
+    
+    // Calculate the screen's width.
+    float screenWidth = [UIScreen mainScreen].bounds.size.width;
+    float pickerWidth = screenWidth * 3 / 4;
+    
+    // Calculate the starting x coordinate.
+    float xPoint = screenWidth / 2 - pickerWidth / 2;
+    
+    // Init the picker view.
+    _pickerView = [[UIPickerView alloc] init];
+    
+    // Set the delegate and datasource. Don't expect picker view to work
+    // correctly if you don't set it.
+    [_pickerView setDataSource: self];
+    [_pickerView setDelegate: self];
+
+    
+    
+    // Set the picker's frame. We set the y coordinate to 50px.
+    [_pickerView setFrame: CGRectMake(xPoint, 50.0f, pickerWidth, 20.0f)];
+    
+    // Before we add the picker view to our view, let's do a couple more
+    // things. First, let the selection indicator (that line inside the
+    // picker view that highlights your selection) to be shown.
+    _pickerView.showsSelectionIndicator = YES;
+    
+    // Allow us to pre-select the third option in the pickerView.
+    [_pickerView selectRow:0 inComponent:0 animated:YES];
+    
+    // OK, we are ready. Add the picker in our view.
+    [self.view addSubview: _pickerView];
+    
+    _xmlrpcField = [UITextField new];
+    _xmlrpcField.placeholder = @"Url";
+    _xmlrpcField.textColor = [UIColor colorWithRed:56.0f / 255.0f green:84.0f / 255.0f blue:135.0f / 255.0f alpha:1.0f];
+    _xmlrpcField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    _xmlrpcField.keyboardType = UIKeyboardTypeEmailAddress;
+    _xmlrpcField.delegate = self;
+    _xmlrpcField.returnKeyType = UIReturnKeyNext;
+    _xmlrpcField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    _xmlrpcField.enablesReturnKeyAutomatically = YES;
+    
+    _usernameField = [UITextField new];
+    _usernameField.placeholder = @"Username";
+    _usernameField.textColor = [UIColor colorWithRed:56.0f / 255.0f green:84.0f / 255.0f blue:135.0f / 255.0f alpha:1.0f];
+    _usernameField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    _usernameField.keyboardType = UIKeyboardTypeEmailAddress;
+    _usernameField.delegate = self;
+    _usernameField.returnKeyType = UIReturnKeyNext;
+    _usernameField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    _usernameField.enablesReturnKeyAutomatically = YES;
     
     self.passwordField = [UITextField new];
     _passwordField.placeholder = @"Password";
@@ -90,34 +149,36 @@
     _passwordField.clearButtonMode = UITextFieldViewModeWhileEditing;
     _passwordField.enablesReturnKeyAutomatically = YES;
     
-    [_accountField addTarget:self action:@selector(returnOnKeyboard:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [_usernameField addTarget:self action:@selector(returnOnKeyboard:) forControlEvents:UIControlEventEditingDidEndOnExit];
     [_passwordField addTarget:self action:@selector(returnOnKeyboard:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
-    [self.view addSubview:_accountField];
+    [self.view addSubview:_pickerView];
+    [self.view addSubview:_xmlrpcField];
+    [self.view addSubview:_usernameField];
     [self.view addSubview:_passwordField];
     
     _loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _loginButton.titleLabel.font = [UIFont systemFontOfSize:17];
-    _loginButton.backgroundColor = [UIColor colorWithHex:0x15A230];
-    [_loginButton setCornerRadius:20];
+    _loginButton.backgroundColor = [UIColor colorWithHex:0x428bd1];
+    [_loginButton setCornerRadius:5];
     [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
     [_loginButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_loginButton];
     
-    _registerInfo = [TTTAttributedLabel new];
-    _registerInfo.delegate = self;
-    _registerInfo.numberOfLines = 0;
-    _registerInfo.lineBreakMode = NSLineBreakByWordWrapping;
-    _registerInfo.backgroundColor = [UIColor themeColor];
-    _registerInfo.font = [UIFont systemFontOfSize:14];
-    NSString *info = @"您可以在 https://www.oschina.net 上免费注册账号";
-    _registerInfo.text = info;
-    NSRange range = [info rangeOfString:@"https://www.oschina.net"];
-    _registerInfo.linkAttributes = @{
-                                     (NSString *) kCTForegroundColorAttributeName : [UIColor colorWithHex:0x15A230]
-                                     };
-    [_registerInfo addLinkToURL:[NSURL URLWithString:@"https://www.oschina.net/home/reg"] withRange:range];
-    [self.view addSubview:_registerInfo];
+    _messageInfo = [TTTAttributedLabel new];
+    _messageInfo.delegate = self;
+    _messageInfo.numberOfLines = 0;
+    _messageInfo.lineBreakMode = NSLineBreakByWordWrapping;
+    _messageInfo.backgroundColor = [UIColor themeColor];
+    _messageInfo.font = [UIFont systemFontOfSize:14];
+    NSString *info = @"您可以使用任何实现了 metaWenlogApi 的账号来登录博客。目前已经支持Wordpress、ZBlog、Cnblogs、OSChina、163、51CTO、Sina。";
+    _messageInfo.text = info;
+    NSRange range = [info rangeOfString:@"metaWenlogApi"];
+    _messageInfo.linkAttributes = @{
+                                    (NSString *) kCTForegroundColorAttributeName : [UIColor colorWithHex:0x15A230]
+                                    };
+    [_messageInfo addLinkToURL:[NSURL URLWithString:@"http://en.wikipedia.org/wiki/MetaWeblog"] withRange:range];
+    [self.view addSubview:_messageInfo];
     
     //添加手势，点击屏幕其他区域关闭键盘的操作
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hidenKeyboard)];
@@ -127,56 +188,74 @@
 }
 
 - (void)setLayout {
+    UIImageView *url = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"login-url"]];
+    url.contentMode = UIViewContentModeScaleAspectFill;
+    
     UIImageView *email = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login-email"]];
     email.contentMode = UIViewContentModeScaleAspectFill;
     
     UIImageView *password = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login-password"]];
     password.contentMode = UIViewContentModeScaleAspectFit;
     
+    [self.view addSubview:url];
     [self.view addSubview:email];
     [self.view addSubview:password];
     
     for (UIView *view in [self.view subviews]) {view.translatesAutoresizingMaskIntoConstraints = NO;}
     
-    NSDictionary *views = NSDictionaryOfVariableBindings(email, password, _accountField, _passwordField, _loginButton, _registerInfo);
+    NSDictionary *views = NSDictionaryOfVariableBindings(url,email, password,_xmlrpcField, _usernameField, _passwordField, _loginButton, _messageInfo,_messageInfo);
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual
                                                              toItem:_loginButton attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual
                                                              toItem:_loginButton attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[email(20)]-20-[password(20)]-30-[_loginButton(40)]"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[url(20)]-20-[email(20)]-20-[password(20)]-30-[_loginButton(40)]"
                                                                       options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[_loginButton]-20-|" options:0 metrics:nil views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_loginButton]-20-[_registerInfo(30)]"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_loginButton]-20-[_messageInfo(30)]"
                                                                       options:NSLayoutFormatAlignAllLeft | NSLayoutFormatAlignAllRight
                                                                       metrics:nil views:views]];
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-30-[email(20)]-[_accountField]-30-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-30-[url(20)]-[_xmlrpcField]-30-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-30-[email(20)]-[_usernameField]-30-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-30-[password(20)]-[_passwordField]-30-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
 }
 
-#pragma mark 键盘处理相关
-- (void)returnOnKeyboard:(id)sender {
-    
+
+#pragma mark - 键盘操作
+
+- (void)hidenKeyboard
+{
+    [_usernameField resignFirstResponder];
+    [_passwordField resignFirstResponder];
 }
 
-- (void)hidenKeyboard {
-    
+- (void)returnOnKeyboard:(UITextField *)sender
+{
+    if (sender == _usernameField) {
+        [_passwordField becomeFirstResponder];
+    } else if (sender == _passwordField) {
+        [self hidenKeyboard];
+        if (_loginButton.enabled) {
+            [self login];
+        }
+    }
 }
+
 
 #pragma mark 登录相关
 //使用xmlrpcURL登录
 - (void)login {
     // Sign in
     [TGMetaWeblogAuthApi signInWithURL:self.xmlrpcField.text
-                              username:self.accountField.text
+                              username:self.usernameField.text
                               password:self.passwordField.text
                                success:^(NSURL *xmlrpcURL) {
                                    NSLog(@"success:%@",xmlrpcURL);
                                    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
                                    [def setObject:[xmlrpcURL absoluteString] forKey:@"mw_xmlrpc"];
-                                   [def setObject:self.accountField.text forKey:@"mw_username"];
+                                   [def setObject:self.usernameField.text forKey:@"mw_username"];
                                    [def setObject:self.passwordField.text forKey:@"mw_password"];
                                    [def synchronize];
                                    //登录成功，跳转到主界面
@@ -236,5 +315,62 @@
     [[UITextView appearance]  setTintColor:[UIColor nameColor]];
     
 }
+
+#pragma mark pickerView
+
+// Number of components.
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 1;
+}
+
+// Total rows in our component.
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    return [_dataArray count];
+}
+
+// Display each row's data.
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    return [_dataArray objectAtIndex: row];
+}
+
+// Do something with the selected row.
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    NSLog(@"You selected this: %@", [_dataArray objectAtIndex: row]);
+    switch (row) {
+        case 0:
+            NSLog(@"Wordpress");
+            _xmlrpcField.text = @"http://www.terwer.com/";
+            break;
+        case 1:
+            NSLog(@"ZBlog");
+            _xmlrpcField.text = @"http://www.terwer.com:8080/xmlrpc";
+            break;
+        case 2:
+            NSLog(@"Cnblogs");
+            _xmlrpcField.text = @"http://www.cnblogs.com/tangyouwei/services/metaweblog.aspx";
+            break;
+        case 3:
+            NSLog(@"OSChina");
+            _xmlrpcField.text =@"http://my.oschina.net/action/xmlrpc";
+            break;
+        case 4:
+            NSLog(@"163");
+            _xmlrpcField.text =@"http://os.blog.163.com/api/xmlrpc/metaweblog/";
+            break;
+        case 5:
+            NSLog(@"51CTO");
+            _xmlrpcField.text =@"http://terwer.blog.51cto.com/xmlrpc.php";
+            break;
+        case 6:
+            NSLog(@"Sina");
+            _xmlrpcField.text =@"http://upload.move.blog.sina.com.cn/blog_rebuild/blog/xmlrpc.php";
+            break;
+        default:
+            NSLog(@"Other");
+            _xmlrpcField.text = @"";
+            break;
+    }
+}
+
 
 @end

@@ -9,7 +9,6 @@
 #import "PlaceholderTextView.h"
 #import "AppDelegate.h"
 #import "Config.h"
-#import <ReactiveCocoa.h>
 
 @interface PlaceholderTextView ()
 
@@ -47,11 +46,6 @@
     NSDictionary *views = NSDictionaryOfVariableBindings(_placeholderLabel);
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-8-[_placeholderLabel]-6-|" options:0 metrics:nil views:views]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-7-[_placeholderLabel]"   options:0 metrics:nil views:views]];
-    
-    
-    RAC(_placeholderLabel, hidden) = [self.rac_textSignal map:^(NSString *text) {
-        return @(text.length > 0);
-    }];
 }
 
 

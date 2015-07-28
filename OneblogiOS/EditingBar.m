@@ -12,8 +12,6 @@
 #import "Config.h"
 #import "AppDelegate.h"
 
-#import <ReactiveCocoa.h>
-
 @interface EditingBar ()
 
 @end

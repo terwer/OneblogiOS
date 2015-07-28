@@ -10,7 +10,6 @@
 #import "AppDelegate.h"
 #import "Config.h"
 #import "Utils.h"
-#import <ReactiveCocoa.h>
 
 @implementation OperationBar
 
