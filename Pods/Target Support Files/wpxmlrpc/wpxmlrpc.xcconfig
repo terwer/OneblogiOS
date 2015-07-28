@@ -1,0 +1,1 @@
+WPXMLRPC_OTHER_LDFLAGS = -l"iconv"

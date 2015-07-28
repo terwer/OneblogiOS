@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "HomeViewController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -16,14 +17,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    //初始化登陆为程序入口
-    HomeViewController *homeController = [[HomeViewController alloc]init];
+
+    //初始化hidenKeyboard程序入口
+    HomeViewController *homeController = [[HomeViewController alloc] init];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController=homeController;
+    self.window.rootViewController = homeController;
     [self.window makeKeyAndVisible];
-    
-    
+
+
     //    //设置样式
     //    sideMenuTabBarViewController.scaleContentView = YES;
     //    sideMenuTabBarViewController.contentViewScaleValue = 0.95;
@@ -70,7 +71,7 @@
     //                                   [[UIMenuItem alloc] initWithTitle:@"复制" action:NSSelectorFromString(@"copyText:")],
     //                                   [[UIMenuItem alloc] initWithTitle:@"删除" action:NSSelectorFromString(@"deleteObject:")]
     //                                   ]];
-    
+
     return YES;
 }
 
