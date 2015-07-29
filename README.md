@@ -53,17 +53,17 @@ An open source blog client for ios plantform.It supports Wordpress and other blo
 序号 | 类库名称 | 说明
 ------------- | ------------- | -------------
 1             | AFNetworking  | 网络请求
-14            | TGMetaWeblogApi | MetaWeblogApi https://github.com/terwer/TGMetaWeblogApi
-15            | SDFeedParser | Wordpress JSON API https://github.com/terwer/SDFeedParser
+2            | TGMetaWeblogApi | MetaWeblogApi https://github.com/terwer/TGMetaWeblogApi
+3            | SDFeedParser | Wordpress JSON API https://github.com/terwer/SDFeedParser
 4             | RESideMenu       | 侧拉栏
 5             | MBProgressHUD    | 显示提示或加载进度
 6             | SDWebImage       | 加载网络图片和缓存图片
-8             | TTTAttributedLabel | 支持富文本显示的label
-10            | GPUImage         | 实现模糊效果
-11            | libNBSAppAgent | App性能监控（ http://www.tingyun.com/ ）
-12            | FontAwesome      | 图标字体（ http://fortawesome.github.io/Font-Awesome/icons/ ）
-13            | MZDayPicker      | 日期
-14            | AttributedMarkdown | 解析文章详情
+7             | TTTAttributedLabel | 支持富文本显示的label
+8             | GPUImage         | 实现模糊效果
+9             | libNBSAppAgent | App性能监控（ http://www.tingyun.com/ ）
+10            | FontAwesome      | 图标字体（ http://fortawesome.github.io/Font-Awesome/icons/ ）
+11            | MZDayPicker      | 日期
+12            | AttributedMarkdown | 解析文章详情
 
 ## 开源协议
 Oneblog app is under the Apache License V2. See [the LICENSE file](https://github.com/terwer/OneblogiOS/blob/master/LICENSE.md) for more details.
