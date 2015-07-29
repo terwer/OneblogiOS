@@ -175,9 +175,9 @@
     _messageInfo.lineBreakMode = NSLineBreakByWordWrapping;
     _messageInfo.backgroundColor = [UIColor themeColor];
     _messageInfo.font = [UIFont systemFontOfSize:14];
-    NSString *info = @"您可以使用任何实现了 metaWenlogApi 的账号来登录博客。目前已经支持Wordpress、ZBlog、Cnblogs、OSChina、163、51CTO、Sina。";
+    NSString *info = @"您可以使用任何实现了 metaWeblogApi 的账号来登录博客。目前已经支持Wordpress、ZBlog、Cnblogs、OSChina、163、51CTO、Sina。";
     _messageInfo.text = info;
-    NSRange range = [info rangeOfString:@"metaWenlogApi"];
+    NSRange range = [info rangeOfString:@"metaWeblogApi"];
     _messageInfo.linkAttributes = @{
                                     (NSString *) kCTForegroundColorAttributeName : [UIColor colorWithHex:0x428bd1]
                                     };
@@ -352,7 +352,7 @@
 
 #pragma mark - 超链接代理
 -(void)attributedLabel:(TTTAttributedLabel *)label  didLongPressLinkWithURL:(NSURL *)url atPoint:(CGPoint)point{
-    UIAlertController *confirmCtl = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"是否使用Safari打开网页打开网页？" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *confirmCtl = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"是否使用Safari打开网页？" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[url absoluteString]]]; //调用Safari打开网页
     }];
