@@ -91,4 +91,12 @@ static NSString * const kKeyMinutes = @"minutes";
  *  @return 还原后的字符
  */
 + (NSString *)unescapeHTML:(NSString *)originalHTML;
+
+/**
+ *  在Webview里面浏览网页 15-07-29 by terewr
+ *
+ *  @param target 跳转之前的仕途控制器，一般为当前视图控制器
+ *  @param url    @param url 要浏览的网址
+ */
++(void)navigateUrl:(UIViewController *)target withUrl:(NSURL *)url;
 @end

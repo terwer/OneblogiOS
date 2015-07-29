@@ -15,6 +15,8 @@
 #import "Config.h"
 #import "TGMetaWeblogApi.h"
 #import "TTTAttributedLabel.h"
+#import "BrowserNavViewController.h"
+#import "BrowserViewController.h"
 
 @interface LoginViewController ()<UITextFieldDelegate,UIGestureRecognizerDelegate,TTTAttributedLabelDelegate,UIPickerViewDelegate,UIPickerViewDataSource>
 
@@ -98,23 +100,18 @@
     
     // Calculate the screen's width.
     float screenWidth = [UIScreen mainScreen].bounds.size.width;
-    float pickerWidth = screenWidth * 3 / 4;
+    float pickerWidth = screenWidth;
     
     // Calculate the starting x coordinate.
-    float xPoint = screenWidth / 2 - pickerWidth / 2;
+    float xPoint = screenWidth / 2 - pickerWidth / 2 - 30;
     
     // Init the picker view.
-    _pickerView = [[UIPickerView alloc] init];
+    _pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(xPoint, 50.0f, pickerWidth, 50.0f)];
     
     // Set the delegate and datasource. Don't expect picker view to work
     // correctly if you don't set it.
     [_pickerView setDataSource: self];
     [_pickerView setDelegate: self];
-
-    
-    
-    // Set the picker's frame. We set the y coordinate to 50px.
-    [_pickerView setFrame: CGRectMake(xPoint, 50.0f, pickerWidth, 20.0f)];
     
     // Before we add the picker view to our view, let's do a couple more
     // things. First, let the selection indicator (that line inside the
@@ -182,7 +179,7 @@
     _messageInfo.text = info;
     NSRange range = [info rangeOfString:@"metaWenlogApi"];
     _messageInfo.linkAttributes = @{
-                                    (NSString *) kCTForegroundColorAttributeName : [UIColor colorWithHex:0x15A230]
+                                    (NSString *) kCTForegroundColorAttributeName : [UIColor colorWithHex:0x428bd1]
                                     };
     [_messageInfo addLinkToURL:[NSURL URLWithString:@"http://en.wikipedia.org/wiki/MetaWeblog"] withRange:range];
     [self.view addSubview:_messageInfo];
@@ -191,6 +188,8 @@
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hidenKeyboard)];
     gesture.numberOfTapsRequired = 1;
     gesture.delegate = self;
+    //解决TTTAttributedLabel的代理方法didSelectLinkWithURL不触发的Bug 15-07-29 by terwer
+    gesture.cancelsTouchesInView=NO;
     [self.view addGestureRecognizer:gesture];
 }
 
@@ -210,17 +209,17 @@
     
     for (UIView *view in [self.view subviews]) {view.translatesAutoresizingMaskIntoConstraints = NO;}
     
-    NSDictionary *views = NSDictionaryOfVariableBindings(url,email, password,_xmlrpcField, _usernameField, _passwordField, _loginButton, _messageInfo,_messageInfo);
+    NSDictionary *views = NSDictionaryOfVariableBindings(_pickerView,url,email, password,_xmlrpcField, _usernameField, _passwordField, _loginButton, _messageInfo,_messageInfo);
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual
                                                              toItem:_loginButton attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual
                                                              toItem:_loginButton attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[url(20)]-20-[email(20)]-20-[password(20)]-30-[_loginButton(40)]"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[_pickerView]-0-[url(20)]-20-[email(20)]-20-[password(20)]-30-[_loginButton(40)]"
                                                                       options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[_loginButton]-20-|" options:0 metrics:nil views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_loginButton]-20-[_messageInfo(30)]"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_loginButton]-20-[_messageInfo(60)]"
                                                                       options:NSLayoutFormatAlignAllLeft | NSLayoutFormatAlignAllRight
                                                                       metrics:nil views:views]];
     
@@ -274,7 +273,7 @@
                                }];
 }
 
-//跳转到注解面
+//跳转到主界面
 -(void)goToMainViewController{
     OBTabBarController *tabBarController = [OBTabBarController new];
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
@@ -351,5 +350,20 @@
     }
 }
 
+#pragma mark - 超链接代理
+-(void)attributedLabel:(TTTAttributedLabel *)label  didLongPressLinkWithURL:(NSURL *)url atPoint:(CGPoint)point{
+    UIAlertController *confirmCtl = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"是否使用Safari打开网页打开网页？" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[url absoluteString]]]; //调用Safari打开网页
+    }];
+    UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:nil];
+    [confirmCtl addAction:yesAction];
+    [confirmCtl addAction:noAction];
+    [self presentViewController:confirmCtl animated:yesAction completion:nil];
+}
 
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
+    NSLog(@"Selected url:%@",[url absoluteString]);
+    [Utils navigateUrl:self withUrl:url];
+}
 @end

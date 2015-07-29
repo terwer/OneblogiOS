@@ -8,8 +8,10 @@
 
 #import "Utils.h"
 #import <Reachability.h>
-
 #import "markdown_lib.h"
+#import "BrowserNavViewController.h"
+#import "BrowserViewController.h"
+
 @implementation Utils
 
 +(NSString *)removeSpaceAndNewlineAndChars:(NSString *)str
@@ -249,5 +251,14 @@
     return prettyText;
 }
 
-
++(void)navigateUrl:(UIViewController *)target withUrl:(NSURL *)url{
+    BrowserNavViewController *browserNavCtl = [[BrowserNavViewController alloc]init];
+    browserNavCtl.url = url;
+    //添加浏览器视图控制器到当前导航控制器
+    BrowserViewController *browserCtl = [[BrowserViewController alloc]initWithURL:url];
+    [browserNavCtl pushViewController:browserCtl animated:YES];
+    [target presentViewController:browserNavCtl animated:NO completion:^{
+        NSLog(@"正在使用WebView打开网页:%@",[url absoluteString]);
+    }];
+}
 @end

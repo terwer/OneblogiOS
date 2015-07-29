@@ -18,6 +18,8 @@
 		1E3AC37A1B688EA500086EA3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3AC3791B688EA500086EA3 /* Security.framework */; };
 		1E3AC37C1B688EB300086EA3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3AC37B1B688EB300086EA3 /* SystemConfiguration.framework */; };
 		1E3AC37E1B688EC100086EA3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3AC37D1B688EC100086EA3 /* libz.dylib */; };
+		1E3AC3821B68B40900086EA3 /* BrowserNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3AC3811B68B40900086EA3 /* BrowserNavViewController.m */; };
+		1E3AC3851B68B44600086EA3 /* BrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3AC3841B68B44600086EA3 /* BrowserViewController.m */; };
 		1E6C81591B662BEB00D4F002 /* OBObjsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6C81581B662BEB00D4F002 /* OBObjsViewController.m */; };
 		1E6C815D1B662CFC00D4F002 /* LastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6C815C1B662CFC00D4F002 /* LastCell.m */; };
 		1E7407CC1B660F880011F7A5 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E7407CB1B660F880011F7A5 /* Utils.m */; };
@@ -88,6 +90,10 @@
 		1E3AC3791B688EA500086EA3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1E3AC37B1B688EB300086EA3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		1E3AC37D1B688EC100086EA3 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		1E3AC3801B68B40900086EA3 /* BrowserNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowserNavViewController.h; sourceTree = "<group>"; };
+		1E3AC3811B68B40900086EA3 /* BrowserNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowserNavViewController.m; sourceTree = "<group>"; };
+		1E3AC3831B68B44600086EA3 /* BrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowserViewController.h; sourceTree = "<group>"; };
+		1E3AC3841B68B44600086EA3 /* BrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowserViewController.m; sourceTree = "<group>"; };
 		1E6C81571B662BEB00D4F002 /* OBObjsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBObjsViewController.h; sourceTree = "<group>"; };
 		1E6C81581B662BEB00D4F002 /* OBObjsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBObjsViewController.m; sourceTree = "<group>"; };
 		1E6C815B1B662CFC00D4F002 /* LastCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastCell.h; sourceTree = "<group>"; };
@@ -238,6 +244,17 @@
 			name = "发现";
 			sourceTree = "<group>";
 		};
+		1E3AC37F1B68B3A200086EA3 /* 浏览器 */ = {
+			isa = PBXGroup;
+			children = (
+				1E3AC3801B68B40900086EA3 /* BrowserNavViewController.h */,
+				1E3AC3811B68B40900086EA3 /* BrowserNavViewController.m */,
+				1E3AC3831B68B44600086EA3 /* BrowserViewController.h */,
+				1E3AC3841B68B44600086EA3 /* BrowserViewController.m */,
+			);
+			name = "浏览器";
+			sourceTree = "<group>";
+		};
 		1E6C815A1B662CD900D4F002 /* Component */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,6 +384,7 @@
 				1E285D561B65D5EC006D3C5D /* 消息 */,
 				1E285D571B65D5F6006D3C5D /* 发现 */,
 				1E285D551B65D5D7006D3C5D /* 我 */,
+				1E3AC37F1B68B3A200086EA3 /* 浏览器 */,
 				BEDE595F1B65723E003AB347 /* Main ViewControllers */,
 				BEDE593D1B657063003AB347 /* AppDelegate.h */,
 				BEDE593E1B657063003AB347 /* AppDelegate.m */,
@@ -661,6 +679,8 @@
 				BE4D375F1B666D2700D56E5A /* NSString+FontAwesome.m in Sources */,
 				BEDE596F1B657575003AB347 /* UIColor+Util.m in Sources */,
 				BE512D2E1B66B29C00455CC7 /* GrowingTextView.m in Sources */,
+				1E3AC3821B68B40900086EA3 /* BrowserNavViewController.m in Sources */,
+				1E3AC3851B68B44600086EA3 /* BrowserViewController.m in Sources */,
 				BE5C49401B68018D008E4FDE /* ApiInfo.m in Sources */,
 				BEDE593F1B657063003AB347 /* AppDelegate.m in Sources */,
 				BEDE597C1B6577C1003AB347 /* SwipableViewController.m in Sources */,
