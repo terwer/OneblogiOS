@@ -65,10 +65,10 @@
     
     self.tabBar.translucent = NO;
     self.viewControllers = @[
-                             [self addNavigationItemForViewController:blogSVC],
-                             [self addNavigationItemForViewController:messageCtl],
+                             [self addNavigationItemForViewController:blogSVC withItembars:YES],
+                             [self addNavigationItemForViewController:messageCtl withItembars:NO],
                              [UIViewController new],
-                             [self addNavigationItemForViewController:discoverTableVC],
+                             [self addNavigationItemForViewController:discoverTableVC withItembars:NO],
                              [[UINavigationController alloc] initWithRootViewController:myInfoVC]
                              ];
     
@@ -133,23 +133,24 @@
  *
  *  @param viewController 视图控制器
  *
+ *  @param hasItembars    是否有工具项
+ *
  *  @return 导航控制器
  */
-- (UINavigationController *)addNavigationItemForViewController:(UIViewController *)viewController
+- (UINavigationController *)addNavigationItemForViewController:(UIViewController *)viewController withItembars:(BOOL)hasItembars
 {
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-    
-    viewController.navigationItem.leftBarButtonItem  = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigationbar-sidebar"]
-                                                                                        style:UIBarButtonItemStylePlain
-                                                                                       target:self action:@selector(onClickMenuButton)];
-    
-    viewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigationbar-search"]
-                                                                                        style:UIBarButtonItemStylePlain
-                                                                                       target:self action:@selector(pushSearchViewController)];
-    
-    
-    
+    if(hasItembars){
+        viewController.navigationItem.leftBarButtonItem  = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigationbar-sidebar"]
+                                                                                            style:UIBarButtonItemStylePlain
+                                                                                           target:self action:@selector(onClickMenuButton)];
+        
+        viewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigationbar-search"]
+                                                                                            style:UIBarButtonItemStylePlain
+                                                                                           target:self action:@selector(pushSearchViewController)];
+        
+    }
     return navigationController;
 }
 

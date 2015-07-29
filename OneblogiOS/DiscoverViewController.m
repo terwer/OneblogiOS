@@ -26,6 +26,8 @@ static NSString *kDiscoverCellID = @"DiscoverCell";
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.navigationItem.title = @"发现";
 }
 
 - (void)didReceiveMemoryWarning {

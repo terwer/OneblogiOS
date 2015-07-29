@@ -234,7 +234,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
                              else {
                                  if (super.page == 0 && posts.count == 0) {
                                      super.lastCell.status = LastCellStatusEmpty;
-                                 } else if (posts.count == 0 || (super.page == 0 && posts.count < MAX_PAGE_SIZE)) {
+                                 } else if (posts.count == 0 || (super.page == 0 && posts.count%MAX_PAGE_SIZE > 0)) {
                                      //注：当前页面数目小于MAX_PAGE_SIZE或者没有结果表示全部加载完成
                                      super.lastCell.status = LastCellStatusFinished;
                                  } else {

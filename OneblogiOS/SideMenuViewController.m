@@ -12,6 +12,8 @@
 #import "LoginViewController.h"
 #import "MyInfoController.h"
 #import <RESideMenu.h>
+#import "PostViewController.h"
+#import "SwipableViewController.h"
 
 @interface SideMenuViewController ()
 
@@ -156,6 +158,13 @@
     switch (indexPath.row) {
         case 0: {
             NSLog(@"博客");
+            PostViewController *postViewCtl = [[PostViewController alloc]initWithPostType:PostTypeLatest];
+            SwipableViewController *blogSVC = [[SwipableViewController alloc] initWithTitle:@"博客"
+                                                                               andSubTitles:nil
+                                                                             andControllers:@[ postViewCtl]
+                                                                                underTabbar:NO];
+            
+            [self setContentViewController:blogSVC];
             break;
         }
         case 1: {
@@ -168,8 +177,9 @@
             NSLog(@"夜间模式");
             break;
         }
-        case 3: {
+        case 3: {//退出
             NSLog(@"logout");
+            [self performSelector:@selector(logout:) withObject:nil];
             break;
         }
         default: break;
@@ -196,8 +206,24 @@
     if (![Config getAuthoizedApiInfo]) {
         [self setContentViewController:[LoginViewController new]];
     } else {
-        return;
+        MyInfoController *myInfoVC = [[MyInfoController alloc]initWithStyle:UITableViewStyleGrouped];
+        [self setContentViewController:myInfoVC];
     }
 }
 
+#pragma mark 退出
+//退出
+-(void) logout:(id)sender{
+    //清空缓存数据
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    [def setObject:nil forKey:@"mw_xmlrpc"];
+    [def setObject:nil forKey:@"mw_username"];
+    [def setObject:nil forKey:@"mw_password"];
+    [def synchronize];
+    
+    //跳转到登陆界面
+    NSLog(@"logout");
+    LoginViewController *loginController = [[LoginViewController alloc]init];
+    [self presentViewController:loginController animated:YES completion:nil];
+}
 @end
