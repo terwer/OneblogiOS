@@ -119,7 +119,7 @@
         [self.view addSubview:optionButton];
         [_optionButtons addObject:optionButton];
     }
-    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -146,9 +146,9 @@
                                                                                             style:UIBarButtonItemStylePlain
                                                                                            target:self action:@selector(onClickMenuButton)];
         
-        viewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigationbar-search"]
-                                                                                            style:UIBarButtonItemStylePlain
-                                                                                           target:self action:@selector(pushSearchViewController)];
+        viewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd //initWithImage:[UIImage imageNamed:@"navigationbar-search"] style:UIBarButtonItemStylePlain
+                                target:self
+                                action:@selector(pushSearchViewController)];
         
     }
     return navigationController;
@@ -166,7 +166,9 @@
  *  搜索
  */
 -(void)pushSearchViewController{
-    NSLog(@"search");
+    //由于api限制，精简功能，右上角按钮改为发布博客 15-07-29 by terwer
+    [self buttonPressed];
+    NSLog(@"由于api限制，精简功能，右上角按钮改为发布博客");
 }
 
 /**
@@ -340,5 +342,18 @@
     [self buttonPressed];
 }
 
-
+#pragma mark 显示隐藏Tabbar
+- (void)hideTabBar {
+    if (self.tabBarController.tabBar.hidden == YES) {
+        return;
+    }
+    UIView *contentView;
+    if ( [[self.tabBarController.view.subviews objectAtIndex:0] isKindOfClass:[UITabBar class]] )
+        contentView = [self.tabBarController.view.subviews objectAtIndex:1];
+    else
+        contentView = [self.tabBarController.view.subviews objectAtIndex:0];
+    contentView.frame = CGRectMake(contentView.bounds.origin.x,  contentView.bounds.origin.y,  contentView.bounds.size.width, contentView.bounds.size.height + self.tabBarController.tabBar.frame.size.height);
+    self.tabBarController.tabBar.hidden = YES;
+    
+}
 @end
