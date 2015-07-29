@@ -175,7 +175,7 @@
     _messageInfo.lineBreakMode = NSLineBreakByWordWrapping;
     _messageInfo.backgroundColor = [UIColor themeColor];
     _messageInfo.font = [UIFont systemFontOfSize:14];
-    NSString *info = @"您可以使用任何实现了 metaWeblogApi 的账号来登录博客。目前已经支持Wordpress、ZBlog、Cnblogs、OSChina、163、51CTO、Sina。";
+    NSString *info = @"温馨提示：您可以登录任何实现了metaWeblogApi接口的博客。目前已经支持Wordpress、ZBlog、Cnblogs、OSChina、163、51CTO、Sina。";
     _messageInfo.text = info;
     NSRange range = [info rangeOfString:@"metaWeblogApi"];
     _messageInfo.linkAttributes = @{
@@ -362,8 +362,14 @@
     [self presentViewController:confirmCtl animated:yesAction completion:nil];
 }
 
+/**
+ *  超链接单击
+ *
+ *  @param label label
+ *  @param url   url
+ */
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
     NSLog(@"Selected url:%@",[url absoluteString]);
-    [Utils navigateUrl:self withUrl:url];
+    [Utils navigateUrl:self withUrl:url andTitle:@"What is metaweblogApi?"];
 }
 @end

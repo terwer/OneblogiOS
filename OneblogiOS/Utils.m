@@ -251,11 +251,12 @@
     return prettyText;
 }
 
-+(void)navigateUrl:(UIViewController *)target withUrl:(NSURL *)url{
++(void)navigateUrl:(UIViewController *)target withUrl:(NSURL *)url andTitle:(NSString *)pageTitle{
     BrowserNavViewController *browserNavCtl = [[BrowserNavViewController alloc]init];
     browserNavCtl.url = url;
+    browserNavCtl.title = pageTitle;
     //添加浏览器视图控制器到当前导航控制器
-    BrowserViewController *browserCtl = [[BrowserViewController alloc]initWithURL:url];
+    BrowserViewController *browserCtl = [[BrowserViewController alloc]initWithURL:url andTitle:pageTitle];
     [browserNavCtl pushViewController:browserCtl animated:YES];
     [target presentViewController:browserNavCtl animated:NO completion:^{
         NSLog(@"正在使用WebView打开网页:%@",[url absoluteString]);

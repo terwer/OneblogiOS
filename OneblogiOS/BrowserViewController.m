@@ -20,11 +20,12 @@
 
 @implementation BrowserViewController
 
-@synthesize url=_url;
+@synthesize url=_url,pageTitle=_pageTitle;
 
--(instancetype)initWithURL:(NSURL *)url{
+-(instancetype)initWithURL:(NSURL *)url andTitle:(NSString *)pageTitle {
     if (self = [super init]) {
         _url = url;
+        _pageTitle = pageTitle ;
     }
     return self;
 }
@@ -34,10 +35,11 @@
     // Do any additional setup after loading the view.
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(returnBack)];
-    self.navigationItem.title = @"MetaWeblog";
+    //设置网页标题
+    self.navigationItem.title = _pageTitle;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"..." style:UIBarButtonItemStylePlain target:self action:@selector(showShare:)];
     
-    NSLog(@"即将访问:%@",_url);
+    NSLog(@"即将访问:%@ 网页标题：%@",_url,_pageTitle);
     
     _detailsView = [[UIWebView alloc]initWithFrame:CGRectMake(0.0f,0.0f,self.view.frame.size.width, self.view.frame.size.height)];
     _detailsView.delegate = self;
