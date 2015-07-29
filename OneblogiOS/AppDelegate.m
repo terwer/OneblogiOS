@@ -28,8 +28,7 @@
     self.window.rootViewController = loginNavViewController;
     [self.window makeKeyAndVisible];
 
-    
-    /************ 控件外观设置 **************/
+    /************ 全局控件外观设置 **************/
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithHex:0x428bd1]];
