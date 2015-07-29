@@ -13,6 +13,11 @@
 		1E0C68871B66248700AC6611 /* MyInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C68861B66248700AC6611 /* MyInfoController.m */; };
 		1E0C688C1B66258800AC6611 /* UIImage+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C68891B66258800AC6611 /* UIImage+Util.m */; };
 		1E0C688D1B66258800AC6611 /* UIImageView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C688B1B66258800AC6611 /* UIImageView+Util.m */; };
+		1E3AC3761B688DB300086EA3 /* libNBSAppAgent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3AC3751B688DB300086EA3 /* libNBSAppAgent.framework */; };
+		1E3AC3781B688E9700086EA3 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3AC3771B688E9700086EA3 /* CoreTelephony.framework */; };
+		1E3AC37A1B688EA500086EA3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3AC3791B688EA500086EA3 /* Security.framework */; };
+		1E3AC37C1B688EB300086EA3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3AC37B1B688EB300086EA3 /* SystemConfiguration.framework */; };
+		1E3AC37E1B688EC100086EA3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3AC37D1B688EC100086EA3 /* libz.dylib */; };
 		1E6C81591B662BEB00D4F002 /* OBObjsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6C81581B662BEB00D4F002 /* OBObjsViewController.m */; };
 		1E6C815D1B662CFC00D4F002 /* LastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6C815C1B662CFC00D4F002 /* LastCell.m */; };
 		1E7407CC1B660F880011F7A5 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E7407CB1B660F880011F7A5 /* Utils.m */; };
@@ -78,6 +83,11 @@
 		1E0C68891B66258800AC6611 /* UIImage+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Util.m"; sourceTree = "<group>"; };
 		1E0C688A1B66258800AC6611 /* UIImageView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Util.h"; sourceTree = "<group>"; };
 		1E0C688B1B66258800AC6611 /* UIImageView+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Util.m"; sourceTree = "<group>"; };
+		1E3AC3751B688DB300086EA3 /* libNBSAppAgent.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libNBSAppAgent.framework; sourceTree = "<group>"; };
+		1E3AC3771B688E9700086EA3 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		1E3AC3791B688EA500086EA3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		1E3AC37B1B688EB300086EA3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		1E3AC37D1B688EC100086EA3 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		1E6C81571B662BEB00D4F002 /* OBObjsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBObjsViewController.h; sourceTree = "<group>"; };
 		1E6C81581B662BEB00D4F002 /* OBObjsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBObjsViewController.m; sourceTree = "<group>"; };
 		1E6C815B1B662CFC00D4F002 /* LastCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastCell.h; sourceTree = "<group>"; };
@@ -166,6 +176,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E3AC37E1B688EC100086EA3 /* libz.dylib in Frameworks */,
+				1E3AC37C1B688EB300086EA3 /* SystemConfiguration.framework in Frameworks */,
+				1E3AC37A1B688EA500086EA3 /* Security.framework in Frameworks */,
+				1E3AC3781B688E9700086EA3 /* CoreTelephony.framework in Frameworks */,
+				1E3AC3761B688DB300086EA3 /* libNBSAppAgent.framework in Frameworks */,
 				AFB8EC6920FC4627EC5B205F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -183,6 +198,11 @@
 		036819E93B71D9F588DF716F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1E3AC37D1B688EC100086EA3 /* libz.dylib */,
+				1E3AC37B1B688EB300086EA3 /* SystemConfiguration.framework */,
+				1E3AC3791B688EA500086EA3 /* Security.framework */,
+				1E3AC3771B688E9700086EA3 /* CoreTelephony.framework */,
+				1E3AC3751B688DB300086EA3 /* libNBSAppAgent.framework */,
 				FFABC981ABD733EEBBE20A05 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -781,6 +801,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = OneblogiOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -794,6 +818,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = OneblogiOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

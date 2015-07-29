@@ -10,6 +10,7 @@
 #import "LoginNavViewController.h"
 #import "LoginViewController.h"
 #import "Utils.h"
+#import <libNBSAppAgent/NBSAppAgent.h>
 
 @interface AppDelegate ()<UIApplicationDelegate, UITabBarControllerDelegate>
 
@@ -20,6 +21,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 
+    //开启听云APP监控
+    [NBSAppAgent startWithAppID:@"586b37551c3e4f02b0a8b579970195b7"];
+    
     //初始化程序入口，设置登录界面为首页
     LoginNavViewController *loginNavViewController = [[LoginNavViewController alloc] init];
     [loginNavViewController pushViewController:[LoginViewController new] animated:YES];
