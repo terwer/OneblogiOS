@@ -53,7 +53,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     //判断登录状态
-    if([Config getAuthoizedApiInfo]){
+    ApiInfo *apiInfo = [Config getAuthoizedApiInfo];
+    if(apiInfo){
+        NSLog(@"Current xmprpc:%@ username:%@ password:%@",apiInfo.xmlrpc,apiInfo.username,apiInfo.password);
         //已经登录过，跳转到主界面，停止程序继续
         [self goToMainViewController];
         return;
@@ -290,36 +292,7 @@
     sideMenuTabBarViewController.contentViewShadowRadius = 4.5;
     
     //设置根视图
-//    appDelegate.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//    appDelegate.window.rootViewController = sideMenuTabBarViewController;
-//    [appDelegate.window makeKeyAndVisible];
-    
-    [self.navigationController pushViewController:sideMenuTabBarViewController animated:NO];
-    
-    /************ 控件外观设置 **************/
-    /*
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithHex:0x428bd1]];
-    NSDictionary *navbarTitleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
-    [[UINavigationBar appearance] setTitleTextAttributes:navbarTitleTextAttributes];
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    
-    [[UITabBar appearance] setTintColor:[UIColor colorWithHex:0x428bd1]];
-    [[UITabBar appearance] setBarTintColor:[UIColor colorWithHex:0xE1E1E1]];
-    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithHex:0x428bd1]} forState:UIControlStateSelected];
-    
-    [UISearchBar appearance].tintColor = [UIColor colorWithHex:0x428bd1];
-    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setCornerRadius:14.0];
-    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setAlpha:0.6];
-    
-    UIPageControl *pageControl = [UIPageControl appearance];
-    pageControl.pageIndicatorTintColor = [UIColor colorWithHex:0xDCDCDC];
-    pageControl.currentPageIndicatorTintColor = [UIColor grayColor];
-    
-    [[UITextField appearance] setTintColor:[UIColor nameColor]];
-    [[UITextView appearance]  setTintColor:[UIColor nameColor]];
-    */
+    appDelegate.window.rootViewController = sideMenuTabBarViewController;
 }
 
 #pragma mark pickerView

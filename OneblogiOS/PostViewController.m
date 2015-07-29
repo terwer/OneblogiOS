@@ -67,7 +67,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-     
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -182,7 +182,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NSDictionary *post = [self.posts objectAtIndex:indexPath.row];
-
+    
     DetailsViewController *detailsViewController = [[DetailsViewController alloc] initWithPost:post];
     [self.navigationController pushViewController:detailsViewController animated:YES];
 }
@@ -192,6 +192,27 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
 - (void)fetchObjectsOnPage:(NSUInteger)page refresh:(BOOL)refresh{
     NSInteger currentCount = MAX_PAGE_SIZE+page*MAX_PAGE_SIZE;
     NSLog(@"Tring to get %lu posts...",(long)currentCount);
+    //===================================
+    //检测api状态
+    //===================================
+    NSLog(@"Check api status:%@",((self.api == nil)?@"NO":@"YES"));
+    if (!self.api) {
+        [self.refreshControl endRefreshing];
+        
+        NSString *errorString = @"metaWeblogApi init error";
+        NSLog(@"%@",errorString);
+        MBProgressHUD *HUD = [Utils createHUD];
+        HUD.mode = MBProgressHUDModeCustomView;
+        HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HUD-error"]];
+        HUD.detailsLabelText = [NSString stringWithFormat:@"%@",errorString];
+        
+        [HUD hide:YES afterDelay:1];
+        return;
+    }
+    
+    //===================================
+    //获取文章数据
+    //===================================
     [self.api getRecentPosts:currentCount
                      success:^(NSArray *posts) {
                          NSLog(@"We have %lu posts", (unsigned long) [posts count]);

@@ -36,11 +36,22 @@
 
 - (void)viewDidLoad {
     
-    if(![Config getAuthoizedApiInfo]){
+    //===================================
+    //检测登陆状态
+    //===================================
+    ApiInfo *apiInfo = [Config getAuthoizedApiInfo];
+    if(!apiInfo){
+        NSLog(@"登陆超时，请重新登录。");
+        return;
+    }
+    
+    //===================================
+    //如果登陆成功，尝试初始化api
+    //===================================
+    if (![self setupApi:apiInfo]) {
         NSLog(@"api初始化失败，请重新登录。");
         LoginViewController *loginController = [[LoginViewController alloc]init];
         [self.navigationController presentViewController:loginController animated:YES completion:nil];
-        return;
     }
     
     [super viewDidLoad];
@@ -79,10 +90,8 @@
 
 #pragma mark - Private
 
-- (BOOL)setupApi {
+- (BOOL)setupApi:(ApiInfo *)apiInfo {
     if (self.api == nil) {
-        //获取登录的api信息
-        ApiInfo *apiInfo = [Config getAuthoizedApiInfo];
         NSString *xmlrpc =apiInfo.xmlrpc;
         if (xmlrpc) {
             NSString *username = apiInfo.username;

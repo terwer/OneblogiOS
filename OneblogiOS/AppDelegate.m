@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "LoginNavViewController.h"
 #import "LoginViewController.h"
+#import "Utils.h"
 
 @interface AppDelegate ()<UIApplicationDelegate, UITabBarControllerDelegate>
 
@@ -27,6 +28,30 @@
     self.window.rootViewController = loginNavViewController;
     [self.window makeKeyAndVisible];
 
+    
+    /************ 控件外观设置 **************/
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithHex:0x428bd1]];
+    NSDictionary *navbarTitleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+    [[UINavigationBar appearance] setTitleTextAttributes:navbarTitleTextAttributes];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
+    [[UITabBar appearance] setTintColor:[UIColor colorWithHex:0x428bd1]];
+    [[UITabBar appearance] setBarTintColor:[UIColor colorWithHex:0xE1E1E1]];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithHex:0x428bd1]} forState:UIControlStateSelected];
+    
+    [UISearchBar appearance].tintColor = [UIColor colorWithHex:0x428bd1];
+    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setCornerRadius:14.0];
+    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setAlpha:0.6];
+    
+    UIPageControl *pageControl = [UIPageControl appearance];
+    pageControl.pageIndicatorTintColor = [UIColor colorWithHex:0xDCDCDC];
+    pageControl.currentPageIndicatorTintColor = [UIColor grayColor];
+    
+    [[UITextField appearance] setTintColor:[UIColor nameColor]];
+    [[UITextView appearance]  setTintColor:[UIColor nameColor]];
+    
     return YES;
 }
 
