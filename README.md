@@ -22,8 +22,20 @@ An open source blog client for ios plantform.It supports Wordpress and other blo
 演示
 ---
 1、启动界面
-　
+
+![](Images/0.png)
+
+2、首页
+
 ![](Images/1.png)
+
+3、侧拉
+
+![](Images/2.png)
+
+4、发布
+
+![](Images/3.png)
 
 ## 运行项目
 1. 安装CocoaPods (关于CocoaPods的安装和使用，可参考[这个教程](http://blog.devtang.com/blog/2014/05/25/use-cocoapod-to-manage-ios-lib-dependency/))
@@ -33,7 +45,7 @@ An open source blog client for ios plantform.It supports Wordpress and other blo
 ## 目录简介
 * API ——— 包含API和API返回数据的封装模型
 * Utils ——— 常用的工具方法、类扩展及一些控件
-* 博客、用户、动态...... ——— 各个具体界面
+* 博客、消息、发现...... ——— 各个具体界面
 * Main ViewControllers ——— 主要的视图控制器（作为基类或使用较广的控制器）
 
 ## 项目用到的开源类库、组件
@@ -46,9 +58,7 @@ An open source blog client for ios plantform.It supports Wordpress and other blo
 4             | RESideMenu       | 侧拉栏
 5             | MBProgressHUD    | 显示提示或加载进度
 6             | SDWebImage       | 加载网络图片和缓存图片
-7             | SSKeychain       | 账号密码的存取
 8             | TTTAttributedLabel | 支持富文本显示的label
-9             | ReactiveCocoa    | 函数式编程和响应式编程框架
 10            | GPUImage         | 实现模糊效果
 11            | libNBSAppAgent | App性能监控（ http://www.tingyun.com/ ）
 12            | FontAwesome      | 图标字体（ http://fortawesome.github.io/Font-Awesome/icons/ ）
@@ -60,10 +70,15 @@ Oneblog app is under the Apache License V2. See [the LICENSE file](https://githu
 
 更新记录
 ======
+
+v0.9.2 2015-07-29
+
+>1、完善博文列表显示。
+>2、完善左侧侧拉菜单。
+
 v0.9.1 2015-07-25
 
 >调整项目结构。
-
 
 v0.9 2015-07-08
 
