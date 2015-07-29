@@ -111,10 +111,8 @@
     [_pickerView setDataSource: self];
     [_pickerView setDelegate: self];
 
-    
-    
     // Set the picker's frame. We set the y coordinate to 50px.
-    [_pickerView setFrame: CGRectMake(xPoint, 50.0f, pickerWidth, 20.0f)];
+    [_pickerView setFrame: CGRectMake(xPoint, 50.0f, pickerWidth, 50.0f)];
     
     // Before we add the picker view to our view, let's do a couple more
     // things. First, let the selection indicator (that line inside the
@@ -220,7 +218,7 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[url(20)]-20-[email(20)]-20-[password(20)]-30-[_loginButton(40)]"
                                                                       options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[_loginButton]-20-|" options:0 metrics:nil views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_loginButton]-20-[_messageInfo(30)]"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_loginButton]-20-[_messageInfo(60)]"
                                                                       options:NSLayoutFormatAlignAllLeft | NSLayoutFormatAlignAllRight
                                                                       metrics:nil views:views]];
     
