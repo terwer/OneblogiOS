@@ -98,10 +98,10 @@
     
     // Calculate the screen's width.
     float screenWidth = [UIScreen mainScreen].bounds.size.width;
-    float pickerWidth = screenWidth * 3 / 4;
+    float pickerWidth = screenWidth;
     
     // Calculate the starting x coordinate.
-    float xPoint = screenWidth / 2 - pickerWidth / 2;
+    float xPoint = screenWidth / 2 - pickerWidth / 2 - 30;
     
     // Init the picker view.
     _pickerView = [[UIPickerView alloc] init];
@@ -208,14 +208,14 @@
     
     for (UIView *view in [self.view subviews]) {view.translatesAutoresizingMaskIntoConstraints = NO;}
     
-    NSDictionary *views = NSDictionaryOfVariableBindings(url,email, password,_xmlrpcField, _usernameField, _passwordField, _loginButton, _messageInfo,_messageInfo);
+    NSDictionary *views = NSDictionaryOfVariableBindings(_pickerView,url,email, password,_xmlrpcField, _usernameField, _passwordField, _loginButton, _messageInfo,_messageInfo);
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual
                                                              toItem:_loginButton attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual
                                                              toItem:_loginButton attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[url(20)]-20-[email(20)]-20-[password(20)]-30-[_loginButton(40)]"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[_pickerView]-0-[url(20)]-20-[email(20)]-20-[password(20)]-30-[_loginButton(40)]"
                                                                       options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[_loginButton]-20-|" options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_loginButton]-20-[_messageInfo(60)]"
