@@ -182,7 +182,7 @@
     _messageInfo.text = info;
     NSRange range = [info rangeOfString:@"metaWenlogApi"];
     _messageInfo.linkAttributes = @{
-                                    (NSString *) kCTForegroundColorAttributeName : [UIColor colorWithHex:0x15A230]
+                                    (NSString *) kCTForegroundColorAttributeName : [UIColor colorWithHex:0x428bd1]
                                     };
     [_messageInfo addLinkToURL:[NSURL URLWithString:@"http://en.wikipedia.org/wiki/MetaWeblog"] withRange:range];
     [self.view addSubview:_messageInfo];

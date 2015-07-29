@@ -74,6 +74,7 @@ Oneblog app is under the Apache License V2. See [the LICENSE file](https://githu
 v0.9.2 2015-07-29
 
 >1、完善博文列表显示。
+
 >2、完善左侧侧拉菜单。
 
 v0.9.1 2015-07-25
@@ -83,6 +84,7 @@ v0.9.1 2015-07-25
 v0.9 2015-07-08
 
 >1、项目重新规划。  
+
 >2、完善启动界面。
 
 参考资料  
