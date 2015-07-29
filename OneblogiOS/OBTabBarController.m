@@ -64,6 +64,7 @@
     MyInfoController *myInfoVC = [[MyInfoController alloc]initWithStyle:UITableViewStyleGrouped];
     
     self.tabBar.translucent = NO;
+    self.viewControllers = @[[self addNavigationItemForViewController:blogSVC withItembars:YES]];
     self.viewControllers = @[
                              [self addNavigationItemForViewController:blogSVC withItembars:YES],
                              [self addNavigationItemForViewController:messageCtl withItembars:NO],
@@ -119,7 +120,7 @@
         [self.view addSubview:optionButton];
         [_optionButtons addObject:optionButton];
     }
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -146,9 +147,10 @@
                                                                                             style:UIBarButtonItemStylePlain
                                                                                            target:self action:@selector(onClickMenuButton)];
         
-        viewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd //initWithImage:[UIImage imageNamed:@"navigationbar-search"] style:UIBarButtonItemStylePlain
-                                target:self
-                                action:@selector(pushSearchViewController)];
+        viewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+                                                            initWithImage:[UIImage imageNamed:@"navigationbar-search"] style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(pushSearchViewController)];
         
     }
     return navigationController;
@@ -166,9 +168,7 @@
  *  搜索
  */
 -(void)pushSearchViewController{
-    //由于api限制，精简功能，右上角按钮改为发布博客 15-07-29 by terwer
-    [self buttonPressed];
-    NSLog(@"由于api限制，精简功能，右上角按钮改为发布博客");
+    NSLog(@"search");
 }
 
 /**
