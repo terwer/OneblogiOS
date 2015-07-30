@@ -14,6 +14,7 @@
 #import <RESideMenu.h>
 #import "PostViewController.h"
 #import "SwipableViewController.h"
+#import "SettingsPage.h"
 
 @interface SideMenuViewController ()
 
@@ -169,8 +170,8 @@
         }
         case 1: {
             NSLog(@"设置");
-            //SettingsPage *settingPage = [SettingsPage new];
-            //[self setContentViewController:settingPage];
+            SettingsPage *settingPage = [[SettingsPage alloc]init];
+            [self setContentViewController:settingPage];
             break;
         }
         case 2: {

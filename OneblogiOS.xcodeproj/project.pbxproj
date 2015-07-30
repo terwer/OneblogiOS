@@ -35,6 +35,7 @@
 		1EDB3C061B69BBA800A994FE /* TMDLineBreak.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDB3BF81B69BBA800A994FE /* TMDLineBreak.m */; };
 		1EDB3C071B69BBA800A994FE /* TMDParagraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDB3BFA1B69BBA800A994FE /* TMDParagraph.m */; };
 		1EDB3C081B69BBA800A994FE /* ToMarkdown.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDB3BFD1B69BBA800A994FE /* ToMarkdown.m */; };
+		1EDB3C0F1B69ED0200A994FE /* SettingsPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDB3C0E1B69ED0200A994FE /* SettingsPage.m */; };
 		1EE777351B677AE00042F118 /* LoginNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE777341B677AE00042F118 /* LoginNavViewController.m */; };
 		AFB8EC6920FC4627EC5B205F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFABC981ABD733EEBBE20A05 /* libPods.a */; };
 		BE4D37541B665BEA00D56E5A /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4D37531B665BEA00D56E5A /* PostCell.m */; };
@@ -136,6 +137,8 @@
 		1EDB3BFB1B69BBA800A994FE /* ToMarkdown-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ToMarkdown-Prefix.pch"; path = "ToMarkdown/ToMarkdown-Prefix.pch"; sourceTree = "<group>"; };
 		1EDB3BFC1B69BBA800A994FE /* ToMarkdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToMarkdown.h; path = ToMarkdown/ToMarkdown.h; sourceTree = "<group>"; };
 		1EDB3BFD1B69BBA800A994FE /* ToMarkdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToMarkdown.m; path = ToMarkdown/ToMarkdown.m; sourceTree = "<group>"; };
+		1EDB3C0D1B69ED0200A994FE /* SettingsPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsPage.h; sourceTree = "<group>"; };
+		1EDB3C0E1B69ED0200A994FE /* SettingsPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsPage.m; sourceTree = "<group>"; };
 		1EE777331B677AE00042F118 /* LoginNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginNavViewController.h; sourceTree = "<group>"; };
 		1EE777341B677AE00042F118 /* LoginNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginNavViewController.m; sourceTree = "<group>"; };
 		5FB39874290F4B520E0E4DEF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -347,6 +350,39 @@
 			name = ToMarkdown;
 			sourceTree = "<group>";
 		};
+		1EDB3C091B69ECA500A994FE /* 设置 */ = {
+			isa = PBXGroup;
+			children = (
+				1EDB3C0A1B69ECB100A994FE /* 关于 */,
+				1EDB3C0C1B69ECCB00A994FE /* 开源许可 */,
+				1EDB3C0B1B69ECB900A994FE /* 意见反馈 */,
+				1EDB3C0D1B69ED0200A994FE /* SettingsPage.h */,
+				1EDB3C0E1B69ED0200A994FE /* SettingsPage.m */,
+			);
+			name = "设置";
+			sourceTree = "<group>";
+		};
+		1EDB3C0A1B69ECB100A994FE /* 关于 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "关于";
+			sourceTree = "<group>";
+		};
+		1EDB3C0B1B69ECB900A994FE /* 意见反馈 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "意见反馈";
+			sourceTree = "<group>";
+		};
+		1EDB3C0C1B69ECCB00A994FE /* 开源许可 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "开源许可";
+			sourceTree = "<group>";
+		};
 		1EE777361B677B860042F118 /* 用户详情页 */ = {
 			isa = PBXGroup;
 			children = (
@@ -530,6 +566,7 @@
 			children = (
 				BEDE59681B65739C003AB347 /* SideMenuViewController.h */,
 				BEDE59691B65739C003AB347 /* SideMenuViewController.m */,
+				1EDB3C091B69ECA500A994FE /* 设置 */,
 			);
 			name = "侧拉菜单";
 			sourceTree = "<group>";
@@ -771,6 +808,7 @@
 				1E0C688C1B66258800AC6611 /* UIImage+Util.m in Sources */,
 				BEDE59891B657A85003AB347 /* TGMetaWeblogXMLRPCApi.m in Sources */,
 				BE512D2C1B66B29C00455CC7 /* EditingBar.m in Sources */,
+				1EDB3C0F1B69ED0200A994FE /* SettingsPage.m in Sources */,
 				1E0C687B1B661E5000AC6611 /* MessageViewController.m in Sources */,
 				BE4D37541B665BEA00D56E5A /* PostCell.m in Sources */,
 				1E0C688D1B66258800AC6611 /* UIImageView+Util.m in Sources */,
