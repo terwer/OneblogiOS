@@ -26,10 +26,25 @@
     
     //工具栏
     self.navigationItem.title = @"撰写文章";
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(preview)];
-    
+    //预览
+    UIBarButtonItem *preview = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(preview)];
+    //发布
+    UIBarButtonItem *publish = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(publish)];
+    NSArray *rightItems = [NSArray arrayWithObjects:publish,preview,nil];
+    self.navigationItem.rightBarButtonItems = rightItems;
     [self initSubViews];
     [self setLayout];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+//    [_edittingArea.delegate textViewDidChange:_edittingArea];
+//    
+//    [_edittingArea becomeFirstResponder];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,14 +53,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 #pragma mark 视图相关
 - (void)initSubViews
@@ -73,13 +88,13 @@
     _edittingArea.autocorrectionType = UITextAutocorrectionTypeNo;
     [_contentView addSubview:_edittingArea];
     
-
+    
 }
 
 - (void)setLayout
 {
     for (UIView *view in _contentView.subviews) {view.translatesAutoresizingMaskIntoConstraints = NO;}
-     NSDictionary *views = NSDictionaryOfVariableBindings(_edittingArea, _contentView);
+    NSDictionary *views = NSDictionaryOfVariableBindings(_edittingArea, _contentView);
     
     [_contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-8-[_edittingArea]-8-|" options:0 metrics:nil views:views]];
 }
@@ -92,6 +107,16 @@
     NSLog(@"文章预览。");
     PostDetailViewController *detailsViewController = [[PostDetailViewController alloc] initWithPost:_post];
     [self.navigationController pushViewController:detailsViewController animated:YES];
+}
+
+-(void)publish{
+    //修改文章
+    if (self.post) {
+        NSLog(@"正在修改文章...");
+    }
+    else{
+        NSLog(@"正在发布文章...");
+    }
 }
 
 @end
