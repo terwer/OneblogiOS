@@ -99,4 +99,6 @@ static NSString * const kKeyMinutes = @"minutes";
  *  @return htmlString
  */
 +(NSString *)toMarkdownString:(NSString *)markdownString;
+
++ (NSString *)intervalSinceNow:(NSDate *)date;
 @end
