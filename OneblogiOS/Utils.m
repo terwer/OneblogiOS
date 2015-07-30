@@ -8,9 +8,9 @@
 
 #import "Utils.h"
 #import <Reachability.h>
-#import "markdown_lib.h"
 #import "BrowserNavViewController.h"
 #import "BrowserViewController.h"
+#import "GHMarkdownParser.h"
 
 @implementation Utils
 
@@ -225,32 +225,26 @@
 }
 
 /**
- *  将Markdown字符串转换为原生的字符穿
+ *  将Markdown字符串转换为html 15-07-30 by terwer
  *
  *  @param markdownString markdownString
  *
- *  @return AttributedString
+ *  @return htmlString
  */
-+(NSAttributedString *)attributedMarkdown:(NSString *)markdownString{
-    // create a font attribute for emphasized text
-    //UIFont *emFont = [UIFont fontWithName:@"AvenirNext-MediumItalic" size:15.0];
-    
-    // create a color attribute for paragraph text
-    //UIColor *color = [UIColor purpleColor];
-    
-    // create a dictionary to hold your custom attributes for any Markdown types
-    NSDictionary *attributes = @{
-                                 //                           @(EMPH): @{NSFontAttributeName : emFont,},
-                                 //                          @(PARA): @{NSForegroundColorAttributeName : color,}
-                                 };
-    
-    // parse the markdown
-    NSAttributedString *prettyText = markdown_to_attr_string(markdownString,0,attributes);
-    
-    // assign it to a view object
-    return prettyText;
++(NSString *)toMarkdownString:(NSString *)markdownString{
+    GHMarkdownParser *parser = [[GHMarkdownParser alloc] init];
+    parser.options = kGHMarkdownAutoLink; // for example
+    parser.githubFlavored = YES;
+    NSString *htmlString = [parser HTMLStringFromMarkdownString:markdownString];
+    return htmlString;
 }
 
+/**
+ *  在Webview里面浏览网页 15-07-29 by terewr
+ *
+ *  @param target 跳转之前的仕途控制器，一般为当前视图控制器
+ *  @param url    要浏览的网址
+ */
 +(void)navigateUrl:(UIViewController *)target withUrl:(NSURL *)url andTitle:(NSString *)pageTitle{
     BrowserNavViewController *browserNavCtl = [[BrowserNavViewController alloc]init];
     browserNavCtl.url = url;

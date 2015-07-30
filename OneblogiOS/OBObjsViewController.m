@@ -10,7 +10,6 @@
 #import "Utils.h"
 #import "Config.h"
 #import "LoginViewController.h"
-#import "Config.h"
 
 @interface OBObjsViewController ()
 

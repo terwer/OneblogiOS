@@ -75,15 +75,6 @@ static NSString * const kKeyMinutes = @"minutes";
 + (MBProgressHUD *)createHUD;
 
 /**
- *  将Markdown字符串转换为原生的字符穿
- *
- *  @param markdownString markdownString
- *
- *  @return AttributedString
- */
-+(NSAttributedString *)attributedMarkdown:(NSString *)markdownString;
-
-/**
  *  还原HTMl特殊字符
  *
  *  @param originalHTML originalHTML
@@ -96,7 +87,16 @@ static NSString * const kKeyMinutes = @"minutes";
  *  在Webview里面浏览网页 15-07-29 by terewr
  *
  *  @param target 跳转之前的仕途控制器，一般为当前视图控制器
- *  @param url    @param url 要浏览的网址
+ *  @param url    要浏览的网址
  */
 +(void)navigateUrl:(UIViewController *)target withUrl:(NSURL *)url andTitle:(NSString *)pageTitle;
+
+/**
+ *  将Markdown字符串转换为html 15-07-30 by terwer
+ *
+ *  @param markdownString markdownString
+ *
+ *  @return htmlString
+ */
++(NSString *)toMarkdownString:(NSString *)markdownString;
 @end
