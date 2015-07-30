@@ -15,6 +15,7 @@
 #import "DiscoverViewController.h"
 #import "MyInfoController.h"
 #import "Utils.h"
+#import "PostEditViewController.h"
 
 @interface OBTabBarController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
@@ -98,8 +99,8 @@
     _length = 60;        // 圆形按钮的直径
     _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
     
-    NSArray *buttonTitles = @[@"文字", @"相册", @"拍照", @"语音", @"扫一扫", @"搜索"];
-    NSArray *buttonImages = @[@"tweetEditing", @"picture", @"shooting", @"sound", @"scan", @"search"];
+    NSArray *buttonTitles = @[@"文章", @"动态",@"相册", @"拍照", @"语音", @"视频"];
+    NSArray *buttonImages = @[@"tweetEditing", @"scan",@"picture", @"shooting", @"sound",  @"search"];
     int buttonColors[] = {0xe69961, 0x0dac6b, 0x24a0c4, 0xe96360, 0x61b644, 0xf1c50e};
     
     for (int i = 0; i < 6; i++) {
@@ -146,7 +147,7 @@
         viewController.navigationItem.leftBarButtonItem  = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigationbar-sidebar"]
                                                                                             style:UIBarButtonItemStylePlain
                                                                                            target:self action:@selector(onClickMenuButton)];
-        
+        //文章发表按钮
         viewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
                                                             initWithImage:[UIImage imageNamed:@"navigationbar-search"] style:UIBarButtonItemStylePlain
                                                             target:self
@@ -307,13 +308,21 @@
 }
 
 
-#pragma mark - 处理点击事件
+#pragma mark - 处理发布按钮对应的6个操作的点击事件
 
+/**
+ *  发布文章
+ *
+ *  @param recognizer recognizer
+ */
 - (void)onTapOptionButton:(UIGestureRecognizer *)recognizer
 {
     switch (recognizer.view.tag) {
         case 0: {
             NSLog(@"发布文字文章。");
+            PostEditViewController *postEditVC = [[PostEditViewController alloc]init];
+            UINavigationController *selectedNavCtl = (UINavigationController *)self.selectedViewController;
+            [selectedNavCtl pushViewController:postEditVC animated:NO];
             break;
         }
         case 1: {

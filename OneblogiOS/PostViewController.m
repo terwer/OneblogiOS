@@ -12,7 +12,7 @@
 #import "TGMetaWeblogApi.h"
 #import "PostCell.h"
 #import "Utils.h"
-#import "DetailsViewController.h"
+#import "PostDetailViewController.h"
 
 static NSString *kPostCellID = @"PostCell";
 const int MAX_DESCRIPTION_LENGTH = 60;//描述最多字数
@@ -153,7 +153,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     
     NSDictionary *post = [self.posts objectAtIndex:indexPath.row];
     
-    DetailsViewController *detailsViewController = [[DetailsViewController alloc] initWithPost:post];
+    PostDetailViewController *detailsViewController = [[PostDetailViewController alloc] initWithPost:post];
     [self.navigationController pushViewController:detailsViewController animated:YES];
 }
 

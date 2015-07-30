@@ -13,6 +13,8 @@
 		1E0C68871B66248700AC6611 /* MyInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C68861B66248700AC6611 /* MyInfoController.m */; };
 		1E0C688C1B66258800AC6611 /* UIImage+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C68891B66258800AC6611 /* UIImage+Util.m */; };
 		1E0C688D1B66258800AC6611 /* UIImageView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C688B1B66258800AC6611 /* UIImageView+Util.m */; };
+		1E30393C1B6A0EE100D021B1 /* PostEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E30393B1B6A0EE100D021B1 /* PostEditViewController.m */; };
+		1E30393F1B6A137900D021B1 /* PostDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E30393E1B6A137900D021B1 /* PostDetailViewController.m */; };
 		1E3AC3761B688DB300086EA3 /* libNBSAppAgent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3AC3751B688DB300086EA3 /* libNBSAppAgent.framework */; };
 		1E3AC3781B688E9700086EA3 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3AC3771B688E9700086EA3 /* CoreTelephony.framework */; };
 		1E3AC37A1B688EA500086EA3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3AC3791B688EA500086EA3 /* Security.framework */; };
@@ -97,6 +99,10 @@
 		1E0C68891B66258800AC6611 /* UIImage+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Util.m"; sourceTree = "<group>"; };
 		1E0C688A1B66258800AC6611 /* UIImageView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Util.h"; sourceTree = "<group>"; };
 		1E0C688B1B66258800AC6611 /* UIImageView+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Util.m"; sourceTree = "<group>"; };
+		1E30393A1B6A0EE100D021B1 /* PostEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostEditViewController.h; sourceTree = "<group>"; };
+		1E30393B1B6A0EE100D021B1 /* PostEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostEditViewController.m; sourceTree = "<group>"; };
+		1E30393D1B6A137900D021B1 /* PostDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostDetailViewController.h; sourceTree = "<group>"; };
+		1E30393E1B6A137900D021B1 /* PostDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostDetailViewController.m; sourceTree = "<group>"; };
 		1E3AC3751B688DB300086EA3 /* libNBSAppAgent.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libNBSAppAgent.framework; sourceTree = "<group>"; };
 		1E3AC3771B688E9700086EA3 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		1E3AC3791B688EA500086EA3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -610,6 +616,10 @@
 				BEDE59721B65771E003AB347 /* PostViewController.m */,
 				BE4D37521B665BEA00D56E5A /* PostCell.h */,
 				BE4D37531B665BEA00D56E5A /* PostCell.m */,
+				1E30393A1B6A0EE100D021B1 /* PostEditViewController.h */,
+				1E30393B1B6A0EE100D021B1 /* PostEditViewController.m */,
+				1E30393D1B6A137900D021B1 /* PostDetailViewController.h */,
+				1E30393E1B6A137900D021B1 /* PostDetailViewController.m */,
 			);
 			name = "博客";
 			sourceTree = "<group>";
@@ -824,6 +834,7 @@
 				BEDE59881B657A85003AB347 /* TGMetaWeblogAuthApi.m in Sources */,
 				BE512D241B66B03700455CC7 /* BottomBarViewController.m in Sources */,
 				BEDE59651B657331003AB347 /* OBTabBarController.m in Sources */,
+				1E30393F1B6A137900D021B1 /* PostDetailViewController.m in Sources */,
 				BE4D37611B666D2700D56E5A /* UIImage+FontAwesome.m in Sources */,
 				BEDE59731B65771E003AB347 /* PostViewController.m in Sources */,
 				BE512D371B66B57B00455CC7 /* OperationBar.m in Sources */,
@@ -839,6 +850,7 @@
 				BEDE597B1B6577C1003AB347 /* HorizonalTableViewController.m in Sources */,
 				1EDB3C081B69BBA800A994FE /* ToMarkdown.m in Sources */,
 				BEDE593C1B657063003AB347 /* main.m in Sources */,
+				1E30393C1B6A0EE100D021B1 /* PostEditViewController.m in Sources */,
 				BE4D37601B666D2700D56E5A /* UIFont+FontAwesome.m in Sources */,
 				1EE777351B677AE00042F118 /* LoginNavViewController.m in Sources */,
 			);
