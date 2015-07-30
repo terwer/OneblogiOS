@@ -5,6 +5,8 @@ An open source blog client for iOS plantform.It supports Wordpress and other blo
 
 # 注意事项
 
+由于MetaWeblog API接口的限制，暂时只能进行文章的显示、查看、新增、修改和删除。部分功能有些博客不支持，更多功能需要服务端API支持，详情查看：[这里](https://github.com/terwer/SDFeedParser)。
+
 Because of the limition of MetaWeblog API,some function cen only be used if your server side implement the JSON API [here](https://github.com/terwer/SDFeedParser).
 
 [![Build Status](https://api.travis-ci.org/terwer/OneblogiOS.svg)](https://travis-ci.org/terwer/OneblogiOS)
@@ -67,7 +69,8 @@ Because of the limition of MetaWeblog API,some function cen only be used if your
 9             | libNBSAppAgent | App性能监控（ http://www.tingyun.com/ ）
 10            | FontAwesome      | 图标字体（ http://fortawesome.github.io/Font-Awesome/icons/ ）
 11            | MZDayPicker      | 日期
-12            | AttributedMarkdown | 解析文章详情
+12            | ToMarkdown       | 解析文章为markdown
+13            | GHMarkdownParser  |解析文章为HTML
 
 ## 开源协议
 Oneblog app is under the Apache License V2. See [the LICENSE file](https://github.com/terwer/OneblogiOS/blob/master/LICENSE.md) for more details.
