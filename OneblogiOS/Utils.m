@@ -92,6 +92,43 @@
 }
 
 #pragma mark 信息处理
+
+//输入的日期字符串形如：@"1992-05-21 13:08:08"
+/**
+ *  字符串转换成时间
+ *
+ *  @param dateString 字符串
+ *
+ *  @return 时间
+ */
++(NSDate *)dateFromString:(NSString *)dateString{
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat: @"yyyy-MM-dd HH:mm:ss"];
+    
+    NSDate *destDate= [dateFormatter dateFromString:dateString];
+    return destDate;
+}
+
+/**
+ * 时间转换成字符串
+ *
+ *  @param date 时间
+ *
+ *  @return 字符串
+ */
++(NSString *)stringFromDate:(NSDate *)date{
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    //zzz表示时区，zzz可以删除，这样返回的日期字符将不包含时区信息 +0000。
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
+    
+    NSString *destDateString = [dateFormatter stringFromDate:date];
+    
+    return destDateString;
+}
+
 /**
  *  返回从现在开始的时间字典
  *
@@ -176,7 +213,7 @@
         return [NSString stringWithFormat:@"%ld个月前", (long)months];
     } else {
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
-        [df setDateFormat:@"yyyy"];
+        [df setDateFormat:@"yyyy年"];
         NSString *msg  = [df stringFromDate:date];
         return msg;
     }

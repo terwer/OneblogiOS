@@ -15,8 +15,14 @@ typedef NS_ENUM(NSUInteger, PostType)
     PostTypeRecommended,//热门文章
     PostTypeDig//置顶文章
 };
-
 @interface PostViewController : OBObjsViewController
+@property(nonatomic) NSArray *posts;
+
+
+//文章‚
+
+@property(nonatomic)  UISearchBar *searchBar;
+@property UISearchDisplayController *searchDisController;
 
 - (instancetype)initWithPostType:(PostType)type;
 

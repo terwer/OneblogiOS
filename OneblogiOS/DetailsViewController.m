@@ -138,14 +138,15 @@
     NSDate *dateCreated;//发表时间
     NSString *author;//文章作者
     NSArray *categroies;//文章分类
+    NSString *url;//文章链接
     //JSON API
     if ([Config isAnvancedAPIEnable]) {
         title = jsonPost.title;
         content = jsonPost.content;
-        //dateCreated = jsonPost.date;
-        dateCreated = [[NSDate alloc]init];
-        author = @"";
+        dateCreated = [Utils dateFromString:jsonPost.date];
+        author = @"admin";
         categroies = jsonPost.categoriesArray;
+        url = jsonPost.URL;
     }else{//MetaWeblogApi
         title = [post objectForKey:@"title"];
         content = [post objectForKey:@"description"];
@@ -153,11 +154,11 @@
         author = [post objectForKey:@"wp_author_display_name"];
         categroies = [post objectForKey:@"categories"];
     }
-
     
-    NSString *authorStr = [NSString stringWithFormat:@"<a href='http://my.oneblog.net/u/%d'>%@</a> 发布于 %@", 0,@"terwer", @"时间"];
+    NSLog(@"post url:%@",url);
+    NSString *authorStr = [NSString stringWithFormat:@"<a href='%@'>%@</a> 发布于 %@", url,author, [Utils intervalSinceNow:dateCreated]];
     
-    NSString *postContent = [NSString stringWithFormat:@"<body style='background-color:#EBEBF3'>%@<div id='oneblog_title'>%@</div><div id='oneblog_outline'>%@</div><hr/><div id='oneblog_body'>%@</div>%@</body>", HTML_STYLE, @"dvdv", authorStr, [Utils toMarkdownString: content], HTML_BOTTOM];
+    NSString *postContent = [NSString stringWithFormat:@"<body style='background-color:#EBEBF3'>%@<div id='oneblog_title'>%@</div><div id='oneblog_outline'>%@</div><hr/><div id='oneblog_body'>%@</div>%@</body>", HTML_STYLE, title, authorStr, [Utils toMarkdownString: content], HTML_BOTTOM];
     
     NSLog(@"loading details");
     if (!flag) {

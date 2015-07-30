@@ -101,4 +101,22 @@ static NSString * const kKeyMinutes = @"minutes";
 +(NSString *)toMarkdownString:(NSString *)markdownString;
 
 + (NSString *)intervalSinceNow:(NSDate *)date;
+
+/**
+ *  字符串转换成时间
+ *
+ *  @param dateString 字符串
+ *
+ *  @return 时间
+ */
++(NSDate *)dateFromString:(NSString *)dateString;
+
+/**
+ * 时间转换成字符串
+ *
+ *  @param date 时间
+ *
+ *  @return 字符串
+ */
++(NSString *)stringFromDate:(NSDate *)date;
 @end
