@@ -13,7 +13,7 @@
 /**
  *  详情实体
  */
-@property NSDictionary *result;
+@property id result;
 
 /**
  *  用post初始化详情页面
@@ -22,6 +22,6 @@
  *
  *  @return 详情页面
  */
-- (instancetype)initWithPost:(NSDictionary *)post;
+- (instancetype)initWithPost:(id)post;
 
 @end

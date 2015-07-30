@@ -14,6 +14,13 @@
 
 @implementation Utils
 
+/**
+ *  删除字符串中的换行和空白
+ *
+ *  @param str 原有字符串
+ *
+ *  @return 处理后的字符串
+ */
 +(NSString *)removeSpaceAndNewlineAndChars:(NSString *)str
 {
     NSString *temp = [str stringByReplacingOccurrencesOfString:@" " withString:@""];
@@ -25,6 +32,14 @@
     return temp;
 }
 
+/**
+ *  街区字符串
+ *
+ *  @param str    原有字符串
+ *  @param length 截取的长度
+ *
+ *  @return <#return value description#>
+ */
 +(NSString *)shortString:(NSString *)str andLength:(NSInteger)length{
     NSString *cleanedStr = [Utils removeSpaceAndNewlineAndChars:str];
     if ([cleanedStr length]<length) {
@@ -33,6 +48,13 @@
     return [[cleanedStr substringToIndex:length] stringByAppendingString:@"..."];
 }
 
+/**
+ *  将评论转换为属性字符串
+ *
+ *  @param commentCount 原有评论数
+ *
+ *  @return 处理后的字符串
+ */
 + (NSAttributedString *)attributedCommentCount:(int)commentCount
 {
     NSString *rawString = [NSString stringWithFormat:@"%@ %d", [NSString fontAwesomeIconStringForEnum:FACommentsO], commentCount];
@@ -50,6 +72,11 @@
 
 #pragma mark - emoji Dictionary
 
+/**
+ *  表情字典
+ *
+ *  @return 表情字典
+ */
 + (NSDictionary *)emojiDict
 {
     static dispatch_once_t once;
@@ -65,7 +92,13 @@
 }
 
 #pragma mark 信息处理
-
+/**
+ *  返回从现在开始的时间字典
+ *
+ *  @param date 原有时间
+ *
+ *  @return 处理后的字典类型
+ */
 + (NSDictionary *)timeIntervalArrayFromString:(NSDate *)date
 {
     NSUInteger unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute;
@@ -93,6 +126,13 @@
 }
 
 
+/**
+ *  将字符串转换成熟型字符串
+ *
+ *  @param date 原有日期
+ *
+ *  @return 处理后的字符串
+ */
 + (NSAttributedString *)attributedTimeString:(NSDate *)date
 {
     NSString *rawString = [NSString stringWithFormat:@"%@ %@", [NSString fontAwesomeIconStringForEnum:FAClockO], [self intervalSinceNow:date]];
@@ -104,7 +144,13 @@
     return attributedTime;
 }
 
-
+/**
+ *  从现在开始的时间
+ *
+ *  @param date 原有时间
+ *
+ *  @return 处理后的字符串
+ */
 + (NSString *)intervalSinceNow:(NSDate *)date
 {
     NSDictionary *dic = [Utils timeIntervalArrayFromString:date];
@@ -136,6 +182,11 @@
     }
 }
 
+/**
+ *  创建弹出框
+ *
+ *  @return 弹出框实例
+ */
 + (MBProgressHUD *)createHUD
 {
     UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
@@ -148,6 +199,13 @@
     return HUD;
 }
 
+/**
+ *  加密啊HTML
+ *
+ *  @param originalHTML 原始HTML
+ *
+ *  @return 加密后的HTML
+ */
 + (NSString *)escapeHTML:(NSString *)originalHTML
 {
     if (!originalHTML) {return @"";}
@@ -161,6 +219,13 @@
     return result;
 }
 
+/**
+ *  解码HTML
+ *
+ *  @param originalHTML 原始HTML
+ *
+ *  @return 解码后的HTML
+ */
 + (NSString *)unescapeHTML:(NSString *)originalHTML
 {
     if (!originalHTML) {return @"";}
@@ -174,6 +239,13 @@
     return result;
 }
 
+/**
+ *  删除HTML标签
+ *
+ *  @param HTML 原油HTML内容
+ *
+ *  @return 处理后的HTML
+ */
 + (NSString *)deleteHTMLTag:(NSString *)HTML
 {
     //修复HTML为空的情况
@@ -202,7 +274,13 @@
     return trimmedHTML;
 }
 
-
+/**
+ *  是否是URL
+ *
+ *  @param string 原字符串
+ *
+ *  @return 是否为URL
+ */
 + (BOOL)isURL:(NSString *)string
 {
     NSString *pattern = @"^(http|https)://.*?$(net|com|.com.cn|org|me|)";
@@ -212,13 +290,22 @@
     return [urlPredicate evaluateWithObject:string];
 }
 
-
+/**
+ *  检测网路是否可用
+ *
+ *  @return 网路状态
+ */
 + (NSInteger)networkStatus
 {
-    Reachability *reachability = [Reachability reachabilityWithHostName:@"www.oschina.net"];
+    Reachability *reachability = [Reachability reachabilityWithHostName:@"www.terwer.com"];
     return reachability.currentReachabilityStatus;
 }
 
+/**
+ *  是否存在网络
+ *
+ *  @return 网路状态
+ */
 + (BOOL)isNetworkExist
 {
     return [self networkStatus] > 0;

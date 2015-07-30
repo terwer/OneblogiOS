@@ -10,7 +10,8 @@
 #import "Utils.h"
 #import <AFNetworking.h>
 #import <MBProgressHUD.h>
-
+#import "Config.h"
+#import "SDFeedParser.h"
 
 #define HTML_STYLE @"<style>\
 #oneblog_title {color: #000000; margin-bottom: 6px; font-weight:bold;}\
@@ -35,7 +36,7 @@
 
 @implementation DetailsViewController
 
-- (instancetype)initWithPost:(NSDictionary *)post
+- (instancetype)initWithPost:(id)post
 {
     self = [super initWithModeSwitchButton:YES];
     if (self) {
@@ -128,13 +129,39 @@
  */
 - (void)fetchDetails:(BOOL)flag
 {
-    NSString *authorStr = [NSString stringWithFormat:@"<a href='http://my.oneblog.net/u/%d'>%@</a> 发布于 %@", 0,@"terwer", @"aaa"];
+    NSDictionary *post = _result;
+    SDPost *jsonPost = _result;
     
-    NSString *content = [NSString stringWithFormat:@"<body style='background-color:#EBEBF3'>%@<div id='oneblog_title'>%@</div><div id='oneblog_outline'>%@</div><hr/><div id='oneblog_body'>%@</div>%@</body>", HTML_STYLE, @"dvdv", authorStr, [Utils toMarkdownString: [ _result objectForKey:@"description"]], HTML_BOTTOM];
+    //博客相关变量
+    NSString *title;//文章标题
+    NSString *content;//文章内容
+    NSDate *dateCreated;//发表时间
+    NSString *author;//文章作者
+    NSArray *categroies;//文章分类
+    //JSON API
+    if ([Config isAnvancedAPIEnable]) {
+        title = jsonPost.title;
+        content = jsonPost.content;
+        //dateCreated = jsonPost.date;
+        dateCreated = [[NSDate alloc]init];
+        author = @"";
+        categroies = jsonPost.categoriesArray;
+    }else{//MetaWeblogApi
+        title = [post objectForKey:@"title"];
+        content = [post objectForKey:@"description"];
+        dateCreated = [post objectForKey:@"dateCreated"];
+        author = [post objectForKey:@"wp_author_display_name"];
+        categroies = [post objectForKey:@"categories"];
+    }
+
+    
+    NSString *authorStr = [NSString stringWithFormat:@"<a href='http://my.oneblog.net/u/%d'>%@</a> 发布于 %@", 0,@"terwer", @"时间"];
+    
+    NSString *postContent = [NSString stringWithFormat:@"<body style='background-color:#EBEBF3'>%@<div id='oneblog_title'>%@</div><div id='oneblog_outline'>%@</div><hr/><div id='oneblog_body'>%@</div>%@</body>", HTML_STYLE, @"dvdv", authorStr, [Utils toMarkdownString: content], HTML_BOTTOM];
     
     NSLog(@"loading details");
     if (!flag) {
-        NSString *htmlString = content;
+        NSString *htmlString = postContent;
         [_detailsView loadHTMLString:htmlString baseURL:nil];
         [_HUD hide:YES afterDelay:1];
     }else{
