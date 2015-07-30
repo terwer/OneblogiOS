@@ -1,7 +1,11 @@
 # 一博
-开源的博客客户端iOS版，支持Wordpress及metaWeblog Api博客。
+开源的博客客户端iOS版，支持Wordpress及MetaWeblog API博客，目前已经支持并测试通过的博客：Wordpress、ZBlog、Cnblogs、OSChina、163、51CTO、Sina。部分高级功能需要服务端JSON API支持。
 
-An open source blog client for ios plantform.It supports Wordpress and other blogs which uses metaWeblog Api.
+An open source blog client for iOS plantform.It supports wordpress and other blogs which uses MetaWeblog API and JSON API，such as Wordpress,ZBlog,Cnblogs,OSChina,163,51CTO,Sina.
+
+# 注意事项
+
+Because of the limition of MetaWeblog API,some function cen only be used if your server side implement the JSON API here.
 
 [![Build Status](https://api.travis-ci.org/terwer/OneblogiOS.svg)](https://travis-ci.org/terwer/OneblogiOS)
 
