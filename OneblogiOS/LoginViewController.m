@@ -37,6 +37,7 @@
  */
 @property(nonatomic, strong) UIButton *loginButton;
 
+@property (nonatomic, strong) MBProgressHUD *HUD;
 /**
  *  提示信息
  */
@@ -175,13 +176,18 @@
     _messageInfo.lineBreakMode = NSLineBreakByWordWrapping;
     _messageInfo.backgroundColor = [UIColor themeColor];
     _messageInfo.font = [UIFont systemFontOfSize:14];
-    NSString *info = @"您可以使用任何实现了 metaWenlogApi 的账号来登录博客。目前已经支持Wordpress、ZBlog、Cnblogs、OSChina、163、51CTO、Sina。";
+    NSString *info = @"温馨提示：您可以登录任何实现了XML-RPC MetaWeblog API接口的博客。目前已经支持并测试通过的博客：Wordpress、ZBlog、Cnblogs、OSChina、163、51CTO、Sina。\r由于MetaWeblog API接口的限制，暂时只能进行文章的显示、查看、新增、修改和删除。\r部分功能有些博客不支持，详情看这里。\r更多功能需要服务端API支持，详情查看：Wordpress JSON API。";
     _messageInfo.text = info;
-    NSRange range = [info rangeOfString:@"metaWenlogApi"];
+    NSRange range1 = [info rangeOfString:@"XML-RPC MetaWeblog API"];
     _messageInfo.linkAttributes = @{
                                     (NSString *) kCTForegroundColorAttributeName : [UIColor colorWithHex:0x428bd1]
                                     };
-    [_messageInfo addLinkToURL:[NSURL URLWithString:@"http://en.wikipedia.org/wiki/MetaWeblog"] withRange:range];
+    [_messageInfo addLinkToURL:[NSURL URLWithString:@"https://en.wikipedia.org/wiki/MetaWeblog"] withRange:range1];
+     NSRange range2 = [info rangeOfString:@"详情看这里"];
+    [_messageInfo addLinkToURL:[NSURL URLWithString:@"https://gist.github.com/terwer/7acc30a460e3ef671415"] withRange:range2];
+    [self.view addSubview:_messageInfo];
+    NSRange range3 = [info rangeOfString:@"Wordpress JSON API"];
+    [_messageInfo addLinkToURL:[NSURL URLWithString:@"https://gist.github.com/terwer/53a8da89bcec5c7d28bf"] withRange:range3];
     [self.view addSubview:_messageInfo];
     
     //添加手势，点击屏幕其他区域关闭键盘的操作
@@ -219,7 +225,7 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[_pickerView]-0-[url(20)]-20-[email(20)]-20-[password(20)]-30-[_loginButton(40)]"
                                                                       options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[_loginButton]-20-|" options:0 metrics:nil views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_loginButton]-20-[_messageInfo(60)]"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_loginButton]-20-[_messageInfo(180)]"
                                                                       options:NSLayoutFormatAlignAllLeft | NSLayoutFormatAlignAllRight
                                                                       metrics:nil views:views]];
     
@@ -253,6 +259,11 @@
 #pragma mark 登录相关
 //使用xmlrpcURL登录
 - (void)login {
+    //before login
+    _HUD = [Utils createHUD];
+    _HUD.labelText = @"正在登录";
+    _HUD.userInteractionEnabled = NO;
+    
     // Sign in
     [TGMetaWeblogAuthApi signInWithURL:self.xmlrpcField.text
                               username:self.usernameField.text
@@ -264,12 +275,16 @@
                                    [def setObject:self.usernameField.text forKey:@"mw_username"];
                                    [def setObject:self.passwordField.text forKey:@"mw_password"];
                                    [def synchronize];
+                                   //隐藏提示
+                                   [_HUD hide:YES afterDelay:1];
                                    //登录成功，跳转到主界面
                                    [self goToMainViewController];
                                }
                                failure:^(NSError *error) {
-                                   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                                   [alert show];
+                                   _HUD.mode = MBProgressHUDModeCustomView;
+                                   _HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HUD-error"]];
+                                   _HUD.labelText = [NSString stringWithFormat:@"错误：%@", [error localizedDescription]];
+                                   [_HUD hide:YES afterDelay:1];
                                }];
 }
 
@@ -352,7 +367,7 @@
 
 #pragma mark - 超链接代理
 -(void)attributedLabel:(TTTAttributedLabel *)label  didLongPressLinkWithURL:(NSURL *)url atPoint:(CGPoint)point{
-    UIAlertController *confirmCtl = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"是否使用Safari打开网页打开网页？" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *confirmCtl = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"是否使用Safari打开网页？" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[url absoluteString]]]; //调用Safari打开网页
     }];
@@ -362,8 +377,14 @@
     [self presentViewController:confirmCtl animated:yesAction completion:nil];
 }
 
+/**
+ *  超链接单击
+ *
+ *  @param label label
+ *  @param url   url
+ */
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
     NSLog(@"Selected url:%@",[url absoluteString]);
-    [Utils navigateUrl:self withUrl:url];
+    [Utils navigateUrl:self withUrl:url andTitle:@"What is MetaWeblog API?"];
 }
 @end

@@ -98,5 +98,5 @@ static NSString * const kKeyMinutes = @"minutes";
  *  @param target 跳转之前的仕途控制器，一般为当前视图控制器
  *  @param url    @param url 要浏览的网址
  */
-+(void)navigateUrl:(UIViewController *)target withUrl:(NSURL *)url;
++(void)navigateUrl:(UIViewController *)target withUrl:(NSURL *)url andTitle:(NSString *)pageTitle;
 @end
