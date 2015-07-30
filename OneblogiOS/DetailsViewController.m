@@ -56,8 +56,12 @@
     
     //编辑工具栏
     [self.view bringSubviewToFront:(UIView *)self.editingBar];
-    [self.editingBar.modeSwitchButton sendActionsForControlEvents:UIControlEventTouchUpInside];
     
+    NSDictionary *views = @{@"detailsView": _detailsView, @"bottomBar": self.editingBar};
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[detailsView]|" options:0 metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[detailsView][bottomBar]"
+                                                                      options:NSLayoutFormatAlignAllLeft | NSLayoutFormatAlignAllRight
+                                                                      metrics:nil views:views]];
     // 添加等待动画
     _HUD = [Utils createHUD];
     _HUD.userInteractionEnabled = NO;
