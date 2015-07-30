@@ -13,6 +13,8 @@
 #import "PostCell.h"
 #import "Utils.h"
 #import "PostDetailViewController.h"
+#import "Config.h"
+#import "SDFeedParser.h"
 
 static NSString *kPostCellID = @"PostCell";
 const int MAX_DESCRIPTION_LENGTH = 60;//描述最多字数
@@ -84,6 +86,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
+    //JSON API
     return _posts.count;
 }
 
@@ -91,20 +94,44 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     PostCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kPostCellID forIndexPath:indexPath];
-    NSDictionary *post = [self.posts objectAtIndex:indexPath.row];
-    
     cell.backgroundColor = [UIColor themeColor];
-    [cell.titleLabel setAttributedText:[self attributedTittle:[post objectForKey:@"title"]]];
-    [cell.bodyLabel setText:[Utils shortString:[post objectForKey:@"description"] andLength:MAX_DESCRIPTION_LENGTH]];
+    
+    NSDictionary *post = [self.posts objectAtIndex:indexPath.row];
+    SDPost *jsonPost = [self.posts objectAtIndex:indexPath.row];
+    
+    //博客相关变量
+    NSString *title;//文章标题
+    NSString *content;//文章内容
+    NSDate *dateCreated;//发表时间
+    NSString *author;//文章作者
+    NSArray *categroies;//文章分类
+    //JSON API
+    if ([Config isAnvancedAPIEnable]) {
+        title = jsonPost.title;
+        content = jsonPost.content;
+        //dateCreated = jsonPost.date;
+        dateCreated = [[NSDate alloc]init];
+        author = @"";
+        categroies = jsonPost.categoriesArray;
+    }else{//MetaWeblogApi
+        title = [post objectForKey:@"title"];
+        content = [post objectForKey:@"description"];
+        dateCreated = [post objectForKey:@"dateCreated"];
+        author = [post objectForKey:@"wp_author_display_name"];
+        categroies = [post objectForKey:@"categories"];
+    }
+    
+    //表哥数据绑定
+    [cell.titleLabel setAttributedText:[self attributedTittle:title]];
+    [cell.bodyLabel setText:[Utils shortString:content andLength:MAX_DESCRIPTION_LENGTH]];
     //作者处理
-    NSString *author = [post objectForKey:@"wp_author_display_name"];
     [cell.authorLabel setText:(!author||[author isEqual:@""])?@"admin":author];
     cell.titleLabel.textColor = [UIColor titleColor];
-    NSDate *createdDate = [post objectForKey:@"dateCreated"];
+    NSDate *createdDate = dateCreated;
     [cell.timeLabel setAttributedText:[Utils attributedTimeString:createdDate]];
     //metaWeblog api暂时不支持评论
     //[cell.commentCount setAttributedText:[self attributedCommentCount:0]];
-    NSArray *categories = [post objectForKey:@"categories"];
+    NSArray *categories = categroies;
     NSString *joinedString = [Utils shortString:[categories componentsJoinedByString:@","] andLength:15];
     //处理分类为空的情况
     NSString *categoriesString = [NSString stringWithFormat:@"发布在【%@】",[joinedString isEqualToString: @""]?@"默认分类":joinedString];
@@ -120,11 +147,26 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
 {
     NSDictionary *post = self.posts[indexPath.row];
     
+    SDPost * jsonPost = self.posts[indexPath.row];
+    
+    //博客相关变量
+    NSString *title;//文章标题
+    NSString *content;//文章内容
+    //JSON API
+    if ([Config isAnvancedAPIEnable]) {
+        title = jsonPost.title;
+        content = jsonPost.content;
+      }else{//MetaWeblogApi
+        title = [post objectForKey:@"title"];
+        content = [post objectForKey:@"description"];
+      }
+
+    
     self.label.font = [UIFont boldSystemFontOfSize:15];
-    [self.label setAttributedText:[self attributedTittle:[post objectForKey:@"title"]]];
+    [self.label setAttributedText:[self attributedTittle:title]];
     CGFloat height = [self.label sizeThatFits:CGSizeMake(tableView.frame.size.width - 16, MAXFLOAT)].height;
     
-    self.label.text = [Utils shortString:[post objectForKey:@"description"] andLength:MAX_DESCRIPTION_LENGTH];
+    self.label.text = [Utils shortString:content andLength:MAX_DESCRIPTION_LENGTH];
     self.label.font = [UIFont systemFontOfSize:13];
     height += [self.label sizeThatFits:CGSizeMake(tableView.frame.size.width - 16, MAXFLOAT)].height;
     
@@ -151,9 +193,16 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSDictionary *post = [self.posts objectAtIndex:indexPath.row];
+    NSDictionary *post = self.posts[indexPath.row];
     
-    PostDetailViewController *detailsViewController = [[PostDetailViewController alloc] initWithPost:post];
+    SDPost * jsonPost = self.posts[indexPath.row];
+    
+    PostDetailViewController *detailsViewController;
+    if ([Config isAnvancedAPIEnable]) {
+        detailsViewController = [[PostDetailViewController alloc] initWithPost:jsonPost];
+    }else{
+        detailsViewController = [[PostDetailViewController alloc] initWithPost:post];
+    }
     [self.navigationController pushViewController:detailsViewController animated:YES];
 }
 
@@ -169,7 +218,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     if (!self.api) {
         [self.refreshControl endRefreshing];
         
-        NSString *errorString = @"metaWeblogApi init error";
+        NSString *errorString = @"api init error";
         NSLog(@"%@",errorString);
         MBProgressHUD *HUD = [Utils createHUD];
         HUD.mode = MBProgressHUDModeCustomView;
@@ -183,6 +232,21 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     //===================================
     //获取文章数据
     //===================================
+    //JSON API
+    if ([Config isAnvancedAPIEnable]) {
+        SDFeedParser *jsonAPI = self.api;
+        [jsonAPI parseURL:@"http://www.terwer.com/api/get_recent_posts/" success:^(NSArray *postsArray, NSInteger postsCount) {
+            NSLog(@"Fetched %ld posts", postsCount);
+            self.posts = postsArray;
+            [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
+
+        }failure:^(NSError *error) {
+            NSLog(@"Error: %@", error);
+        }];
+
+    }else{
+    //MetaWeblogAPI
     [self.api getRecentPosts:currentCount
                      success:^(NSArray *posts) {
                          NSLog(@"We have %lu posts", (unsigned long) [posts count]);
@@ -235,6 +299,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
                          }
                          [self.tableView reloadData];
                      }];
+    }
 }
 
 

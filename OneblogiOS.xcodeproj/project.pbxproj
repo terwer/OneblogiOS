@@ -59,6 +59,16 @@
 		BE512D471B66BA7400455CC7 /* emoji.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE512D451B66BA7400455CC7 /* emoji.plist */; };
 		BE512D481B66BA7400455CC7 /* emojiToText.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE512D461B66BA7400455CC7 /* emojiToText.plist */; };
 		BE5C49401B68018D008E4FDE /* ApiInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5C493F1B68018D008E4FDE /* ApiInfo.m */; };
+		BEC359911B6A5DBD00263836 /* NSString+StringByStrippingHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC3597E1B6A5DBC00263836 /* NSString+StringByStrippingHTML.m */; };
+		BEC359921B6A5DBD00263836 /* SDCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC359801B6A5DBC00263836 /* SDCategory.m */; };
+		BEC359931B6A5DBD00263836 /* SDCategory+SDCategoryFromDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC359821B6A5DBC00263836 /* SDCategory+SDCategoryFromDictionary.m */; };
+		BEC359941B6A5DBD00263836 /* SDComment.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC359841B6A5DBC00263836 /* SDComment.m */; };
+		BEC359951B6A5DBD00263836 /* SDComment+SDCommentFromDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC359861B6A5DBD00263836 /* SDComment+SDCommentFromDictionary.m */; };
+		BEC359961B6A5DBD00263836 /* SDFeedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC359881B6A5DBD00263836 /* SDFeedParser.m */; };
+		BEC359971B6A5DBD00263836 /* SDPost.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC3598A1B6A5DBD00263836 /* SDPost.m */; };
+		BEC359981B6A5DBD00263836 /* SDPost+SDPostFromDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC3598C1B6A5DBD00263836 /* SDPost+SDPostFromDictionary.m */; };
+		BEC359991B6A5DBD00263836 /* SDTag.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC3598E1B6A5DBD00263836 /* SDTag.m */; };
+		BEC3599A1B6A5DBD00263836 /* SDTag+SDTagFromDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC359901B6A5DBD00263836 /* SDTag+SDTagFromDictionary.m */; };
 		BEDE593C1B657063003AB347 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDE593B1B657063003AB347 /* main.m */; };
 		BEDE593F1B657063003AB347 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDE593E1B657063003AB347 /* AppDelegate.m */; };
 		BEDE59471B657063003AB347 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEDE59461B657063003AB347 /* Images.xcassets */; };
@@ -183,6 +193,26 @@
 		BE512D461B66BA7400455CC7 /* emojiToText.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emojiToText.plist; sourceTree = "<group>"; };
 		BE5C493E1B68018D008E4FDE /* ApiInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiInfo.h; sourceTree = "<group>"; };
 		BE5C493F1B68018D008E4FDE /* ApiInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiInfo.m; sourceTree = "<group>"; };
+		BEC3597D1B6A5DBC00263836 /* NSString+StringByStrippingHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+StringByStrippingHTML.h"; path = "SDFeedParser/NSString+StringByStrippingHTML.h"; sourceTree = "<group>"; };
+		BEC3597E1B6A5DBC00263836 /* NSString+StringByStrippingHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+StringByStrippingHTML.m"; path = "SDFeedParser/NSString+StringByStrippingHTML.m"; sourceTree = "<group>"; };
+		BEC3597F1B6A5DBC00263836 /* SDCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDCategory.h; path = SDFeedParser/SDCategory.h; sourceTree = "<group>"; };
+		BEC359801B6A5DBC00263836 /* SDCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDCategory.m; path = SDFeedParser/SDCategory.m; sourceTree = "<group>"; };
+		BEC359811B6A5DBC00263836 /* SDCategory+SDCategoryFromDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SDCategory+SDCategoryFromDictionary.h"; path = "SDFeedParser/SDCategory+SDCategoryFromDictionary.h"; sourceTree = "<group>"; };
+		BEC359821B6A5DBC00263836 /* SDCategory+SDCategoryFromDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SDCategory+SDCategoryFromDictionary.m"; path = "SDFeedParser/SDCategory+SDCategoryFromDictionary.m"; sourceTree = "<group>"; };
+		BEC359831B6A5DBC00263836 /* SDComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDComment.h; path = SDFeedParser/SDComment.h; sourceTree = "<group>"; };
+		BEC359841B6A5DBC00263836 /* SDComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDComment.m; path = SDFeedParser/SDComment.m; sourceTree = "<group>"; };
+		BEC359851B6A5DBD00263836 /* SDComment+SDCommentFromDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SDComment+SDCommentFromDictionary.h"; path = "SDFeedParser/SDComment+SDCommentFromDictionary.h"; sourceTree = "<group>"; };
+		BEC359861B6A5DBD00263836 /* SDComment+SDCommentFromDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SDComment+SDCommentFromDictionary.m"; path = "SDFeedParser/SDComment+SDCommentFromDictionary.m"; sourceTree = "<group>"; };
+		BEC359871B6A5DBD00263836 /* SDFeedParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDFeedParser.h; path = SDFeedParser/SDFeedParser.h; sourceTree = "<group>"; };
+		BEC359881B6A5DBD00263836 /* SDFeedParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDFeedParser.m; path = SDFeedParser/SDFeedParser.m; sourceTree = "<group>"; };
+		BEC359891B6A5DBD00263836 /* SDPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDPost.h; path = SDFeedParser/SDPost.h; sourceTree = "<group>"; };
+		BEC3598A1B6A5DBD00263836 /* SDPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDPost.m; path = SDFeedParser/SDPost.m; sourceTree = "<group>"; };
+		BEC3598B1B6A5DBD00263836 /* SDPost+SDPostFromDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SDPost+SDPostFromDictionary.h"; path = "SDFeedParser/SDPost+SDPostFromDictionary.h"; sourceTree = "<group>"; };
+		BEC3598C1B6A5DBD00263836 /* SDPost+SDPostFromDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SDPost+SDPostFromDictionary.m"; path = "SDFeedParser/SDPost+SDPostFromDictionary.m"; sourceTree = "<group>"; };
+		BEC3598D1B6A5DBD00263836 /* SDTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDTag.h; path = SDFeedParser/SDTag.h; sourceTree = "<group>"; };
+		BEC3598E1B6A5DBD00263836 /* SDTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDTag.m; path = SDFeedParser/SDTag.m; sourceTree = "<group>"; };
+		BEC3598F1B6A5DBD00263836 /* SDTag+SDTagFromDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SDTag+SDTagFromDictionary.h"; path = "SDFeedParser/SDTag+SDTagFromDictionary.h"; sourceTree = "<group>"; };
+		BEC359901B6A5DBD00263836 /* SDTag+SDTagFromDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SDTag+SDTagFromDictionary.m"; path = "SDFeedParser/SDTag+SDTagFromDictionary.m"; sourceTree = "<group>"; };
 		BEDE59361B657063003AB347 /* OneblogiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneblogiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEDE593A1B657063003AB347 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEDE593B1B657063003AB347 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -314,6 +344,26 @@
 		1EDB3BE31B69B95A00A994FE /* SDFeedParser */ = {
 			isa = PBXGroup;
 			children = (
+				BEC3597D1B6A5DBC00263836 /* NSString+StringByStrippingHTML.h */,
+				BEC3597E1B6A5DBC00263836 /* NSString+StringByStrippingHTML.m */,
+				BEC3597F1B6A5DBC00263836 /* SDCategory.h */,
+				BEC359801B6A5DBC00263836 /* SDCategory.m */,
+				BEC359811B6A5DBC00263836 /* SDCategory+SDCategoryFromDictionary.h */,
+				BEC359821B6A5DBC00263836 /* SDCategory+SDCategoryFromDictionary.m */,
+				BEC359831B6A5DBC00263836 /* SDComment.h */,
+				BEC359841B6A5DBC00263836 /* SDComment.m */,
+				BEC359851B6A5DBD00263836 /* SDComment+SDCommentFromDictionary.h */,
+				BEC359861B6A5DBD00263836 /* SDComment+SDCommentFromDictionary.m */,
+				BEC359871B6A5DBD00263836 /* SDFeedParser.h */,
+				BEC359881B6A5DBD00263836 /* SDFeedParser.m */,
+				BEC359891B6A5DBD00263836 /* SDPost.h */,
+				BEC3598A1B6A5DBD00263836 /* SDPost.m */,
+				BEC3598B1B6A5DBD00263836 /* SDPost+SDPostFromDictionary.h */,
+				BEC3598C1B6A5DBD00263836 /* SDPost+SDPostFromDictionary.m */,
+				BEC3598D1B6A5DBD00263836 /* SDTag.h */,
+				BEC3598E1B6A5DBD00263836 /* SDTag.m */,
+				BEC3598F1B6A5DBD00263836 /* SDTag+SDTagFromDictionary.h */,
+				BEC359901B6A5DBD00263836 /* SDTag+SDTagFromDictionary.m */,
 			);
 			name = SDFeedParser;
 			sourceTree = "<group>";
@@ -798,21 +848,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E7407CF1B66103E0011F7A5 /* UIView+Util.m in Sources */,
+				BEC3599A1B6A5DBD00263836 /* SDTag+SDTagFromDictionary.m in Sources */,
 				1E0C68871B66248700AC6611 /* MyInfoController.m in Sources */,
 				BE4D375E1B666D2700D56E5A /* FAImageView.m in Sources */,
 				1E0C68811B661F2D00AC6611 /* DiscoverViewController.m in Sources */,
 				1E6C81591B662BEB00D4F002 /* OBObjsViewController.m in Sources */,
 				BEDE596A1B65739C003AB347 /* SideMenuViewController.m in Sources */,
 				BE512D3E1B66B63D00455CC7 /* EmojiPanelVC.m in Sources */,
+				BEC359981B6A5DBD00263836 /* SDPost+SDPostFromDictionary.m in Sources */,
+				BEC359971B6A5DBD00263836 /* SDPost.m in Sources */,
 				BE4D375F1B666D2700D56E5A /* NSString+FontAwesome.m in Sources */,
 				BEDE596F1B657575003AB347 /* UIColor+Util.m in Sources */,
 				1EDB3C051B69BBA800A994FE /* TMDItalic.m in Sources */,
 				BE512D2E1B66B29C00455CC7 /* GrowingTextView.m in Sources */,
+				BEC359961B6A5DBD00263836 /* SDFeedParser.m in Sources */,
 				1E3AC3821B68B40900086EA3 /* BrowserNavViewController.m in Sources */,
 				1EDB3C071B69BBA800A994FE /* TMDParagraph.m in Sources */,
 				1E3AC3851B68B44600086EA3 /* BrowserViewController.m in Sources */,
 				BE5C49401B68018D008E4FDE /* ApiInfo.m in Sources */,
 				1EDB3BFE1B69BBA800A994FE /* TMDAnchor.m in Sources */,
+				BEC359991B6A5DBD00263836 /* SDTag.m in Sources */,
 				BEDE593F1B657063003AB347 /* AppDelegate.m in Sources */,
 				BEDE597C1B6577C1003AB347 /* SwipableViewController.m in Sources */,
 				1E0C688C1B66258800AC6611 /* UIImage+Util.m in Sources */,
@@ -827,6 +882,8 @@
 				BE512D341B66B3B800455CC7 /* Config.m in Sources */,
 				BE512D441B66B85D00455CC7 /* DetailsViewController.m in Sources */,
 				1EDB3C061B69BBA800A994FE /* TMDLineBreak.m in Sources */,
+				BEC359931B6A5DBD00263836 /* SDCategory+SDCategoryFromDictionary.m in Sources */,
+				BEC359921B6A5DBD00263836 /* SDCategory.m in Sources */,
 				BE512D311B66B38600455CC7 /* PlaceholderTextView.m in Sources */,
 				BE512D411B66B72100455CC7 /* NSTextAttachment+Util.m in Sources */,
 				1EDB3C011B69BBA800A994FE /* TMDElement.m in Sources */,
@@ -842,6 +899,7 @@
 				1EDB3C021B69BBA800A994FE /* TMDHeading.m in Sources */,
 				1EDB3C031B69BBA800A994FE /* TMDHorizontalRule.m in Sources */,
 				BEDE59661B657331003AB347 /* OptionButton.m in Sources */,
+				BEC359951B6A5DBD00263836 /* SDComment+SDCommentFromDictionary.m in Sources */,
 				BEDE597D1B6577C1003AB347 /* TitleBarView.m in Sources */,
 				BEDE598A1B657A85003AB347 /* TGXMLRPCApiClient.m in Sources */,
 				1EDB3BFF1B69BBA800A994FE /* TMDBold.m in Sources */,
@@ -851,8 +909,10 @@
 				1EDB3C081B69BBA800A994FE /* ToMarkdown.m in Sources */,
 				BEDE593C1B657063003AB347 /* main.m in Sources */,
 				1E30393C1B6A0EE100D021B1 /* PostEditViewController.m in Sources */,
+				BEC359941B6A5DBD00263836 /* SDComment.m in Sources */,
 				BE4D37601B666D2700D56E5A /* UIFont+FontAwesome.m in Sources */,
 				1EE777351B677AE00042F118 /* LoginNavViewController.m in Sources */,
+				BEC359911B6A5DBD00263836 /* NSString+StringByStrippingHTML.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

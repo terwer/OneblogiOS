@@ -10,6 +10,7 @@
 #import "Utils.h"
 #import "Config.h"
 #import "LoginViewController.h"
+#import "SDFeedParser.h"
 
 @interface OBObjsViewController ()
 
@@ -47,7 +48,15 @@
     //===================================
     //如果登陆成功，尝试初始化api
     //===================================
-    if (![self setupApi:apiInfo]) {
+    
+    //根据设置确认要选择的api
+    if ([Config isAnvancedAPIEnable]) {
+        _api = [self setupJSONApi:apiInfo];
+    }else{
+        _api = [self setupApi:apiInfo];
+    }
+    
+    if (!_api) {
         NSLog(@"api初始化失败，请重新登录。");
         LoginViewController *loginController = [[LoginViewController alloc]init];
         [self.navigationController presentViewController:loginController animated:YES completion:nil];
@@ -88,8 +97,14 @@
 }
 
 #pragma mark - Private
-
-- (BOOL)setupApi:(ApiInfo *)apiInfo {
+/**
+ *  初始化MetaWeblog API
+ *
+ *  @param apiInfo apiInfo
+ *
+ *  @return API状态
+ */
+- (id)setupApi:(ApiInfo *)apiInfo {
     if (self.api == nil) {
         NSString *xmlrpc =apiInfo.xmlrpc;
         if (xmlrpc) {
@@ -103,13 +118,26 @@
     }
     
     //api初始化成功
-    if (self.api) {
-        return YES;
-    }else{
-        return NO;
+    if (_api) {
+        return _api;
     }
+    return nil;
 }
 
+/**
+ *  初始化JSON API
+ *
+ *  @param apiInfo apiInfo
+ *
+ *  @return JSON API实例
+ */
+-(id)setupJSONApi:(ApiInfo *)apiInfo{
+    SDFeedParser *feedParser = [[SDFeedParser alloc]init];
+    if (feedParser) {
+        return feedParser;
+    }
+    return nil;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
