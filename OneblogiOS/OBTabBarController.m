@@ -15,6 +15,7 @@
 #import "DiscoverViewController.h"
 #import "MyInfoController.h"
 #import "Utils.h"
+#import "PostEditViewController.h"
 
 @interface OBTabBarController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
@@ -146,7 +147,7 @@
         viewController.navigationItem.leftBarButtonItem  = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigationbar-sidebar"]
                                                                                             style:UIBarButtonItemStylePlain
                                                                                            target:self action:@selector(onClickMenuButton)];
-        
+        //文章发表按钮
         viewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
                                                             initWithImage:[UIImage imageNamed:@"navigationbar-search"] style:UIBarButtonItemStylePlain
                                                             target:self
@@ -307,14 +308,22 @@
 }
 
 
-#pragma mark - 处理点击事件
+#pragma mark - 处理发布按钮对应的6个操作的点击事件
 
+/**
+ *  发布文章
+ *
+ *  @param recognizer recognizer 
+ */
 - (void)onTapOptionButton:(UIGestureRecognizer *)recognizer
 {
     switch (recognizer.view.tag) {
         case 0: {
             NSLog(@"发布文字文章。");
-            break;
+            PostEditViewController *postEditVC = [[PostEditViewController alloc]init];
+            UINavigationController *selectedNavCtl = (UINavigationController *)self.selectedViewController;
+            [selectedNavCtl pushViewController:postEditVC animated:NO];
+             break;
         }
         case 1: {
             NSLog(@"发布图片。");

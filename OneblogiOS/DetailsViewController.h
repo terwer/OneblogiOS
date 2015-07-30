@@ -11,6 +11,11 @@
 @interface DetailsViewController : BottomBarViewController
 
 /**
+ *  详情实体
+ */
+@property NSDictionary *result;
+
+/**
  *  用post初始化详情页面
  *
  *  @param post 文章

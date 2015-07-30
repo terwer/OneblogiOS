@@ -28,7 +28,6 @@
 
 @interface DetailsViewController () <UIWebViewDelegate, UIScrollViewDelegate, UIAlertViewDelegate>
 
-@property NSDictionary * result;
 @property (nonatomic, strong) UIWebView *detailsView;
 @property (nonatomic, strong) MBProgressHUD *HUD;
 
@@ -41,8 +40,7 @@
     self = [super initWithModeSwitchButton:YES];
     if (self) {
         self.hidesBottomBarWhenPushed = YES;
-        self.navigationItem.title = @"文章详情";
-        self.result = post;
+         self.result = post;
     }
     
     return self;
@@ -52,9 +50,6 @@
     [super viewDidLoad];
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:nil action:nil];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"刷新" style:UIBarButtonItemStyleDone target:self action:@selector(refresh)];
     
     //添加WebView
     _detailsView = [[UIWebView alloc]initWithFrame:CGRectMake(0.0f,0.0f,self.view.frame.size.width, self.view.frame.size.height)];
@@ -118,6 +113,10 @@
     }
 }
 
+
+/**
+ *  刷新
+ */
 - (void)refresh{
     NSLog(@"refreshing...");
     [self fetchDetails:YES];
