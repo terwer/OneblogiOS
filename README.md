@@ -5,7 +5,7 @@ An open source blog client for iOS plantform.It supports Wordpress and other blo
 
 # 注意事项
 
-Because of the limition of MetaWeblog API,some function cen only be used if your server side implement the JSON API here.
+Because of the limition of MetaWeblog API,some function cen only be used if your server side implement the JSON API [here](https://github.com/terwer/SDFeedParser).
 
 [![Build Status](https://api.travis-ci.org/terwer/OneblogiOS.svg)](https://travis-ci.org/terwer/OneblogiOS)
 
