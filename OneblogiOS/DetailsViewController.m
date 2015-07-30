@@ -11,6 +11,21 @@
 #import <AFNetworking.h>
 #import <MBProgressHUD.h>
 
+
+#define HTML_STYLE @"<style>\
+#oneblog_title {color: #000000; margin-bottom: 6px; font-weight:bold;}\
+#oneblog_title a {color:#0D6DA8;}\
+#oneblog_title img {vertical-align:middle; margin-right:6px;}\
+#oneblog_outline {color: #707070; font-size: 12px;}\
+#oneblog_outline a {color:#0D6DA8; text-decoration:none;}\
+#oneblog_body {font-size:16px; line-height:24px;overflow:hidden}\
+#oneblog_body img {max-width: 100%;}\
+#oneblog_body table {max-width:100%;}\
+#oneblog_body pre {font-size:9pt; font-family:Courier New, Arial; border:1px solid #ddd; border-left:5px solid #6CE26C; background:#f6f6f6; padding:5px;}\
+</style>"
+
+#define HTML_BOTTOM @"<div style='margin-bottom:60px'/>"
+
 @interface DetailsViewController () <UIWebViewDelegate, UIScrollViewDelegate, UIAlertViewDelegate>
 
 @property NSDictionary * result;
@@ -71,6 +86,38 @@
     //((AppDelegate *)[UIApplication sharedApplication].delegate).inNightMode = [Config getMode];
 }
 
+/**
+ *  隐藏右侧和底部滚动条，去掉滚动边界的黑色背景,禁止左右滑动
+ *
+ *  @param webView webView
+ */
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    //取消右侧，下侧滚动条，去处上下滚动边界的黑色背景
+    for (UIView *_aView in [webView subviews])
+    {
+        if ([_aView isKindOfClass:[UIScrollView class]])
+        {
+            [(UIScrollView *)_aView setShowsVerticalScrollIndicator:NO];
+            //右侧的滚动条
+            [(UIScrollView *)_aView setShowsHorizontalScrollIndicator:NO];
+            
+            //下侧的滚动条
+            for (UIView *_inScrollview in _aView.subviews)
+            {
+                if ([_inScrollview isKindOfClass:[UIImageView class]])
+                {
+                    _inScrollview.hidden = YES;  //上下滚动出边界时的黑色的图片
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
+}
+
 - (void)refresh{
     NSLog(@"refreshing...");
     [self fetchDetails:YES];
@@ -82,9 +129,13 @@
  */
 - (void)fetchDetails:(BOOL)flag
 {
+    NSString *authorStr = [NSString stringWithFormat:@"<a href='http://my.oneblog.net/u/%d'>%@</a> 发布于 %@", 0,@"terwer", @"aaa"];
+    
+    NSString *content = [NSString stringWithFormat:@"<body style='background-color:#EBEBF3'>%@<div id='oneblog_title'>%@</div><div id='oneblog_outline'>%@</div><hr/><div id='oneblog_body'>%@</div>%@</body>", HTML_STYLE, @"dvdv", authorStr, [Utils toMarkdownString: [ _result objectForKey:@"description"]], HTML_BOTTOM];
+    
     NSLog(@"loading details");
     if (!flag) {
-        NSString *htmlString = [Utils toMarkdownString: [ _result objectForKey:@"description"]];
+        NSString *htmlString = content;
         [_detailsView loadHTMLString:htmlString baseURL:nil];
         [_HUD hide:YES afterDelay:1];
     }else{
