@@ -77,6 +77,10 @@ Oneblog app is under the Apache License V2. See [the LICENSE file](https://githu
 
 更新记录
 ======
+v0.9.3 2015-08-03
+
+>1、修复JSON API分页。
+
 
 v0.9.2 2015-07-29
 
