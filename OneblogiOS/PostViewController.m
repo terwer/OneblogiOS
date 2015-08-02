@@ -258,15 +258,16 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
         NSString *JSONApiBaseURL = [settings objectForKey:@"JSONApiBaseURL"];
         NSInteger digPostCount = [[settings objectForKey:@"DigPostCount"] integerValue];
         //由于置顶文章会影响分页数目，因此需要把他排除
-        NSString *requestURL = [NSString stringWithFormat:@"%@/api/get_recent_posts/?page=%lu&count=%d",JSONApiBaseURL,super.page,MAX_PAGE_SIZE];
+        //另外api里面分页的索引从1开始
+        NSString *requestURL = [NSString stringWithFormat:@"%@/api/get_recent_posts/?page=%lu&count=%d",JSONApiBaseURL,super.page+1,MAX_PAGE_SIZE];
         [jsonAPI parseURL:requestURL success:^(NSArray *posts, NSInteger postsCount) {
             
             NSLog(@"requestURL:%@",requestURL);
             
             NSLog(@"JSON API Fetched %ld posts", postsCount);
-            
-            postsCount -= digPostCount;
-            
+            if (self.page == 0) {
+                postsCount -= digPostCount;
+            }
             NSLog(@"NO dig posts %ld", (long)postsCount);
             
             //处理刷新
@@ -284,12 +285,14 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (self.tableWillReload) {self.tableWillReload(posts.count);}
                 else {
-                    if (super.page == 0 && posts.count == 0) {
+                    if (super.page == 0 && postsCount == 0) {//首页无数据
                         super.lastCell.status = LastCellStatusEmpty;
-                    } else if (postsCount == 0 || (super.page == 0 && postsCount%MAX_PAGE_SIZE > 0)) {
+                    }
+                    else if (postsCount == 0 || ((postsCount - MAX_PAGE_SIZE)%MAX_PAGE_SIZE > 0)) {
                         //注：当前页面数目小于MAX_PAGE_SIZE或者没有结果表示全部加载完成
                         //另外：默认返回的每页的数目会自动加上置顶文章数目，因此需要修正
                         super.lastCell.status = LastCellStatusFinished;
+                        self.page = 0;//最后一页无数据，回到初始页
                     } else {
                         super.lastCell.status = LastCellStatusMore;
                     }
@@ -329,7 +332,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
                                  else {
                                      if (super.page == 0 && posts.count == 0) {
                                          super.lastCell.status = LastCellStatusEmpty;
-                                     } else if (posts.count == 0 || (super.page == 0 && posts.count%MAX_PAGE_SIZE > 0)) {
+                                     } else if (posts.count == 0 || posts.count%MAX_PAGE_SIZE > 0) {
                                          //注：当前页面数目小于MAX_PAGE_SIZE或者没有结果表示全部加载完成
                                          super.lastCell.status = LastCellStatusFinished;
                                      } else {
