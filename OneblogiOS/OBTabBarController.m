@@ -33,15 +33,18 @@
 
 @implementation OBTabBarController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
+//创建博客视图控制器
+-(SwipableViewController *)createBLogViewController:(BOOL)isSearch{
     //全部
     PostViewController *postViewCtl = [[PostViewController alloc]initWithPostType:PostTypePost];
+    //是否搜索
+    if (isSearch) {
+        postViewCtl.isSearch = YES;
+    }
     SwipableViewController *blogSVC ;
     //由于metaWeblog api的限制，无法筛选出热门和置顶文章
-    if ([Config isAnvancedAPIEnable]) {
+    //高级API才有页面，搜索没有页面
+    if ([Config isAnvancedAPIEnable]&& !isSearch) {
         //最新
         UIViewController *pageViewCtl = [[PostViewController alloc]initWithPostType:PostTypePage];
         
@@ -56,14 +59,22 @@
                                                  andControllers:@[ postViewCtl]
                                                     underTabbar:YES];
     }
+    return blogSVC;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    //博客
+    SwipableViewController *blogSVC = [self createBLogViewController:NO];
     
     //消息
     MessageViewController *messageCtl = [[MessageViewController alloc]initWithStyle:UITableViewStyleGrouped];
-    //发现
-    SwipableViewController *searchTableVC = [[SwipableViewController alloc] initWithTitle:@"首页"
-                                                                             andSubTitles:nil
-                                                                           andControllers:nil
-                                                                              underTabbar:YES];;
+    
+    //搜索
+    SwipableViewController *searchTableVC = [self createBLogViewController:YES];
+    
     //我
     MyInfoController *myInfoVC = [[MyInfoController alloc]initWithStyle:UITableViewStyleGrouped];
     
@@ -78,7 +89,7 @@
                              ];
     
     //底部中间按钮
-    NSArray *titles = @[@"博客", @"消息", @"", @"发现", @"我"];
+    NSArray *titles = @[@"博客", @"消息", @"", @"搜索", @"我"];
     NSArray *images = @[@"tabbar-news", @"tabbar-tweet", @"blank", @"tabbar-discover", @"tabbar-me"];
     [self.tabBar.items enumerateObjectsUsingBlock:^(UITabBarItem *item, NSUInteger idx, BOOL *stop) {
         [item setTitle:titles[idx]];

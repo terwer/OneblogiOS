@@ -36,7 +36,7 @@ typedef NS_ENUM(NSUInteger, PostType){
 /**
  *  是否搜索
  */
-@property (nonatomic)  BOOL *isSearch;
+@property (nonatomic)  BOOL isSearch;
 /**
  *  搜索框
  */
