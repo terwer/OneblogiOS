@@ -1,5 +1,3 @@
-
-
 //
 //  BlogsViewController.m
 //  OneblogiOS
@@ -16,7 +14,7 @@
 #import "Config.h"
 #import "SDFeedParser.h"
 
-static NSString *kPostCellID = @"PostCell";
+static NSString *kPostCellID = @"PostCell";//CellID
 const int MAX_DESCRIPTION_LENGTH = 60;//描述最多字数
 const int MAX_PAGE_SIZE = 10;//每页显示数目
 
@@ -28,43 +26,17 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
 
 @implementation PostViewController
 
+/**
+ *  根据文章类型初始化
+ *
+ *  @param type 文章类型
+ *
+ *  @return 当前对象
+ */
 - (instancetype)initWithPostType:(PostType)type
 {
     if (self = [super init]) {
-        //TODO:do post type
-    }
-    
-    return self;
-}
-
-- (NSMutableAttributedString *)attributedTittle:(NSString *)title
-{
-    NSMutableAttributedString *attributeString ;
-    
-    NSTextAttachment *textAttachment = [NSTextAttachment new];
-    //转载
-    //textAttachment.image = [UIImage imageNamed:@"widget_repost"];
-    //原创
-    textAttachment.image = [UIImage imageNamed:@"widget-original"];
-    NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:textAttachment];
-    attributeString = [[NSMutableAttributedString alloc] initWithAttributedString:attachmentString];
-    [attributeString appendAttributedString:[[NSAttributedString alloc] initWithString:@" "]];
-    [attributeString appendAttributedString:[[NSAttributedString alloc] initWithString:title]];
-    
-    return attributeString;
-}
-
--(NSAttributedString *)attributedCommentCount:(int)commentCount
-{
-    return [Utils attributedCommentCount:commentCount];
-}
-
-//ViewController.m
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
+        //TODO:设置文章类型，仅仅高级API支持
     }
     return self;
 }
@@ -159,7 +131,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     }
     
     //表哥数据绑定
-    [cell.titleLabel setAttributedText:[self attributedTittle:title]];
+    [cell.titleLabel setAttributedText:[Utils attributedTittle:title]];
     [cell.bodyLabel setText:[Utils shortString:content andLength:MAX_DESCRIPTION_LENGTH]];
     //作者处理
     [cell.authorLabel setText:(!author||[author isEqual:@""])?@"admin":author];
@@ -200,7 +172,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     
     
     self.label.font = [UIFont boldSystemFontOfSize:15];
-    [self.label setAttributedText:[self attributedTittle:title]];
+    [self.label setAttributedText:[Utils attributedTittle:title]];
     CGFloat height = [self.label sizeThatFits:CGSizeMake(tableView.frame.size.width - 16, MAXFLOAT)].height;
     
     self.label.text = [Utils shortString:content andLength:MAX_DESCRIPTION_LENGTH];
@@ -356,15 +328,15 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     }
     [jsonAPI parseURL:[NSString stringWithFormat:@"http://www.terwer.com/api/get_search_results/?search=%@",searchString]
               success:^(NSArray *postsArray, NSInteger postsCount) {
-        NSLog(@"Fetched %ld posts", postsCount);
-        self.posts = postsArray;
-        [self.tableView reloadData];
-        [self.refreshControl endRefreshing];
-        
-    }failure:^(NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
-
+                  NSLog(@"Fetched %ld posts", postsCount);
+                  self.posts = postsArray;
+                  [self.tableView reloadData];
+                  [self.refreshControl endRefreshing];
+                  
+              }failure:^(NSError *error) {
+                  NSLog(@"Error: %@", error);
+              }];
+    
 }
 
 @end

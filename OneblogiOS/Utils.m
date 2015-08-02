@@ -14,6 +14,8 @@
 
 @implementation Utils
 
+
+#pragma mark 字符串处理
 /**
  *  删除字符串中的换行和空白
  *
@@ -33,7 +35,7 @@
 }
 
 /**
- *  街区字符串
+ *  截取字符串
  *
  *  @param str    原有字符串
  *  @param length 截取的长度
@@ -66,9 +68,29 @@
     return attributedCommentCount;
 }
 
-
-
-#pragma mark - 通用
+/**
+ *  设置标题前面的标志
+ *
+ *  @param title 原标题
+ *
+ *  @return 设置标志后的标题
+ */
++ (NSMutableAttributedString *)attributedTittle:(NSString *)title
+{
+    NSMutableAttributedString *attributeString ;
+    
+    NSTextAttachment *textAttachment = [NSTextAttachment new];
+    //转载
+    //textAttachment.image = [UIImage imageNamed:@"widget_repost"];
+    //原创
+    textAttachment.image = [UIImage imageNamed:@"widget-original"];
+    NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:textAttachment];
+    attributeString = [[NSMutableAttributedString alloc] initWithAttributedString:attachmentString];
+    [attributeString appendAttributedString:[[NSAttributedString alloc] initWithString:@" "]];
+    [attributeString appendAttributedString:[[NSAttributedString alloc] initWithString:title]];
+    
+    return attributeString;
+}
 
 #pragma mark - emoji Dictionary
 
@@ -164,7 +186,7 @@
 
 
 /**
- *  将字符串转换成熟型字符串
+ *  将字符串转换成日期字符串
  *
  *  @param date 原有日期
  *
@@ -219,22 +241,7 @@
     }
 }
 
-/**
- *  创建弹出框
- *
- *  @return 弹出框实例
- */
-+ (MBProgressHUD *)createHUD
-{
-    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
-    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithWindow:window];
-    HUD.detailsLabelFont = [UIFont boldSystemFontOfSize:16];
-    [window addSubview:HUD];
-    [HUD show:YES];
-    //[HUD addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:HUD action:@selector(hide:)]];
-    
-    return HUD;
-}
+#pragma mark HTML处理
 
 /**
  *  加密啊HTML
@@ -279,7 +286,7 @@
 /**
  *  删除HTML标签
  *
- *  @param HTML 原油HTML内容
+ *  @param HTML 原有HTML内容
  *
  *  @return 处理后的HTML
  */
@@ -327,6 +334,7 @@
     return [urlPredicate evaluateWithObject:string];
 }
 
+#pragma mark 网络
 /**
  *  检测网路是否可用
  *
@@ -363,10 +371,12 @@
     return htmlString;
 }
 
+#pragma mark WebView
+
 /**
  *  在Webview里面浏览网页 15-07-29 by terewr
  *
- *  @param target 跳转之前的仕途控制器，一般为当前视图控制器
+ *  @param target 跳转之前的视图控制器，一般为当前视图控制器
  *  @param url    要浏览的网址
  */
 +(void)navigateUrl:(UIViewController *)target withUrl:(NSURL *)url andTitle:(NSString *)pageTitle{
@@ -379,5 +389,22 @@
     [target presentViewController:browserNavCtl animated:NO completion:^{
         NSLog(@"正在使用WebView打开网页:%@",[url absoluteString]);
     }];
+}
+
+#pragma mark 消息提示框
+/**
+ *  创建弹出框
+ *
+ *  @return 弹出框实例
+ */
++ (MBProgressHUD *)createHUD
+{
+    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
+    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithWindow:window];
+    HUD.detailsLabelFont = [UIFont boldSystemFontOfSize:16];
+    [window addSubview:HUD];
+    [HUD show:YES];
+    //[HUD addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:HUD action:@selector(hide:)]];
+    return HUD;
 }
 @end
