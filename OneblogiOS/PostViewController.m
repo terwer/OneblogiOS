@@ -114,14 +114,17 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     NSString *content;//文章内容
     NSDate *dateCreated;//发表时间
     NSString *author;//文章作者
-    NSArray *categroies;//文章分类
+    NSMutableArray *categroies;//文章分类
     //JSON API
     if ([Config isAnvancedAPIEnable]) {
         title = jsonPost.title;
         content = jsonPost.content;
         dateCreated = [Utils dateFromString:jsonPost.date];
         author = @"";
-        categroies = jsonPost.categoriesArray;
+        categroies = [NSMutableArray array];
+        for (SDCategory *category in jsonPost.categoriesArray) {
+           [categroies addObject:category.title];
+        }
     }else{//MetaWeblogApi
         title = [post objectForKey:@"title"];
         content = [post objectForKey:@"description"];
