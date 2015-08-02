@@ -14,33 +14,37 @@
  */
 typedef NS_ENUM(NSUInteger, PostType){
     /**
-     *  最新文章
+     *  文章
      */
-    PostTypeLatest,
+    PostTypePost,
     /**
-     *  推荐文章
+     *  页面
      */
-    PostTypeRecommended,
-    /**
-     *  置顶文章
-     */
-    PostTypeDig//置顶文章
+    PostTypePage,
 };
 
 @interface PostViewController : OBObjsViewController
 
 /**
+ *  文章类型
+ */
+@property (nonatomic) PostType postType;
+/**
  *  文章列表数据
  */
-@property(nonatomic) NSArray *posts;
+@property (nonatomic) NSArray *posts;
+/**
+ *  是否搜索
+ */
+@property (nonatomic)  BOOL *isSearch;
 /**
  *  搜索框
  */
-@property(nonatomic)  UISearchBar *searchBar;
+@property (nonatomic)  UISearchBar *searchBar;
 /**
- *  搜索显示控制器
+ *  文章搜索控制器
  */
-@property UISearchDisplayController *searchDisController;
+@property   UISearchController *postSearchController;
 
 /**
  *  根据文章类型初始化

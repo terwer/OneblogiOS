@@ -12,10 +12,10 @@
 #import "PostViewController.h"
 #import "SwipableViewController.h"
 #import "MessageViewController.h"
-#import "DiscoverViewController.h"
 #import "MyInfoController.h"
 #import "Utils.h"
 #import "PostEditViewController.h"
+#import "Config.h"
 
 @interface OBTabBarController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
@@ -38,29 +38,32 @@
     // Do any additional setup after loading the view.
     
     //全部
-    PostViewController *postViewCtl = [[PostViewController alloc]initWithPostType:PostTypeLatest];
+    PostViewController *postViewCtl = [[PostViewController alloc]initWithPostType:PostTypePost];
+    SwipableViewController *blogSVC ;
     //由于metaWeblog api的限制，无法筛选出热门和置顶文章
-    //最新
-    //UIViewController *hotViewCtl = [[PostViewController alloc]initWithPostType:PostTypeRecommended];
-    ////热门
-    //UIViewController *digViewCtl = [[PostViewController alloc]initWithPostType:PostTypeDig];
-    
-    //博客
-    //    SwipableViewController *blogSVC = [[SwipableViewController alloc] initWithTitle:@"首页"
-    //                                                                       andSubTitles:@[@"最新文章",@"热门文章",@"置顶文章"]
-    //                                                                     andControllers:@[ postViewCtl,hotViewCtl,digViewCtl]
-    //                                                                        underTabbar:YES];
-    SwipableViewController *blogSVC = [[SwipableViewController alloc] initWithTitle:@"首页"
-                                                                       andSubTitles:nil
-                                                                     andControllers:@[ postViewCtl]
-                                                                        underTabbar:YES];
-    
-    
+    if ([Config isAnvancedAPIEnable]) {
+        //最新
+        UIViewController *pageViewCtl = [[PostViewController alloc]initWithPostType:PostTypePage];
+        
+        //博客
+        blogSVC = [[SwipableViewController alloc] initWithTitle:@"首页"
+                                                   andSubTitles:@[@"文章",@"页面"]
+                                                 andControllers:@[ postViewCtl,pageViewCtl]
+                                                    underTabbar:YES];
+    }else{
+        blogSVC = [[SwipableViewController alloc] initWithTitle:@"首页"
+                                                   andSubTitles:nil
+                                                 andControllers:@[ postViewCtl]
+                                                    underTabbar:YES];
+    }
     
     //消息
     MessageViewController *messageCtl = [[MessageViewController alloc]initWithStyle:UITableViewStyleGrouped];
     //发现
-    DiscoverViewController *discoverTableVC = [[DiscoverViewController alloc]initWithStyle:UITableViewStyleGrouped];
+    SwipableViewController *searchTableVC = [[SwipableViewController alloc] initWithTitle:@"首页"
+                                                                             andSubTitles:nil
+                                                                           andControllers:nil
+                                                                              underTabbar:YES];;
     //我
     MyInfoController *myInfoVC = [[MyInfoController alloc]initWithStyle:UITableViewStyleGrouped];
     
@@ -70,7 +73,7 @@
                              [self addNavigationItemForViewController:blogSVC withItembars:YES],
                              [self addNavigationItemForViewController:messageCtl withItembars:NO],
                              [UIViewController new],
-                             [self addNavigationItemForViewController:discoverTableVC withItembars:NO],
+                             [self addNavigationItemForViewController:searchTableVC withItembars:NO],
                              [[UINavigationController alloc] initWithRootViewController:myInfoVC]
                              ];
     
@@ -148,10 +151,9 @@
                                                                                             style:UIBarButtonItemStylePlain
                                                                                            target:self action:@selector(onClickMenuButton)];
         //文章发表按钮
-        viewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
-                                                            initWithImage:[UIImage imageNamed:@"navigationbar-search"] style:UIBarButtonItemStylePlain
-                                                            target:self
-                                                            action:@selector(pushSearchViewController)];
+        viewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"编辑" style:(UIBarButtonItemStylePlain) target: self
+                                                                                          action:@selector(deletePosts)]
+        ;
         
     }
     return navigationController;
@@ -168,8 +170,8 @@
 /**
  *  搜索
  */
--(void)pushSearchViewController{
-    NSLog(@"search");
+-(void)deletePosts{
+    NSLog(@"delete");
 }
 
 /**

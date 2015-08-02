@@ -159,7 +159,7 @@
     switch (indexPath.row) {
         case 0: {
             NSLog(@"博客");
-            PostViewController *postViewCtl = [[PostViewController alloc]initWithPostType:PostTypeLatest];
+            PostViewController *postViewCtl = [[PostViewController alloc]initWithPostType:PostTypePost];
             SwipableViewController *blogSVC = [[SwipableViewController alloc] initWithTitle:@"博客"
                                                                                andSubTitles:nil
                                                                              andControllers:@[ postViewCtl]

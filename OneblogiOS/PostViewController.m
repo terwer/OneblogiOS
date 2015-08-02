@@ -19,9 +19,8 @@ const int MAX_DESCRIPTION_LENGTH = 60;//描述最多字数
 const int MAX_PAGE_SIZE = 10;//每页显示数目
 //super.page //当前页码（由于MetaWeblog API不支持分页，因此，此参数仅仅JSON API有用）
 
-@interface PostViewController ()<UISearchDisplayDelegate>
-{
-}
+@interface PostViewController ()<UISearchResultsUpdating>
+
 @end
 
 @implementation PostViewController
@@ -36,7 +35,8 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
 - (instancetype)initWithPostType:(PostType)type
 {
     if (self = [super init]) {
-        //TODO:设置文章类型，仅仅高级API支持
+        //设置文章类型，仅仅高级API支持
+        _postType = type;
     }
     return self;
 }
@@ -53,16 +53,19 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     //搜索框
-    if([Config isAnvancedAPIEnable]){
-        self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 70, 320, 44)];
+    if([Config isAnvancedAPIEnable]&&_isSearch){
+        self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
         self.tableView.tableHeaderView = self.searchBar;
         
-        _searchDisController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
-        /*contents controller is the UITableViewController, this let you to reuse
-         the same TableViewController Delegate method used for the main table.*/
-        
-        _searchDisController.delegate = self;
-        _searchDisController.searchResultsDataSource = self;
+        //初始化搜索控制器，nil表示搜索结果在当前视囷中显示
+        _postSearchController = [[UISearchController alloc]initWithSearchResultsController:nil];
+        //搜索栏宽度自动匹配屏幕宽度
+        [_postSearchController.searchBar sizeToFit];
+        //在当前视图中显示结果，则此属性必须设置为NO
+        _postSearchController.dimsBackgroundDuringPresentation = NO;
+        _postSearchController.searchResultsUpdater = self;
+        _postSearchController.hidesNavigationBarDuringPresentation =NO;
+        self.tableView.tableHeaderView = _postSearchController.searchBar;
     }
 }
 
@@ -79,13 +82,13 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
  *
  *  @return 是否重新加载数据
  */
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString{
-    
-    NSLog(@"searching for keyword:%@",searchString);
+-(void)updateSearchResultsForSearchController:(UISearchController *)searchController{
+    NSString *searchString = searchController.searchBar.text;
+    NSLog(@"searching %@",searchString);
     [self fetchSearchResults:searchString];
-    
-    return YES;
 }
+
+
 
 #pragma mark - Table view data source
 
@@ -259,7 +262,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
         NSInteger digPostCount = [[settings objectForKey:@"DigPostCount"] integerValue];
         //由于置顶文章会影响分页数目，因此需要把他排除
         //另外api里面分页的索引从1开始
-        NSString *requestURL = [NSString stringWithFormat:@"%@/api/get_recent_posts/?page=%lu&count=%d",JSONApiBaseURL,super.page+1,MAX_PAGE_SIZE];
+        NSString *requestURL = [NSString stringWithFormat:@"%@/api/get_recent_posts/?page=%lu&count=%d&post_type=%@",JSONApiBaseURL,super.page+1,MAX_PAGE_SIZE,(_postType == PostTypePost?@"post":@"page")];
         [jsonAPI parseURL:requestURL success:^(NSArray *posts, NSInteger postsCount) {
             
             NSLog(@"requestURL:%@",requestURL);
@@ -386,6 +389,16 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
                   NSLog(@"Error: %@", error);
               }];
     
+}
+
+- (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
+{
+    [_postSearchController.searchBar setShowsCancelButton:YES animated:NO];
+    for (UIView *subView in _postSearchController.searchBar.subviews){
+        if([subView isKindOfClass:[UIButton class]]){
+            [(UIButton*)subView setTitle:@"Done" forState:UIControlStateNormal];
+        }
+    }
 }
 
 @end
