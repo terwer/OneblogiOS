@@ -100,6 +100,13 @@ static NSString * const kKeyMinutes = @"minutes";
  */
 +(NSString *)toMarkdownString:(NSString *)markdownString;
 
+/**
+ *  计算从所给的日期到现在开始间隔的时间
+ *
+ *  @param date 原始日期
+ *
+ *  @return 间隔的时间
+ */
 + (NSString *)intervalSinceNow:(NSDate *)date;
 
 /**
@@ -119,4 +126,13 @@ static NSString * const kKeyMinutes = @"minutes";
  *  @return 字符串
  */
 +(NSString *)stringFromDate:(NSDate *)date;
+
+/**
+ *  设置标题前面的标志
+ *
+ *  @param title 原标题
+ *
+ *  @return 设置标志后的标题
+ */
++ (NSMutableAttributedString *)attributedTittle:(NSString *)title;
 @end

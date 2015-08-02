@@ -1,5 +1,3 @@
-
-
 //
 //  BlogsViewController.m
 //  OneblogiOS
@@ -16,55 +14,29 @@
 #import "Config.h"
 #import "SDFeedParser.h"
 
-static NSString *kPostCellID = @"PostCell";
+static NSString *kPostCellID = @"PostCell";//CellID
 const int MAX_DESCRIPTION_LENGTH = 60;//描述最多字数
 const int MAX_PAGE_SIZE = 10;//每页显示数目
+//super.page //当前页码（由于MetaWeblog API不支持分页，因此，此参数仅仅JSON API有用）
 
-@interface PostViewController ()<UISearchDisplayDelegate>
-{
-    
-}
+@interface PostViewController ()<UISearchResultsUpdating>
+
 @end
 
 @implementation PostViewController
 
+/**
+ *  根据文章类型初始化
+ *
+ *  @param type 文章类型
+ *
+ *  @return 当前对象
+ */
 - (instancetype)initWithPostType:(PostType)type
 {
     if (self = [super init]) {
-        //TODO:do post type
-    }
-    
-    return self;
-}
-
-- (NSMutableAttributedString *)attributedTittle:(NSString *)title
-{
-    NSMutableAttributedString *attributeString ;
-    
-    NSTextAttachment *textAttachment = [NSTextAttachment new];
-    //转载
-    //textAttachment.image = [UIImage imageNamed:@"widget_repost"];
-    //原创
-    textAttachment.image = [UIImage imageNamed:@"widget-original"];
-    NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:textAttachment];
-    attributeString = [[NSMutableAttributedString alloc] initWithAttributedString:attachmentString];
-    [attributeString appendAttributedString:[[NSAttributedString alloc] initWithString:@" "]];
-    [attributeString appendAttributedString:[[NSAttributedString alloc] initWithString:title]];
-    
-    return attributeString;
-}
-
--(NSAttributedString *)attributedCommentCount:(int)commentCount
-{
-    return [Utils attributedCommentCount:commentCount];
-}
-
-//ViewController.m
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
+        //设置文章类型，仅仅高级API支持
+        _postType = type;
     }
     return self;
 }
@@ -81,16 +53,19 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     //搜索框
-    if([Config isAnvancedAPIEnable]){
-        self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 70, 320, 44)];
+    if([Config isAnvancedAPIEnable]&&_isSearch){
+        self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
         self.tableView.tableHeaderView = self.searchBar;
         
-        _searchDisController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
-        /*contents controller is the UITableViewController, this let you to reuse
-         the same TableViewController Delegate method used for the main table.*/
-        
-        _searchDisController.delegate = self;
-        _searchDisController.searchResultsDataSource = self;
+        //初始化搜索控制器，nil表示搜索结果在当前视囷中显示
+        _postSearchController = [[UISearchController alloc]initWithSearchResultsController:nil];
+        //搜索栏宽度自动匹配屏幕宽度
+        [_postSearchController.searchBar sizeToFit];
+        //在当前视图中显示结果，则此属性必须设置为NO
+        _postSearchController.dimsBackgroundDuringPresentation = NO;
+        _postSearchController.searchResultsUpdater = self;
+        _postSearchController.hidesNavigationBarDuringPresentation =NO;
+        self.tableView.tableHeaderView = _postSearchController.searchBar;
     }
 }
 
@@ -107,13 +82,13 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
  *
  *  @return 是否重新加载数据
  */
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString{
-    
-    NSLog(@"searching for keyword:%@",searchString);
+-(void)updateSearchResultsForSearchController:(UISearchController *)searchController{
+    NSString *searchString = searchController.searchBar.text;
+    NSLog(@"searching %@",searchString);
     [self fetchSearchResults:searchString];
-    
-    return YES;
 }
+
+
 
 #pragma mark - Table view data source
 
@@ -142,14 +117,17 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     NSString *content;//文章内容
     NSDate *dateCreated;//发表时间
     NSString *author;//文章作者
-    NSArray *categroies;//文章分类
+    NSMutableArray *categroies;//文章分类
     //JSON API
     if ([Config isAnvancedAPIEnable]) {
         title = jsonPost.title;
         content = jsonPost.content;
         dateCreated = [Utils dateFromString:jsonPost.date];
         author = @"";
-        categroies = jsonPost.categoriesArray;
+        categroies = [NSMutableArray array];
+        for (SDCategory *category in jsonPost.categoriesArray) {
+            [categroies addObject:category.title];
+        }
     }else{//MetaWeblogApi
         title = [post objectForKey:@"title"];
         content = [post objectForKey:@"description"];
@@ -159,7 +137,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     }
     
     //表哥数据绑定
-    [cell.titleLabel setAttributedText:[self attributedTittle:title]];
+    [cell.titleLabel setAttributedText:[Utils attributedTittle:title]];
     [cell.bodyLabel setText:[Utils shortString:content andLength:MAX_DESCRIPTION_LENGTH]];
     //作者处理
     [cell.authorLabel setText:(!author||[author isEqual:@""])?@"admin":author];
@@ -200,7 +178,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     
     
     self.label.font = [UIFont boldSystemFontOfSize:15];
-    [self.label setAttributedText:[self attributedTittle:title]];
+    [self.label setAttributedText:[Utils attributedTittle:title]];
     CGFloat height = [self.label sizeThatFits:CGSizeMake(tableView.frame.size.width - 16, MAXFLOAT)].height;
     
     self.label.text = [Utils shortString:content andLength:MAX_DESCRIPTION_LENGTH];
@@ -243,7 +221,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     [self.navigationController pushViewController:detailsViewController animated:YES];
 }
 
-#pragma mark - Custom methods
+#pragma mark - 数据加载
 
 /**
  *  加载列表数据
@@ -278,11 +256,57 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     //JSON API
     if ([Config isAnvancedAPIEnable]) {
         SDFeedParser *jsonAPI = self.api;
-        [jsonAPI parseURL:@"http://www.terwer.com/api/get_recent_posts/" success:^(NSArray *postsArray, NSInteger postsCount) {
-            NSLog(@"Fetched %ld posts", postsCount);
-            self.posts = postsArray;
-            [self.tableView reloadData];
-            [self.refreshControl endRefreshing];
+        NSString *path = [[NSBundle mainBundle]pathForResource:@"Oneblog" ofType:@"plist"];
+        NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
+        NSString *JSONApiBaseURL = [settings objectForKey:@"JSONApiBaseURL"];
+        NSInteger digPostCount = [[settings objectForKey:@"DigPostCount"] integerValue];
+        //由于置顶文章会影响分页数目，因此需要把他排除
+        //另外api里面分页的索引从1开始
+        NSString *requestURL = [NSString stringWithFormat:@"%@/api/get_recent_posts/?page=%lu&count=%d&post_type=%@",JSONApiBaseURL,super.page+1,MAX_PAGE_SIZE,(_postType == PostTypePost?@"post":@"page")];
+        [jsonAPI parseURL:requestURL success:^(NSArray *posts, NSInteger postsCount) {
+            
+            NSLog(@"requestURL:%@",requestURL);
+            
+            NSLog(@"JSON API Fetched %ld posts", postsCount);
+            if (self.page == 0) {
+                postsCount -= digPostCount;
+            }
+            NSLog(@"NO dig posts %ld", (long)postsCount);
+            
+            //处理刷新
+            if (refresh) {
+                super.page = 0;
+                if (super.didRefreshSucceed) {
+                    super.didRefreshSucceed();
+                }
+            }
+            
+            //获取数据
+            self.posts = posts;
+            
+            //刷新数据
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (self.tableWillReload) {self.tableWillReload(posts.count);}
+                else {
+                    if (super.page == 0 && postsCount == 0) {//首页无数据
+                        super.lastCell.status = LastCellStatusEmpty;
+                    }
+                    else if (postsCount == 0 || ((postsCount - MAX_PAGE_SIZE)%MAX_PAGE_SIZE > 0)) {
+                        //注：当前页面数目小于MAX_PAGE_SIZE或者没有结果表示全部加载完成
+                        //另外：默认返回的每页的数目会自动加上置顶文章数目，因此需要修正
+                        super.lastCell.status = LastCellStatusFinished;
+                        self.page = 0;//最后一页无数据，回到初始页
+                    } else {
+                        super.lastCell.status = LastCellStatusMore;
+                    }
+                }
+                
+                if (self.refreshControl.refreshing) {
+                    [self.refreshControl endRefreshing];
+                }
+                
+                [self.tableView reloadData];
+            });
             
         }failure:^(NSError *error) {
             NSLog(@"Error: %@", error);
@@ -292,7 +316,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
         //MetaWeblogAPI
         [self.api getRecentPosts:currentCount
                          success:^(NSArray *posts) {
-                             NSLog(@"We have %lu posts", (unsigned long) [posts count]);
+                             NSLog(@"MetaWeblogAPI have %lu posts", (unsigned long) [posts count]);
                              
                              //处理刷新
                              if (refresh) {
@@ -311,7 +335,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
                                  else {
                                      if (super.page == 0 && posts.count == 0) {
                                          super.lastCell.status = LastCellStatusEmpty;
-                                     } else if (posts.count == 0 || (super.page == 0 && posts.count%MAX_PAGE_SIZE > 0)) {
+                                     } else if (posts.count == 0 || posts.count%MAX_PAGE_SIZE > 0) {
                                          //注：当前页面数目小于MAX_PAGE_SIZE或者没有结果表示全部加载完成
                                          super.lastCell.status = LastCellStatusFinished;
                                      } else {
@@ -345,7 +369,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     }
 }
 
-
+# pragma mark 加载搜索数据
 /**
  *  加载搜索数据，仅仅JSON API才支持
  */
@@ -356,15 +380,25 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     }
     [jsonAPI parseURL:[NSString stringWithFormat:@"http://www.terwer.com/api/get_search_results/?search=%@",searchString]
               success:^(NSArray *postsArray, NSInteger postsCount) {
-        NSLog(@"Fetched %ld posts", postsCount);
-        self.posts = postsArray;
-        [self.tableView reloadData];
-        [self.refreshControl endRefreshing];
-        
-    }failure:^(NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
+                  NSLog(@"Fetched %ld posts", postsCount);
+                  self.posts = postsArray;
+                  [self.tableView reloadData];
+                  [self.refreshControl endRefreshing];
+                  
+              }failure:^(NSError *error) {
+                  NSLog(@"Error: %@", error);
+              }];
+    
+}
 
+- (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
+{
+    [_postSearchController.searchBar setShowsCancelButton:YES animated:NO];
+    for (UIView *subView in _postSearchController.searchBar.subviews){
+        if([subView isKindOfClass:[UIButton class]]){
+            [(UIButton*)subView setTitle:@"Done" forState:UIControlStateNormal];
+        }
+    }
 }
 
 @end

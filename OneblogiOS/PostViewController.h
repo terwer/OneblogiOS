@@ -9,21 +9,50 @@
 #import <UIKit/UIKit.h>
 #import "OBObjsViewController.h"
 
-typedef NS_ENUM(NSUInteger, PostType)
-{
-    PostTypeLatest,//最新文章
-    PostTypeRecommended,//热门文章
-    PostTypeDig//置顶文章
+/**
+ *  文章类型枚举
+ */
+typedef NS_ENUM(NSUInteger, PostType){
+    /**
+     *  文章
+     */
+    PostTypePost,
+    /**
+     *  页面
+     */
+    PostTypePage,
 };
+
 @interface PostViewController : OBObjsViewController
-@property(nonatomic) NSArray *posts;
 
+/**
+ *  文章类型
+ */
+@property (nonatomic) PostType postType;
+/**
+ *  文章列表数据
+ */
+@property (nonatomic) NSArray *posts;
+/**
+ *  是否搜索
+ */
+@property (nonatomic)  BOOL isSearch;
+/**
+ *  搜索框
+ */
+@property (nonatomic)  UISearchBar *searchBar;
+/**
+ *  文章搜索控制器
+ */
+@property   UISearchController *postSearchController;
 
-//文章‚
-
-@property(nonatomic)  UISearchBar *searchBar;
-@property UISearchDisplayController *searchDisController;
-
+/**
+ *  根据文章类型初始化
+ *
+ *  @param type 文章类型
+ *
+ *  @return 当前对象
+ */
 - (instancetype)initWithPostType:(PostType)type;
 
 @end
