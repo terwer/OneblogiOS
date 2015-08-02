@@ -39,6 +39,7 @@
 		1EDB3C0F1B69ED0200A994FE /* SettingsPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDB3C0E1B69ED0200A994FE /* SettingsPage.m */; };
 		1EE777351B677AE00042F118 /* LoginNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE777341B677AE00042F118 /* LoginNavViewController.m */; };
 		AFB8EC6920FC4627EC5B205F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFABC981ABD733EEBBE20A05 /* libPods.a */; };
+		BE15435A1B6ECB750076552F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE15435C1B6ECB750076552F /* InfoPlist.strings */; };
 		BE2049841B6E950C0093B2A1 /* Oneblog.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE2049831B6E950C0093B2A1 /* Oneblog.plist */; };
 		BE4D37541B665BEA00D56E5A /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4D37531B665BEA00D56E5A /* PostCell.m */; };
 		BE4D375E1B666D2700D56E5A /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4D37571B666D2700D56E5A /* FAImageView.m */; };
@@ -156,6 +157,8 @@
 		1EE777331B677AE00042F118 /* LoginNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginNavViewController.h; sourceTree = "<group>"; };
 		1EE777341B677AE00042F118 /* LoginNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginNavViewController.m; sourceTree = "<group>"; };
 		5FB39874290F4B520E0E4DEF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		BE15435B1B6ECB750076552F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BE15435E1B6ECBB00076552F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		BE2049831B6E950C0093B2A1 /* Oneblog.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Oneblog.plist; sourceTree = "<group>"; };
 		BE4D37521B665BEA00D56E5A /* PostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
 		BE4D37531B665BEA00D56E5A /* PostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
@@ -562,6 +565,7 @@
 				BEDE593A1B657063003AB347 /* Info.plist */,
 				BEDE593B1B657063003AB347 /* main.m */,
 				BE2049831B6E950C0093B2A1 /* Oneblog.plist */,
+				BE15435C1B6ECB750076552F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -766,6 +770,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = BEDE592D1B657063003AB347;
 			productRefGroup = BEDE59371B657063003AB347 /* Products */;
@@ -784,6 +789,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE2049841B6E950C0093B2A1 /* Oneblog.plist in Resources */,
+				BE15435A1B6ECB750076552F /* InfoPlist.strings in Resources */,
 				BE512D471B66BA7400455CC7 /* emoji.plist in Resources */,
 				BEDE59471B657063003AB347 /* Images.xcassets in Resources */,
 				BE4D37631B6670FC00D56E5A /* FontAwesome.ttf in Resources */,
@@ -923,6 +929,18 @@
 			targetProxy = BEDE59501B657063003AB347 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BE15435C1B6ECB750076552F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE15435B1B6ECB750076552F /* Base */,
+				BE15435E1B6ECBB00076552F /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BEDE59571B657063003AB347 /* Debug */ = {
