@@ -10,7 +10,7 @@
 #import "OBObjsViewController.h"
 
 /**
- *  文章类型美剧
+ *  文章类型枚举
  */
 typedef NS_ENUM(NSUInteger, PostType){
     /**

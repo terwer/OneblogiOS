@@ -20,18 +20,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-
+    
     //开启听云APP监控
     [NBSAppAgent startWithAppID:@"586b37551c3e4f02b0a8b579970195b7"];
     
     //初始化程序入口，设置登录界面为首页
     LoginNavViewController *loginNavViewController = [[LoginNavViewController alloc] init];
     [loginNavViewController pushViewController:[LoginViewController new] animated:YES];
-
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = loginNavViewController;
     [self.window makeKeyAndVisible];
-
+    
     /************ 全局控件外观设置 **************/
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
@@ -78,6 +78,12 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+//禁止屏幕横屏
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 @end
