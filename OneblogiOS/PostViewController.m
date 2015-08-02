@@ -17,10 +17,10 @@
 static NSString *kPostCellID = @"PostCell";//CellID
 const int MAX_DESCRIPTION_LENGTH = 60;//描述最多字数
 const int MAX_PAGE_SIZE = 10;//每页显示数目
+//super.page //当前页码（由于MetaWeblog API不支持分页，因此，此参数仅仅JSON API有用）
 
 @interface PostViewController ()<UISearchDisplayDelegate>
 {
-    
 }
 @end
 
@@ -123,7 +123,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
         author = @"";
         categroies = [NSMutableArray array];
         for (SDCategory *category in jsonPost.categoriesArray) {
-           [categroies addObject:category.title];
+            [categroies addObject:category.title];
         }
     }else{//MetaWeblogApi
         title = [post objectForKey:@"title"];
@@ -218,7 +218,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     [self.navigationController pushViewController:detailsViewController animated:YES];
 }
 
-#pragma mark - Custom methods
+#pragma mark - 数据加载
 
 /**
  *  加载列表数据
@@ -253,11 +253,54 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     //JSON API
     if ([Config isAnvancedAPIEnable]) {
         SDFeedParser *jsonAPI = self.api;
-        [jsonAPI parseURL:@"http://www.terwer.com/api/get_recent_posts/" success:^(NSArray *postsArray, NSInteger postsCount) {
-            NSLog(@"Fetched %ld posts", postsCount);
-            self.posts = postsArray;
-            [self.tableView reloadData];
-            [self.refreshControl endRefreshing];
+        NSString *path = [[NSBundle mainBundle]pathForResource:@"Oneblog" ofType:@"plist"];
+        NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
+        NSString *JSONApiBaseURL = [settings objectForKey:@"JSONApiBaseURL"];
+        NSInteger digPostCount = [[settings objectForKey:@"DigPostCount"] integerValue];
+        //由于置顶文章会影响分页数目，因此需要把他排除
+        NSString *requestURL = [NSString stringWithFormat:@"%@/api/get_recent_posts/?page=%lu&count=%d",JSONApiBaseURL,super.page,MAX_PAGE_SIZE];
+        [jsonAPI parseURL:requestURL success:^(NSArray *posts, NSInteger postsCount) {
+            
+            NSLog(@"requestURL:%@",requestURL);
+            
+            NSLog(@"JSON API Fetched %ld posts", postsCount);
+            
+            postsCount -= digPostCount;
+            
+            NSLog(@"NO dig posts %ld", (long)postsCount);
+            
+            //处理刷新
+            if (refresh) {
+                super.page = 0;
+                if (super.didRefreshSucceed) {
+                    super.didRefreshSucceed();
+                }
+            }
+            
+            //获取数据
+            self.posts = posts;
+            
+            //刷新数据
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (self.tableWillReload) {self.tableWillReload(posts.count);}
+                else {
+                    if (super.page == 0 && posts.count == 0) {
+                        super.lastCell.status = LastCellStatusEmpty;
+                    } else if (postsCount == 0 || (super.page == 0 && postsCount%MAX_PAGE_SIZE > 0)) {
+                        //注：当前页面数目小于MAX_PAGE_SIZE或者没有结果表示全部加载完成
+                        //另外：默认返回的每页的数目会自动加上置顶文章数目，因此需要修正
+                        super.lastCell.status = LastCellStatusFinished;
+                    } else {
+                        super.lastCell.status = LastCellStatusMore;
+                    }
+                }
+                
+                if (self.refreshControl.refreshing) {
+                    [self.refreshControl endRefreshing];
+                }
+                
+                [self.tableView reloadData];
+            });
             
         }failure:^(NSError *error) {
             NSLog(@"Error: %@", error);
@@ -267,7 +310,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
         //MetaWeblogAPI
         [self.api getRecentPosts:currentCount
                          success:^(NSArray *posts) {
-                             NSLog(@"We have %lu posts", (unsigned long) [posts count]);
+                             NSLog(@"MetaWeblogAPI have %lu posts", (unsigned long) [posts count]);
                              
                              //处理刷新
                              if (refresh) {
@@ -320,7 +363,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     }
 }
 
-
+# pragma mark 加载搜索数据
 /**
  *  加载搜索数据，仅仅JSON API才支持
  */

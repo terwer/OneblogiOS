@@ -47,6 +47,9 @@
  *  @return 高级API开启状态
  */
 +(BOOL)isAnvancedAPIEnable{
-    return YES;
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"Oneblog" ofType:@"plist"];
+    NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
+    BOOL result = [[settings objectForKey:@"IsAdvancedAPIEnable"] boolValue];
+    return result;
 }
 @end
