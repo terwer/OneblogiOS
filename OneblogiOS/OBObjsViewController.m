@@ -34,6 +34,20 @@
     return self;
 }
 
+- (instancetype)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:style];
+    
+    if (self) {
+        _objects = [NSMutableArray new];
+        _page = 0;
+        _needRefreshAnimation = YES;
+        _shouldFetchDataAfterLoaded = YES;
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     
     //===================================

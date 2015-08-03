@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OBObjsViewController.h"
 
-@interface MyInfoController : UITableViewController
+@interface MyInfoController : OBObjsViewController
 
 @end
