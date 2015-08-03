@@ -52,4 +52,16 @@
     BOOL result = [[settings objectForKey:@"IsAdvancedAPIEnable"] boolValue];
     return result;
 }
+
+/**
+ *  是否显示页面（默认只显示文章）
+ *
+ *  @return 是否显示页面
+ */
++(BOOL)isShowPage{
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"Oneblog" ofType:@"plist"];
+    NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
+    BOOL result = [[settings objectForKey:@"IsShowPage"] boolValue];
+    return result;
+}
 @end

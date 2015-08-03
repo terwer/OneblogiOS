@@ -31,4 +31,11 @@
  *  @return 高级API开启状态
  */
 +(BOOL)isAnvancedAPIEnable;
+
+/**
+ *  是否显示页面（默认只显示文章）
+ *
+ *  @return 是否显示页面
+ */
++(BOOL)isShowPage;
 @end

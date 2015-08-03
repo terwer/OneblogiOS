@@ -44,7 +44,7 @@
     SwipableViewController *blogSVC ;
     //由于metaWeblog api的限制，无法筛选出热门和置顶文章
     //高级API才有页面，搜索没有页面
-    if ([Config isAnvancedAPIEnable]&& !isSearch) {
+    if ([Config isAnvancedAPIEnable]&& !isSearch && [Config isShowPage]) {
         //最新
         UIViewController *pageViewCtl = [[PostViewController alloc]initWithPostType:PostTypePage];
         
@@ -89,7 +89,7 @@
                              ];
     
     //底部中间按钮
-    NSArray *titles = @[@"博客", @"消息", @"", @"搜索", @"我"];
+    NSArray *titles = @[@"博客", @"标签", @"", @"搜索", @"我"];
     NSArray *images = @[@"tabbar-news", @"tabbar-tweet", @"blank", @"tabbar-discover", @"tabbar-me"];
     [self.tabBar.items enumerateObjectsUsingBlock:^(UITabBarItem *item, NSUInteger idx, BOOL *stop) {
         [item setTitle:titles[idx]];

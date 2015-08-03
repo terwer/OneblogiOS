@@ -13,13 +13,15 @@
 #import "PostDetailViewController.h"
 #import "Config.h"
 #import "SDFeedParser.h"
+#import "DropdownMenuView.h"
+#import "TitleMenuViewController.h"
 
 static NSString *kPostCellID = @"PostCell";//CellID
 const int MAX_DESCRIPTION_LENGTH = 60;//描述最多字数
 const int MAX_PAGE_SIZE = 10;//每页显示数目
 //super.page //当前页码（由于MetaWeblog API不支持分页，因此，此参数仅仅JSON API有用）
 
-@interface PostViewController ()<UISearchResultsUpdating>
+@interface PostViewController ()<UISearchResultsUpdating,DropdownMenuDelegate, TitleMenuDelegate>
 
 @end
 
@@ -52,8 +54,21 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
     //搜索框
-    if([Config isAnvancedAPIEnable]&&_isSearch){
+    if([Config isAnvancedAPIEnable] && _isSearch){
+        
+        // 设置导航栏中间的titleView
+        _titleButton = [self titleViewWithNickname:@"博客"];
+        //self.navigationItem.titleView = _titleButton;
+        UIViewController *current = [self.navigationController.viewControllers objectAtIndex:0];
+        current.navigationItem.titleView = _titleButton;
+        
+        [[self.navigationController.viewControllers objectAtIndex:0] setTitle:@"搜索"];
+        //self.navigationItem.title = @"搜索";
+        
         self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
         self.tableView.tableHeaderView = self.searchBar;
         
@@ -62,10 +77,19 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
         //搜索栏宽度自动匹配屏幕宽度
         [_postSearchController.searchBar sizeToFit];
         //在当前视图中显示结果，则此属性必须设置为NO
-        _postSearchController.dimsBackgroundDuringPresentation = NO;
+        _postSearchController.dimsBackgroundDuringPresentation = YES;
         _postSearchController.searchResultsUpdater = self;
         _postSearchController.hidesNavigationBarDuringPresentation =NO;
         self.tableView.tableHeaderView = _postSearchController.searchBar;
+    }else{
+        //不显示页面的时候才有分类，否则页面会混乱
+        if (![Config isShowPage]) {
+            // 设置导航栏中间的titleView
+            _titleButton = [self titleViewWithNickname:@"博客列表"];
+            //self.navigationItem.titleView = _titleButton;
+            UIViewController *current = [self.navigationController.viewControllers objectAtIndex:0];
+            current.navigationItem.titleView = _titleButton;
+        }
     }
 }
 
@@ -109,34 +133,18 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     PostCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kPostCellID forIndexPath:indexPath];
     cell.backgroundColor = [UIColor themeColor];
     
-    NSDictionary *post = [self.posts objectAtIndex:indexPath.row];
-    SDPost *jsonPost = [self.posts objectAtIndex:indexPath.row];
+    //为了兼容，利用适配方法
+    NSDictionary * adaptedPost = [self adaptPostByAPIType:_apiType post:self.posts[indexPath.row]];
     
     //博客相关变量
-    NSString *title;//文章标题
-    NSString *content;//文章内容
-    NSDate *dateCreated;//发表时间
-    NSString *author;//文章作者
-    NSMutableArray *categroies;//文章分类
-    //JSON API
-    if ([Config isAnvancedAPIEnable]) {
-        title = jsonPost.title;
-        content = jsonPost.content;
-        dateCreated = [Utils dateFromString:jsonPost.date];
-        author = @"";
-        categroies = [NSMutableArray array];
-        for (SDCategory *category in jsonPost.categoriesArray) {
-            [categroies addObject:category.title];
-        }
-    }else{//MetaWeblogApi
-        title = [post objectForKey:@"title"];
-        content = [post objectForKey:@"description"];
-        dateCreated = [post objectForKey:@"dateCreated"];
-        author = [post objectForKey:@"wp_author_display_name"];
-        categroies = [post objectForKey:@"categories"];
-    }
+    NSString *title = [adaptedPost objectForKey:@"title"];;//文章标题
+    NSString *content = [adaptedPost objectForKey:@"content"];//文章内容
+    NSDate *dateCreated = [adaptedPost objectForKey:@"date"];//发表时间
+    NSString *author = [adaptedPost objectForKey:@"author"];//文章作者
+    NSMutableArray *categroies = [adaptedPost objectForKey:@"categroies"];//文章分类
+    NSArray *comments = [adaptedPost objectForKey:@"comments"];//评论
     
-    //表哥数据绑定
+    //表格数据绑定
     [cell.titleLabel setAttributedText:[Utils attributedTittle:title]];
     [cell.bodyLabel setText:[Utils shortString:content andLength:MAX_DESCRIPTION_LENGTH]];
     //作者处理
@@ -145,11 +153,11 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     NSDate *createdDate = dateCreated;
     [cell.timeLabel setAttributedText:[Utils attributedTimeString:createdDate]];
     //metaWeblog api暂时不支持评论
-    //[cell.commentCount setAttributedText:[self attributedCommentCount:0]];
+    [cell.commentCount setAttributedText:[Utils attributedCommentCount:(int)comments.count]];
     NSArray *categories = categroies;
     NSString *joinedString = [Utils shortString:[categories componentsJoinedByString:@","] andLength:15];
     //处理分类为空的情况
-    NSString *categoriesString = [NSString stringWithFormat:@"发布在【%@】",[joinedString isEqualToString: @""]?@"默认分类":joinedString];
+    NSString *categoriesString = [NSString stringWithFormat:@"  发布在【%@】",[joinedString isEqualToString: @""]?@"默认分类":joinedString];
     cell.categories.text =categoriesString;
     
     cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
@@ -160,22 +168,12 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *post = self.posts[indexPath.row];
-    
-    SDPost * jsonPost = self.posts[indexPath.row];
+    //为了兼容，利用适配方法
+    NSDictionary * adaptedPost = [self adaptPostByAPIType:_apiType post:self.posts[indexPath.row]];
     
     //博客相关变量
-    NSString *title;//文章标题
-    NSString *content;//文章内容
-    //JSON API
-    if ([Config isAnvancedAPIEnable]) {
-        title = jsonPost.title;
-        content = jsonPost.content;
-    }else{//MetaWeblogApi
-        title = [post objectForKey:@"title"];
-        content = [post objectForKey:@"description"];
-    }
-    
+    NSString *title = [adaptedPost objectForKey:@"title"];;//文章标题
+    NSString *content = [adaptedPost objectForKey:@"content"];;//文章内容
     
     self.label.font = [UIFont boldSystemFontOfSize:15];
     [self.label setAttributedText:[Utils attributedTittle:title]];
@@ -221,6 +219,59 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     [self.navigationController pushViewController:detailsViewController animated:YES];
 }
 
+#pragma mark 适配文章数据
+/**
+ *  根据API类型适配文章内容
+ *
+ *  @param type  API类型
+ *  @param post  文章
+ *
+ *  @return 适配后的文章
+ */
+-(NSDictionary *)adaptPostByAPIType:(APIType)type post:(id)post{
+    NSMutableArray *categroies = [NSMutableArray array];
+    NSArray *comments =  [NSMutableArray array];
+    
+    NSMutableDictionary *adaptedPost = [NSMutableDictionary dictionary];
+    switch (type) {
+        case APITypeJSON:{
+            SDPost *jsonPost = post;
+            [adaptedPost setValue:jsonPost.title forKey:@"title"];
+            [adaptedPost setValue:jsonPost.content forKey:@"content"];
+            [adaptedPost setValue:[Utils dateFromString:jsonPost.date] forKey:@"date"];
+            [adaptedPost setValue:@"" forKey:@"author"];
+            for (SDCategory *category in jsonPost.categoriesArray) {
+                [categroies addObject:category.title];
+            }
+            [adaptedPost setValue:categroies forKey:@"categroies"];
+            comments = jsonPost.commentsArray;
+            [adaptedPost setValue:comments forKey:@"comments"];
+            break;
+        }
+        case APITypeMetaWeblog:{
+            [adaptedPost setValue:[post valueForKey:@"title"] forKey:@"title"];
+            [adaptedPost setValue:[post valueForKey:@"description"] forKey:@"content"];
+            [adaptedPost setValue:[post objectForKey:@"dateCreated"] forKey:@"date"];
+            [adaptedPost setValue:@"" forKey:@"author"];
+            [adaptedPost setValue:categroies forKey:@"categroies"];
+            [adaptedPost setValue:comments forKey:@"comments"];
+            break;
+        }
+        case APITypeHttp:{
+            [adaptedPost setValue:[post objectForKey:@"title"] forKey:@"title"];
+            [adaptedPost setValue:[post objectForKey:@"content"] forKey:@"content"];
+            [adaptedPost setValue:[Utils dateFromString:[post objectForKey:@"date"]] forKey:@"date"];
+            [adaptedPost setValue:@"" forKey:@"author"];
+            [adaptedPost setValue:categroies forKey:@"categroies"];
+            [adaptedPost setValue:comments forKey:@"comments"];
+            break;
+        }
+        default:
+            break;
+    }
+    return adaptedPost;
+}
+
 #pragma mark - 数据加载
 
 /**
@@ -230,6 +281,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
  *  @param refresh refresh
  */
 - (void)fetchObjectsOnPage:(NSUInteger)page refresh:(BOOL)refresh{
+    
     NSInteger currentCount = MAX_PAGE_SIZE+page*MAX_PAGE_SIZE;
     NSLog(@"Tring to get %lu posts...",(long)currentCount);
     //===================================
@@ -255,6 +307,9 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     //===================================
     //JSON API
     if ([Config isAnvancedAPIEnable]) {
+        //设置API类型
+        self.apiType = APITypeJSON;
+        
         SDFeedParser *jsonAPI = self.api;
         NSString *path = [[NSBundle mainBundle]pathForResource:@"Oneblog" ofType:@"plist"];
         NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
@@ -313,6 +368,9 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
         }];
         
     }else{
+        //设置API类型
+        self.apiType = APITypeMetaWeblog;
+        
         //MetaWeblogAPI
         [self.api getRecentPosts:currentCount
                          success:^(NSArray *posts) {
@@ -374,17 +432,32 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
  *  加载搜索数据，仅仅JSON API才支持
  */
 -(void)fetchSearchResults:(NSString *)searchString{
+    //设置API类型
+    self.apiType = APITypeJSON;
+    
+    //创建加载中
+    MBProgressHUD *HUD = [Utils createHUD];
+    HUD.detailsLabelText = @"加载中";
+    
     SDFeedParser *jsonAPI = self.api;
     if ([searchString isEqualToString:@""]) {
         searchString = @"ios";
     }
-    [jsonAPI parseURL:[NSString stringWithFormat:@"http://www.terwer.com/api/get_search_results/?search=%@",searchString]
+    
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"Oneblog" ofType:@"plist"];
+    NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
+
+     NSString *JSONApiBaseURL = [settings objectForKey:@"JSONApiBaseURL"];
+    [jsonAPI parseURL:[NSString stringWithFormat:@"%@/api/get_search_results/?search=%@",JSONApiBaseURL,searchString]
               success:^(NSArray *postsArray, NSInteger postsCount) {
-                  NSLog(@"Fetched %ld posts", postsCount);
-                  self.posts = postsArray;
-                  [self.tableView reloadData];
-                  [self.refreshControl endRefreshing];
-                  
+                  dispatch_async(dispatch_get_main_queue(), ^{
+                      NSLog(@"Fetched %ld posts", postsCount);
+                      self.posts = postsArray;
+                      [self.tableView reloadData];
+                      
+                      //取消加载中
+                      [HUD hide:YES afterDelay:1];
+                  });
               }failure:^(NSError *error) {
                   NSLog(@"Error: %@", error);
               }];
@@ -401,4 +474,144 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     }
 }
 
+# pragma mark 加载分类数据
+/**
+ *  加载分类数据，仅仅JSON API才支持
+ */
+-(void)fetchCategoryResults:(NSUInteger)categortId{
+    //设置API类型
+    self.apiType = APITypeHttp;
+    
+    NSLog(@"current category index: %lu",categortId);
+    
+    //创建加载中
+    MBProgressHUD *HUD = [Utils createHUD];
+    HUD.detailsLabelText = @"加载中";
+    
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"Oneblog" ofType:@"plist"];
+    NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
+    
+    NSString *JSONApiBaseURL = [settings objectForKey:@"JSONApiBaseURL"];
+    NSString *requestURL = [NSString stringWithFormat:@"%@/api/get_category_posts/?id=19&page=%lu&count=%d&post_type=post",JSONApiBaseURL,super.page+1,0];
+    
+    NSLog(@"category request URL:%@",requestURL);
+    //获取作者数据
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:requestURL parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *result) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //刷新数据
+            //NSLog(@"JSON: %@", responseObject);
+            NSLog(@"status:%@",[result objectForKey:@"status"]);
+            NSString *status = [result objectForKey:@"status"];
+            if ([status isEqualToString:@"ok"]) {
+                //获取数据
+                //NSDictionary *dictionaryPosts = [result objectForKey:@"category"];
+                NSArray *posts = [result objectForKey:@"posts"];
+                self.posts = posts;
+                
+                NSLog(@"category posts get ok :%lu",posts.count);
+                
+                //刷新数据
+                [self.tableView reloadData];
+                
+                [HUD hide:YES afterDelay:1];
+            }else{
+                NSLog(@"category posts get error");
+            }
+        });
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error fetching authors: %@", [error localizedDescription]);
+        MBProgressHUD *HUD = [Utils createHUD];
+        HUD.mode = MBProgressHUDModeCustomView;
+        HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HUD-error"]];
+        HUD.detailsLabelText = [NSString stringWithFormat:@"%@", error.userInfo[NSLocalizedDescriptionKey]];
+        
+        [HUD hide:YES afterDelay:1];
+        
+        super.lastCell.status = LastCellStatusError;
+        if (self.refreshControl.refreshing) {
+            [self.refreshControl endRefreshing];
+        }
+        [self.tableView reloadData];
+    }];
+}
+
+
+#pragma mark 设置导航栏中间的titleView
+-(UIButton *) titleViewWithNickname:(NSString *)nickname
+{
+    UIButton *titleButton = [[UIButton alloc] init];
+    // 设置图片和文字
+    [titleButton setTitle:nickname forState:UIControlStateNormal];
+    [titleButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    titleButton.titleLabel.font = [UIFont systemFontOfSize:18];
+    [titleButton setImage:[UIImage imageNamed:@"navigationbar_arrow_down"] forState:UIControlStateNormal];
+    [titleButton setImage:[UIImage imageNamed:@"navigationbar_arrow_up"] forState:UIControlStateSelected];
+    // 90 40这两个值目前是随便写的
+    titleButton.imageEdgeInsets = UIEdgeInsetsMake(0, 90, 0, 0);
+    titleButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 40);
+    // 130这个值目前是随便写的，后面要改为根据内容自动计算长度
+    CGRect titleFrame = titleButton.frame;
+    titleFrame.size =  CGSizeMake(130, 40);
+    titleButton.frame = titleFrame;
+    //    titleButton.backgroundColor = [UIColor redColor];
+    
+    [titleButton addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    return titleButton;
+}
+
+#pragma mark 点击导航栏上的标题事件处理器
+- (void)titleClick:(UIButton *)titleButton
+{
+    // 1.创建下拉菜单
+    DropdownMenuView *dropdownMenuView = [[DropdownMenuView alloc] init];
+    // 设置下拉菜单弹出、销毁事件的监听者
+    dropdownMenuView.delegate = self;
+    
+    // 2.设置要显示的内容
+    TitleMenuViewController *titleMenuVC = [[TitleMenuViewController alloc] init];
+    titleMenuVC.dropdownMenuView = dropdownMenuView;
+    titleMenuVC.delegate = self;
+    
+    CGRect titleMenuFrame =  titleMenuVC.view.frame;
+    titleMenuFrame.size.width = self.view.frame.size.width/2;
+    titleMenuFrame.size.height = self.view.frame.size.height/2;
+    titleMenuVC.view.frame = titleMenuFrame;
+    dropdownMenuView.contentController = titleMenuVC;
+    
+    // 3.显示下拉菜单
+    [dropdownMenuView showFrom:titleButton];
+}
+
+
+#pragma mark - DropdownMenuDelegate
+#pragma mark 下拉菜单被销毁了
+- (void)dropdownMenuDidDismiss:(DropdownMenuView *)menu
+{
+    // 让指示箭头向下
+    UIButton *titleButton = (UIButton *)self.navigationItem.titleView;
+    titleButton.selected = NO;
+}
+
+#pragma mark 下拉菜单显示了
+- (void)dropdownMenuDidShow:(DropdownMenuView *)menu
+{
+    // 让指示箭头向上
+    UIButton *titleButton = (UIButton *)self.navigationItem.titleView;
+    titleButton.selected = YES;
+}
+
+#pragma mark - TitleMenuDelegate
+-(void)selectAtIndexPath:(NSIndexPath *)indexPath title:(NSString *)title
+{
+    NSLog(@"indexPath = %ld", indexPath.row);
+    NSLog(@"当前选择了%@", title);
+    
+    // 修改导航栏的标题
+    [_titleButton setTitle:title forState:UIControlStateNormal];
+    
+    // 调用根据搜索条件返回相应的微博数据
+    [self fetchCategoryResults:0];
+}
 @end

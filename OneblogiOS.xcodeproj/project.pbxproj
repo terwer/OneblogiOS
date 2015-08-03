@@ -60,6 +60,8 @@
 		BE512D471B66BA7400455CC7 /* emoji.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE512D451B66BA7400455CC7 /* emoji.plist */; };
 		BE512D481B66BA7400455CC7 /* emojiToText.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE512D461B66BA7400455CC7 /* emojiToText.plist */; };
 		BE5C49401B68018D008E4FDE /* ApiInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5C493F1B68018D008E4FDE /* ApiInfo.m */; };
+		BE626B1A1B6FD57D00FDDE45 /* DropdownMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE626B191B6FD57D00FDDE45 /* DropdownMenuView.m */; };
+		BE626B1D1B6FD60500FDDE45 /* TitleMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE626B1C1B6FD60500FDDE45 /* TitleMenuViewController.m */; };
 		BEC359911B6A5DBD00263836 /* NSString+StringByStrippingHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC3597E1B6A5DBC00263836 /* NSString+StringByStrippingHTML.m */; };
 		BEC359921B6A5DBD00263836 /* SDCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC359801B6A5DBC00263836 /* SDCategory.m */; };
 		BEC359931B6A5DBD00263836 /* SDCategory+SDCategoryFromDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC359821B6A5DBC00263836 /* SDCategory+SDCategoryFromDictionary.m */; };
@@ -195,6 +197,10 @@
 		BE512D461B66BA7400455CC7 /* emojiToText.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emojiToText.plist; sourceTree = "<group>"; };
 		BE5C493E1B68018D008E4FDE /* ApiInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiInfo.h; sourceTree = "<group>"; };
 		BE5C493F1B68018D008E4FDE /* ApiInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiInfo.m; sourceTree = "<group>"; };
+		BE626B181B6FD57D00FDDE45 /* DropdownMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropdownMenuView.h; sourceTree = "<group>"; };
+		BE626B191B6FD57D00FDDE45 /* DropdownMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropdownMenuView.m; sourceTree = "<group>"; };
+		BE626B1B1B6FD60500FDDE45 /* TitleMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleMenuViewController.h; sourceTree = "<group>"; };
+		BE626B1C1B6FD60500FDDE45 /* TitleMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleMenuViewController.m; sourceTree = "<group>"; };
 		BEC3597D1B6A5DBC00263836 /* NSString+StringByStrippingHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+StringByStrippingHTML.h"; path = "SDFeedParser/NSString+StringByStrippingHTML.h"; sourceTree = "<group>"; };
 		BEC3597E1B6A5DBC00263836 /* NSString+StringByStrippingHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+StringByStrippingHTML.m"; path = "SDFeedParser/NSString+StringByStrippingHTML.m"; sourceTree = "<group>"; };
 		BEC3597F1B6A5DBC00263836 /* SDCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDCategory.h; path = SDFeedParser/SDCategory.h; sourceTree = "<group>"; };
@@ -664,6 +670,10 @@
 				1E30393B1B6A0EE100D021B1 /* PostEditViewController.m */,
 				1E30393D1B6A137900D021B1 /* PostDetailViewController.h */,
 				1E30393E1B6A137900D021B1 /* PostDetailViewController.m */,
+				BE626B181B6FD57D00FDDE45 /* DropdownMenuView.h */,
+				BE626B191B6FD57D00FDDE45 /* DropdownMenuView.m */,
+				BE626B1B1B6FD60500FDDE45 /* TitleMenuViewController.h */,
+				BE626B1C1B6FD60500FDDE45 /* TitleMenuViewController.m */,
 			);
 			name = "博客";
 			sourceTree = "<group>";
@@ -868,6 +878,7 @@
 				BEDE597C1B6577C1003AB347 /* SwipableViewController.m in Sources */,
 				1E0C688C1B66258800AC6611 /* UIImage+Util.m in Sources */,
 				BEDE59891B657A85003AB347 /* TGMetaWeblogXMLRPCApi.m in Sources */,
+				BE626B1A1B6FD57D00FDDE45 /* DropdownMenuView.m in Sources */,
 				BE512D2C1B66B29C00455CC7 /* EditingBar.m in Sources */,
 				1EDB3C0F1B69ED0200A994FE /* SettingsPage.m in Sources */,
 				1E0C687B1B661E5000AC6611 /* MessageViewController.m in Sources */,
@@ -877,6 +888,7 @@
 				1E0C687E1B661F1B00AC6611 /* LoginViewController.m in Sources */,
 				BE512D341B66B3B800455CC7 /* Config.m in Sources */,
 				BE512D441B66B85D00455CC7 /* DetailsViewController.m in Sources */,
+				BE626B1D1B6FD60500FDDE45 /* TitleMenuViewController.m in Sources */,
 				1EDB3C061B69BBA800A994FE /* TMDLineBreak.m in Sources */,
 				BEC359931B6A5DBD00263836 /* SDCategory+SDCategoryFromDictionary.m in Sources */,
 				BEC359921B6A5DBD00263836 /* SDCategory.m in Sources */,

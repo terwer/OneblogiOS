@@ -23,8 +23,32 @@ typedef NS_ENUM(NSUInteger, PostType){
     PostTypePage,
 };
 
+
+/**
+ *  API 类型枚举 15-08-04 by terwer
+ */
+typedef NS_ENUM(NSInteger,APIType){
+    /**
+     *  JSON API
+     */
+    APITypeJSON,
+    /**
+     *  Metaweblog API
+     */
+    APITypeMetaWeblog,
+    /**
+     *  Http API
+     */
+    APITypeHttp
+};
+
+
 @interface PostViewController : OBObjsViewController
 
+/**
+ *  API类型
+ */
+@property (nonatomic) APIType apiType;
 /**
  *  文章类型
  */
@@ -45,7 +69,10 @@ typedef NS_ENUM(NSUInteger, PostType){
  *  文章搜索控制器
  */
 @property   UISearchController *postSearchController;
-
+/**
+ *  下拉分类
+ */
+@property (nonatomic, strong) UIButton *titleButton;
 /**
  *  根据文章类型初始化
  *
