@@ -12,7 +12,7 @@
 @protocol TitleMenuDelegate <NSObject>
 #pragma mark 当前选中了哪一行
 @required
-- (void)selectAtIndexPath:(NSIndexPath *)indexPath title:(NSString*)title;
+- (void)selectAtIndexPathAndID:(NSIndexPath *)indexPath ID:(NSInteger)ID title:(NSString*)title;
 @end
 
 @interface TitleMenuViewController : UITableViewController

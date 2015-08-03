@@ -446,8 +446,8 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     
     NSString *path = [[NSBundle mainBundle]pathForResource:@"Oneblog" ofType:@"plist"];
     NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
-
-     NSString *JSONApiBaseURL = [settings objectForKey:@"JSONApiBaseURL"];
+    
+    NSString *JSONApiBaseURL = [settings objectForKey:@"JSONApiBaseURL"];
     [jsonAPI parseURL:[NSString stringWithFormat:@"%@/api/get_search_results/?search=%@",JSONApiBaseURL,searchString]
               success:^(NSArray *postsArray, NSInteger postsCount) {
                   dispatch_async(dispatch_get_main_queue(), ^{
@@ -482,7 +482,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     //设置API类型
     self.apiType = APITypeHttp;
     
-    NSLog(@"current category index: %lu",categortId);
+    NSLog(@"current categoryId: %lu",categortId);
     
     //创建加载中
     MBProgressHUD *HUD = [Utils createHUD];
@@ -492,7 +492,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
     
     NSString *JSONApiBaseURL = [settings objectForKey:@"JSONApiBaseURL"];
-    NSString *requestURL = [NSString stringWithFormat:@"%@/api/get_category_posts/?id=19&page=%lu&count=%d&post_type=post",JSONApiBaseURL,super.page+1,0];
+    NSString *requestURL = [NSString stringWithFormat:@"%@/api/get_category_posts/?id=%lu&page=%lu&count=%d&post_type=post",JSONApiBaseURL,categortId,super.page+1,0];
     
     NSLog(@"category request URL:%@",requestURL);
     //获取作者数据
@@ -603,15 +603,16 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
 }
 
 #pragma mark - TitleMenuDelegate
--(void)selectAtIndexPath:(NSIndexPath *)indexPath title:(NSString *)title
+-(void)selectAtIndexPathAndID:(NSIndexPath *)indexPath ID:(NSInteger)ID title:(NSString *)title
 {
     NSLog(@"indexPath = %ld", indexPath.row);
-    NSLog(@"当前选择了%@", title);
+    NSLog(@"当 前选择了%@", title);
+    NSLog(@"当前分类ID %lu", ID);
     
     // 修改导航栏的标题
     [_titleButton setTitle:title forState:UIControlStateNormal];
     
     // 调用根据搜索条件返回相应的微博数据
-    [self fetchCategoryResults:0];
+    [self fetchCategoryResults:ID];
 }
 @end

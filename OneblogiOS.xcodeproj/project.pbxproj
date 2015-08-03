@@ -62,6 +62,7 @@
 		BE5C49401B68018D008E4FDE /* ApiInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5C493F1B68018D008E4FDE /* ApiInfo.m */; };
 		BE626B1A1B6FD57D00FDDE45 /* DropdownMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE626B191B6FD57D00FDDE45 /* DropdownMenuView.m */; };
 		BE626B1D1B6FD60500FDDE45 /* TitleMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE626B1C1B6FD60500FDDE45 /* TitleMenuViewController.m */; };
+		BE626B2A1B700C6800FDDE45 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE626B291B700C6800FDDE45 /* CategoryCell.m */; };
 		BEC359911B6A5DBD00263836 /* NSString+StringByStrippingHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC3597E1B6A5DBC00263836 /* NSString+StringByStrippingHTML.m */; };
 		BEC359921B6A5DBD00263836 /* SDCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC359801B6A5DBC00263836 /* SDCategory.m */; };
 		BEC359931B6A5DBD00263836 /* SDCategory+SDCategoryFromDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC359821B6A5DBC00263836 /* SDCategory+SDCategoryFromDictionary.m */; };
@@ -201,6 +202,8 @@
 		BE626B191B6FD57D00FDDE45 /* DropdownMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropdownMenuView.m; sourceTree = "<group>"; };
 		BE626B1B1B6FD60500FDDE45 /* TitleMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleMenuViewController.h; sourceTree = "<group>"; };
 		BE626B1C1B6FD60500FDDE45 /* TitleMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleMenuViewController.m; sourceTree = "<group>"; };
+		BE626B281B700C6800FDDE45 /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCell.h; sourceTree = "<group>"; };
+		BE626B291B700C6800FDDE45 /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
 		BEC3597D1B6A5DBC00263836 /* NSString+StringByStrippingHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+StringByStrippingHTML.h"; path = "SDFeedParser/NSString+StringByStrippingHTML.h"; sourceTree = "<group>"; };
 		BEC3597E1B6A5DBC00263836 /* NSString+StringByStrippingHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+StringByStrippingHTML.m"; path = "SDFeedParser/NSString+StringByStrippingHTML.m"; sourceTree = "<group>"; };
 		BEC3597F1B6A5DBC00263836 /* SDCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDCategory.h; path = SDFeedParser/SDCategory.h; sourceTree = "<group>"; };
@@ -662,6 +665,8 @@
 		BEDE59701B657703003AB347 /* 博客 */ = {
 			isa = PBXGroup;
 			children = (
+				BE626B281B700C6800FDDE45 /* CategoryCell.h */,
+				BE626B291B700C6800FDDE45 /* CategoryCell.m */,
 				BEDE59711B65771E003AB347 /* PostViewController.h */,
 				BEDE59721B65771E003AB347 /* PostViewController.m */,
 				BE4D37521B665BEA00D56E5A /* PostCell.h */,
@@ -905,6 +910,7 @@
 				BE512D371B66B57B00455CC7 /* OperationBar.m in Sources */,
 				1EDB3C041B69BBA800A994FE /* TMDImage.m in Sources */,
 				1EDB3C021B69BBA800A994FE /* TMDHeading.m in Sources */,
+				BE626B2A1B700C6800FDDE45 /* CategoryCell.m in Sources */,
 				1EDB3C031B69BBA800A994FE /* TMDHorizontalRule.m in Sources */,
 				BEDE59661B657331003AB347 /* OptionButton.m in Sources */,
 				BEC359951B6A5DBD00263836 /* SDComment+SDCommentFromDictionary.m in Sources */,
