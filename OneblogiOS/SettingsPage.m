@@ -58,7 +58,7 @@
     // Return the number of rows in the section.
     switch (section) {
         case 0: return 2;
-        case 1: return 2;
+        case 1: return 3;
         case 2: return 4;
             
         default: return 0;
@@ -70,7 +70,7 @@
     
     NSArray *titles = @[
                         @[@"清除缓存", @"消息通知"],
-                        @[@"高级API支持",@"API可用性测试"],
+                        @[@"是否显示页面",@"高级API支持",@"API可用性测试"],
                         @[@"意见反馈", @"给应用评分", @"关于", @"开源许可"],
                         ];
     cell.textLabel.text = titles[indexPath.section][indexPath.row];

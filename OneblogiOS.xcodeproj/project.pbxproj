@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E0C687B1B661E5000AC6611 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C687A1B661E5000AC6611 /* MessageViewController.m */; };
+		1E0C687B1B661E5000AC6611 /* TagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C687A1B661E5000AC6611 /* TagViewController.m */; };
 		1E0C687E1B661F1B00AC6611 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C687D1B661F1B00AC6611 /* LoginViewController.m */; };
 		1E0C68871B66248700AC6611 /* MyInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C68861B66248700AC6611 /* MyInfoController.m */; };
 		1E0C688C1B66258800AC6611 /* UIImage+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C68891B66258800AC6611 /* UIImage+Util.m */; };
@@ -38,6 +38,10 @@
 		1EDB3C081B69BBA800A994FE /* ToMarkdown.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDB3BFD1B69BBA800A994FE /* ToMarkdown.m */; };
 		1EDB3C0F1B69ED0200A994FE /* SettingsPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDB3C0E1B69ED0200A994FE /* SettingsPage.m */; };
 		1EE777351B677AE00042F118 /* LoginNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE777341B677AE00042F118 /* LoginNavViewController.m */; };
+		1EEE7AAA1B7076A30019BFF7 /* WWTagsCloudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EEE7AA91B7076A30019BFF7 /* WWTagsCloudView.m */; };
+		1EEE7AAC1B7076FF0019BFF7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EEE7AAB1B7076FF0019BFF7 /* CoreGraphics.framework */; };
+		1EEE7AAE1B7077100019BFF7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EEE7AAD1B7077100019BFF7 /* Foundation.framework */; };
+		1EEE7AB01B7077180019BFF7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EEE7AAF1B7077180019BFF7 /* UIKit.framework */; };
 		AFB8EC6920FC4627EC5B205F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFABC981ABD733EEBBE20A05 /* libPods.a */; };
 		BE15435A1B6ECB750076552F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE15435C1B6ECB750076552F /* InfoPlist.strings */; };
 		BE2049841B6E950C0093B2A1 /* Oneblog.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE2049831B6E950C0093B2A1 /* Oneblog.plist */; };
@@ -60,6 +64,9 @@
 		BE512D471B66BA7400455CC7 /* emoji.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE512D451B66BA7400455CC7 /* emoji.plist */; };
 		BE512D481B66BA7400455CC7 /* emojiToText.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE512D461B66BA7400455CC7 /* emojiToText.plist */; };
 		BE5C49401B68018D008E4FDE /* ApiInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5C493F1B68018D008E4FDE /* ApiInfo.m */; };
+		BE626B1A1B6FD57D00FDDE45 /* DropdownMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE626B191B6FD57D00FDDE45 /* DropdownMenuView.m */; };
+		BE626B1D1B6FD60500FDDE45 /* TitleMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE626B1C1B6FD60500FDDE45 /* TitleMenuViewController.m */; };
+		BE626B2A1B700C6800FDDE45 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE626B291B700C6800FDDE45 /* CategoryCell.m */; };
 		BEC359911B6A5DBD00263836 /* NSString+StringByStrippingHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC3597E1B6A5DBC00263836 /* NSString+StringByStrippingHTML.m */; };
 		BEC359921B6A5DBD00263836 /* SDCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC359801B6A5DBC00263836 /* SDCategory.m */; };
 		BEC359931B6A5DBD00263836 /* SDCategory+SDCategoryFromDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC359821B6A5DBC00263836 /* SDCategory+SDCategoryFromDictionary.m */; };
@@ -98,8 +105,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1E0C68791B661E5000AC6611 /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
-		1E0C687A1B661E5000AC6611 /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
+		1E0C68791B661E5000AC6611 /* TagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagViewController.h; sourceTree = "<group>"; };
+		1E0C687A1B661E5000AC6611 /* TagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagViewController.m; sourceTree = "<group>"; };
 		1E0C687C1B661F1B00AC6611 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		1E0C687D1B661F1B00AC6611 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		1E0C68851B66248700AC6611 /* MyInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoController.h; sourceTree = "<group>"; };
@@ -156,6 +163,12 @@
 		1EDB3C0E1B69ED0200A994FE /* SettingsPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsPage.m; sourceTree = "<group>"; };
 		1EE777331B677AE00042F118 /* LoginNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginNavViewController.h; sourceTree = "<group>"; };
 		1EE777341B677AE00042F118 /* LoginNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginNavViewController.m; sourceTree = "<group>"; };
+		1EEE7AA81B7076A30019BFF7 /* WWTagsCloudView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WWTagsCloudView.h; path = WWTagsCloudView/WWTagsCloudView.h; sourceTree = "<group>"; };
+		1EEE7AA91B7076A30019BFF7 /* WWTagsCloudView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WWTagsCloudView.m; path = WWTagsCloudView/WWTagsCloudView.m; sourceTree = "<group>"; };
+		1EEE7AAB1B7076FF0019BFF7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1EEE7AAD1B7077100019BFF7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1EEE7AAF1B7077180019BFF7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1EEE7AB11B7079530019BFF7 /* WWTagsCloud-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WWTagsCloud-Prefix.pch"; sourceTree = "<group>"; };
 		5FB39874290F4B520E0E4DEF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BE15435B1B6ECB750076552F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BE15435E1B6ECBB00076552F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -195,6 +208,12 @@
 		BE512D461B66BA7400455CC7 /* emojiToText.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emojiToText.plist; sourceTree = "<group>"; };
 		BE5C493E1B68018D008E4FDE /* ApiInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiInfo.h; sourceTree = "<group>"; };
 		BE5C493F1B68018D008E4FDE /* ApiInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiInfo.m; sourceTree = "<group>"; };
+		BE626B181B6FD57D00FDDE45 /* DropdownMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropdownMenuView.h; sourceTree = "<group>"; };
+		BE626B191B6FD57D00FDDE45 /* DropdownMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropdownMenuView.m; sourceTree = "<group>"; };
+		BE626B1B1B6FD60500FDDE45 /* TitleMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleMenuViewController.h; sourceTree = "<group>"; };
+		BE626B1C1B6FD60500FDDE45 /* TitleMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleMenuViewController.m; sourceTree = "<group>"; };
+		BE626B281B700C6800FDDE45 /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCell.h; sourceTree = "<group>"; };
+		BE626B291B700C6800FDDE45 /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
 		BEC3597D1B6A5DBC00263836 /* NSString+StringByStrippingHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+StringByStrippingHTML.h"; path = "SDFeedParser/NSString+StringByStrippingHTML.h"; sourceTree = "<group>"; };
 		BEC3597E1B6A5DBC00263836 /* NSString+StringByStrippingHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+StringByStrippingHTML.m"; path = "SDFeedParser/NSString+StringByStrippingHTML.m"; sourceTree = "<group>"; };
 		BEC3597F1B6A5DBC00263836 /* SDCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDCategory.h; path = SDFeedParser/SDCategory.h; sourceTree = "<group>"; };
@@ -257,6 +276,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EEE7AB01B7077180019BFF7 /* UIKit.framework in Frameworks */,
+				1EEE7AAE1B7077100019BFF7 /* Foundation.framework in Frameworks */,
+				1EEE7AAC1B7076FF0019BFF7 /* CoreGraphics.framework in Frameworks */,
 				1E3AC37E1B688EC100086EA3 /* libz.dylib in Frameworks */,
 				1E3AC37C1B688EB300086EA3 /* SystemConfiguration.framework in Frameworks */,
 				1E3AC37A1B688EA500086EA3 /* Security.framework in Frameworks */,
@@ -279,6 +301,9 @@
 		036819E93B71D9F588DF716F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1EEE7AAF1B7077180019BFF7 /* UIKit.framework */,
+				1EEE7AAD1B7077100019BFF7 /* Foundation.framework */,
+				1EEE7AAB1B7076FF0019BFF7 /* CoreGraphics.framework */,
 				1E3AC37D1B688EC100086EA3 /* libz.dylib */,
 				1E3AC37B1B688EB300086EA3 /* SystemConfiguration.framework */,
 				1E3AC3791B688EA500086EA3 /* Security.framework */,
@@ -301,13 +326,13 @@
 			name = "我";
 			sourceTree = "<group>";
 		};
-		1E285D561B65D5EC006D3C5D /* 消息 */ = {
+		1E285D561B65D5EC006D3C5D /* 标签 */ = {
 			isa = PBXGroup;
 			children = (
-				1E0C68791B661E5000AC6611 /* MessageViewController.h */,
-				1E0C687A1B661E5000AC6611 /* MessageViewController.m */,
+				1E0C68791B661E5000AC6611 /* TagViewController.h */,
+				1E0C687A1B661E5000AC6611 /* TagViewController.m */,
 			);
-			name = "消息";
+			name = "标签";
 			sourceTree = "<group>";
 		};
 		1E3AC37F1B68B3A200086EA3 /* 浏览器 */ = {
@@ -324,6 +349,7 @@
 		1E6C815A1B662CD900D4F002 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				1EEE7AA41B706EB30019BFF7 /* WWTagsCloudView */,
 				BE512D381B66B5F000455CC7 /* EmojiPanel */,
 				BE512D251B66B24700455CC7 /* BottomBar */,
 				BE512D2F1B66B38600455CC7 /* PlaceholderTextView.h */,
@@ -441,6 +467,15 @@
 			name = "用户详情页";
 			sourceTree = "<group>";
 		};
+		1EEE7AA41B706EB30019BFF7 /* WWTagsCloudView */ = {
+			isa = PBXGroup;
+			children = (
+				1EEE7AA81B7076A30019BFF7 /* WWTagsCloudView.h */,
+				1EEE7AA91B7076A30019BFF7 /* WWTagsCloudView.m */,
+			);
+			name = WWTagsCloudView;
+			sourceTree = "<group>";
+		};
 		566954732E19B9C5152D8DBB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -545,7 +580,7 @@
 				BEDE597E1B657A4B003AB347 /* API */,
 				BEDE596B1B657558003AB347 /* Utils */,
 				BEDE59701B657703003AB347 /* 博客 */,
-				1E285D561B65D5EC006D3C5D /* 消息 */,
+				1E285D561B65D5EC006D3C5D /* 标签 */,
 				1E285D551B65D5D7006D3C5D /* 我 */,
 				1E3AC37F1B68B3A200086EA3 /* 浏览器 */,
 				BEDE595F1B65723E003AB347 /* Main ViewControllers */,
@@ -560,6 +595,7 @@
 		BEDE59391B657063003AB347 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1EEE7AB11B7079530019BFF7 /* WWTagsCloud-Prefix.pch */,
 				BE512D451B66BA7400455CC7 /* emoji.plist */,
 				BE512D461B66BA7400455CC7 /* emojiToText.plist */,
 				BEDE593A1B657063003AB347 /* Info.plist */,
@@ -656,6 +692,8 @@
 		BEDE59701B657703003AB347 /* 博客 */ = {
 			isa = PBXGroup;
 			children = (
+				BE626B281B700C6800FDDE45 /* CategoryCell.h */,
+				BE626B291B700C6800FDDE45 /* CategoryCell.m */,
 				BEDE59711B65771E003AB347 /* PostViewController.h */,
 				BEDE59721B65771E003AB347 /* PostViewController.m */,
 				BE4D37521B665BEA00D56E5A /* PostCell.h */,
@@ -664,6 +702,10 @@
 				1E30393B1B6A0EE100D021B1 /* PostEditViewController.m */,
 				1E30393D1B6A137900D021B1 /* PostDetailViewController.h */,
 				1E30393E1B6A137900D021B1 /* PostDetailViewController.m */,
+				BE626B181B6FD57D00FDDE45 /* DropdownMenuView.h */,
+				BE626B191B6FD57D00FDDE45 /* DropdownMenuView.m */,
+				BE626B1B1B6FD60500FDDE45 /* TitleMenuViewController.h */,
+				BE626B1C1B6FD60500FDDE45 /* TitleMenuViewController.m */,
 			);
 			name = "博客";
 			sourceTree = "<group>";
@@ -868,15 +910,17 @@
 				BEDE597C1B6577C1003AB347 /* SwipableViewController.m in Sources */,
 				1E0C688C1B66258800AC6611 /* UIImage+Util.m in Sources */,
 				BEDE59891B657A85003AB347 /* TGMetaWeblogXMLRPCApi.m in Sources */,
+				BE626B1A1B6FD57D00FDDE45 /* DropdownMenuView.m in Sources */,
 				BE512D2C1B66B29C00455CC7 /* EditingBar.m in Sources */,
 				1EDB3C0F1B69ED0200A994FE /* SettingsPage.m in Sources */,
-				1E0C687B1B661E5000AC6611 /* MessageViewController.m in Sources */,
+				1E0C687B1B661E5000AC6611 /* TagViewController.m in Sources */,
 				BE4D37541B665BEA00D56E5A /* PostCell.m in Sources */,
 				1E0C688D1B66258800AC6611 /* UIImageView+Util.m in Sources */,
 				1E6C815D1B662CFC00D4F002 /* LastCell.m in Sources */,
 				1E0C687E1B661F1B00AC6611 /* LoginViewController.m in Sources */,
 				BE512D341B66B3B800455CC7 /* Config.m in Sources */,
 				BE512D441B66B85D00455CC7 /* DetailsViewController.m in Sources */,
+				BE626B1D1B6FD60500FDDE45 /* TitleMenuViewController.m in Sources */,
 				1EDB3C061B69BBA800A994FE /* TMDLineBreak.m in Sources */,
 				BEC359931B6A5DBD00263836 /* SDCategory+SDCategoryFromDictionary.m in Sources */,
 				BEC359921B6A5DBD00263836 /* SDCategory.m in Sources */,
@@ -893,6 +937,7 @@
 				BE512D371B66B57B00455CC7 /* OperationBar.m in Sources */,
 				1EDB3C041B69BBA800A994FE /* TMDImage.m in Sources */,
 				1EDB3C021B69BBA800A994FE /* TMDHeading.m in Sources */,
+				BE626B2A1B700C6800FDDE45 /* CategoryCell.m in Sources */,
 				1EDB3C031B69BBA800A994FE /* TMDHorizontalRule.m in Sources */,
 				BEDE59661B657331003AB347 /* OptionButton.m in Sources */,
 				BEC359951B6A5DBD00263836 /* SDComment+SDCommentFromDictionary.m in Sources */,
@@ -901,6 +946,7 @@
 				1EDB3BFF1B69BBA800A994FE /* TMDBold.m in Sources */,
 				BE512D3D1B66B63D00455CC7 /* EmojiPageVC.m in Sources */,
 				1EDB3C001B69BBA800A994FE /* TMDCode.m in Sources */,
+				1EEE7AAA1B7076A30019BFF7 /* WWTagsCloudView.m in Sources */,
 				BEDE597B1B6577C1003AB347 /* HorizonalTableViewController.m in Sources */,
 				1EDB3C081B69BBA800A994FE /* ToMarkdown.m in Sources */,
 				BEDE593C1B657063003AB347 /* main.m in Sources */,
@@ -1035,6 +1081,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_PREFIX_HEADER = "OneblogiOS/WWTagsCloud-Prefix.pch";
 				INFOPLIST_FILE = OneblogiOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1052,6 +1099,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_PREFIX_HEADER = "OneblogiOS/WWTagsCloud-Prefix.pch";
 				INFOPLIST_FILE = OneblogiOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

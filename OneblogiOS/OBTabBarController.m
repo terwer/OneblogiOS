@@ -11,7 +11,7 @@
 #import <RESideMenu/RESideMenu.h>
 #import "PostViewController.h"
 #import "SwipableViewController.h"
-#import "MessageViewController.h"
+#import "TagViewController.h"
 #import "MyInfoController.h"
 #import "Utils.h"
 #import "PostEditViewController.h"
@@ -34,19 +34,21 @@
 @implementation OBTabBarController
 
 //创建博客视图控制器
--(SwipableViewController *)createBLogViewController:(BOOL)isSearch{
+-(SwipableViewController *)createBlogViewController:(BOOL)isSearch{
     //全部
     PostViewController *postViewCtl = [[PostViewController alloc]initWithPostType:PostTypePost];
     //是否搜索
     if (isSearch) {
         postViewCtl.isSearch = YES;
+        postViewCtl.postResultType = PostResultTypeSearch;
     }
     SwipableViewController *blogSVC ;
     //由于metaWeblog api的限制，无法筛选出热门和置顶文章
     //高级API才有页面，搜索没有页面
-    if ([Config isAnvancedAPIEnable]&& !isSearch) {
+    if ([Config isAnvancedAPIEnable]&& !isSearch && [Config isShowPage]) {
         //最新
         UIViewController *pageViewCtl = [[PostViewController alloc]initWithPostType:PostTypePage];
+        postViewCtl.postResultType = PostResultTypeRecent;
         
         //博客
         blogSVC = [[SwipableViewController alloc] initWithTitle:@"首页"
@@ -67,13 +69,13 @@
     // Do any additional setup after loading the view.
     
     //博客
-    SwipableViewController *blogSVC = [self createBLogViewController:NO];
+    SwipableViewController *blogSVC = [self createBlogViewController:NO];
     
     //消息
-    MessageViewController *messageCtl = [[MessageViewController alloc]initWithStyle:UITableViewStyleGrouped];
+    TagViewController *tagCtl = [[TagViewController alloc]init];
     
     //搜索
-    SwipableViewController *searchTableVC = [self createBLogViewController:YES];
+    SwipableViewController *searchTableVC = [self createBlogViewController:YES];
     
     //我
     MyInfoController *myInfoVC = [[MyInfoController alloc]initWithStyle:UITableViewStyleGrouped];
@@ -82,14 +84,14 @@
     self.viewControllers = @[[self addNavigationItemForViewController:blogSVC withItembars:YES]];
     self.viewControllers = @[
                              [self addNavigationItemForViewController:blogSVC withItembars:YES],
-                             [self addNavigationItemForViewController:messageCtl withItembars:NO],
+                             [self addNavigationItemForViewController:tagCtl withItembars:YES],
                              [UIViewController new],
-                             [self addNavigationItemForViewController:searchTableVC withItembars:NO],
+                             [self addNavigationItemForViewController:searchTableVC withItembars:YES],
                              [[UINavigationController alloc] initWithRootViewController:myInfoVC]
                              ];
     
     //底部中间按钮
-    NSArray *titles = @[@"博客", @"消息", @"", @"搜索", @"我"];
+    NSArray *titles = @[@"博客", @"标签", @"", @"搜索", @"我"];
     NSArray *images = @[@"tabbar-news", @"tabbar-tweet", @"blank", @"tabbar-discover", @"tabbar-me"];
     [self.tabBar.items enumerateObjectsUsingBlock:^(UITabBarItem *item, NSUInteger idx, BOOL *stop) {
         [item setTitle:titles[idx]];
@@ -378,4 +380,5 @@
     self.tabBarController.tabBar.hidden = YES;
     
 }
+
 @end

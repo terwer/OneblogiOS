@@ -23,12 +23,62 @@ typedef NS_ENUM(NSUInteger, PostType){
     PostTypePage,
 };
 
+
+/**
+ *  API 类型枚举 15-08-04 by terwer
+ */
+typedef NS_ENUM(NSInteger,APIType){
+    /**
+     *  JSON API
+     */
+    APITypeJSON,
+    /**
+     *  Metaweblog API
+     */
+    APITypeMetaWeblog,
+    /**
+     *  Http API
+     */
+    APITypeHttp
+};
+
+
+/**
+ *  文章结果类型枚举
+ */
+typedef NS_ENUM(NSUInteger, PostResultType){
+    /**
+     *  最近文章
+     */
+    PostResultTypeRecent,
+    /**
+     *  搜索文章
+     */
+    PostResultTypeSearch,
+    /**
+     *  分类文章
+     */
+    PostResultTypeCategory,
+    /**
+     *  标签文章
+     */
+    PostResultTypeTag
+};
+
 @interface PostViewController : OBObjsViewController
 
+/**
+ *  API类型
+ */
+@property (nonatomic) APIType apiType;
 /**
  *  文章类型
  */
 @property (nonatomic) PostType postType;
+/**
+ *  文章结果类型
+ */
+@property (nonatomic) PostResultType postResultType;
 /**
  *  文章列表数据
  */
@@ -42,10 +92,25 @@ typedef NS_ENUM(NSUInteger, PostType){
  */
 @property (nonatomic)  UISearchBar *searchBar;
 /**
+ *  搜索关键字
+ */
+@property (nonatomic) NSString *searchString;
+/**
+ *  分类Id
+ */
+@property (nonatomic) NSInteger categoryId;
+/**
+ *  标签ID
+ */
+@property (nonatomic)  NSInteger tagId;
+/**
  *  文章搜索控制器
  */
 @property   UISearchController *postSearchController;
-
+/**
+ *  下拉分类
+ */
+@property (nonatomic, strong) UIButton *titleButton;
 /**
  *  根据文章类型初始化
  *

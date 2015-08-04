@@ -31,7 +31,7 @@
         self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         
         if (title) {self.title = title;}
-        
+                
         //默认不现实TitleBar
         CGFloat titleBarHeight = 0;
         //当传递了subTitles时才去指定TitleBar
