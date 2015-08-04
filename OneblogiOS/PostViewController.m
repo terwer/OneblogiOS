@@ -317,12 +317,12 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
         NSInteger digPostCount = [[settings objectForKey:@"DigPostCount"] integerValue];
         //由于置顶文章会影响分页数目，因此需要把他排除
         //另外api里面分页的索引从1开始
-        NSString *requestURL = [NSString stringWithFormat:@"%@/api/get_recent_posts/?page=%lu&count=%d&post_type=%@",JSONApiBaseURL,super.page+1,MAX_PAGE_SIZE,(_postType == PostTypePost?@"post":@"page")];
+        NSString *requestURL = [NSString stringWithFormat:@"%@/api/get_recent_posts/?page=%d&count=%d&post_type=%@",JSONApiBaseURL,super.page+1,MAX_PAGE_SIZE,(_postType == PostTypePost?@"post":@"page")];
         [jsonAPI parseURL:requestURL success:^(NSArray *posts, NSInteger postsCount) {
             
             NSLog(@"requestURL:%@",requestURL);
             
-            NSLog(@"JSON API Fetched %ld posts", postsCount);
+            NSLog(@"JSON API Fetched %d posts", postsCount);
             if (self.page == 0) {
                 postsCount -= digPostCount;
             }
@@ -451,7 +451,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     [jsonAPI parseURL:[NSString stringWithFormat:@"%@/api/get_search_results/?search=%@",JSONApiBaseURL,searchString]
               success:^(NSArray *postsArray, NSInteger postsCount) {
                   dispatch_async(dispatch_get_main_queue(), ^{
-                      NSLog(@"Fetched %ld posts", postsCount);
+                      NSLog(@"Fetched %d posts", postsCount);
                       self.posts = postsArray;
                       [self.tableView reloadData];
                       
@@ -482,7 +482,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     //设置API类型
     self.apiType = APITypeHttp;
     
-    NSLog(@"current categoryId: %lu",categortId);
+    NSLog(@"current categoryId: %lu",(unsigned long)categortId);
     
     //创建加载中
     MBProgressHUD *HUD = [Utils createHUD];
@@ -492,7 +492,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
     
     NSString *JSONApiBaseURL = [settings objectForKey:@"JSONApiBaseURL"];
-    NSString *requestURL = [NSString stringWithFormat:@"%@/api/get_category_posts/?id=%lu&page=%lu&count=%d&post_type=post",JSONApiBaseURL,categortId,super.page+1,0];
+    NSString *requestURL = [NSString stringWithFormat:@"%@/api/get_category_posts/?id=%d&page=%d&count=%d&post_type=post",JSONApiBaseURL,categortId,super.page+1,0];
     
     NSLog(@"category request URL:%@",requestURL);
     //获取作者数据
@@ -509,7 +509,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
                 NSArray *posts = [result objectForKey:@"posts"];
                 self.posts = posts;
                 
-                NSLog(@"category posts get ok :%lu",posts.count);
+                NSLog(@"category posts get ok :%d",posts.count);
                 
                 //刷新数据
                 [self.tableView reloadData];
@@ -535,6 +535,70 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
         [self.tableView reloadData];
     }];
 }
+
+
+# pragma mark 加载标签数据
+/**
+ *  加载标签数据，仅仅JSON API才支持
+ */
+-(void)fetchTagResults:(NSUInteger)tagId{
+    //设置API类型
+    self.apiType = APITypeHttp;
+    
+    NSLog(@"current tagId: %lu",(unsigned long)tagId);
+    
+    //创建加载中
+    MBProgressHUD *HUD = [Utils createHUD];
+    HUD.detailsLabelText = @"加载中";
+    
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"Oneblog" ofType:@"plist"];
+    NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
+    
+    NSString *JSONApiBaseURL = [settings objectForKey:@"JSONApiBaseURL"];
+    NSString *requestURL = [NSString stringWithFormat:@"%@/api/get_tag_posts/?id=%lu&page=%u&count=%d&post_type=post",JSONApiBaseURL,(unsigned long)tagId,super.page+1,0];
+    
+    NSLog(@"category request URL:%@",requestURL);
+    //获取作者数据
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:requestURL parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *result) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //刷新数据
+            //NSLog(@"JSON: %@", responseObject);
+            NSLog(@"status:%@",[result objectForKey:@"status"]);
+            NSString *status = [result objectForKey:@"status"];
+            if ([status isEqualToString:@"ok"]) {
+                //获取数据
+                //NSDictionary *dictionaryPosts = [result objectForKey:@"category"];
+                NSArray *posts = [result objectForKey:@"posts"];
+                self.posts = posts;
+                
+                NSLog(@"tag posts get ok :%lu",(unsigned long)posts.count);
+                
+                //刷新数据
+                [self.tableView reloadData];
+                
+                [HUD hide:YES afterDelay:1];
+            }else{
+                NSLog(@"tag posts get error");
+            }
+        });
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error fetching authors: %@", [error localizedDescription]);
+        MBProgressHUD *HUD = [Utils createHUD];
+        HUD.mode = MBProgressHUDModeCustomView;
+        HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HUD-error"]];
+        HUD.detailsLabelText = [NSString stringWithFormat:@"%@", error.userInfo[NSLocalizedDescriptionKey]];
+        
+        [HUD hide:YES afterDelay:1];
+        
+        super.lastCell.status = LastCellStatusError;
+        if (self.refreshControl.refreshing) {
+            [self.refreshControl endRefreshing];
+        }
+        [self.tableView reloadData];
+    }];
+}
+
 
 
 #pragma mark 设置导航栏中间的titleView
@@ -605,9 +669,9 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
 #pragma mark - TitleMenuDelegate
 -(void)selectAtIndexPathAndID:(NSIndexPath *)indexPath ID:(NSInteger)ID title:(NSString *)title
 {
-    NSLog(@"indexPath = %ld", indexPath.row);
+    NSLog(@"indexPath = %d", indexPath.row);
     NSLog(@"当 前选择了%@", title);
-    NSLog(@"当前分类ID %lu", ID);
+    NSLog(@"当前分类ID %d", ID);
     
     // 修改导航栏的标题
     [_titleButton setTitle:title forState:UIControlStateNormal];

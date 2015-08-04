@@ -374,7 +374,7 @@
     UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:nil];
     [confirmCtl addAction:yesAction];
     [confirmCtl addAction:noAction];
-    [self presentViewController:confirmCtl animated:yesAction completion:nil];
+    [self presentViewController:confirmCtl animated:YES completion:nil];
 }
 
 /**

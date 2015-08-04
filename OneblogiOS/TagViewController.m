@@ -9,6 +9,7 @@
 #import "TagViewController.h"
 #import "Utils.h"
 #import <AFNetworking/AFNetworking.h>
+#import "PostViewController.h"
 
 @interface TagViewController ()
 @property (strong, nonatomic) WWTagsCloudView* tagCloud;
@@ -46,6 +47,23 @@
 {
     NSInteger tagID = [self getIDByTag:_tags[tagIndex]];
     NSLog(@"%d",tagID);
+    
+    PostViewController *postCtl = [[PostViewController alloc]initWithPostType:PostTypePost];
+    postCtl.title = [NSString stringWithFormat:@"当前标签:%@",_tags[tagIndex]];
+    postCtl.navigationItem.leftBarButtonItem = //[[UIBarButtonItem alloc]initWithTitle:@"<返回" style:UIBarButtonSystemItemFastForward target:self action:@selector(returnBack)];
+    [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(returnBack)];
+    [self.navigationController pushViewController:postCtl animated:YES];
+}
+
+- (void)returnBack{
+    [self.navigationController popViewControllerAnimated:YES];
+    CGRect tagFrame = _tagCloud.frame;
+    NSLog(@"%g", tagFrame.origin.y);
+    //修复返回时错位问题
+    if (tagFrame.origin.y == 20) {
+        tagFrame.origin.y -= 60;
+    }
+    _tagCloud.frame = tagFrame;
 }
 
 /**
@@ -79,7 +97,7 @@
     NSArray* colors = @[[UIColor colorWithRed:0 green:0.63 blue:0.8 alpha:1], [UIColor colorWithRed:1 green:0.2 blue:0.31 alpha:1], [UIColor colorWithRed:0.53 green:0.78 blue:0 alpha:1], [UIColor colorWithRed:1 green:0.55 blue:0 alpha:1]];
     NSArray* fonts = @[[UIFont systemFontOfSize:12], [UIFont systemFontOfSize:16], [UIFont systemFontOfSize:20]];
     //初始化
-    _tagCloud = [[WWTagsCloudView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height)
+    _tagCloud = [[WWTagsCloudView alloc] initWithFrame:CGRectMake(0.0, 20.0, self.view.frame.size.width, self.view.frame.size.height)
                                                andTags:_tags                                          andTagColors:colors
                                               andFonts:fonts
                                        andParallaxRate:1.7
