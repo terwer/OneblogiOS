@@ -32,6 +32,16 @@
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    CGRect tagFrame = _tagCloud.frame;
+    NSLog(@"%g", tagFrame.origin.y);
+    //修复返回时错位问题
+    if (tagFrame.origin.y == 20) {
+        tagFrame.origin.y -= 60;
+    }
+    _tagCloud.frame = tagFrame;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -50,23 +60,10 @@
     
     PostViewController *postCtl = [[PostViewController alloc]initWithPostType:PostTypePost];
     postCtl.title = [NSString stringWithFormat:@"当前标签:%@",_tags[tagIndex]];
-    postCtl.navigationItem.leftBarButtonItem = //[[UIBarButtonItem alloc]initWithTitle:@"<返回" style:UIBarButtonSystemItemFastForward target:self action:@selector(returnBack)];
-    [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(returnBack)];
     //设置结果类型为标签文章，并且设置标签ID
     postCtl.postResultType = PostResultTypeTag;
     postCtl.tagId = tagID;
     [self.navigationController pushViewController:postCtl animated:YES];
-}
-
-- (void)returnBack{
-    [self.navigationController popViewControllerAnimated:YES];
-    CGRect tagFrame = _tagCloud.frame;
-    NSLog(@"%g", tagFrame.origin.y);
-    //修复返回时错位问题
-    if (tagFrame.origin.y == 20) {
-        tagFrame.origin.y -= 60;
-    }
-    _tagCloud.frame = tagFrame;
 }
 
 /**

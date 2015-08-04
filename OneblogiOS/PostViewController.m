@@ -98,22 +98,6 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     // Dispose of any resources that can be recreated.
 }
 
-/**
- *  处理搜索结果
- *
- *  @param controller   controller
- *  @param searchString searchString
- *
- *  @return 是否重新加载数据
- */
--(void)updateSearchResultsForSearchController:(UISearchController *)searchController{
-    NSString *searchString = searchController.searchBar.text;
-    NSLog(@"searching %@",searchString);
-    [self fetchSearchResults:searchString];
-}
-
-
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -272,6 +256,25 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     return adaptedPost;
 }
 
+#pragma mark 搜索处理
+/**
+ *  处理搜索结果
+ *
+ *  @param controller   controller
+ *  @param searchString searchString
+ *
+ *  @return 是否重新加载数据
+ */
+-(void)updateSearchResultsForSearchController:(UISearchController *)searchController{
+    NSString *searchString = searchController.searchBar.text;
+    NSLog(@"searching %@",searchString);
+    
+    //设置搜索关键字及结果类型
+    _searchString = searchString;
+    _postResultType = PostResultTypeSearch;
+    [self fetchObjectsOnPage:super.page refresh:NO];
+}
+
 
 - (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
 {
@@ -316,7 +319,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
             [self fectchRecentPosts:page refresh:refresh];
             break;
         case PostResultTypeSearch:
-         
+            [self fetchSearchResults:_searchString currentPage:page refresh:refresh];
             break;
         case PostResultTypeCategory:
             [self fetchCategoryResults:_categoryId currentPage:page refresh:refresh];
@@ -466,7 +469,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
 /**
  *  加载搜索数据，仅仅JSON API才支持
  */
--(void)fetchSearchResults:(NSString *)searchString{
+-(void)fetchSearchResults:(NSString *)searchString currentPage:(NSUInteger)page refresh:(BOOL)refresh{
     //设置API类型
     self.apiType = APITypeJSON;
     
@@ -483,11 +486,40 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
     
     NSString *JSONApiBaseURL = [settings objectForKey:@"JSONApiBaseURL"];
-    [jsonAPI parseURL:[NSString stringWithFormat:@"%@/api/get_search_results/?search=%@",JSONApiBaseURL,searchString]
+    [jsonAPI parseURL:[NSString stringWithFormat:@"%@/api/get_search_results/?search=%@&page=%d&count=%d&post_type=post",JSONApiBaseURL,searchString,super.page+1,MAX_PAGE_SIZE]
               success:^(NSArray *postsArray, NSInteger postsCount) {
                   dispatch_async(dispatch_get_main_queue(), ^{
+                      //处理刷新
+                      if (refresh) {
+                          super.page = 0;
+                          if (super.didRefreshSucceed) {
+                              super.didRefreshSucceed();
+                          }
+                      }
+                      
                       NSLog(@"Fetched %d posts", postsCount);
                       self.posts = postsArray;
+                      
+                      //刷新数据
+                      if (self.tableWillReload) {self.tableWillReload(postsCount);}
+                      else {
+                          if (super.page == 0 && postsCount == 0) {//首页无数据
+                              super.lastCell.status = LastCellStatusEmpty;
+                          }
+                          else if (postsCount == 0 || ((postsCount - MAX_PAGE_SIZE)%MAX_PAGE_SIZE > 0)) {
+                              //注：当前页面数目小于MAX_PAGE_SIZE或者没有结果表示全部加载完成
+                              //另外：默认返回的每页的数目会自动加上置顶文章数目，因此需要修正
+                              super.lastCell.status = LastCellStatusFinished;
+                              self.page = 0;//最后一页无数据，回到初始页
+                          } else {
+                              super.lastCell.status = LastCellStatusMore;
+                          }
+                      }
+                      
+                      if (self.refreshControl.refreshing) {
+                          [self.refreshControl endRefreshing];
+                      }
+                      
                       [self.tableView reloadData];
                       
                       //取消加载中
@@ -518,7 +550,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
     
     NSString *JSONApiBaseURL = [settings objectForKey:@"JSONApiBaseURL"];
-    NSString *requestURL = [NSString stringWithFormat:@"%@/api/get_category_posts/?id=%d&page=%d&count=%d&post_type=post",JSONApiBaseURL,categortId,super.page+1,0];
+    NSString *requestURL = [NSString stringWithFormat:@"%@/api/get_category_posts/?id=%d&page=%d&count=%d&post_type=post",JSONApiBaseURL,categortId,super.page+1,MAX_PAGE_SIZE];
     
     NSLog(@"category request URL:%@",requestURL);
     //获取作者数据
@@ -609,7 +641,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
     
     NSString *JSONApiBaseURL = [settings objectForKey:@"JSONApiBaseURL"];
-    NSString *requestURL = [NSString stringWithFormat:@"%@/api/get_tag_posts/?id=%lu&page=%u&count=%d&post_type=post",JSONApiBaseURL,(unsigned long)tagId,super.page+1,0];
+    NSString *requestURL = [NSString stringWithFormat:@"%@/api/get_tag_posts/?id=%lu&page=%u&count=%d&post_type=post",JSONApiBaseURL,(unsigned long)tagId,super.page+1,MAX_PAGE_SIZE];
     
     NSLog(@"category request URL:%@",requestURL);
     //获取作者数据
@@ -754,7 +786,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     NSLog(@"indexPath = %d", indexPath.row);
     NSLog(@"当前选择了%@", title);
     NSLog(@"当前分类ID %d", ID);
-
+    
     //修改导航栏的标题
     [_titleButton setTitle:title forState:UIControlStateNormal];
     
