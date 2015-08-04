@@ -316,10 +316,13 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
             [self fectchRecentPosts:page refresh:refresh];
             break;
         case PostResultTypeSearch:
+         
             break;
         case PostResultTypeCategory:
+            [self fetchCategoryResults:_categoryId currentPage:page refresh:refresh];
             break;
         case PostResultTypeTag:
+            [self fetchTagResults:_tagId currentPage:page refresh:refresh];
             break;
         default:
             [self fectchRecentPosts:page refresh:refresh];
@@ -501,7 +504,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
 /**
  *  加载分类数据，仅仅JSON API才支持
  */
--(void)fetchCategoryResults:(NSUInteger)categortId{
+-(void)fetchCategoryResults:(NSUInteger)categortId currentPage:(NSUInteger)page refresh:(BOOL)refresh{
     //设置API类型
     self.apiType = APITypeHttp;
     
@@ -527,6 +530,15 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
             NSLog(@"status:%@",[result objectForKey:@"status"]);
             NSString *status = [result objectForKey:@"status"];
             if ([status isEqualToString:@"ok"]) {
+                
+                //处理刷新
+                if (refresh) {
+                    super.page = 0;
+                    if (super.didRefreshSucceed) {
+                        super.didRefreshSucceed();
+                    }
+                }
+                
                 //获取数据
                 //NSDictionary *dictionaryPosts = [result objectForKey:@"category"];
                 NSArray *posts = [result objectForKey:@"posts"];
@@ -535,6 +547,25 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
                 NSLog(@"category posts get ok :%d",posts.count);
                 
                 //刷新数据
+                if (self.tableWillReload) {self.tableWillReload(posts.count);}
+                else {
+                    if (super.page == 0 && posts.count == 0) {//首页无数据
+                        super.lastCell.status = LastCellStatusEmpty;
+                    }
+                    else if (posts.count == 0 || ((posts.count - MAX_PAGE_SIZE)%MAX_PAGE_SIZE > 0)) {
+                        //注：当前页面数目小于MAX_PAGE_SIZE或者没有结果表示全部加载完成
+                        //另外：默认返回的每页的数目会自动加上置顶文章数目，因此需要修正
+                        super.lastCell.status = LastCellStatusFinished;
+                        self.page = 0;//最后一页无数据，回到初始页
+                    } else {
+                        super.lastCell.status = LastCellStatusMore;
+                    }
+                }
+                
+                if (self.refreshControl.refreshing) {
+                    [self.refreshControl endRefreshing];
+                }
+                
                 [self.tableView reloadData];
                 
                 [HUD hide:YES afterDelay:1];
@@ -564,7 +595,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
 /**
  *  加载标签数据，仅仅JSON API才支持
  */
--(void)fetchTagResults:(NSUInteger)tagId{
+-(void)fetchTagResults:(NSUInteger)tagId currentPage:(NSUInteger)page refresh:(BOOL)refresh{
     //设置API类型
     self.apiType = APITypeHttp;
     
@@ -590,6 +621,15 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
             NSLog(@"status:%@",[result objectForKey:@"status"]);
             NSString *status = [result objectForKey:@"status"];
             if ([status isEqualToString:@"ok"]) {
+                
+                //处理刷新
+                if (refresh) {
+                    super.page = 0;
+                    if (super.didRefreshSucceed) {
+                        super.didRefreshSucceed();
+                    }
+                }
+                
                 //获取数据
                 //NSDictionary *dictionaryPosts = [result objectForKey:@"category"];
                 NSArray *posts = [result objectForKey:@"posts"];
@@ -598,6 +638,25 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
                 NSLog(@"tag posts get ok :%lu",(unsigned long)posts.count);
                 
                 //刷新数据
+                if (self.tableWillReload) {self.tableWillReload(posts.count);}
+                else {
+                    if (super.page == 0 && posts.count == 0) {//首页无数据
+                        super.lastCell.status = LastCellStatusEmpty;
+                    }
+                    else if (posts.count == 0 || ((posts.count - MAX_PAGE_SIZE)%MAX_PAGE_SIZE > 0)) {
+                        //注：当前页面数目小于MAX_PAGE_SIZE或者没有结果表示全部加载完成
+                        //另外：默认返回的每页的数目会自动加上置顶文章数目，因此需要修正
+                        super.lastCell.status = LastCellStatusFinished;
+                        self.page = 0;//最后一页无数据，回到初始页
+                    } else {
+                        super.lastCell.status = LastCellStatusMore;
+                    }
+                }
+                
+                if (self.refreshControl.refreshing) {
+                    [self.refreshControl endRefreshing];
+                }
+                
                 [self.tableView reloadData];
                 
                 [HUD hide:YES afterDelay:1];
@@ -693,13 +752,15 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
 -(void)selectAtIndexPathAndID:(NSIndexPath *)indexPath ID:(NSInteger)ID title:(NSString *)title
 {
     NSLog(@"indexPath = %d", indexPath.row);
-    NSLog(@"当 前选择了%@", title);
+    NSLog(@"当前选择了%@", title);
     NSLog(@"当前分类ID %d", ID);
-    
-    // 修改导航栏的标题
+
+    //修改导航栏的标题
     [_titleButton setTitle:title forState:UIControlStateNormal];
     
-    // 调用根据搜索条件返回相应的微博数据
-    [self fetchCategoryResults:ID];
+    //调用根据搜索条件返回相应的微博数据
+    _postResultType = PostResultTypeCategory;
+    _categoryId = ID;
+    [self fetchObjectsOnPage:super.page refresh:NO];
 }
 @end

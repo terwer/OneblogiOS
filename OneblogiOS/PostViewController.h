@@ -92,6 +92,18 @@ typedef NS_ENUM(NSUInteger, PostResultType){
  */
 @property (nonatomic)  UISearchBar *searchBar;
 /**
+ *  搜索关键字
+ */
+@property (nonatomic) NSString *searchString;
+/**
+ *  分类Id
+ */
+@property (nonatomic) NSInteger categoryId;
+/**
+ *  标签ID
+ */
+@property (nonatomic)  NSInteger tagId;
+/**
  *  文章搜索控制器
  */
 @property   UISearchController *postSearchController;

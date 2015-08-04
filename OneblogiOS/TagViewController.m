@@ -52,6 +52,9 @@
     postCtl.title = [NSString stringWithFormat:@"当前标签:%@",_tags[tagIndex]];
     postCtl.navigationItem.leftBarButtonItem = //[[UIBarButtonItem alloc]initWithTitle:@"<返回" style:UIBarButtonSystemItemFastForward target:self action:@selector(returnBack)];
     [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(returnBack)];
+    //设置结果类型为标签文章，并且设置标签ID
+    postCtl.postResultType = PostResultTypeTag;
+    postCtl.tagId = tagID;
     [self.navigationController pushViewController:postCtl animated:YES];
 }
 
