@@ -43,6 +43,28 @@ typedef NS_ENUM(NSInteger,APIType){
 };
 
 
+/**
+ *  文章结果类型枚举
+ */
+typedef NS_ENUM(NSUInteger, PostResultType){
+    /**
+     *  最近文章
+     */
+    PostResultTypeRecent,
+    /**
+     *  搜索文章
+     */
+    PostResultTypeSearch,
+    /**
+     *  分类文章
+     */
+    PostResultTypeCategory,
+    /**
+     *  标签文章
+     */
+    PostResultTypeTag
+};
+
 @interface PostViewController : OBObjsViewController
 
 /**
@@ -53,6 +75,10 @@ typedef NS_ENUM(NSInteger,APIType){
  *  文章类型
  */
 @property (nonatomic) PostType postType;
+/**
+ *  文章结果类型
+ */
+@property (nonatomic) PostResultType postResultType;
 /**
  *  文章列表数据
  */

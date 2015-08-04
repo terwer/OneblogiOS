@@ -40,6 +40,7 @@
     //是否搜索
     if (isSearch) {
         postViewCtl.isSearch = YES;
+        postViewCtl.postResultType = PostResultTypeSearch;
     }
     SwipableViewController *blogSVC ;
     //由于metaWeblog api的限制，无法筛选出热门和置顶文章
@@ -47,6 +48,7 @@
     if ([Config isAnvancedAPIEnable]&& !isSearch && [Config isShowPage]) {
         //最新
         UIViewController *pageViewCtl = [[PostViewController alloc]initWithPostType:PostTypePage];
+        postViewCtl.postResultType = PostResultTypeRecent;
         
         //博客
         blogSVC = [[SwipableViewController alloc] initWithTitle:@"首页"

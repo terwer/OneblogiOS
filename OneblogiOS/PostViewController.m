@@ -272,6 +272,17 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     return adaptedPost;
 }
 
+
+- (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
+{
+    [_postSearchController.searchBar setShowsCancelButton:YES animated:NO];
+    for (UIView *subView in _postSearchController.searchBar.subviews){
+        if([subView isKindOfClass:[UIButton class]]){
+            [(UIButton*)subView setTitle:@"完成" forState:UIControlStateNormal];
+        }
+    }
+}
+
 #pragma mark - 数据加载
 
 /**
@@ -281,9 +292,6 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
  *  @param refresh refresh
  */
 - (void)fetchObjectsOnPage:(NSUInteger)page refresh:(BOOL)refresh{
-    
-    NSInteger currentCount = MAX_PAGE_SIZE+page*MAX_PAGE_SIZE;
-    NSLog(@"Tring to get %lu posts...",(long)currentCount);
     //===================================
     //检测api状态
     //===================================
@@ -301,6 +309,30 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
         [HUD hide:YES afterDelay:1];
         return;
     }
+    
+    //最近文章，搜索文章，分类文章还是标签文章
+    switch (_postResultType) {
+        case PostResultTypeRecent:
+            [self fectchRecentPosts:page refresh:refresh];
+            break;
+        case PostResultTypeSearch:
+            break;
+        case PostResultTypeCategory:
+            break;
+        case PostResultTypeTag:
+            break;
+        default:
+            [self fectchRecentPosts:page refresh:refresh];
+            break;
+    }
+    
+}
+
+#pragma mark 加载最近文章数据
+
+-(void)fectchRecentPosts:(NSUInteger)page refresh:(BOOL)refresh{
+    NSInteger currentCount = MAX_PAGE_SIZE+page*MAX_PAGE_SIZE;
+    NSLog(@"Tring to get recent %lu posts...",(long)currentCount);
     
     //===================================
     //获取文章数据
@@ -464,15 +496,6 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     
 }
 
-- (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
-{
-    [_postSearchController.searchBar setShowsCancelButton:YES animated:NO];
-    for (UIView *subView in _postSearchController.searchBar.subviews){
-        if([subView isKindOfClass:[UIButton class]]){
-            [(UIButton*)subView setTitle:@"Done" forState:UIControlStateNormal];
-        }
-    }
-}
 
 # pragma mark 加载分类数据
 /**
