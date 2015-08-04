@@ -79,6 +79,10 @@ static NSString *kCategoryCellID = @"categoryCell";
     NSString *JSONApiBaseURL = [settings objectForKey:@"JSONApiBaseURL"];
     NSString *requestURL = [NSString stringWithFormat:@"%@/api/get_category_index/",JSONApiBaseURL];
     
+    //创建加载中
+    MBProgressHUD *HUD = [Utils createHUD];
+    HUD.detailsLabelText = @"分类加载中...";
+    
     NSLog(@"category request URL:%@",requestURL);
     //获取作者数据
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -90,12 +94,14 @@ static NSString *kCategoryCellID = @"categoryCell";
             NSString *status = [result objectForKey:@"status"];
             if ([status isEqualToString:@"ok"]) {
                 //获取数据
-                NSLog(@"categories get ok :%lu",result.count);
+                NSLog(@"categories get ok :%lu",(unsigned long)result.count);
                 
                 self.data = [result objectForKey:@"categories"];
                 //刷新数据
                 [self.tableView reloadData];
                 
+                //取消加载中
+                [HUD hide:YES afterDelay:1];
             }else{
                 NSLog(@"category posts get error");
             }

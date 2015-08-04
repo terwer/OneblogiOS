@@ -11,7 +11,7 @@
 #import <RESideMenu/RESideMenu.h>
 #import "PostViewController.h"
 #import "SwipableViewController.h"
-#import "MessageViewController.h"
+#import "TagViewController.h"
 #import "MyInfoController.h"
 #import "Utils.h"
 #import "PostEditViewController.h"
@@ -34,7 +34,7 @@
 @implementation OBTabBarController
 
 //创建博客视图控制器
--(SwipableViewController *)createBLogViewController:(BOOL)isSearch{
+-(SwipableViewController *)createBlogViewController:(BOOL)isSearch{
     //全部
     PostViewController *postViewCtl = [[PostViewController alloc]initWithPostType:PostTypePost];
     //是否搜索
@@ -67,13 +67,13 @@
     // Do any additional setup after loading the view.
     
     //博客
-    SwipableViewController *blogSVC = [self createBLogViewController:NO];
+    SwipableViewController *blogSVC = [self createBlogViewController:NO];
     
     //消息
-    MessageViewController *messageCtl = [[MessageViewController alloc]initWithStyle:UITableViewStyleGrouped];
+    TagViewController *tagCtl = [[TagViewController alloc]init];
     
     //搜索
-    SwipableViewController *searchTableVC = [self createBLogViewController:YES];
+    SwipableViewController *searchTableVC = [self createBlogViewController:YES];
     
     //我
     MyInfoController *myInfoVC = [[MyInfoController alloc]initWithStyle:UITableViewStyleGrouped];
@@ -82,9 +82,9 @@
     self.viewControllers = @[[self addNavigationItemForViewController:blogSVC withItembars:YES]];
     self.viewControllers = @[
                              [self addNavigationItemForViewController:blogSVC withItembars:YES],
-                             [self addNavigationItemForViewController:messageCtl withItembars:NO],
+                             [self addNavigationItemForViewController:tagCtl withItembars:YES],
                              [UIViewController new],
-                             [self addNavigationItemForViewController:searchTableVC withItembars:NO],
+                             [self addNavigationItemForViewController:searchTableVC withItembars:YES],
                              [[UINavigationController alloc] initWithRootViewController:myInfoVC]
                              ];
     

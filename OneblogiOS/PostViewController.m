@@ -61,13 +61,13 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     if([Config isAnvancedAPIEnable] && _isSearch){
         
         // 设置导航栏中间的titleView
-        _titleButton = [self titleViewWithNickname:@"博客"];
+        _titleButton = [self titleViewWithNickname:@"博客列表"];
         //self.navigationItem.titleView = _titleButton;
         UIViewController *current = [self.navigationController.viewControllers objectAtIndex:0];
         current.navigationItem.titleView = _titleButton;
         
-        [[self.navigationController.viewControllers objectAtIndex:0] setTitle:@"搜索"];
-        //self.navigationItem.title = @"搜索";
+        UIViewController *ctl =  [self.navigationController.viewControllers objectAtIndex:0];
+        ctl.navigationItem.rightBarButtonItem = nil;
         
         self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
         self.tableView.tableHeaderView = self.searchBar;
