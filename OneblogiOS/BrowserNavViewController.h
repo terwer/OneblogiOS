@@ -13,6 +13,6 @@
 /**
  *  要浏览的url
  */
-@property (nonatomic) NSURL *url;
+@property (nonatomic,strong) NSURL *url;
 
 @end

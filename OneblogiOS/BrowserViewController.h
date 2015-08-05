@@ -13,11 +13,11 @@
 /**
  *  要浏览的URL
  */
-@property NSURL *url;
+@property (nonatomic,strong) NSURL *url;
 /**
  *  当前网页标题
  */
-@property NSString *pageTitle;
+@property (nonatomic,strong) NSString *pageTitle;
 
 /**
  *  用指定的URL初始化一个浏览器视图控制器

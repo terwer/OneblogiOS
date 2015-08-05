@@ -43,8 +43,8 @@
  */
 @property(nonatomic, strong) TTTAttributedLabel *messageInfo;
 
-@property (nonatomic, retain) UIPickerView *pickerView;
-@property (nonatomic, retain) NSMutableArray *dataArray;
+@property (nonatomic, strong) UIPickerView *pickerView;
+@property (nonatomic, strong) NSMutableArray *dataArray;
 
 @end
 
