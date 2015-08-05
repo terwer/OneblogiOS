@@ -240,7 +240,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     switch (type) {
         case APITypeJSON:{
             SDPost *jsonPost = post;
-            [adaptedPost setValue:[NSString stringWithFormat:@"%d",jsonPost.ID] forKey:@"id"];
+            [adaptedPost setValue:[NSString stringWithFormat:@"%ld",jsonPost.ID] forKey:@"id"];
             [adaptedPost setValue:jsonPost.title forKey:@"title"];
             [adaptedPost setValue:jsonPost.content forKey:@"content"];
             [adaptedPost setValue:[Utils dateFromString:jsonPost.date] forKey:@"date"];
@@ -366,18 +366,22 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
         self.apiType = APITypeJSON;
         
         SDFeedParser *jsonAPI = self.api;
+        
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSString *baseURL = [userDefaults objectForKey:@"baseURL"];
+        
+        //从plist读取DigPostCount
         NSString *path = [[NSBundle mainBundle]pathForResource:@"Oneblog" ofType:@"plist"];
-        NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
-        NSString *JSONApiBaseURL = [settings objectForKey:@"JSONApiBaseURL"];
+        NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:path];
         NSInteger digPostCount = [[settings objectForKey:@"DigPostCount"] integerValue];
         //由于置顶文章会影响分页数目，因此需要把他排除
         //另外api里面分页的索引从1开始
-        NSString *requestURL = [NSString stringWithFormat:@"%@/api/get_recent_posts/?page=%d&count=%d&post_type=%@",JSONApiBaseURL,super.page+1,MAX_PAGE_SIZE,(_postType == PostTypePost?@"post":@"page")];
+        NSString *requestURL = [NSString stringWithFormat:@"%@/get_recent_posts/?page=%lu&count=%d&post_type=%@",baseURL,super.page+1,MAX_PAGE_SIZE,(_postType == PostTypePost?@"post":@"page")];
         [jsonAPI parseURL:requestURL success:^(NSArray *posts, NSInteger postsCount) {
             
             NSLog(@"requestURL:%@",requestURL);
             
-            NSLog(@"JSON API Fetched %d posts", postsCount);
+            NSLog(@"JSON API Fetched %ld posts", postsCount);
             if (self.page == 0) {
                 postsCount -= digPostCount;
             }
@@ -503,11 +507,10 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
         searchString = @"ios";
     }
     
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"Oneblog" ofType:@"plist"];
-    NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *baseURL = [userDefaults objectForKey:@"baseURL"];
     
-    NSString *JSONApiBaseURL = [settings objectForKey:@"JSONApiBaseURL"];
-    [jsonAPI parseURL:[NSString stringWithFormat:@"%@/api/get_search_results/?search=%@&page=%d&count=%d&post_type=post",JSONApiBaseURL,searchString,super.page+1,MAX_PAGE_SIZE]
+    [jsonAPI parseURL:[NSString stringWithFormat:@"%@/get_search_results/?search=%@&page=%lu&count=%d&post_type=post",baseURL,searchString,super.page+1,MAX_PAGE_SIZE]
               success:^(NSArray *postsArray, NSInteger postsCount) {
                   dispatch_async(dispatch_get_main_queue(), ^{
                       //处理刷新
@@ -518,7 +521,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
                           }
                       }
                       
-                      NSLog(@"Fetched %d posts", postsCount);
+                      NSLog(@"Fetched %ld posts", postsCount);
                       self.posts = postsArray;
                       
                       //刷新数据
@@ -567,11 +570,10 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     MBProgressHUD *HUD = [Utils createHUD];
     HUD.detailsLabelText = @"加载中";
     
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"Oneblog" ofType:@"plist"];
-    NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *baseURL = [userDefaults objectForKey:@"baseURL"];
     
-    NSString *JSONApiBaseURL = [settings objectForKey:@"JSONApiBaseURL"];
-    NSString *requestURL = [NSString stringWithFormat:@"%@/api/get_category_posts/?id=%d&page=%d&count=%d&post_type=post",JSONApiBaseURL,categortId,super.page+1,MAX_PAGE_SIZE];
+    NSString *requestURL = [NSString stringWithFormat:@"%@/get_category_posts/?id=%lu&page=%lu&count=%d&post_type=post",baseURL,categortId,super.page+1,MAX_PAGE_SIZE];
     
     NSLog(@"category request URL:%@",requestURL);
     //获取作者数据
@@ -597,7 +599,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
                 NSArray *posts = [result objectForKey:@"posts"];
                 self.posts = posts;
                 
-                NSLog(@"category posts get ok :%d",posts.count);
+                NSLog(@"category posts get ok :%lu",posts.count);
                 
                 //刷新数据
                 if (self.tableWillReload) {self.tableWillReload(posts.count);}
@@ -658,11 +660,10 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     MBProgressHUD *HUD = [Utils createHUD];
     HUD.detailsLabelText = @"加载中";
     
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"Oneblog" ofType:@"plist"];
-    NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *baseURL = [userDefaults objectForKey:@"baseURL"];
     
-    NSString *JSONApiBaseURL = [settings objectForKey:@"JSONApiBaseURL"];
-    NSString *requestURL = [NSString stringWithFormat:@"%@/api/get_tag_posts/?id=%lu&page=%u&count=%d&post_type=post",JSONApiBaseURL,(unsigned long)tagId,super.page+1,MAX_PAGE_SIZE];
+    NSString *requestURL = [NSString stringWithFormat:@"%@/get_tag_posts/?id=%lu&page=%lu&count=%d&post_type=post",baseURL,tagId,super.page+1,MAX_PAGE_SIZE];
     
     NSLog(@"category request URL:%@",requestURL);
     //获取作者数据
@@ -755,14 +756,63 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     //===================================
     //JSON API
     if ([Config isAnvancedAPIEnable]) {
-        NSLog(@"暂未实现。");
-        NSString *path = [[NSBundle mainBundle]pathForResource:@"Oneblog" ofType:@"plist"];
-        NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
         
-        NSString *JSONApiBaseURL = [settings objectForKey:@"JSONApiBaseURL"];
-        NSString *requestURL = [NSString stringWithFormat:@"%@/api/get_tag_posts/?%@",JSONApiBaseURL,postId];
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSString *baseURL = [userDefaults objectForKey:@"baseURL"];
+        NSString *cookie = [userDefaults objectForKey:@"cookie"];
         
-        NSLog(@"category request URL:%@",requestURL);
+        NSString *nonceURL = [NSString stringWithFormat:@"%@/get_nonce/?controller=posts&method=delete_post",baseURL];
+        
+        //1 get nunce
+        //2 delete post
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        [manager GET:nonceURL parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *result) {
+            NSLog(@"status:%@",[result objectForKey:@"status"]);
+            NSString *status = [result objectForKey:@"status"];
+            
+            NSString *nonce =[result objectForKey:@"nonce"];
+            //删除
+            NSDictionary *parmeters = @{@"id":postId,@"cookie":cookie,@"nonce":nonce};
+            NSString *deleteURL = [NSString stringWithFormat:@"%@/posts/delete_post/",baseURL];
+            
+            NSLog(@"cdeleteURL URL:%@",deleteURL);
+            
+            if ([status isEqualToString:@"ok"]) {
+                //删除开始=======================
+                AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+                [manager GET:deleteURL parameters:parmeters
+                     success:^(AFHTTPRequestOperation *operation, NSDictionary *result) {
+                         NSString *status = [result objectForKey:@"status"];
+                         if ([status isEqualToString:@"ok"]) {
+                             NSLog(@"删除成功。");
+                         }else{
+                             NSLog(@"删除失败。%@",[result objectForKey:@"error"]);
+                         }
+                     }
+                     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                         NSLog(@"系统失败");
+                     }];
+                //删除结束=======================
+            }
+            
+        }
+             failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                 NSLog(@"Error fetching authors: %@", [error localizedDescription]);
+                 MBProgressHUD *HUD = [Utils createHUD];
+                 HUD.mode = MBProgressHUDModeCustomView;
+                 HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HUD-error"]];
+                 HUD.detailsLabelText = [NSString stringWithFormat:@"%@", error.userInfo[NSLocalizedDescriptionKey]];
+                 
+                 [HUD hide:YES afterDelay:1];
+                 
+                 super.lastCell.status = LastCellStatusError;
+                 if (self.refreshControl.refreshing) {
+                     [self.refreshControl endRefreshing];
+                 }
+                 [self.tableView reloadData];
+                 
+                 
+             }];
     }else{
         //设置API类型
         self.apiType = APITypeMetaWeblog;
@@ -895,9 +945,9 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
 #pragma mark - TitleMenuDelegate
 -(void)selectAtIndexPathAndID:(NSIndexPath *)indexPath ID:(NSInteger)ID title:(NSString *)title
 {
-    NSLog(@"indexPath = %d", indexPath.row);
+    NSLog(@"indexPath = %ld", indexPath.row);
     NSLog(@"当前选择了%@", title);
-    NSLog(@"当前分类ID %d", ID);
+    NSLog(@"当前分类ID %ld",ID);
     
     //修改导航栏的标题
     [_titleButton setTitle:title forState:UIControlStateNormal];

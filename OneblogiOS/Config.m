@@ -39,9 +39,9 @@
     //初始化ApiInfo
     ApiInfo *apiInfo = nil;
     if (isJSONAPIEnable) {
-        apiInfo = [[ApiInfo alloc]initWithXmlrpc:baseURL andUsername:username andPassword:password];
-    }else{
         apiInfo = [[ApiInfo alloc]initWithBaseURL:baseURL andGenerateAuthCookie:cookie];
+    }else{
+        apiInfo = [[ApiInfo alloc]initWithXmlrpc:baseURL andUsername:username andPassword:password];
     }
     //结果处理
     if (apiInfo) {return apiInfo;}
@@ -54,10 +54,10 @@
  *  @return 高级API开启状态
  */
 +(BOOL)isAnvancedAPIEnable{
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"Oneblog" ofType:@"plist"];
-    NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
-    BOOL result = [[settings objectForKey:@"IsAdvancedAPIEnable"] boolValue];
-    return result;
+    //获取相关存储信息
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL isJSONAPIEnable = [[userDefaults objectForKey:@"isJSONAPIEnable"] boolValue];
+    return isJSONAPIEnable;
 }
 
 /**

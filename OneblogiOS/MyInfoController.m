@@ -225,11 +225,10 @@ static NSString *kMyInfoCellID = @"myInfoCell";
  */
 - (void)fetchObjectsOnPage:(NSUInteger)page refresh:(BOOL)refresh{
     NSLog(@"fetching autoer data...");
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"Oneblog" ofType:@"plist"];
-    NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
-    
-    NSString *JSONApiBaseURL = [settings objectForKey:@"JSONApiBaseURL"];
-    NSString *requestURL = [NSString stringWithFormat:@"%@/api/get_author_index/",JSONApiBaseURL];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *baseURL = [userDefaults objectForKey:@"baseURL"];
+
+    NSString *requestURL = [NSString stringWithFormat:@"%@/get_author_index/",baseURL];
     
     //获取作者数据
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];

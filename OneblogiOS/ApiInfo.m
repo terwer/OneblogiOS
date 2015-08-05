@@ -13,15 +13,11 @@
 -(instancetype)initWithXmlrpc:(NSString *)xmlrpc andUsername:(NSString *)username andPassword:(NSString *)password{
     if (self = [super init]) {
         //确保全部都不能为空
-        if (xmlrpc && username && password) {
-            _baseURL = xmlrpc;
-            _username = username;
-            _password = password;
-            return self;
-        }
-        return nil;
+        _baseURL = xmlrpc;
+        _username = username;
+        _password = password;
     }
-    return nil;
+    return self;
 }
 
 -(instancetype)initWithBaseURL:baseURL andGenerateAuthCookie:cookie{

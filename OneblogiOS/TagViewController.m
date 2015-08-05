@@ -56,7 +56,7 @@
 -(void)tagClickAtIndex:(NSInteger)tagIndex
 {
     NSInteger tagID = [self getIDByTag:_tags[tagIndex]];
-    NSLog(@"%d",tagID);
+    NSLog(@"%ld",tagID);
     
     PostViewController *postCtl = [[PostViewController alloc]initWithPostType:PostTypePost];
     postCtl.title = [NSString stringWithFormat:@"当前标签:%@",_tags[tagIndex]];
@@ -112,11 +112,10 @@
  */
 -(void)fetchTags{
     
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"Oneblog" ofType:@"plist"];
-    NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
-    
-    NSString *JSONApiBaseURL = [settings objectForKey:@"JSONApiBaseURL"];
-    NSString *requestURL = [NSString stringWithFormat:@"%@/api/get_tag_index/",JSONApiBaseURL];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *baseURL = [userDefaults objectForKey:@"baseURL"];
+
+    NSString *requestURL = [NSString stringWithFormat:@"%@/get_tag_index/",baseURL];
     
     //创建加载中
     MBProgressHUD *HUD = [Utils createHUD];
