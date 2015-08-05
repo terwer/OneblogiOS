@@ -42,10 +42,9 @@
  *  初始化JSON API
  *
  *  @param baseURL  baseURL
- *  @param username username
- *  @param password password
+ *  @param cookie cookie
  *
  *  @return ApiInfo实例
  */
--(instancetype)initWithBaseURL:(NSString *)baseURL andUsername:(NSString *)username andPassword:(NSString *)password;
+-(instancetype)initWithBaseURL:(NSString *)baseURL andGenerateAuthCookie:cookie;
 @end

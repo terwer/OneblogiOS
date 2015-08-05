@@ -31,11 +31,18 @@
 {
     //获取相关存储信息
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *xmlrpc = [userDefaults objectForKey:@"baseURL"];
+    BOOL isJSONAPIEnable = [[userDefaults objectForKey:@"isJSONAPIEnable"] boolValue];
+    NSString *baseURL = [userDefaults objectForKey:@"baseURL"];
     NSString *username = [userDefaults objectForKey:@"mw_username"];
     NSString *password = [userDefaults objectForKey:@"mw_password"];
+    NSString *cookie = [userDefaults objectForKey:@"generate_auth_cookie"];
     //初始化ApiInfo
-    ApiInfo *apiInfo = [[ApiInfo alloc]initWithXmlrpc:xmlrpc andUsername:username andPassword:password];
+    ApiInfo *apiInfo = nil;
+    if (isJSONAPIEnable) {
+        apiInfo = [[ApiInfo alloc]initWithXmlrpc:baseURL andUsername:username andPassword:password];
+    }else{
+        apiInfo = [[ApiInfo alloc]initWithBaseURL:baseURL andGenerateAuthCookie:cookie];
+    }
     //结果处理
     if (apiInfo) {return apiInfo;}
     return nil;

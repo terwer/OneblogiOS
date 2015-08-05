@@ -24,8 +24,9 @@
     return nil;
 }
 
--(instancetype)initWithBaseURL:(NSString *)baseURL andUsername:(NSString *)username andPassword:(NSString *)password{
+-(instancetype)initWithBaseURL:baseURL andGenerateAuthCookie:cookie{
     if (self = [super init]) {
+        _generateAauthCookie = cookie;
     }
     return self;
 }
