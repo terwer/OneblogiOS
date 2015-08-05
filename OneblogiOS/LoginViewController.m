@@ -60,7 +60,7 @@
     //判断登录状态
     ApiInfo *apiInfo = [Config getAuthoizedApiInfo];
     if(apiInfo){
-        NSLog(@"Current xmprpc:%@ username:%@ password:%@",apiInfo.xmlrpc,apiInfo.username,apiInfo.password);
+        NSLog(@"Current xmprpc:%@ username:%@ password:%@",apiInfo.baseURL,apiInfo.username,apiInfo.password);
         //已经登录过，跳转到主界面，停止程序继续
         [self goToMainViewController];
         return;
@@ -69,17 +69,19 @@
     //初始化导航栏
     self.navigationItem.title = @"登录";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"选择" style:UIBarButtonItemStylePlain target:self action:@selector(selectBlog)];
-
+    
     self.view.backgroundColor = [UIColor themeColor];
     
     //初始化视图和布局
     [self initSubviews];
     [self setLayout];
     
-    //测试数据
-    self.xmlrpcField.text = @"http://www.terwer.com/xmlrpc.php";
-    self.usernameField.text = @"terwer";
-    self.passwordField.text = @"cbgtyw2020";
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    //加载登陆数据
+    [self loadLoginInfo];
+    NSLog(@"appeared");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -87,7 +89,16 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+#pragma mark 加载选择的数据
+- (void) loadLoginInfo {
+    NSUserDefaults *def =[NSUserDefaults standardUserDefaults];
+    self.xmlrpcField.text = [def objectForKey:@"baseURL"];
+    self.usernameField.text = [def objectForKey:@"mw_username"];
+    self.passwordField.text = [def objectForKey:@"mw_passwod"];
+    //JSON API状态
+    _apiTypeSwitch.on = [[def objectForKey:@"isJSONAPIEnable"] boolValue];
+    
+}
 
 #pragma mark 选择博客类型
 
@@ -101,7 +112,7 @@
 #pragma mark - about subviews
 
 - (void)initSubviews {
-   
+    
     
     _xmlrpcField = [UITextField new];
     _xmlrpcField.placeholder = @"Url";
@@ -140,6 +151,7 @@
     [self.view addSubview:_passwordField];
     
     _apiTypeSwitch =[[UISwitch alloc]init];
+    [_apiTypeSwitch addTarget:self action:@selector(doSwitch) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_apiTypeSwitch];
     
     _loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -182,33 +194,43 @@
 
 - (void)setLayout
 {
+    UIImageView *url = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login-url"]];
+    url.contentMode = UIViewContentModeScaleAspectFill;
+    
     UIImageView *email = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login-email"]];
     email.contentMode = UIViewContentModeScaleAspectFill;
     
     UIImageView *password = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login-password"]];
     password.contentMode = UIViewContentModeScaleAspectFit;
     
+    UILabel *tips = [[UILabel alloc]init];
+    tips.text = @"是否启用JSON API";
+    
+    [self.view addSubview:url];
     [self.view addSubview:email];
     [self.view addSubview:password];
+    [self.view addSubview:tips];
     
     for (UIView *view in [self.view subviews]) { view.translatesAutoresizingMaskIntoConstraints = NO;}
     
-    NSDictionary *views = NSDictionaryOfVariableBindings(email, password, _usernameField, _passwordField, _loginButton, _messageInfo);
+    NSDictionary *views = NSDictionaryOfVariableBindings(url,email, password,tips,_xmlrpcField, _usernameField, _passwordField,_apiTypeSwitch, _loginButton, _messageInfo);
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view    attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual
                                                              toItem:_loginButton attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual
                                                              toItem:_loginButton attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[email(20)]-20-[password(20)]-30-[_loginButton(40)]"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[url(20)]-20-[email(20)]-20-[password(20)]-20-[tips(20)]-10-[_loginButton(40)]"
                                                                       options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[_loginButton]-20-|" options:0 metrics:nil views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_loginButton]-20-[_messageInfo(30)]"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_loginButton]-10-[_messageInfo]"
                                                                       options:NSLayoutFormatAlignAllLeft | NSLayoutFormatAlignAllRight
                                                                       metrics:nil views:views]];
     
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-30-[url(20)]-[_xmlrpcField]-30-|"     options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-30-[email(20)]-[_usernameField]-30-|"     options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-30-[password(20)]-[_passwordField]-30-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-30-[tips(180)]-[_apiTypeSwitch]-30-|"     options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
 }
 
 
@@ -249,7 +271,7 @@
                                success:^(NSURL *xmlrpcURL) {
                                    NSLog(@"success:%@",xmlrpcURL);
                                    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-                                   [def setObject:[xmlrpcURL absoluteString] forKey:@"mw_xmlrpc"];
+                                   [def setObject:[xmlrpcURL absoluteString] forKey:@"baseURL"];
                                    [def setObject:self.usernameField.text forKey:@"mw_username"];
                                    [def setObject:self.passwordField.text forKey:@"mw_password"];
                                    [def synchronize];
@@ -308,5 +330,15 @@
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
     NSLog(@"Selected url:%@",[url absoluteString]);
     [Utils navigateUrl:self withUrl:url andTitle:@"What is MetaWeblog API?"];
+}
+
+- (void)doSwitch{
+    NSLog(@"开启JSON API");
+    _xmlrpcField.text = @"";
+    if(_apiTypeSwitch.on){
+        _xmlrpcField.placeholder = @"请输入JSON API入口地址";
+    }else{
+        _xmlrpcField.placeholder = @"请输入MetaWeblog API入口地址";
+    }
 }
 @end

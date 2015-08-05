@@ -119,7 +119,7 @@
  *  @return API状态
  */
 - (id)setupApi:(ApiInfo *)apiInfo {
-    NSString *xmlrpc =apiInfo.xmlrpc;
+    NSString *xmlrpc =apiInfo.baseURL;
     if (xmlrpc) {
         NSString *username = apiInfo.username;
         NSString *password = apiInfo.password;

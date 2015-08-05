@@ -31,7 +31,7 @@
 {
     //获取相关存储信息
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *xmlrpc = [userDefaults objectForKey:@"mw_xmlrpc"];
+    NSString *xmlrpc = [userDefaults objectForKey:@"baseURL"];
     NSString *username = [userDefaults objectForKey:@"mw_username"];
     NSString *password = [userDefaults objectForKey:@"mw_password"];
     //初始化ApiInfo

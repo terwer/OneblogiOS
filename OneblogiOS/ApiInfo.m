@@ -14,7 +14,7 @@
     if (self = [super init]) {
         //确保全部都不能为空
         if (xmlrpc && username && password) {
-            _xmlrpc = xmlrpc;
+            _baseURL = xmlrpc;
             _username = username;
             _password = password;
             return self;
@@ -24,4 +24,9 @@
     return nil;
 }
 
+-(instancetype)initWithBaseURL:(NSString *)baseURL andUsername:(NSString *)username andPassword:(NSString *)password{
+    if (self = [super init]) {
+    }
+    return self;
+}
 @end
