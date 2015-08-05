@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  OneblogiOS
+
+  Created by szgxa30 on 15/8/5.
+  Copyright (c) 2015年 Terwer Green. All rights reserved.
+*/
+
+APINotSupported = "API不支持此操作";

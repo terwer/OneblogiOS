@@ -25,6 +25,8 @@
 		1E6C815D1B662CFC00D4F002 /* LastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6C815C1B662CFC00D4F002 /* LastCell.m */; };
 		1E7407CC1B660F880011F7A5 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E7407CB1B660F880011F7A5 /* Utils.m */; };
 		1E7407CF1B66103E0011F7A5 /* UIView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E7407CE1B66103E0011F7A5 /* UIView+Util.m */; };
+		1E907FDB1B71AE7100C27DE9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1E907FDD1B71AE7100C27DE9 /* Localizable.strings */; };
+		1E9080161B71F14500C27DE9 /* SelectBlogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E9080151B71F14500C27DE9 /* SelectBlogViewController.m */; };
 		1EDB3BFE1B69BBA800A994FE /* TMDAnchor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDB3BE81B69BBA800A994FE /* TMDAnchor.m */; };
 		1EDB3BFF1B69BBA800A994FE /* TMDBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDB3BEA1B69BBA800A994FE /* TMDBold.m */; };
 		1EDB3C001B69BBA800A994FE /* TMDCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDB3BEC1B69BBA800A994FE /* TMDCode.m */; };
@@ -136,6 +138,10 @@
 		1E7407CB1B660F880011F7A5 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		1E7407CD1B66103E0011F7A5 /* UIView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Util.h"; sourceTree = "<group>"; };
 		1E7407CE1B66103E0011F7A5 /* UIView+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Util.m"; sourceTree = "<group>"; };
+		1E907FDC1B71AE7100C27DE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1E907FDE1B71AE7600C27DE9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		1E9080141B71F14500C27DE9 /* SelectBlogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectBlogViewController.h; sourceTree = "<group>"; };
+		1E9080151B71F14500C27DE9 /* SelectBlogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectBlogViewController.m; sourceTree = "<group>"; };
 		1EDB3BE71B69BBA800A994FE /* TMDAnchor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMDAnchor.h; path = ToMarkdown/TMDAnchor.h; sourceTree = "<group>"; };
 		1EDB3BE81B69BBA800A994FE /* TMDAnchor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMDAnchor.m; path = ToMarkdown/TMDAnchor.m; sourceTree = "<group>"; };
 		1EDB3BE91B69BBA800A994FE /* TMDBold.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMDBold.h; path = ToMarkdown/TMDBold.h; sourceTree = "<group>"; };
@@ -322,6 +328,8 @@
 				1E0C687D1B661F1B00AC6611 /* LoginViewController.m */,
 				1EE777331B677AE00042F118 /* LoginNavViewController.h */,
 				1EE777341B677AE00042F118 /* LoginNavViewController.m */,
+				1E9080141B71F14500C27DE9 /* SelectBlogViewController.h */,
+				1E9080151B71F14500C27DE9 /* SelectBlogViewController.m */,
 			);
 			name = "我";
 			sourceTree = "<group>";
@@ -583,6 +591,7 @@
 				1E285D561B65D5EC006D3C5D /* 标签 */,
 				1E285D551B65D5D7006D3C5D /* 我 */,
 				1E3AC37F1B68B3A200086EA3 /* 浏览器 */,
+				1EDB3C091B69ECA500A994FE /* 设置 */,
 				BEDE595F1B65723E003AB347 /* Main ViewControllers */,
 				BEDE593D1B657063003AB347 /* AppDelegate.h */,
 				BEDE593E1B657063003AB347 /* AppDelegate.m */,
@@ -602,6 +611,7 @@
 				BEDE593B1B657063003AB347 /* main.m */,
 				BE2049831B6E950C0093B2A1 /* Oneblog.plist */,
 				BE15435C1B6ECB750076552F /* InfoPlist.strings */,
+				1E907FDD1B71AE7100C27DE9 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -652,7 +662,6 @@
 			children = (
 				BEDE59681B65739C003AB347 /* SideMenuViewController.h */,
 				BEDE59691B65739C003AB347 /* SideMenuViewController.m */,
-				1EDB3C091B69ECA500A994FE /* 设置 */,
 			);
 			name = "侧拉菜单";
 			sourceTree = "<group>";
@@ -810,7 +819,6 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
 				"zh-Hans",
 			);
@@ -833,6 +841,7 @@
 				BE2049841B6E950C0093B2A1 /* Oneblog.plist in Resources */,
 				BE15435A1B6ECB750076552F /* InfoPlist.strings in Resources */,
 				BE512D471B66BA7400455CC7 /* emoji.plist in Resources */,
+				1E907FDB1B71AE7100C27DE9 /* Localizable.strings in Resources */,
 				BEDE59471B657063003AB347 /* Images.xcassets in Resources */,
 				BE4D37631B6670FC00D56E5A /* FontAwesome.ttf in Resources */,
 				BE512D481B66BA7400455CC7 /* emojiToText.plist in Resources */,
@@ -948,6 +957,7 @@
 				1EDB3C001B69BBA800A994FE /* TMDCode.m in Sources */,
 				1EEE7AAA1B7076A30019BFF7 /* WWTagsCloudView.m in Sources */,
 				BEDE597B1B6577C1003AB347 /* HorizonalTableViewController.m in Sources */,
+				1E9080161B71F14500C27DE9 /* SelectBlogViewController.m in Sources */,
 				1EDB3C081B69BBA800A994FE /* ToMarkdown.m in Sources */,
 				BEDE593C1B657063003AB347 /* main.m in Sources */,
 				1E30393C1B6A0EE100D021B1 /* PostEditViewController.m in Sources */,
@@ -977,6 +987,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		1E907FDD1B71AE7100C27DE9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1E907FDC1B71AE7100C27DE9 /* Base */,
+				1E907FDE1B71AE7600C27DE9 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		BE15435C1B6ECB750076552F /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

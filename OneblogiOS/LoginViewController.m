@@ -17,40 +17,42 @@
 #import "TTTAttributedLabel.h"
 #import "BrowserNavViewController.h"
 #import "BrowserViewController.h"
+#import "SelectBlogViewController.h"
 
-@interface LoginViewController ()<UITextFieldDelegate,UIGestureRecognizerDelegate,TTTAttributedLabelDelegate,UIPickerViewDelegate,UIPickerViewDataSource>
+@interface LoginViewController ()<UITextFieldDelegate,UIGestureRecognizerDelegate,TTTAttributedLabelDelegate>
 
 /**
  *  xmlrpcURL
  */
-@property(nonatomic, strong) UITextField *xmlrpcField;
+@property (nonatomic, strong) UITextField *xmlrpcField;
 /**
  *  用户名
  */
-@property(nonatomic, strong) UITextField *usernameField;
+@property (nonatomic, strong) UITextField *usernameField;
 /**
  *  密码
  */
-@property(nonatomic, strong) UITextField *passwordField;
+@property (nonatomic, strong) UITextField *passwordField;
+/**
+ *  是否启用JSON API
+ */
+@property (nonatomic,strong) UISwitch *apiTypeSwitch;
 /**
  *  登陆按钮
  */
-@property(nonatomic, strong) UIButton *loginButton;
-
+@property (nonatomic, strong) UIButton *loginButton;
+/**
+ *  提示框
+ */
 @property (nonatomic, strong) MBProgressHUD *HUD;
 /**
  *  提示信息
  */
 @property(nonatomic, strong) TTTAttributedLabel *messageInfo;
 
-@property (nonatomic, strong) UIPickerView *pickerView;
-@property (nonatomic, strong) NSMutableArray *dataArray;
-
 @end
 
 @implementation LoginViewController
-
-@synthesize pickerView = _pickerView,dataArray = _dataArray;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -66,6 +68,8 @@
     
     //初始化导航栏
     self.navigationItem.title = @"登录";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"选择" style:UIBarButtonItemStylePlain target:self action:@selector(selectBlog)];
+
     self.view.backgroundColor = [UIColor themeColor];
     
     //初始化视图和布局
@@ -83,47 +87,21 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
+#pragma mark 选择博客类型
+
+-(void)selectBlog{
+    NSLog(@"选择博客。");
+    SelectBlogViewController *selectBlogController = [[SelectBlogViewController alloc]init];
+    [self.navigationController pushViewController:selectBlogController animated:YES];
+    
+}
+
 #pragma mark - about subviews
 
 - (void)initSubviews {
-    // Init the data array.
-    _dataArray = [[NSMutableArray alloc] init];
-    
-    // Add some data for demo purposes.
-    [_dataArray addObject:@"Wordpress"];
-    [_dataArray addObject:@"ZBlog"];
-    [_dataArray addObject:@"Cnblogs"];
-    [_dataArray addObject:@"OSChina"];
-    [_dataArray addObject:@"163"];
-    [_dataArray addObject:@"51CTO"];
-    [_dataArray addObject:@"Sina"];
-    [_dataArray addObject:@"Other"];
-    
-    // Calculate the screen's width.
-    float screenWidth = [UIScreen mainScreen].bounds.size.width;
-    float pickerWidth = screenWidth;
-    
-    // Calculate the starting x coordinate.
-    float xPoint = screenWidth / 2 - pickerWidth / 2 - 30;
-    
-    // Init the picker view.
-    _pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(xPoint, 50.0f, pickerWidth, 50.0f)];
-    
-    // Set the delegate and datasource. Don't expect picker view to work
-    // correctly if you don't set it.
-    [_pickerView setDataSource: self];
-    [_pickerView setDelegate: self];
-    
-    // Before we add the picker view to our view, let's do a couple more
-    // things. First, let the selection indicator (that line inside the
-    // picker view that highlights your selection) to be shown.
-    _pickerView.showsSelectionIndicator = YES;
-    
-    // Allow us to pre-select the third option in the pickerView.
-    [_pickerView selectRow:0 inComponent:0 animated:YES];
-    
-    // OK, we are ready. Add the picker in our view.
-    [self.view addSubview: _pickerView];
+   
     
     _xmlrpcField = [UITextField new];
     _xmlrpcField.placeholder = @"Url";
@@ -157,10 +135,12 @@
     [_usernameField addTarget:self action:@selector(returnOnKeyboard:) forControlEvents:UIControlEventEditingDidEndOnExit];
     [_passwordField addTarget:self action:@selector(returnOnKeyboard:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
-    [self.view addSubview:_pickerView];
     [self.view addSubview:_xmlrpcField];
     [self.view addSubview:_usernameField];
     [self.view addSubview:_passwordField];
+    
+    _apiTypeSwitch =[[UISwitch alloc]init];
+    [self.view addSubview:_apiTypeSwitch];
     
     _loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _loginButton.titleLabel.font = [UIFont systemFontOfSize:17];
@@ -183,7 +163,7 @@
                                     (NSString *) kCTForegroundColorAttributeName : [UIColor colorWithHex:0x428bd1]
                                     };
     [_messageInfo addLinkToURL:[NSURL URLWithString:@"https://en.wikipedia.org/wiki/MetaWeblog"] withRange:range1];
-     NSRange range2 = [info rangeOfString:@"详情看这里"];
+    NSRange range2 = [info rangeOfString:@"详情看这里"];
     [_messageInfo addLinkToURL:[NSURL URLWithString:@"https://gist.github.com/terwer/7acc30a460e3ef671415"] withRange:range2];
     [self.view addSubview:_messageInfo];
     NSRange range3 = [info rangeOfString:@"Wordpress JSON API"];
@@ -199,38 +179,35 @@
     [self.view addGestureRecognizer:gesture];
 }
 
-- (void)setLayout {
-    UIImageView *url = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"login-url"]];
-    url.contentMode = UIViewContentModeScaleAspectFill;
-    
+
+- (void)setLayout
+{
     UIImageView *email = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login-email"]];
     email.contentMode = UIViewContentModeScaleAspectFill;
     
     UIImageView *password = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login-password"]];
     password.contentMode = UIViewContentModeScaleAspectFit;
     
-    [self.view addSubview:url];
     [self.view addSubview:email];
     [self.view addSubview:password];
     
-    for (UIView *view in [self.view subviews]) {view.translatesAutoresizingMaskIntoConstraints = NO;}
+    for (UIView *view in [self.view subviews]) { view.translatesAutoresizingMaskIntoConstraints = NO;}
     
-    NSDictionary *views = NSDictionaryOfVariableBindings(_pickerView,url,email, password,_xmlrpcField, _usernameField, _passwordField, _loginButton, _messageInfo,_messageInfo);
+    NSDictionary *views = NSDictionaryOfVariableBindings(email, password, _usernameField, _passwordField, _loginButton, _messageInfo);
     
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view    attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual
                                                              toItem:_loginButton attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual
                                                              toItem:_loginButton attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[_pickerView]-0-[url(20)]-20-[email(20)]-20-[password(20)]-30-[_loginButton(40)]"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[email(20)]-20-[password(20)]-30-[_loginButton(40)]"
                                                                       options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[_loginButton]-20-|" options:0 metrics:nil views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_loginButton]-20-[_messageInfo(180)]"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_loginButton]-20-[_messageInfo(30)]"
                                                                       options:NSLayoutFormatAlignAllLeft | NSLayoutFormatAlignAllRight
                                                                       metrics:nil views:views]];
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-30-[url(20)]-[_xmlrpcField]-30-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-30-[email(20)]-[_usernameField]-30-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-30-[email(20)]-[_usernameField]-30-|"     options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-30-[password(20)]-[_passwordField]-30-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
 }
 
@@ -265,6 +242,7 @@
     _HUD.userInteractionEnabled = NO;
     
     // Sign in
+    NSLog(@"current user :%@ %@ %@",self.xmlrpcField.text,self.usernameField.text,self.passwordField.text);
     [TGMetaWeblogAuthApi signInWithURL:self.xmlrpcField.text
                               username:self.usernameField.text
                               password:self.passwordField.text
@@ -307,62 +285,6 @@
     
     //设置根视图
     appDelegate.window.rootViewController = sideMenuTabBarViewController;
-}
-
-#pragma mark pickerView
-
-// Number of components.
--(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
-    return 1;
-}
-
-// Total rows in our component.
--(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    return [_dataArray count];
-}
-
-// Display each row's data.
--(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    return [_dataArray objectAtIndex: row];
-}
-
-// Do something with the selected row.
--(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    NSLog(@"You selected this: %@", [_dataArray objectAtIndex: row]);
-    switch (row) {
-        case 0:
-            NSLog(@"Wordpress");
-            _xmlrpcField.text = @"http://www.terwer.com/xmlrpc.php";
-            break;
-        case 1:
-            NSLog(@"ZBlog");
-            _xmlrpcField.text = @"http://www.terwer.com:8080/xmlrpc";
-            break;
-        case 2:
-            NSLog(@"Cnblogs");
-            _xmlrpcField.text = @"http://www.cnblogs.com/tangyouwei/services/metaweblog.aspx";
-            break;
-        case 3:
-            NSLog(@"OSChina");
-            _xmlrpcField.text =@"http://my.oschina.net/action/xmlrpc";
-            break;
-        case 4:
-            NSLog(@"163");
-            _xmlrpcField.text =@"http://os.blog.163.com/api/xmlrpc/metaweblog/";
-            break;
-        case 5:
-            NSLog(@"51CTO");
-            _xmlrpcField.text =@"http://terwer.blog.51cto.com/xmlrpc.php";
-            break;
-        case 6:
-            NSLog(@"Sina");
-            _xmlrpcField.text =@"http://upload.move.blog.sina.com.cn/blog_rebuild/blog/xmlrpc.php";
-            break;
-        default:
-            NSLog(@"Other");
-            _xmlrpcField.text = @"";
-            break;
-    }
 }
 
 #pragma mark - 超链接代理

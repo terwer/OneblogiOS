@@ -21,6 +21,7 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
+#import "AFNetworking/AFNetworking.h"
 
 @protocol TGMetaWeblogBaseApi <NSObject>
 
@@ -29,14 +30,24 @@
 ///---------------------
 
 /**
-Get a list of the recent posts
-
-@param count Number of recent posts to get
-@param success A block object to execute when the method successfully publishes the post. This block has no return value and takes one argument: an array with the latest posts.
-@param failure A block object to execute when the method can't publish the post. This block has no return value and takes one argument: a NSError object with details on the error.
-*/
+ Get a list of the recent posts
+ 
+ @param count Number of recent posts to get
+ @param success A block object to execute when the method successfully publishes the post. This block has no return value and takes one argument: an array with the latest posts.
+ @param failure A block object to execute when the method can't publish the post. This block has no return value and takes one argument: a NSError object with details on the error.
+ */
 - (void)getRecentPosts:(NSUInteger)count
-         success:(void (^)(NSArray *posts))success
-         failure:(void (^)(NSError *error))failure;
-
+               success:(void (^)(NSArray *posts))success
+               failure:(void (^)(NSError *error))failure;
+/**
+ *  delete a post
+ *
+ *  @param postid  postid
+ *  @param success success
+ *  @param failure failure
+ */
+- (void)deletePost:(NSString *)postId
+           success:(void(^)(BOOL status))success
+           failure:(void(^)(NSError *errror))failure;
+;
 @end

@@ -26,6 +26,15 @@
 
 @implementation TGMetaWeblogAuthApi
 
+/**
+ *  validate xmlrpc request
+ *
+ *  @param url      url
+ *  @param username username
+ *  @param password password
+ *  @param success  success
+ *  @param failure  failure
+ */
 + (void)signInWithURL:(NSString *)url username:(NSString *)username password:(NSString *)password success:(void (^)(NSURL *xmlrpcURL))success failure:(void (^)(NSError *error))failure {
     TGMetaWeblogXMLRPCApi *api = [self apiWithXMLRPCURL:[NSURL URLWithString:url] username:username password:password];
     [api guessXMLRPCURLForSite:url success:^(NSURL *xmlrpcURL) {
@@ -35,8 +44,17 @@
     } failure:failure];
 }
 
+/**
+ *  get api instance
+ *
+ *  @param xmlrpcURL xmlrpcURL
+ *  @param username  username
+ *  @param password  password
+ *
+ *  @return <#return value description#>
+ */
 + (id<TGMetaWeblogBaseApi>)apiWithXMLRPCURL:(NSURL *)xmlrpcURL username:(NSString *)username password:(NSString *)password {
-    return [TGMetaWeblogXMLRPCApi sharedInstance:xmlrpcURL username:username password:password];
+    return [[TGMetaWeblogXMLRPCApi alloc]initWithXMLRPCEndpoint:xmlrpcURL username:username password:password];
 }
 
 @end

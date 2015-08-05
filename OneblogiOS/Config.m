@@ -64,4 +64,17 @@
     BOOL result = [[settings objectForKey:@"IsShowPage"] boolValue];
     return result;
 }
+
+/**
+ *  是否针对Wordpress优化
+ *
+ *  @return 是否针对Wordpress优化
+ */
++(BOOL)isWordpressOptimization{
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"Oneblog" ofType:@"plist"];
+    NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
+    BOOL result = [[settings objectForKey:@"IsWordpressOptimization"] boolValue];
+    return result;
+}
+
 @end

@@ -119,16 +119,13 @@
  *  @return API状态
  */
 - (id)setupApi:(ApiInfo *)apiInfo {
-    if (self.api == nil) {
-        NSString *xmlrpc =apiInfo.xmlrpc;
-        if (xmlrpc) {
-            NSString *username = apiInfo.username;
-            NSString *password = apiInfo.password;
-            if (username && password) {
-                self.api = [TGMetaWeblogAuthApi apiWithXMLRPCURL:[NSURL URLWithString:xmlrpc] username:username password:password];
-            }
+    NSString *xmlrpc =apiInfo.xmlrpc;
+    if (xmlrpc) {
+        NSString *username = apiInfo.username;
+        NSString *password = apiInfo.password;
+        if (username && password) {
+            self.api = [TGMetaWeblogAuthApi apiWithXMLRPCURL:[NSURL URLWithString:xmlrpc] username:username password:password];
         }
-        
     }
     
     //api初始化成功

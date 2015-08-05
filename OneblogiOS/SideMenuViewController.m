@@ -15,6 +15,7 @@
 #import "PostViewController.h"
 #import "SwipableViewController.h"
 #import "SettingsPage.h"
+#import "AppDelegate.h"
 
 @interface SideMenuViewController ()
 
@@ -223,8 +224,12 @@
     [def synchronize];
     
     //跳转到登陆界面
-    NSLog(@"logout");
-    LoginViewController *loginController = [[LoginViewController alloc]init];
-    [self presentViewController:loginController animated:YES completion:nil];
+    //NSLog(@"logout");
+    //LoginViewController *loginController = [[LoginViewController alloc]init];
+    //[self presentViewController:loginController animated:YES completion:nil];
+    AppDelegate * appsDelegate =[[UIApplication sharedApplication] delegate];
+    LoginViewController *login = [[LoginViewController alloc] init];
+    [appsDelegate.window setRootViewController:nil];
+    [appsDelegate.window setRootViewController:login];
 }
 @end

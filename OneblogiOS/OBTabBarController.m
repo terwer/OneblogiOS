@@ -163,9 +163,6 @@
         viewController.navigationItem.leftBarButtonItem  = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigationbar-sidebar"]
                                                                                             style:UIBarButtonItemStylePlain
                                                                                            target:self action:@selector(onClickMenuButton)];
-        //文章发表按钮
-        viewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"编辑" style:(UIBarButtonItemStylePlain) target: self
-                                                                                          action:@selector(deletePosts)]
         ;
         
     }
@@ -177,14 +174,6 @@
  */
 -(void)onClickMenuButton{
     [self.sideMenuViewController presentLeftMenuViewController];
-    NSLog(@"side");
-}
-
-/**
- *  搜索
- */
--(void)deletePosts{
-    NSLog(@"delete");
 }
 
 /**
