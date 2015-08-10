@@ -58,13 +58,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     //判断登录状态
-    ApiInfo *apiInfo = [Config getAuthoizedApiInfo];
-    if(apiInfo.baseURL){
-        NSLog(@"Current xmprpc:%@ username:%@ password:%@",apiInfo.baseURL,apiInfo.username,apiInfo.password);
-        //已经登录过，跳转到主界面，停止程序继续
-        [self goToMainViewController];
-        return;
-    }
+//    ApiInfo *apiInfo = [Config getAuthoizedApiInfo];
+//    if(apiInfo.baseURL){
+//        NSLog(@"Current xmprpc:%@ username:%@ password:%@",apiInfo.baseURL,apiInfo.username,apiInfo.password);
+//        //已经登录过，跳转到主界面，停止程序继续
+//        [self goToMainViewController];
+//        return;
+//    }
     
     //初始化导航栏
     self.navigationItem.title = @"登录";
@@ -305,39 +305,43 @@
     NSLog(@"login request URL:%@",requestURL);
     //获取作者数据
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:requestURL parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *result) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //刷新数据
-            //NSLog(@"JSON: %@", responseObject);
-            NSLog(@"status:%@",[result objectForKey:@"status"]);
-            NSString *status = [result objectForKey:@"status"];
-            if ([status isEqualToString:@"ok"]) {
-                
-                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-                NSString *cookie = [result objectForKey:@"cookie"];
-                [userDefaults setObject:cookie forKey:@"cookie"];
-                [userDefaults synchronize];
-                
-                NSLog(@"JSON API login ok");
-                
-                [_HUD hide:YES afterDelay:1];
-                
-                //登陆成功，跳转到主界面
-                [self goToMainViewController];
-            }else{
-                NSLog(@"login error");
-            }
-        });
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error login with json api: %@", [error localizedDescription]);
-        MBProgressHUD *HUD = [Utils createHUD];
-        HUD.mode = MBProgressHUDModeCustomView;
-        HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HUD-error"]];
-        HUD.detailsLabelText = [NSString stringWithFormat:@"%@", error.userInfo[NSLocalizedDescriptionKey]];
-        
-        [HUD hide:YES afterDelay:1];
-        
-    }];
+    [manager GET:requestURL parameters:nil
+         success:^(AFHTTPRequestOperation *operation, NSDictionary *result) {
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 //刷新数据
+                 //NSLog(@"JSON: %@", responseObject);
+                 NSLog(@"status:%@",[result objectForKey:@"status"]);
+                 NSString *status = [result objectForKey:@"status"];
+                 if ([status isEqualToString:@"ok"]) {
+                     
+                     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                     NSString *cookie = [result objectForKey:@"cookie"];
+                     [userDefaults setObject:cookie forKey:@"cookie"];
+                     [userDefaults synchronize];
+                     
+                     NSLog(@"JSON API login ok");
+                     
+                     [_HUD hide:YES afterDelay:1];
+                     
+                     //登陆成功，跳转到主界面
+                     [self goToMainViewController];
+                 }else{
+                     NSLog(@"login error");
+                     _HUD.mode = MBProgressHUDModeCustomView;
+                     _HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HUD-error"]];
+                     _HUD.labelText = [NSString stringWithFormat:@"错误：%@", result[@"error"]];
+                     [_HUD hide:YES afterDelay:1];
+                 }
+             });
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             NSLog(@"Error login with json api: %@", [error localizedDescription]);
+             _HUD.mode = MBProgressHUDModeCustomView;
+             _HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HUD-error"]];
+             _HUD.labelText = [NSString stringWithFormat:@"错误：%@", [error localizedDescription]];
+             [_HUD hide:YES afterDelay:1];
+             
+         }];
 }
 
 //跳转到主界面
