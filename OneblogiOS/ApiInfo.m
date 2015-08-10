@@ -13,6 +13,9 @@
 -(instancetype)initWithXmlrpc:(NSString *)xmlrpc andUsername:(NSString *)username andPassword:(NSString *)password{
     if (self = [super init]) {
         //确保全部都不能为空
+        if (!_baseURL||_username||_password) {
+            return nil;
+        }
         _baseURL = xmlrpc;
         _username = username;
         _password = password;
@@ -22,6 +25,11 @@
 
 -(instancetype)initWithBaseURL:baseURL andGenerateAuthCookie:cookie{
     if (self = [super init]) {
+        //确保全部都不能为空
+        if (!_baseURL||!_generateAauthCookie) {
+            return nil;
+        }
+        _baseURL = baseURL;
         _generateAauthCookie = cookie;
     }
     return self;

@@ -2,7 +2,7 @@
 //  SelectBlogViewController.h
 //  OneblogiOS
 //
-//  Created by szgxa30 on 15/8/5.
+//  Created by Terwer Green on 15/8/5.
 //  Copyright (c) 2015年 Terwer Green. All rights reserved.
 //
 

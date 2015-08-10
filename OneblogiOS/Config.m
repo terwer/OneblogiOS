@@ -44,8 +44,7 @@
         apiInfo = [[ApiInfo alloc]initWithXmlrpc:baseURL andUsername:username andPassword:password];
     }
     //结果处理
-    if (apiInfo) {return apiInfo;}
-    return nil;
+    return apiInfo;
 }
 
 /**
