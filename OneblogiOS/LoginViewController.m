@@ -171,10 +171,10 @@
     };
     [_messageInfo addLinkToURL:[NSURL URLWithString:@"https://en.wikipedia.org/wiki/MetaWeblog"] withRange:range1];
     NSRange range2 = [info rangeOfString:@"详情看这里"];
-    [_messageInfo addLinkToURL:[NSURL URLWithString:@"https://gist.github.com/terwer/7acc30a460e3ef671415"] withRange:range2];
+    [_messageInfo addLinkToURL:[NSURL URLWithString:@"http://git.oschina.net/terwergreen/gist/raw/master/metaweblog-api-http-sample-data.md?dir=0&filepath=metaweblog-api-http-sample-data.md&oid=c1413312dd2dcc7eeea5e4e68c0283012468884e&sha=a299959cef81103aeac2ac49c579925ba88fb0fd"] withRange:range2];
     [self.view addSubview:_messageInfo];
     NSRange range3 = [info rangeOfString:@"Wordpress JSON API"];
-    [_messageInfo addLinkToURL:[NSURL URLWithString:@"https://gist.github.com/terwer/53a8da89bcec5c7d28bf"] withRange:range3];
+    [_messageInfo addLinkToURL:[NSURL URLWithString:@"http://git.oschina.net/terwergreen/gist/raw/master/wordpress-json-api-http-sample-data.md?dir=0&filepath=wordpress-json-api-http-sample-data.md&oid=3602361dafeea2cbec159128f5166a8428c0795c&sha=a299959cef81103aeac2ac49c579925ba88fb0fd"] withRange:range3];
     [self.view addSubview:_messageInfo];
 
     //添加手势，点击屏幕其他区域关闭键盘的操作
@@ -449,6 +449,9 @@
     [Utils navigateUrl:self withUrl:url andTitle:@"What is MetaWeblog API?"];
 }
 
+/**
+ *  切换API
+ */
 - (void)doSwitch {
     NSLog(@"开启JSON API");
     _baseURLField.text = @"";

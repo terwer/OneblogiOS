@@ -374,7 +374,7 @@
  *
  *  @return htmlString
  */
-+(NSString *)toMarkdownString:(NSString *)markdownString{
++(NSString *)markdownToHtml:(NSString *)markdownString{
     GHMarkdownParser *parser = [[GHMarkdownParser alloc] init];
     parser.options = kGHMarkdownAutoLink; // for example
     parser.githubFlavored = YES;

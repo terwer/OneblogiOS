@@ -7,7 +7,7 @@
 //
 
 #import "BrowserViewController.h"
-#import <AFNetworking.h>
+#import <AFNetworking/AFNetworking.h>
 #import <MBProgressHUD.h>
 #import "Utils.h"
 
@@ -53,10 +53,7 @@
     
     [self.view addSubview:_detailsView];
     
-    // 添加等待动画
-    _HUD = [Utils createHUD];
-    _HUD.userInteractionEnabled = NO;
-    
+    //加载数据
     [self fetchDetails];
 }
 
@@ -64,16 +61,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 /**
  *  返回
@@ -105,27 +92,43 @@
  */
 - (void)fetchDetails
 {
+    // 添加等待动画
+    _HUD = [Utils createHUD];
+    _HUD.detailsLabelText = @"网页加载中";
+    _HUD.userInteractionEnabled = NO;
+    
     NSLog(@"fetch details");
-    NSString *str=[NSString stringWithFormat:@"%@",[_url absoluteString]];
-    NSURL *url = [NSURL URLWithString:[str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSString *html = operation.responseString;
-        [_detailsView loadHTMLString:html baseURL:nil];
-        //NSLog(@"获取到的数据为：%@",html);
-        //隐藏加载状态
-        [_HUD hide:YES afterDelay:1];
-    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"发生错误！%@",error);
-        _HUD.mode = MBProgressHUDModeCustomView;
-        _HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HUD-error"]];
-        NSString *errorMesage =  [NSString stringWithFormat:@"网络异常，加载详情失败:%@",[error localizedDescription]];
-        _HUD.labelText = errorMesage;
-        NSLog(@"%@",errorMesage);
-        [_HUD hide:YES afterDelay:1];
-    }];
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [queue addOperation:operation];
+    
+    
+    NSString *requestURL=[_url absoluteString];
+    //requestURL = @"https://www.baidu.com";//测试https
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    //设置返回HTML
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    //是否允许无效证书（也就是自建的证书），默认为NO
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    [manager GET:requestURL parameters:nil
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             NSString *html = operation.responseString;
+             NSString *markedString = [Utils markdownToHtml:html];
+             [_detailsView loadHTMLString:markedString baseURL:nil];
+             //NSLog(@"获取到的数据为：%@",html);
+             //隐藏加载状态
+             [_HUD hide:YES afterDelay:1];
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             NSLog(@"发生错误！%@",error);
+             _HUD.mode = MBProgressHUDModeCustomView;
+             _HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HUD-error"]];
+             NSString *errorMesage =  [NSString stringWithFormat:@"网络异常，加载详情失败:%@",[error localizedDescription]];
+             _HUD.labelText = errorMesage;
+             NSLog(@"%@",errorMesage);
+             [_HUD hide:YES afterDelay:1];
+         }];
 }
+
+
+
+
+
 @end

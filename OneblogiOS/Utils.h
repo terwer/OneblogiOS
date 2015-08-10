@@ -98,7 +98,7 @@ static NSString * const kKeyMinutes = @"minutes";
  *
  *  @return htmlString
  */
-+(NSString *)toMarkdownString:(NSString *)markdownString;
++(NSString *)markdownToHtml:(NSString *)markdownString;
 
 /**
  *  计算从所给的日期到现在开始间隔的时间
