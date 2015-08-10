@@ -10,18 +10,28 @@
 
 @implementation ApiInfo
 
--(instancetype)initWithXmlrpc:(NSString *)xmlrpc andUsername:(NSString *)username andPassword:(NSString *)password{
+-(instancetype)initWithXmlrpc:(NSString *)xmlrpc username:(NSString *)username password:(NSString *)password{
     if (self = [super init]) {
         //确保全部都不能为空
-        if (xmlrpc && username && password) {
-            _xmlrpc = xmlrpc;
-            _username = username;
-            _password = password;
-            return self;
+        if (!xmlrpc||!username||!password) {
+            return nil;
         }
-        return nil;
+        _baseURL = xmlrpc;
+        _username = username;
+        _password = password;
     }
-    return nil;
+    return self;
 }
 
+-(instancetype)initWithBaseURL:baseURL andGenerateAuthCookie:cookie{
+    if (self = [super init]) {
+        //确保全部都不能为空
+        if (!baseURL||!cookie) {
+            return nil;
+        }
+        _baseURL = baseURL;
+        _generateAauthCookie = cookie;
+    }
+    return self;
+}
 @end

@@ -26,7 +26,8 @@
     
     //初始化程序入口，设置登录界面为首页
     LoginNavViewController *loginNavViewController = [[LoginNavViewController alloc] init];
-    [loginNavViewController pushViewController:[LoginViewController new] animated:YES];
+    LoginViewController *loginController = [[LoginViewController alloc]init];
+    [loginNavViewController pushViewController:loginController animated:YES];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = loginNavViewController;

@@ -162,14 +162,25 @@
 {
     NSUInteger unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute;
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDateComponents *compsPast = [calendar components:unitFlags fromDate:date];
+    NSDateComponents *compsPast =nil;
+    NSInteger daysInLastMonth = 0;
+    //防止时间转换出错
+    @try {
+        compsPast = [calendar components:unitFlags fromDate:date];
+        daysInLastMonth = [calendar rangeOfUnit:NSDayCalendarUnit
+                         inUnit:NSMonthCalendarUnit
+                        forDate:date].length;
+    }
+    @catch (NSException *exception) {
+        compsPast = [calendar components:unitFlags fromDate:[NSDate date]];
+        daysInLastMonth = [calendar rangeOfUnit:NSDayCalendarUnit
+                                         inUnit:NSMonthCalendarUnit
+                                        forDate:[NSDate date]].length;
+    }
+    
     NSDateComponents *compsNow = [calendar components:unitFlags fromDate:[NSDate date]];
     
-    NSInteger daysInLastMonth = [calendar rangeOfUnit:NSDayCalendarUnit
-                                               inUnit:NSMonthCalendarUnit
-                                              forDate:date].length;
-    
-    NSInteger years = [compsNow year] - [compsPast year];
+      NSInteger years = [compsNow year] - [compsPast year];
     NSInteger months = [compsNow month] - [compsPast month] + years * 12;
     NSInteger days = [compsNow day] - [compsPast day] + months * daysInLastMonth;
     NSInteger hours = [compsNow hour] - [compsPast hour] + days * 24;
@@ -363,7 +374,7 @@
  *
  *  @return htmlString
  */
-+(NSString *)toMarkdownString:(NSString *)markdownString{
++(NSString *)markdownToHtml:(NSString *)markdownString{
     GHMarkdownParser *parser = [[GHMarkdownParser alloc] init];
     parser.options = kGHMarkdownAutoLink; // for example
     parser.githubFlavored = YES;

@@ -33,7 +33,7 @@
  @param username The user name
  @param password The password
  */
-+ (TGMetaWeblogXMLRPCApi *)sharedInstance:(NSURL *)xmlrpc username:(NSString *)username password:(NSString *)password;
+- (id)initWithXMLRPCEndpoint:(NSURL *)xmlrpc username:(NSString *)username password:(NSString *)password;
 
 
 /**

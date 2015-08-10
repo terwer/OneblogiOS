@@ -26,35 +26,14 @@
 
 @interface TGMetaWeblogXMLRPCApi ()
 
-@property (readwrite, nonatomic, retain) NSURL *xmlrpc;
-@property (readwrite, nonatomic, retain) NSString *username;
-@property (readwrite, nonatomic, retain) NSString *password;
-@property (readwrite, nonatomic, retain) TGXMLRPCApiClient *client;
+@property (readwrite, nonatomic, strong) NSURL *xmlrpc;
+@property (readwrite, nonatomic, strong) NSString *username;
+@property (readwrite, nonatomic, strong) NSString *password;
+@property (readwrite, nonatomic, strong) TGXMLRPCApiClient *client;
 
 @end
 
 @implementation TGMetaWeblogXMLRPCApi
-
-static TGMetaWeblogXMLRPCApi *instance;
-
-+ (TGMetaWeblogXMLRPCApi *)sharedInstance:(NSURL *)xmlrpc username:(NSString *)username password:(NSString *)password{
-    if (!instance) {
-        instance = [[TGMetaWeblogXMLRPCApi alloc]initWithXMLRPCEndpoint:xmlrpc username:username password:password];
-    }
-    return instance;
-}
-
-+ (id)allocWithZone:(struct _NSZone *)zone{
-    if (!instance) {
-        //使用GCD实现多线程下的单例
-        static dispatch_once_t predicate;
-        dispatch_once(&predicate, ^{
-            instance = [super allocWithZone:zone];
-        });
-    }
-    return instance;
-}
-
 
 - (id)initWithXMLRPCEndpoint:(NSURL *)xmlrpc username:(NSString *)username password:(NSString *)password
 {
@@ -72,32 +51,10 @@ static TGMetaWeblogXMLRPCApi *instance;
     return self;
 }
 
-
-#pragma mark - Managing posts
-
-- (void)getRecentPosts:(NSUInteger)count
-               success:(void (^)(NSArray *posts))success
-               failure:(void (^)(NSError *error))failure {
-    NSArray *parameters = [NSArray arrayWithObjects:@"1",self.username, self.password,@(count) , nil];
-    [self.client callMethod:@"metaWeblog.getRecentPosts"
-                 parameters:parameters
-                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                        if (success) {
-                            //NSLog(@"%@",responseObject);
-                            success((NSArray *)responseObject);
-                        }
-                    }
-                    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                        if (failure) {
-                            failure(error);
-                        }
-                    }];
-}
-
 #pragma mark - Helpers
 -(void)guessXMLRPCURLForSite:(NSString *)url
-                      success:(void (^)(NSURL *xmlrpcURL))success
-                      failure:(void (^)(NSError *error))failure {
+                     success:(void (^)(NSURL *xmlrpcURL))success
+                     failure:(void (^)(NSError *error))failure {
     __block NSURL *xmlrpcURL;
     __block NSString *xmlrpc;
     
@@ -161,7 +118,7 @@ static TGMetaWeblogXMLRPCApi *instance;
             }
             
         }];
-
+        
         
     }];
     
@@ -184,4 +141,42 @@ static TGMetaWeblogXMLRPCApi *instance;
                     }];
 }
 
+
+#pragma mark - Managing posts
+
+- (void)getRecentPosts:(NSUInteger)count
+               success:(void (^)(NSArray *posts))success
+               failure:(void (^)(NSError *error))failure {
+    NSArray *parameters = [NSArray arrayWithObjects:@"1",self.username, self.password,@(count) , nil];
+    [self.client callMethod:@"metaWeblog.getRecentPosts"
+                 parameters:parameters
+                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                        if (success) {
+                            success((NSArray *)responseObject);
+                        }
+                    }
+                    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                        if (failure) {
+                            failure(error);
+                        }
+                    }];
+}
+
+- (void) deletePost:(NSString *)postId success:(void (^)(BOOL))success failure:(void (^)(NSError *))failure{
+    NSArray *parameters = [NSArray arrayWithObjects:@"1",postId,self.username, self.password, nil];
+    [self.client callMethod:@"metaWeblog.deletePost"
+                 parameters:parameters
+                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                        if (success) {
+                            BOOL result = (BOOL)responseObject;
+                            success(result);
+                        }
+                    }
+                    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                        if (failure) {
+                            failure(error);
+                        }
+                    }];
+    
+}
 @end

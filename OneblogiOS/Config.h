@@ -38,4 +38,11 @@
  *  @return 是否显示页面
  */
 +(BOOL)isShowPage;
+
+/**
+ *  是否针对Wordpress优化
+ *
+ *  @return 是否针对Wordpress优化
+ */
++(BOOL)isWordpressOptimization;
 @end

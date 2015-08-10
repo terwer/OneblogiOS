@@ -9,12 +9,14 @@
 #import "SideMenuViewController.h"
 #import "Utils.h"
 #import "Config.h"
+#import "LoginNavViewController.h"
 #import "LoginViewController.h"
 #import "MyInfoController.h"
 #import <RESideMenu.h>
 #import "PostViewController.h"
 #import "SwipableViewController.h"
 #import "SettingsPage.h"
+#import "AppDelegate.h"
 
 @interface SideMenuViewController ()
 
@@ -205,7 +207,7 @@
 - (void)pushLoginPage
 {
     if (![Config getAuthoizedApiInfo]) {
-        [self setContentViewController:[LoginViewController new]];
+        [self setContentViewController:[LoginNavViewController new]];
     } else {
         MyInfoController *myInfoVC = [[MyInfoController alloc]initWithStyle:UITableViewStyleGrouped];
         [self setContentViewController:myInfoVC];
@@ -217,14 +219,18 @@
 -(void) logout:(id)sender{
     //清空缓存数据
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-    [def setObject:nil forKey:@"mw_xmlrpc"];
+    [def setObject:nil forKey:@"baseURL"];
     [def setObject:nil forKey:@"mw_username"];
     [def setObject:nil forKey:@"mw_password"];
     [def synchronize];
     
     //跳转到登陆界面
-    NSLog(@"logout");
+    //NSLog(@"logout");
     LoginViewController *loginController = [[LoginViewController alloc]init];
-    [self presentViewController:loginController animated:YES completion:nil];
+    LoginNavViewController *login = [[LoginNavViewController alloc] init];
+    [login pushViewController:loginController animated:YES];
+    AppDelegate * appsDelegate =[[UIApplication sharedApplication] delegate];
+    [appsDelegate.window setRootViewController:nil];
+    [appsDelegate.window setRootViewController:login];
 }
 @end

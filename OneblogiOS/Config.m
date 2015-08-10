@@ -31,14 +31,20 @@
 {
     //获取相关存储信息
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *xmlrpc = [userDefaults objectForKey:@"mw_xmlrpc"];
+    BOOL isJSONAPIEnable = [[userDefaults objectForKey:@"isJSONAPIEnable"] boolValue];
+    NSString *baseURL = [userDefaults objectForKey:@"baseURL"];
     NSString *username = [userDefaults objectForKey:@"mw_username"];
     NSString *password = [userDefaults objectForKey:@"mw_password"];
+    NSString *cookie = [userDefaults objectForKey:@"generate_auth_cookie"];
     //初始化ApiInfo
-    ApiInfo *apiInfo = [[ApiInfo alloc]initWithXmlrpc:xmlrpc andUsername:username andPassword:password];
+    ApiInfo *apiInfo = nil;
+    if (isJSONAPIEnable) {
+        apiInfo = [[ApiInfo alloc]initWithBaseURL:baseURL andGenerateAuthCookie:cookie];
+    }else{
+        apiInfo = [[ApiInfo alloc] initWithXmlrpc:baseURL username:username password:password];
+    }
     //结果处理
-    if (apiInfo) {return apiInfo;}
-    return nil;
+    return apiInfo;
 }
 
 /**
@@ -47,10 +53,10 @@
  *  @return 高级API开启状态
  */
 +(BOOL)isAnvancedAPIEnable{
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"Oneblog" ofType:@"plist"];
-    NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
-    BOOL result = [[settings objectForKey:@"IsAdvancedAPIEnable"] boolValue];
-    return result;
+    //获取相关存储信息
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL isJSONAPIEnable = [[userDefaults objectForKey:@"isJSONAPIEnable"] boolValue];
+    return isJSONAPIEnable;
 }
 
 /**
@@ -64,4 +70,17 @@
     BOOL result = [[settings objectForKey:@"IsShowPage"] boolValue];
     return result;
 }
+
+/**
+ *  是否针对Wordpress优化
+ *
+ *  @return 是否针对Wordpress优化
+ */
++(BOOL)isWordpressOptimization{
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"Oneblog" ofType:@"plist"];
+    NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
+    BOOL result = [[settings objectForKey:@"IsWordpressOptimization"] boolValue];
+    return result;
+}
+
 @end

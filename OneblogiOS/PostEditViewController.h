@@ -10,6 +10,6 @@
 
 @interface PostEditViewController : UIViewController
 
-@property NSDictionary *post;
+@property (nonatomic,strong) NSDictionary *post;
 
 @end

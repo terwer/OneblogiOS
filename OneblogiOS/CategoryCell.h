@@ -21,6 +21,6 @@
 /**
  *  分类ID
  */
-@property (nonatomic) NSInteger catId;
+@property (nonatomic,assign) NSInteger catId;
 
 @end

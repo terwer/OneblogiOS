@@ -158,7 +158,7 @@
     NSLog(@"post url:%@",url);
     NSString *authorStr = [NSString stringWithFormat:@"<a href='%@'>%@</a> 发布于 %@", url,author, [Utils intervalSinceNow:dateCreated]];
     
-    NSString *postContent = [NSString stringWithFormat:@"<body style='background-color:#EBEBF3'>%@<div id='oneblog_title'>%@</div><div id='oneblog_outline'>%@</div><hr/><div id='oneblog_body'>%@</div>%@</body>", HTML_STYLE, title, authorStr, [Utils toMarkdownString: content], HTML_BOTTOM];
+    NSString *postContent = [NSString stringWithFormat:@"<body style='background-color:#EBEBF3'>%@<div id='oneblog_title'>%@</div><div id='oneblog_outline'>%@</div><hr/><div id='oneblog_body'>%@</div>%@</body>", HTML_STYLE, title, authorStr, [Utils markdownToHtml:content], HTML_BOTTOM];
     
     NSLog(@"loading details");
     if (!flag) {
@@ -174,7 +174,7 @@
         AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
         [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSString *responseHtml = operation.responseString;
-            NSString *htmlString = [Utils toMarkdownString:responseHtml];
+            NSString *htmlString = [Utils markdownToHtml:responseHtml];
             [_detailsView loadHTMLString:htmlString baseURL:nil];
             //NSLog(@"获取到的数据为：%@",html);
             //隐藏加载状态

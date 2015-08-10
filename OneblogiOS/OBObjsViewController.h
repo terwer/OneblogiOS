@@ -18,7 +18,7 @@
 @property (nonatomic, copy) void (^didRefreshSucceed)();
 
 //MetaWeblogApi 或者 JSON API
-@property(nonatomic) id api;
+@property(nonatomic,strong) id api;
 
 //刷新分分页数据（需要在子类重写）
 - (void)fetchObjectsOnPage:(NSUInteger)page refresh:(BOOL)refresh;

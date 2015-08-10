@@ -73,11 +73,10 @@ static NSString *kCategoryCellID = @"categoryCell";
  */
 -(void)fetchCategories{
     
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"Oneblog" ofType:@"plist"];
-    NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
-    
-    NSString *JSONApiBaseURL = [settings objectForKey:@"JSONApiBaseURL"];
-    NSString *requestURL = [NSString stringWithFormat:@"%@/api/get_category_index/",JSONApiBaseURL];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *baseURL = [userDefaults objectForKey:@"baseURL"];
+
+    NSString *requestURL = [NSString stringWithFormat:@"%@/get_category_index/",baseURL];
     
     //创建加载中
     MBProgressHUD *HUD = [Utils createHUD];

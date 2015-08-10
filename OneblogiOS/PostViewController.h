@@ -70,43 +70,43 @@ typedef NS_ENUM(NSUInteger, PostResultType){
 /**
  *  API类型
  */
-@property (nonatomic) APIType apiType;
+@property (nonatomic,assign) APIType apiType;
 /**
  *  文章类型
  */
-@property (nonatomic) PostType postType;
+@property (nonatomic,assign) PostType postType;
 /**
  *  文章结果类型
  */
-@property (nonatomic) PostResultType postResultType;
+@property (nonatomic,assign) PostResultType postResultType;
 /**
  *  文章列表数据
  */
-@property (nonatomic) NSArray *posts;
+@property (nonatomic,strong) NSArray *posts;
 /**
  *  是否搜索
  */
-@property (nonatomic)  BOOL isSearch;
+@property (nonatomic,assign)  BOOL isSearch;
 /**
  *  搜索框
  */
-@property (nonatomic)  UISearchBar *searchBar;
+@property (nonatomic,strong)  UISearchBar *searchBar;
 /**
  *  搜索关键字
  */
-@property (nonatomic) NSString *searchString;
+@property (nonatomic,strong) NSString *searchString;
 /**
  *  分类Id
  */
-@property (nonatomic) NSInteger categoryId;
+@property (nonatomic,assign) NSInteger categoryId;
 /**
  *  标签ID
  */
-@property (nonatomic)  NSInteger tagId;
+@property (nonatomic,assign)  NSInteger tagId;
 /**
  *  文章搜索控制器
  */
-@property   UISearchController *postSearchController;
+@property  (nonatomic,strong) UISearchController *postSearchController;
 /**
  *  下拉分类
  */

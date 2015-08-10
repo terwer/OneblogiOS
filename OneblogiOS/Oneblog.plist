@@ -2,13 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>IsWordpressOptimization</key>
+	<false/>
 	<key>IsShowPage</key>
 	<false/>
 	<key>DigPostCount</key>
 	<integer>4</integer>
-	<key>JSONApiBaseURL</key>
-	<string>http://www.terwer.com</string>
-	<key>IsAdvancedAPIEnable</key>
-	<true/>
 </dict>
 </plist>
