@@ -9,8 +9,10 @@
 #import "OBObjsViewController.h"
 #import "Utils.h"
 #import "Config.h"
+#import "LoginNavViewController.h"
 #import "LoginViewController.h"
 #import "SDFeedParser.h"
+#import "AppDelegate.h"
 
 @interface OBObjsViewController ()
 
@@ -56,6 +58,12 @@
     ApiInfo *apiInfo = [Config getAuthoizedApiInfo];
     if(!apiInfo){
         NSLog(@"登陆超时，请重新登录。");
+        LoginNavViewController *loginNavCtl = [[LoginNavViewController alloc]init];
+        LoginViewController *loginCtl =[[LoginViewController alloc]init];
+        AppDelegate *app = [UIApplication sharedApplication].delegate;
+        [loginNavCtl pushViewController:loginCtl animated:YES];
+        app.window.rootViewController =loginNavCtl;
+        [app.window makeKeyAndVisible];
         return;
     }
     
@@ -69,13 +77,7 @@
     }else{
         _api = [self setupApi:apiInfo];
     }
-    
-    if (!_api) {
-        NSLog(@"api初始化失败，请重新登录。");
-        LoginViewController *loginController = [[LoginViewController alloc]init];
-        [self.navigationController presentViewController:loginController animated:YES completion:nil];
-    }
-    
+
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.

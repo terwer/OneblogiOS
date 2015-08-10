@@ -374,7 +374,7 @@
 
                      NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                      NSString *cookie = [result objectForKey:@"cookie"];
-                     [userDefaults setObject:cookie forKey:@"cookie"];
+                     [userDefaults setObject:cookie forKey:@"generate_auth_cookie"];
                      [userDefaults synchronize];
 
                      NSLog(@"JSON API login ok");

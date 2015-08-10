@@ -36,7 +36,7 @@
  *
  *  @return ApiInfo实例
  */
--(instancetype)initWithXmlrpc:(NSString *)xmlrpc andUsername:(NSString *)username andPassword:(NSString *)password;
+-(instancetype)initWithXmlrpc:(NSString *)xmlrpc username:(NSString *)username password:(NSString *)password;
 
 /**
  *  初始化JSON API

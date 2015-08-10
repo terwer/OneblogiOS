@@ -41,7 +41,7 @@
     if (isJSONAPIEnable) {
         apiInfo = [[ApiInfo alloc]initWithBaseURL:baseURL andGenerateAuthCookie:cookie];
     }else{
-        apiInfo = [[ApiInfo alloc]initWithXmlrpc:baseURL andUsername:username andPassword:password];
+        apiInfo = [[ApiInfo alloc] initWithXmlrpc:baseURL username:username password:password];
     }
     //结果处理
     return apiInfo;
