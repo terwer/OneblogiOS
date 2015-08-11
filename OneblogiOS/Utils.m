@@ -11,6 +11,7 @@
 #import "BrowserNavViewController.h"
 #import "BrowserViewController.h"
 #import "GHMarkdownParser.h"
+#import "ErrorViewController.h"
 
 @implementation Utils
 
@@ -417,5 +418,30 @@
     [HUD show:YES];
     //[HUD addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:HUD action:@selector(hide:)]];
     return HUD;
+}
+
+/**
+ *  在当前页面展示API不受支持的信息
+ *
+ *  @param target target
+
+ *  @param to     to
+ */
++ (void)showApiNotSupported:(UIViewController *)target redirectTo:(ErrorViewController *)to{
+    NSString *errorMessage =  NSLocalizedString(@"APINotSupported", nil);;
+    
+    MBProgressHUD *HUD = [Utils createHUD];
+    HUD.mode = MBProgressHUDModeCustomView;
+    HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HUD-error"]];
+    HUD.detailsLabelText = errorMessage;
+    [HUD hide:YES afterDelay:1];
+    
+    UILabel *labelMessage = [[UILabel alloc]init];
+    labelMessage.text = errorMessage;
+    [target.view addSubview:labelMessage];
+    [to.navigationItem setHidesBackButton:YES];
+    to.navigationItem.title = @"出错啦";
+    to.errorMessage = errorMessage;
+    [target.navigationController pushViewController:to animated:YES];
 }
 @end

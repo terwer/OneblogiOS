@@ -30,7 +30,7 @@
  *
  *  @return 高级API开启状态
  */
-+(BOOL)isAnvancedAPIEnable;
++(BOOL)isJSONAPIEnable;
 
 /**
  *  是否显示页面（默认只显示文章）

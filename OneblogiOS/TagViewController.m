@@ -10,6 +10,9 @@
 #import "Utils.h"
 #import <AFNetworking/AFNetworking.h>
 #import "PostViewController.h"
+#import "Config.h"
+#import "MBProgressHUD.h"
+#import "ErrorViewController.h"
 
 @interface TagViewController ()
 @property (strong, nonatomic) WWTagsCloudView* tagCloud;
@@ -22,17 +25,31 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    //获取并生成标签
-    [self fetchTags];
+    self.view.backgroundColor = [UIColor themeColor];
     
     UIViewController *ctl =  [self.navigationController.viewControllers objectAtIndex:0];
     [ctl setTitle:@"标签"];
     ctl.navigationItem.rightBarButtonItem = nil;
-    self.view.backgroundColor = [UIColor whiteColor];
+    
+    //JSON API不支持
+    if (![Config isJSONAPIEnable]) {
+        ErrorViewController *errorCtl = [[ErrorViewController alloc]init];
+        [Utils showApiNotSupported:self redirectTo:errorCtl];
+        return;
+    }
+    
+    //获取并生成标签
+    [self fetchTags];
 }
 
--(void)viewDidAppear:(BOOL)animated{
+- (void) viewDidAppear:(BOOL)animated{
+    //JSON API不支持
+    if (![Config isJSONAPIEnable]) {
+        ErrorViewController *errorCtl = [[ErrorViewController alloc]init];
+        [Utils showApiNotSupported:self redirectTo:errorCtl];
+        return;
+    }
+
     CGRect tagFrame = _tagCloud.frame;
     NSLog(@"%g", tagFrame.origin.y);
     //修复返回时错位问题
@@ -114,7 +131,7 @@
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *baseURL = [userDefaults objectForKey:@"baseURL"];
-
+    
     NSString *requestURL = [NSString stringWithFormat:@"%@/get_tag_index/",baseURL];
     
     //创建加载中

@@ -140,7 +140,7 @@
     NSArray *categroies;//文章分类
     NSString *url;//文章链接
     //JSON API
-    if ([Config isAnvancedAPIEnable]) {
+    if ([Config isJSONAPIEnable]) {
         title = jsonPost.title;
         content = jsonPost.content;
         dateCreated = [Utils dateFromString:jsonPost.date];

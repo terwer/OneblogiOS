@@ -12,6 +12,7 @@
 		1E0C68871B66248700AC6611 /* MyInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C68861B66248700AC6611 /* MyInfoController.m */; };
 		1E0C688C1B66258800AC6611 /* UIImage+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C68891B66258800AC6611 /* UIImage+Util.m */; };
 		1E0C688D1B66258800AC6611 /* UIImageView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C688B1B66258800AC6611 /* UIImageView+Util.m */; };
+		1E2A5C131B799D130075211A /* ErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2A5C121B799D130075211A /* ErrorViewController.m */; };
 		1E30393C1B6A0EE100D021B1 /* PostEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E30393B1B6A0EE100D021B1 /* PostEditViewController.m */; };
 		1E30393F1B6A137900D021B1 /* PostDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E30393E1B6A137900D021B1 /* PostDetailViewController.m */; };
 		1E3AC3761B688DB300086EA3 /* libNBSAppAgent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3AC3751B688DB300086EA3 /* libNBSAppAgent.framework */; };
@@ -117,6 +118,8 @@
 		1E0C68891B66258800AC6611 /* UIImage+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Util.m"; sourceTree = "<group>"; };
 		1E0C688A1B66258800AC6611 /* UIImageView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Util.h"; sourceTree = "<group>"; };
 		1E0C688B1B66258800AC6611 /* UIImageView+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Util.m"; sourceTree = "<group>"; };
+		1E2A5C111B799D130075211A /* ErrorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorViewController.h; sourceTree = "<group>"; };
+		1E2A5C121B799D130075211A /* ErrorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorViewController.m; sourceTree = "<group>"; };
 		1E30393A1B6A0EE100D021B1 /* PostEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostEditViewController.h; sourceTree = "<group>"; };
 		1E30393B1B6A0EE100D021B1 /* PostEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostEditViewController.m; sourceTree = "<group>"; };
 		1E30393D1B6A137900D021B1 /* PostDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostDetailViewController.h; sourceTree = "<group>"; };
@@ -636,6 +639,8 @@
 		BEDE595F1B65723E003AB347 /* Main ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1E2A5C111B799D130075211A /* ErrorViewController.h */,
+				1E2A5C121B799D130075211A /* ErrorViewController.m */,
 				BEDE59741B65775B003AB347 /* SwipableViewController */,
 				BEDE59671B657374003AB347 /* 侧拉菜单 */,
 				BE512D211B66B00600455CC7 /* 详情页面 */,
@@ -928,6 +933,7 @@
 				1E6C815D1B662CFC00D4F002 /* LastCell.m in Sources */,
 				1E0C687E1B661F1B00AC6611 /* LoginViewController.m in Sources */,
 				BE512D341B66B3B800455CC7 /* Config.m in Sources */,
+				1E2A5C131B799D130075211A /* ErrorViewController.m in Sources */,
 				BE512D441B66B85D00455CC7 /* DetailsViewController.m in Sources */,
 				BE626B1D1B6FD60500FDDE45 /* TitleMenuViewController.m in Sources */,
 				1EDB3C061B69BBA800A994FE /* TMDLineBreak.m in Sources */,
