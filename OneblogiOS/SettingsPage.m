@@ -135,9 +135,15 @@
 - (void)updateSwitchAtIndexPath:(UISwitch *)sender {
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     
-    MBProgressHUD *HUD = [Utils createHUD];
-    HUD.labelText = [NSString stringWithFormat:@"此选项需要JSON API支持，请设置之后使用JSON API重新登录。"];
-    [HUD hide:YES afterDelay:1];
+    //检测设置依赖
+    if(! [[def objectForKey:@"isJSONAPIEnable"] boolValue] && sender.tag != 1){
+        MBProgressHUD *HUD = [Utils createHUD];
+        HUD.mode = MBProgressHUDModeCustomView;
+        HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HUD-none"]];
+        HUD.labelText = [NSString stringWithFormat:@"此选项需要JSON API支持。"];
+        [HUD hide:YES afterDelay:1];
+        return;
+    }
     
     if (sender.on) {
         NSLog(@"on:%ld",sender.tag);
