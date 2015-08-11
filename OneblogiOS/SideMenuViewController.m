@@ -27,12 +27,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
     self.tableView.bounces = NO;
     
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
@@ -44,7 +38,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -57,8 +50,8 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    NSArray *usersInformation ;//= [Config getUsersInformation];
-    UIImage *portrait;// = [Config getPortrait];
+    NSArray *usersInformation ;
+    UIImage *portrait;
     
     UIView *headerView = [UIView new];
     headerView.backgroundColor = [UIColor clearColor];
@@ -80,11 +73,6 @@
     nameLabel.text = usersInformation[0];
     nameLabel.font = [UIFont boldSystemFontOfSize:20];
     
-    //    if (((AppDelegate *)[UIApplication sharedApplication].delegate).inNightMode){
-    //        nameLabel.textColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
-    //    } else {
-    //        nameLabel.textColor = [UIColor colorWithHex:0x696969];
-    //    }
     nameLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [headerView addSubview:nameLabel];
     
@@ -104,7 +92,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 3;
 }
 
 
@@ -124,24 +112,11 @@
     selectedBackground.backgroundColor = [UIColor colorWithHex:0xCFCFCF];
     [cell setSelectedBackgroundView:selectedBackground];
     
-    cell.imageView.image = [UIImage imageNamed:@[@"sidemenu_blog", @"sidemenu_setting", @"sidemenu-night", @"sidemenu-software"][indexPath.row]];
-    cell.textLabel.text = @[@"博客", @"设置", @"夜间模式", @"注销"][indexPath.row];
-    //    if (((AppDelegate *)[UIApplication sharedApplication].delegate).inNightMode){
-    //cell.textLabel.textColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
-    //        if (indexPath.row == 2) {
-    //            cell.textLabel.text = @"日间模式";
-    //            cell.imageView.image = [UIImage imageNamed:@"sidemenu-day"];
-    //        }
-    //    } else {
+    cell.imageView.image = [UIImage imageNamed:@[@"sidemenu_blog", @"sidemenu_setting",  @"sidemenu-software"][indexPath.row]];
+    cell.textLabel.text = @[@"博客", @"设置",  @"注销"][indexPath.row];
     cell.textLabel.textColor = [UIColor colorWithHex:0x428bd1];
-    if (indexPath.row == 2) {
-        cell.textLabel.text = @"夜间模式";
-        cell.imageView.image = [UIImage imageNamed:@"sidemenu-day"];
-    }
-    //    }
-    
     //将注销设置成红色
-    if (indexPath.row == 3) {
+    if (indexPath.row == 2) {
         cell.textLabel.textColor = [UIColor redColor];
     }
     
@@ -176,12 +151,8 @@
             [self setContentViewController:settingPage];
             break;
         }
-        case 2: {
-            NSLog(@"夜间模式");
-            break;
-        }
-        case 3: {//退出
-            NSLog(@"logout");
+        case 2: {//退出
+            NSLog(@"退出");
             [self performSelector:@selector(logout:) withObject:nil];
             break;
         }
@@ -222,7 +193,14 @@
     [def setObject:nil forKey:@"baseURL"];
     [def setObject:nil forKey:@"mw_username"];
     [def setObject:nil forKey:@"mw_password"];
+    [def setObject:nil forKey:@"generate_auth_cookie"];
     [def synchronize];
+    
+    MBProgressHUD *HUD = [Utils createHUD];
+    HUD.mode = MBProgressHUDModeCustomView;
+    HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HUD-done"]];
+    HUD.labelText = @"注销成功";
+    [HUD hide:YES afterDelay:0.5];
     
     //跳转到登陆界面
     //NSLog(@"logout");

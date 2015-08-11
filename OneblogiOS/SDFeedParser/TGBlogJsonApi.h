@@ -1,19 +1,19 @@
 //
-//  SDFeedParser.h
-//  SDFeedParser
+//  TGBlogJsonApi.h
+//  TGBlogJsonApi
 //
-//  Created by Sebastian Dobrincu on 17/07/14.
-//  Copyright (c) 2014 Sebastian Dobrincu. All rights reserved.
+//  Created by Terwer Green Dobrincu on 17/07/14.
+//  Copyright (c) 2014 Terwer Green. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
-#import "SDPost.h"
-#import "SDCategory.h"
-#import "SDTag.h"
-#import "SDComment.h"
+#import "TGPost.h"
+#import "TGCategory.h"
+#import "TGTag.h"
+#import "TGComment.h"
 
-@interface SDFeedParser : NSObject
+@interface TGBlogJsonApi : NSObject
 
 - (void)parseURL:(NSString*)urlString success:(void (^)(NSArray *postsArray, NSInteger postsCount))successBlock failure:(void (^)(NSError *error))failureBlock;
 

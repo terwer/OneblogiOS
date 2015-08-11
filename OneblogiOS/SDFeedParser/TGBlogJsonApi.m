@@ -1,18 +1,18 @@
 //
-//  SDFeedParser.m
-//  SDFeedParser
+//  TGBlogJsonApi.m
+//  TGBlogJsonApi
 //
-//  Created by Sebastian Dobrincu on 17/07/14.
-//  Copyright (c) 2014 Sebastian Dobrincu. All rights reserved.
+//  Created by Terwer Green on 17/07/14.
+//  Copyright (c) 2014 Terwer Green. All rights reserved.
 //
 
-#import "SDFeedParser.h"
-#import "SDPost+SDPostFromDictionary.h"
-#import "SDCategory+SDCategoryFromDictionary.h"
-#import "SDComment+SDCommentFromDictionary.h"
-#import "SDTag+SDTagFromDictionary.h"
+#import "TGBlogJsonApi.h"
+#import "TGPost+SDPostFromDictionary.h"
+#import "TGCategory+TGCategoryFromDictionary.h"
+#import "TGComment+TGCommentFromDictionary.h"
+#import "TGTag+TGTagFromDictionary.h"
 
-@implementation SDFeedParser
+@implementation TGBlogJsonApi
 
 - (void)parseURL:(NSString*)urlString success:(void (^)(NSArray *postsArray, NSInteger postsCount))successBlock failure:(void (^)(NSError *error))failureBlock{
     
@@ -32,14 +32,14 @@
             NSArray *fetchedPostsArray = responseObject[@"posts"];
             for (NSDictionary *eachPost in fetchedPostsArray) {
                 
-                SDPost *currentPost = [SDPost SDPostFromDictionary:eachPost];
+                TGPost *currentPost = [TGPost SDPostFromDictionary:eachPost];
                 
                 //Fetch posts category
                 NSMutableArray *allCategories = [[NSMutableArray alloc]init];
                 NSArray *fetchedCategoriesArray = eachPost[@"categories"];
                 for (NSDictionary *eachCategory in fetchedCategoriesArray) {
                     
-                    SDCategory *currentCategory = [SDCategory SDCategoryFromDictionary:eachCategory];
+                    TGCategory *currentCategory = [TGCategory SDCategoryFromDictionary:eachCategory];
                     [allCategories addObject:currentCategory];
                 }
                 currentPost.categoriesArray = [allCategories copy];
@@ -49,7 +49,7 @@
                 NSArray *fetchedTagsArray = eachPost[@"tags"];
                 for (NSDictionary *eachTag in fetchedTagsArray) {
                     
-                    SDTag *currentTag = [SDTag SDTagFromDictionary:eachTag];
+                    TGTag *currentTag = [TGTag SDTagFromDictionary:eachTag];
                     [allTags addObject:currentTag];
                 }
                 currentPost.tagsArray = [allTags copy];
@@ -60,7 +60,7 @@
                 NSArray *fetchedCommentsArray = eachPost[@"comments"];
                 for (NSDictionary *eachComment in fetchedCommentsArray) {
                     
-                    SDComment *currentComment = [SDComment SDCommentFromDictionary:eachComment];
+                    TGComment *currentComment = [TGComment SDCommentFromDictionary:eachComment];
                     [allComments addObject:currentComment];
                 }
                 currentPost.commentsArray = [allComments copy];

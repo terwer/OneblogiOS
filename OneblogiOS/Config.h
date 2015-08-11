@@ -26,11 +26,11 @@
 +(ApiInfo *)getAuthoizedApiInfo;
 
 /**
- *  是否启用高级API（注意：如果启用了，需要服务端支持，https://github.com/terwer/SDFeedParser）
+ *  是否启用高级API（注意：如果启用了，需要服务端支持，https://github.com/terwer/TGBlogJsonApi）
  *
  *  @return 高级API开启状态
  */
-+(BOOL)isAnvancedAPIEnable;
++(BOOL)isJSONAPIEnable;
 
 /**
  *  是否显示页面（默认只显示文章）

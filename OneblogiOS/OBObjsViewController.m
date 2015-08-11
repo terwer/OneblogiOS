@@ -11,7 +11,7 @@
 #import "Config.h"
 #import "LoginNavViewController.h"
 #import "LoginViewController.h"
-#import "SDFeedParser.h"
+#import "TGBlogJsonApi.h"
 #import "AppDelegate.h"
 
 @interface OBObjsViewController ()
@@ -51,7 +51,6 @@
 }
 
 - (void)viewDidLoad {
-    
     //===================================
     //检测登陆状态
     //===================================
@@ -72,19 +71,13 @@
     //===================================
     
     //根据设置确认要选择的api
-    if ([Config isAnvancedAPIEnable]) {
+    if ([Config isJSONAPIEnable]) {
         _api = [self setupJSONApi:apiInfo];
     }else{
         _api = [self setupApi:apiInfo];
     }
 
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
@@ -145,7 +138,7 @@
  *  @return JSON API实例
  */
 -(id)setupJSONApi:(ApiInfo *)apiInfo{
-    SDFeedParser *feedParser = [[SDFeedParser alloc]init];
+    TGBlogJsonApi *feedParser = [[TGBlogJsonApi alloc]init];
     if (feedParser) {
         return feedParser;
     }

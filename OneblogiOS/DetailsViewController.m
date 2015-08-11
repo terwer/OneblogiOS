@@ -11,7 +11,7 @@
 #import <AFNetworking.h>
 #import <MBProgressHUD.h>
 #import "Config.h"
-#import "SDFeedParser.h"
+#import "TGBlogJsonApi.h"
 
 #define HTML_STYLE @"<style>\
 #oneblog_title {color: #000000; margin-bottom: 6px; font-weight:bold;}\
@@ -130,7 +130,7 @@
 - (void)fetchDetails:(BOOL)flag
 {
     NSDictionary *post = _result;
-    SDPost *jsonPost = _result;
+    TGPost *jsonPost = _result;
     
     //博客相关变量
     NSString *title;//文章标题
@@ -140,7 +140,7 @@
     NSArray *categroies;//文章分类
     NSString *url;//文章链接
     //JSON API
-    if ([Config isAnvancedAPIEnable]) {
+    if ([Config isJSONAPIEnable]) {
         title = jsonPost.title;
         content = jsonPost.content;
         dateCreated = [Utils dateFromString:jsonPost.date];

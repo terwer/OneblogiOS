@@ -32,7 +32,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(returnBack)];
     //设置网页标题
@@ -45,6 +44,7 @@
     _detailsView.delegate = self;
     _detailsView.scrollView.delegate = self;
     _detailsView.scrollView.bounces = NO;
+    //去除Autoresize
     _detailsView.translatesAutoresizingMaskIntoConstraints = NO;
     
     //下面两行代码可以设置UIWebView的背景
@@ -59,7 +59,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /**
@@ -87,48 +86,36 @@
 }
 
 
+#pragma mark Webview delegate
+
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    // 添加等待动画
+    _HUD = [Utils createHUD];
+    _HUD.detailsLabelText = @"网页加载中";
+    _HUD.userInteractionEnabled = NO;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    [_HUD hide:YES afterDelay:1];
+}
+
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    _HUD.detailsLabelText = @"加载失败";
+    _HUD.mode = MBProgressHUDModeCustomView;
+    _HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HUD-error"]];
+    [_HUD hide:YES afterDelay:1];
+}
+
+#pragma mark 数据加载
+
 /**
  *  访问网页
  */
 - (void)fetchDetails
 {
-    // 添加等待动画
-    _HUD = [Utils createHUD];
-    _HUD.detailsLabelText = @"网页加载中";
-    _HUD.userInteractionEnabled = NO;
-    
     NSLog(@"fetch details");
-    
-    
-    NSString *requestURL=[_url absoluteString];
-    //requestURL = @"https://www.baidu.com";//测试https
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    //设置返回HTML
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    //是否允许无效证书（也就是自建的证书），默认为NO
-    manager.securityPolicy.allowInvalidCertificates = YES;
-    [manager GET:requestURL parameters:nil
-         success:^(AFHTTPRequestOperation *operation, id responseObject) {
-             NSString *html = operation.responseString;
-             NSString *markedString = [Utils markdownToHtml:html];
-             [_detailsView loadHTMLString:markedString baseURL:nil];
-             //NSLog(@"获取到的数据为：%@",html);
-             //隐藏加载状态
-             [_HUD hide:YES afterDelay:1];
-         }
-         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-             NSLog(@"发生错误！%@",error);
-             _HUD.mode = MBProgressHUDModeCustomView;
-             _HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HUD-error"]];
-             NSString *errorMesage =  [NSString stringWithFormat:@"网络异常，加载详情失败:%@",[error localizedDescription]];
-             _HUD.labelText = errorMesage;
-             NSLog(@"%@",errorMesage);
-             [_HUD hide:YES afterDelay:1];
-         }];
+    NSURLRequest *request =[NSURLRequest requestWithURL:_url];
+    [_detailsView loadRequest:request];
 }
-
-
-
-
 
 @end

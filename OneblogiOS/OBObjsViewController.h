@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "LastCell.h"
 #import "TGMetaWeblogApi.h"
-#import "SDFeedParser.h"
+#import "TGBlogJsonApi.h"
 
 @interface OBObjsViewController : UITableViewController
 

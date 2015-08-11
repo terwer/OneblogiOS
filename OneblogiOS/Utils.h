@@ -135,4 +135,18 @@ static NSString * const kKeyMinutes = @"minutes";
  *  @return 设置标志后的标题
  */
 + (NSMutableAttributedString *)attributedTittle:(NSString *)title;
+
+/**
+ *  在当前页面展示API不受支持的信息
+ *
+ *  @param target target
+ 
+ *  @param to     to
+ */
++ (void)showApiNotSupported:(UIViewController *)target redirectTo:(UIViewController *)to;
+
+/**
+*  跳转到主界面
+*/
++ (void)goToMainViewController;
 @end

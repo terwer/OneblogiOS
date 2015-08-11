@@ -1,6 +1,6 @@
 //
 //  NSString+StringByStrippingHTML.h
-//  SDFeedParser-Demo
+//  TGBlogJsonApi-Demo
 //
 //  Created by Peter Foti on 9/4/14.
 //  Copyright (c) 2014 Sebastian Dobrincu. All rights reserved.

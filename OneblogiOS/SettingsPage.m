@@ -1,7 +1,3 @@
-
-
-
-
 //
 //  SettingsPage.m
 //  OneblogiOS
@@ -12,7 +8,7 @@
 
 #import "SettingsPage.h"
 #import "Utils.h"
-#import "Config.h"
+#import "SDImageCache.h"
 
 @interface SettingsPage ()<UIAlertViewDelegate>
 
@@ -29,23 +25,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
     self.navigationItem.title = @"设置";
     self.clearsSelectionOnViewWillAppear = NO;
     self.tableView.backgroundColor = [UIColor themeColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -55,10 +44,9 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
     switch (section) {
-        case 0: return 2;
-        case 1: return 4;
+        case 0: return 1;
+        case 1: return 3;
         case 2: return 4;
             
         default: return 0;
@@ -66,61 +54,118 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [UITableViewCell new];
+    UITableViewCell *cell = [[UITableViewCell alloc]init];
+    NSInteger section = indexPath.section;
     
     NSArray *titles = @[
-                        @[@"清除缓存", @"消息通知"],
-                        @[@"是否显示页面",@"高级API支持",@"API可用性测试",@"针对Wordpress优化"],
-                        @[@"意见反馈", @"给应用评分", @"关于", @"开源许可"],
+                        @[@"清除缓存"],
+                        @[@"是否显示页面",@"JSON API支持",@"针对Wordpress优化"],
+                        @[@"意见反馈", @"给应用评分", @"关于", @"开源许可"]
                         ];
+    
     cell.textLabel.text = titles[indexPath.section][indexPath.row];
+    if (section == 1) {
+        //添加Swich
+        UISwitch *switchview = [[UISwitch alloc] initWithFrame:CGRectZero];
+        switchview.tag = indexPath.row;
+        
+        NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+        
+        if (indexPath.row == 0) {
+            switchview.on = [def objectForKey:@"isShowPage"];
+        }else if(indexPath.row == 1){
+            switchview.on = [def objectForKey:@"isJSONAPIEnable"];
+        }else{
+            switchview.on = [def objectForKey:@"isWordpressOptimization"];
+        }
+        
+        [switchview addTarget:self action:@selector(updateSwitchAtIndexPath:) forControlEvents:UIControlEventValueChanged];
+        cell.accessoryView = switchview;
+    }
     cell.backgroundColor = [UIColor whiteColor];
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSInteger section = indexPath.section, row = indexPath.row;
+    
+    if (section == 0) {
+        if (row == 0) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"确定要清除缓存的图片和文件？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            [alertView show];
+            
+        } else if (row == 1){
+            
+        }
+    }
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+
+
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == [alertView cancelButtonIndex]) {
+        return;
+    } else {
+        [[NSURLCache sharedURLCache] removeAllCachedResponses];
+        [[SDImageCache sharedImageCache] clearMemory];
+        [[SDImageCache sharedImageCache] clearDisk];
+        //操作提示
+        MBProgressHUD *HUD = [Utils createHUD];
+        HUD.mode = MBProgressHUDModeCustomView;
+        HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HUD-done"]];
+        HUD.labelText = [NSString stringWithFormat:@"缓存清除成功"];
+        [HUD hide:YES afterDelay:1];
+    }
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+/**
+ *  更新设置
+ *
+ *  @param sender sender
+ */
+- (void)updateSwitchAtIndexPath:(UISwitch *)sender {
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    
+    //检测设置依赖
+    if(! [[def objectForKey:@"isJSONAPIEnable"] boolValue] && sender.tag != 1){
+        MBProgressHUD *HUD = [Utils createHUD];
+        HUD.mode = MBProgressHUDModeCustomView;
+        HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HUD-none"]];
+        HUD.labelText = [NSString stringWithFormat:@"此选项需要JSON API支持。"];
+        [HUD hide:YES afterDelay:1];
+        return;
+    }
+    
+    if (sender.on) {
+        NSLog(@"on:%ld",sender.tag);
+        if (sender.tag == 0) {
+            [def setObject:@NO forKey:@"isShowPage"];
+        }else if(sender.tag == 1){
+            [def setObject:@NO forKey:@"isJSONAPIEnable"];
+        }else{
+            [def setObject:@NO forKey:@"isWordpressOptimization"];
+        }
+    } else {
+        NSLog(@"off:%ld",sender.tag);
+        if (sender.tag == 0) {
+            [def setObject:@YES forKey:@"isShowPage"];
+        }else if(sender.tag == 1){
+            [def setObject:@YES forKey:@"isJSONAPIEnable"];
+        }else{
+            [def setObject:@YES forKey:@"isWordpressOptimization"];
+        }
+    }
+    
+    [def synchronize];
+    
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end
