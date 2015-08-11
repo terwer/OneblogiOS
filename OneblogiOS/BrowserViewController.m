@@ -99,6 +99,13 @@
     [_HUD hide:YES afterDelay:1];
 }
 
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    _HUD.detailsLabelText = @"加载失败";
+    _HUD.mode = MBProgressHUDModeCustomView;
+    _HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HUD-error"]];
+    [_HUD hide:YES afterDelay:1];
+}
+
 #pragma mark 数据加载
 
 /**

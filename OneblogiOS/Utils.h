@@ -144,4 +144,9 @@ static NSString * const kKeyMinutes = @"minutes";
  *  @param to     to
  */
 + (void)showApiNotSupported:(UIViewController *)target redirectTo:(UIViewController *)to;
+
+/**
+*  跳转到主界面
+*/
++ (void)goToMainViewController;
 @end

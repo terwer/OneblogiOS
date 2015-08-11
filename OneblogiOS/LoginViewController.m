@@ -59,7 +59,7 @@
     if (apiInfo) {
         NSLog(@"Current baseURL:%@ username:%@ password:%@", apiInfo.baseURL, apiInfo.username, apiInfo.password);
         //已经登录过，跳转到主界面，停止程序继续
-        [self goToMainViewController];
+        [Utils goToMainViewController];
         return;
     }
 
@@ -339,7 +339,7 @@
                                    //隐藏提示
                                    [_HUD hide:YES afterDelay:1];
                                    //登录成功，跳转到主界面
-                                   [self goToMainViewController];
+                                   [Utils goToMainViewController];
                                }
                                failure:^(NSError *error) {
                                    _HUD.mode = MBProgressHUDModeCustomView;
@@ -382,7 +382,7 @@
                      [_HUD hide:YES afterDelay:1];
 
                      //登陆成功，跳转到主界面
-                     [self goToMainViewController];
+                     [Utils goToMainViewController];
                  } else {
                      NSLog(@"login error");
                      _HUD.mode = MBProgressHUDModeCustomView;
@@ -402,35 +402,13 @@
          }];
 }
 
-/**
-*  跳转到主界面
-*/
-- (void)goToMainViewController {
-    OBTabBarController *tabBarController = [OBTabBarController new];
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-    tabBarController.delegate = (id <UITabBarControllerDelegate>) appDelegate;
-
-    RESideMenu *sideMenuTabBarViewController = [[RESideMenu alloc] initWithContentViewController:tabBarController
-                                                                          leftMenuViewController:[SideMenuViewController new]
-                                                                         rightMenuViewController:nil];
-
-    //设置样式
-    sideMenuTabBarViewController.scaleContentView = YES;
-    sideMenuTabBarViewController.contentViewScaleValue = 0.95;
-    sideMenuTabBarViewController.scaleMenuView = NO;
-    sideMenuTabBarViewController.contentViewShadowEnabled = YES;
-    sideMenuTabBarViewController.contentViewShadowRadius = 4.5;
-
-    //设置根视图
-    appDelegate.window.rootViewController = sideMenuTabBarViewController;
-}
-
 #pragma mark - 超链接代理
 
 - (void)attributedLabel:(TTTAttributedLabel *)label didLongPressLinkWithURL:(NSURL *)url atPoint:(CGPoint)point {
     UIAlertController *confirmCtl = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"是否使用Safari打开网页？" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[url absoluteString]]]; //调用Safari打开网页
+         //调用Safari打开网页
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[url absoluteString]]];
     }];
     UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:nil];
     [confirmCtl addAction:yesAction];
@@ -446,7 +424,11 @@
 */
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
     NSLog(@"Selected url:%@", [url absoluteString]);
-    [Utils navigateUrl:self withUrl:url andTitle:@"What is MetaWeblog API?"];
+    NSString *title = @"What is MetaWeblog API?";
+    if ([[url absoluteString] isEqualToString:@"http://git.oschina.net/terwergreen/gist/blob/master/wordpress-json-api-http-sample-data.md"]) {
+        title = @"Wordpress JSON API";
+    }
+    [Utils navigateUrl:self withUrl:url andTitle:title];
 }
 
 /**

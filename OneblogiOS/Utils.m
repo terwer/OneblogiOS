@@ -12,6 +12,10 @@
 #import "BrowserViewController.h"
 #import "GHMarkdownParser.h"
 #import "ErrorViewController.h"
+#import "OBTabBarController.h"
+#import <RESideMenu/RESideMenu.h>
+#import "SideMenuViewController.h"
+#import "AppDelegate.h"
 
 @implementation Utils
 
@@ -440,8 +444,33 @@
     labelMessage.text = errorMessage;
     [target.view addSubview:labelMessage];
     [to.navigationItem setHidesBackButton:YES];
+    to.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"首页" style:UIBarButtonItemStylePlain target:to action:@selector(returnHome)];
     to.navigationItem.title = @"出错啦";
     to.errorMessage = errorMessage;
     [target.navigationController pushViewController:to animated:YES];
+}
+
+
+/**
+ *  跳转到主界面
+ */
++ (void)goToMainViewController {
+    OBTabBarController *tabBarController = [OBTabBarController new];
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    tabBarController.delegate = (id <UITabBarControllerDelegate>) appDelegate;
+    
+    RESideMenu *sideMenuTabBarViewController = [[RESideMenu alloc] initWithContentViewController:tabBarController
+                                                                          leftMenuViewController:[SideMenuViewController new]
+                                                                         rightMenuViewController:nil];
+    
+    //设置样式
+    sideMenuTabBarViewController.scaleContentView = YES;
+    sideMenuTabBarViewController.contentViewScaleValue = 0.95;
+    sideMenuTabBarViewController.scaleMenuView = NO;
+    sideMenuTabBarViewController.contentViewShadowEnabled = YES;
+    sideMenuTabBarViewController.contentViewShadowRadius = 4.5;
+    
+    //设置根视图
+    appDelegate.window.rootViewController = sideMenuTabBarViewController;
 }
 @end

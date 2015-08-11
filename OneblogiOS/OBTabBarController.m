@@ -44,7 +44,7 @@
     }
     SwipableViewController *blogSVC ;
     //由于metaWeblog api的限制，无法筛选出热门和置顶文章
-    //高级API才有页面，搜索没有页面
+    //JSON API才有页面，搜索没有页面
     if ([Config isJSONAPIEnable]&& !isSearch && [Config isShowPage]) {
         //最新
         UIViewController *pageViewCtl = [[PostViewController alloc]initWithPostType:PostTypePage];
@@ -66,7 +66,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     //博客
     SwipableViewController *blogSVC = [self createBlogViewController:NO];
