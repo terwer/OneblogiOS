@@ -2,7 +2,7 @@
 //  ErrorViewController.h
 //  OneblogiOS
 //
-//  Created by szgxa30 on 15/8/11.
+//  Created by Terwer Green on 15/8/11.
 //  Copyright (c) 2015年 Terwer Green. All rights reserved.
 //
 

@@ -1,18 +1,18 @@
 //
-//  SDComment+SDCommentFromDictionary.m
-//  SDFeedParser-Demo
+//  TGComment+SDCommentFromDictionary.m
+//  TGBlogJsonApi-Demo
 //
 //  Created by Peter Foti on 9/4/14.
 //  Copyright (c) 2014 Sebastian Dobrincu. All rights reserved.
 //
 
-#import "SDComment+SDCommentFromDictionary.h"
+#import "TGComment+TGCommentFromDictionary.h"
 
-@implementation SDComment (SDCommentFromDictionary)
+@implementation TGComment (TGCommentFromDictionary)
 
-+ (SDComment *)SDCommentFromDictionary:(NSDictionary *)dictionary
++ (TGComment *)SDCommentFromDictionary:(NSDictionary *)dictionary
 {
-    SDComment *newComment = [SDComment new];
+    TGComment *newComment = [TGComment new];
     newComment.ID = [dictionary[@"id"] integerValue];
     newComment.name = dictionary[@"name"];
     newComment.url = dictionary[@"url"];

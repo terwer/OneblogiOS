@@ -13,7 +13,7 @@
 #import <RESideMenu.h>
 #import "Utils.h"
 #import "UIImageView+Util.h"
-#import "SDFeedParser.h"
+#import "TGBlogJsonApi.h"
 #import "ErrorViewController.h"
 
 static NSString *kMyInfoCellID = @"myInfoCell";

@@ -1,6 +1,6 @@
 //
-//  SDComment.h
-//  SDFeedParser
+//  TGComment.h
+//  TGBlogJsonApi
 //
 //  Created by Sebastian Dobrincu on 18/07/14.
 //  Copyright (c) 2014 Sebastian Dobrincu. All rights reserved.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SDComment : NSObject
+@interface TGComment : NSObject
 
 @property (nonatomic) NSInteger ID;
 @property (nonatomic) NSString *name;

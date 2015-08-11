@@ -1,13 +1,13 @@
 //
-//  SDComment.m
-//  SDFeedParser
+//  TGCategory.m
+//  TGBlogJsonApi
 //
 //  Created by Sebastian Dobrincu on 18/07/14.
 //  Copyright (c) 2014 Sebastian Dobrincu. All rights reserved.
 //
 
-#import "SDComment.h"
+#import "TGCategory.h"
 
-@implementation SDComment
+@implementation TGCategory
 
 @end

@@ -110,7 +110,10 @@
     [manager GET:requestURL parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              NSString *html = operation.responseString;
-             NSString *markedString = [Utils markdownToHtml:html];
+             NSString *markedString = html;
+             if (![html hasPrefix:@"<!DOCTYPE html>"]) {
+                 markedString = [Utils markdownToHtml:html];
+             }
              [_detailsView loadHTMLString:markedString baseURL:nil];
              //NSLog(@"获取到的数据为：%@",html);
              //隐藏加载状态
@@ -126,9 +129,5 @@
              [_HUD hide:YES afterDelay:1];
          }];
 }
-
-
-
-
 
 @end

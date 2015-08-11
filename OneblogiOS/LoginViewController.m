@@ -371,9 +371,9 @@
                  NSLog(@"status:%@", [result objectForKey:@"status"]);
                  NSString *status = [result objectForKey:@"status"];
                  if ([status isEqualToString:@"ok"]) {
-
+                     NSString *cookie = result[@"cookie"];
+                     
                      NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-                     NSString *cookie = [result objectForKey:@"cookie"];
                      [userDefaults setObject:cookie forKey:@"generate_auth_cookie"];
                      [userDefaults synchronize];
 

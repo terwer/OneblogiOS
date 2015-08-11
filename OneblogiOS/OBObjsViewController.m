@@ -11,7 +11,7 @@
 #import "Config.h"
 #import "LoginNavViewController.h"
 #import "LoginViewController.h"
-#import "SDFeedParser.h"
+#import "TGBlogJsonApi.h"
 #import "AppDelegate.h"
 
 @interface OBObjsViewController ()
@@ -138,7 +138,7 @@
  *  @return JSON API实例
  */
 -(id)setupJSONApi:(ApiInfo *)apiInfo{
-    SDFeedParser *feedParser = [[SDFeedParser alloc]init];
+    TGBlogJsonApi *feedParser = [[TGBlogJsonApi alloc]init];
     if (feedParser) {
         return feedParser;
     }

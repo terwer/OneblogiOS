@@ -48,7 +48,7 @@
 }
 
 /**
- *  是否启用JSON API（注意：如果启用了，需要服务端支持，https://github.com/terwer/SDFeedParser）
+ *  是否启用JSON API（注意：如果启用了，需要服务端支持，https://github.com/terwer/TGBlogJsonApi）
  *
  *  @return JSON API开启状态
  */

@@ -1,19 +1,19 @@
 //
-//  SDPost+SDPostFromDictionary.m
-//  SDFeedParser-Demo
+//  TGPost+SDPostFromDictionary.m
+//  TGBlogJsonApi-Demo
 //
 //  Created by Peter Foti on 9/4/14.
 //  Copyright (c) 2014 Sebastian Dobrincu. All rights reserved.
 //
 
-#import "SDPost+SDPostFromDictionary.h"
+#import "TGPost+SDPostFromDictionary.h"
 #import "NSString+StringByStrippingHTML.h"
 
-@implementation SDPost (SDPostFromDictionary)
+@implementation TGPost (SDPostFromDictionary)
 
-+ (SDPost *)SDPostFromDictionary:(NSDictionary *)dictionary{
++ (TGPost *)SDPostFromDictionary:(NSDictionary *)dictionary{
     
-    SDPost *newPost = [SDPost new];
+    TGPost *newPost = [TGPost new];
     newPost.ID = [dictionary[@"id"] integerValue];
     newPost.slug = dictionary[@"slug"];
     newPost.URL = dictionary[@"url"];

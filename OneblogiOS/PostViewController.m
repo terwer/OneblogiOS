@@ -12,7 +12,7 @@
 #import "Utils.h"
 #import "PostDetailViewController.h"
 #import "Config.h"
-#import "SDFeedParser.h"
+#import "TGBlogJsonApi.h"
 #import "DropdownMenuView.h"
 #import "TitleMenuViewController.h"
 #import "ErrorViewController.h"
@@ -22,7 +22,9 @@ const int MAX_DESCRIPTION_LENGTH = 60;//描述最多字数
 const int MAX_PAGE_SIZE = 10;//每页显示数目
 //super.page //当前页码（由于MetaWeblog API不支持分页，因此，此参数仅仅JSON API有用）
 
-@interface PostViewController ()<UISearchResultsUpdating,DropdownMenuDelegate, TitleMenuDelegate>
+@interface PostViewController ()<UISearchResultsUpdating,DropdownMenuDelegate, TitleMenuDelegate>{
+    AFHTTPRequestOperationManager *manager;
+}
 
 @end
 
@@ -218,7 +220,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     
     NSDictionary *post = self.posts[indexPath.row];
     
-    SDPost * jsonPost = self.posts[indexPath.row];
+    TGPost * jsonPost = self.posts[indexPath.row];
     
     PostDetailViewController *detailsViewController;
     if ([Config isJSONAPIEnable]) {
@@ -245,13 +247,13 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     NSMutableDictionary *adaptedPost = [NSMutableDictionary dictionary];
     switch (type) {
         case APITypeJSON:{
-            SDPost *jsonPost = post;
+            TGPost *jsonPost = post;
             [adaptedPost setValue:[NSString stringWithFormat:@"%ld",jsonPost.ID] forKey:@"id"];
             [adaptedPost setValue:jsonPost.title forKey:@"title"];
             [adaptedPost setValue:jsonPost.content forKey:@"content"];
             [adaptedPost setValue:[Utils dateFromString:jsonPost.date] forKey:@"date"];
             [adaptedPost setValue:@"" forKey:@"author"];
-            for (SDCategory *category in jsonPost.categoriesArray) {
+            for (TGCategory *category in jsonPost.categoriesArray) {
                 [categroies addObject:category.title];
             }
             [adaptedPost setValue:categroies forKey:@"categroies"];
@@ -379,7 +381,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
         //设置API类型
         self.apiType = APITypeJSON;
         
-        SDFeedParser *jsonAPI = self.api;
+        TGBlogJsonApi *jsonAPI = self.api;
         
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSString *baseURL = [userDefaults objectForKey:@"baseURL"];
@@ -516,7 +518,7 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     MBProgressHUD *HUD = [Utils createHUD];
     HUD.detailsLabelText = @"加载中";
     
-    SDFeedParser *jsonAPI = self.api;
+    TGBlogJsonApi *jsonAPI = self.api;
     if ([searchString isEqualToString:@""]) {
         searchString = @"ios";
     }
@@ -769,45 +771,44 @@ const int MAX_PAGE_SIZE = 10;//每页显示数目
     //===================================
     //删除文章
     //===================================
+    
+    manager = [AFHTTPRequestOperationManager manager];
+    
     //JSON API
     if ([Config isJSONAPIEnable]) {
-        
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        NSString *baseURL = [userDefaults objectForKey:@"baseURL"];
-        NSString *cookie = [userDefaults objectForKey:@"cookie"];
-        
-        NSString *nonceURL = [NSString stringWithFormat:@"%@/get_nonce/?controller=posts&method=delete_post",baseURL];
+        //获取API信息
+        ApiInfo *apiInfo = [Config getAuthoizedApiInfo];
+        NSDictionary *nonceParmeters = @{@"controller":@"posts",@"method":@"delete_post"};
+        NSString *nonceURL = [NSString stringWithFormat:@"%@/get_nonce/",apiInfo.baseURL];
         
         //1 get nunce
         //2 delete post
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        [manager GET:nonceURL parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *result) {
+        [manager GET:nonceURL parameters:nonceParmeters success:^(AFHTTPRequestOperation *operation, NSDictionary *result) {
             NSLog(@"status:%@",[result objectForKey:@"status"]);
             NSString *status = [result objectForKey:@"status"];
             
             NSString *nonce =[result objectForKey:@"nonce"];
             //删除
-            NSDictionary *parmeters = @{@"id":postId,@"cookie":cookie,@"nonce":nonce};
-            NSString *deleteURL = [NSString stringWithFormat:@"%@/posts/delete_post/",baseURL];
+            NSDictionary *parmeters = @{@"id":postId,@"cookie":apiInfo.generateAauthCookie,@"nonce":nonce};
+            NSString *deleteURL = [NSString stringWithFormat:@"%@/posts/delete_post/",apiInfo.baseURL];
             
-            NSLog(@"cdeleteURL URL:%@",deleteURL);
+            NSLog(@"deleteURL URL:%@",deleteURL);
             
             if ([status isEqualToString:@"ok"]) {
-                //删除开始=======================
-                AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-                [manager GET:deleteURL parameters:parmeters
-                     success:^(AFHTTPRequestOperation *operation, NSDictionary *result) {
-                         NSString *status = [result objectForKey:@"status"];
-                         if ([status isEqualToString:@"ok"]) {
-                             NSLog(@"删除成功。");
-                         }else{
-                             NSLog(@"删除失败。%@",[result objectForKey:@"error"]);
-                         }
-                     }
-                     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                         NSLog(@"系统失败");
-                     }];
-                //删除结束=======================
+//                //删除开始=======================
+//                [manager GET:deleteURL parameters:parmeters
+//                     success:^(AFHTTPRequestOperation *operation, NSDictionary *result) {
+//                         NSString *status = [result objectForKey:@"status"];
+//                         if ([status isEqualToString:@"ok"]) {
+//                             NSLog(@"删除成功。");
+//                         }else{
+//                             NSLog(@"删除失败。%@",[result objectForKey:@"error"]);
+//                         }
+//                     }
+//                     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                         NSLog(@"系统失败");
+//                     }];
+//                //删除结束=======================
             }
             
         }
