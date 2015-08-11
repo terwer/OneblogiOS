@@ -277,8 +277,8 @@
         return;
     }
 
-    if (username.length < 6 || username.length > 20) {
-        _HUD.labelText = @"用户名只能在6-20之间！";
+    if (username.length < 5 || username.length > 20) {
+        _HUD.labelText = @"用户名只能在5-20之间！";
         _HUD.mode = MBProgressHUDModeCustomView;
         _HUD.userInteractionEnabled = NO;
         //隐藏提示
@@ -295,8 +295,8 @@
         return;
     }
 
-    if (password.length < 6 || password.length > 20) {
-        _HUD.labelText = @"用户名只能在6-20之间！";
+    if (password.length < 5 || password.length > 20) {
+        _HUD.labelText = @"密码只能在5-20之间！";
         _HUD.mode = MBProgressHUDModeCustomView;
         _HUD.userInteractionEnabled = NO;
         //隐藏提示
