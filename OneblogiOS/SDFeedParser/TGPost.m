@@ -1,13 +1,13 @@
 //
-//  SDTag.m
-//  SDFeedParser
+//  TGPost.m
+//  TGBlogJsonApi
 //
 //  Created by Sebastian Dobrincu on 18/07/14.
 //  Copyright (c) 2014 Sebastian Dobrincu. All rights reserved.
 //
 
-#import "SDTag.h"
+#import "TGPost.h"
 
-@implementation SDTag
+@implementation TGPost
 
 @end

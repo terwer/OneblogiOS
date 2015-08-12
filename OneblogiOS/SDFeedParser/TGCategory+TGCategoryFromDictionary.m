@@ -1,18 +1,18 @@
 //
-//  SDCategory+SDCategoryFromDictionary.m
-//  SDFeedParser-Demo
+//  TGCategory+SDCategoryFromDictionary.m
+//  TGBlogJsonApi-Demo
 //
 //  Created by Peter Foti on 9/4/14.
 //  Copyright (c) 2014 Sebastian Dobrincu. All rights reserved.
 //
 
-#import "SDCategory+SDCategoryFromDictionary.h"
+#import "TGCategory+TGCategoryFromDictionary.h"
 
-@implementation SDCategory (SDCategoryFromDictionary)
+@implementation TGCategory (TGCategoryFromDictionary)
 
-+ (SDCategory *)SDCategoryFromDictionary:(NSDictionary *)dictionary
++ (TGCategory *)SDCategoryFromDictionary:(NSDictionary *)dictionary
 {
-    SDCategory *newCategory = [SDCategory new];
+    TGCategory *newCategory = [TGCategory new];
     
     newCategory.ID = [dictionary[@"id"] integerValue];
     newCategory.slug = dictionary[@"slug"];

@@ -1,6 +1,6 @@
 //
-//  SDTag.h
-//  SDFeedParser
+//  TGTag.h
+//  TGBlogJsonApi
 //
 //  Created by Sebastian Dobrincu on 18/07/14.
 //  Copyright (c) 2014 Sebastian Dobrincu. All rights reserved.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SDTag : NSObject
+@interface TGTag : NSObject
 
 @property (nonatomic) NSInteger ID;
 @property (nonatomic) NSString *slug;

@@ -48,11 +48,11 @@
 }
 
 /**
- *  是否启用高级API（注意：如果启用了，需要服务端支持，https://github.com/terwer/SDFeedParser）
+ *  是否启用JSON API（注意：如果启用了，需要服务端支持，https://github.com/terwer/TGBlogJsonApi）
  *
- *  @return 高级API开启状态
+ *  @return JSON API开启状态
  */
-+(BOOL)isAnvancedAPIEnable{
++(BOOL)isJSONAPIEnable {
     //获取相关存储信息
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     BOOL isJSONAPIEnable = [[userDefaults objectForKey:@"isJSONAPIEnable"] boolValue];
@@ -65,10 +65,10 @@
  *  @return 是否显示页面
  */
 +(BOOL)isShowPage{
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"Oneblog" ofType:@"plist"];
-    NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
-    BOOL result = [[settings objectForKey:@"IsShowPage"] boolValue];
-    return result;
+    //获取相关存储信息
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL isShowPage = [[userDefaults objectForKey:@"isShowPage"] boolValue];
+    return isShowPage;
 }
 
 /**
@@ -77,10 +77,11 @@
  *  @return 是否针对Wordpress优化
  */
 +(BOOL)isWordpressOptimization{
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"Oneblog" ofType:@"plist"];
-    NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
-    BOOL result = [[settings objectForKey:@"IsWordpressOptimization"] boolValue];
-    return result;
+    //获取相关存储信息
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL isWordpressOptimization = [[userDefaults objectForKey:@"isWordpressOptimization"] boolValue];
+    return isWordpressOptimization;
+
 }
 
 @end
