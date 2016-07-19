@@ -162,7 +162,7 @@
     _messageInfo.numberOfLines = 0;
     _messageInfo.lineBreakMode = NSLineBreakByWordWrapping;
     _messageInfo.backgroundColor = [UIColor themeColor];
-    _messageInfo.font = [UIFont systemFontOfSize:14];
+    _messageInfo.font = [UIFont systemFontOfSize:12];
     NSString *info = @"温馨提示：您可以登录任何实现了XML-RPC MetaWeblog API接口的博客。目前已经支持并测试通过的博客：Wordpress、ZBlog、Cnblogs、OSChina、163、51CTO、Sina。\r由于MetaWeblog API接口的限制，暂时只能进行文章的显示、查看、新增、修改和删除。\r部分功能有些博客不支持，详情看这里。\r更多功能需要服务端API支持，详情查看：Wordpress JSON API。";
     _messageInfo.text = info;
     NSRange range1 = [info rangeOfString:@"XML-RPC MetaWeblog API"];
@@ -171,7 +171,7 @@
     };
     [_messageInfo addLinkToURL:[NSURL URLWithString:@"https://en.wikipedia.org/wiki/MetaWeblog"] withRange:range1];
     NSRange range2 = [info rangeOfString:@"详情看这里"];
-    [_messageInfo addLinkToURL:[NSURL URLWithString:@"http://git.oschina.net/terwergreen/gist/blob/master/metaweblog-api-http-sample-data.md"] withRange:range2];
+    [_messageInfo addLinkToURL:[NSURL URLWithString:@"呜呜呜"] withRange:range2];http:
     [self.view addSubview:_messageInfo];
     NSRange range3 = [info rangeOfString:@"Wordpress JSON API"];
     [_messageInfo addLinkToURL:[NSURL URLWithString:@"http://git.oschina.net/terwergreen/gist/blob/master/wordpress-json-api-http-sample-data.md"] withRange:range3];
@@ -198,6 +198,7 @@
     password.contentMode = UIViewContentModeScaleAspectFit;
 
     UILabel *tips = [[UILabel alloc] init];
+    tips.font = [UIFont systemFontOfSize:14];
     tips.text = @"是否启用JSON API";
 
     [self.view addSubview:url];
@@ -330,7 +331,7 @@
                               username:username
                               password:pasword
                                success:^(NSURL *xmlrpcURL) {
-                                   NSLog(@"success:%@", xmlrpcURL);
+                                   NSLog(@"登陆成功---success:%@", xmlrpcURL);
                                    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
                                    [def setObject:[xmlrpcURL absoluteString] forKey:@"baseURL"];
                                    [def setObject:self.usernameField.text forKey:@"mw_username"];
