@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^ReturnBlock) (NSString *footerUrlStr,NSString *footerApi);
+
 @interface SelectBlogViewController : UIViewController
+
+@property (nonatomic,copy)ReturnBlock returnBlock; // 回调的接口文字
 
 @end
