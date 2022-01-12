@@ -106,6 +106,13 @@
     [_HUD hide:YES afterDelay:1];
 }
 
+
+// 在界面消失的时候隐藏 状态提示
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [_HUD hide:YES];
+}
+
 #pragma mark 数据加载
 
 /**

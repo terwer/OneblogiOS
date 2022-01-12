@@ -425,6 +425,22 @@
 }
 
 /**
+ *  创建弹出框
+ *
+ *  @return 弹出框实例
+ */
++ (MBProgressHUD *)DismissHUD
+{
+    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
+    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithWindow:window];
+    HUD.detailsLabelFont = [UIFont boldSystemFontOfSize:16];
+    [window addSubview:HUD];
+    [HUD show:YES];
+    //[HUD addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:HUD action:@selector(hide:)]];
+    return HUD;
+}
+
+/**
  *  在当前页面展示API不受支持的信息
  *
  *  @param target target
