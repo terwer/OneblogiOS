@@ -134,6 +134,7 @@
     _baseURLField.returnKeyType = UIReturnKeyNext;
     _baseURLField.clearButtonMode = UITextFieldViewModeWhileEditing;
     _baseURLField.enablesReturnKeyAutomatically = YES;
+    _baseURLField.text = @"https://rpc.cnblogs.com/metaweblog/tangyouwei";
 
     _usernameField = [UITextField new];
     _usernameField.placeholder = @"Username";
