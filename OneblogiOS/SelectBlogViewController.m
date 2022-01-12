@@ -117,8 +117,8 @@
         case 2:
             NSLog(@"Cnblogs");
             //            _xmlrpcURLSuffix = @"http://www.cnblogs.com/tangyouwei/services/metaweblog.aspx";
-            _xmlrpcURLPrefix = @"http://www.cnblogs.com";
-            _xmlrpcURLSuffix = @"services/metaweblog.aspx";
+            _xmlrpcURLPrefix = @"https://rpc.cnblogs.com";
+            _xmlrpcURLSuffix = @"metaweblog/tangyouwei";
             [self doSelectBlog];
             break;
         case 3:
