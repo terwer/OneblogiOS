@@ -72,20 +72,20 @@
         [Utils goToMainViewController];
         return;
     }
-    
+
     //初始化导航栏
     self.navigationItem.title = @"登录";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"选择" style:UIBarButtonItemStylePlain target:self action:@selector(selectBlog)];
-    
+
     self.view.backgroundColor = [UIColor themeColor];
-    
+
     //初始化视图和布局
     [self initSubviews];
     [self setLayout];
-    
+
     // 默认为wordpress博客
     self.footerApi = @"xmlrpc.php";
-    
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -108,7 +108,7 @@
     self.passwordField.text = [def objectForKey:@"mw_passwod"];
     //JSON API状态
     _apiTypeSwitch.on = [[def objectForKey:@"isJSONAPIEnable"] boolValue];
-    
+
 }
 
 #pragma mark 选择博客类型
@@ -116,17 +116,17 @@
 - (void)selectBlog {
     NSLog(@"选择博客。");
     SelectBlogViewController *selectBlogController = [[SelectBlogViewController alloc] init];
-    
-    
+
+
     [self.navigationController pushViewController:selectBlogController animated:YES];
-    
+
 }
 
 #pragma mark - about subviews
 
 - (void)initSubviews {
     _baseURLField = [UITextField new];
-    _baseURLField.placeholder = @"www.jack_blog.com";
+    _baseURLField.placeholder = @"博客地址";
     _baseURLField.textColor = [UIColor colorWithRed:56.0f / 255.0f green:84.0f / 255.0f blue:135.0f / 255.0f alpha:1.0f];
     _baseURLField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     _baseURLField.keyboardType = UIKeyboardTypeEmailAddress;
@@ -134,7 +134,7 @@
     _baseURLField.returnKeyType = UIReturnKeyNext;
     _baseURLField.clearButtonMode = UITextFieldViewModeWhileEditing;
     _baseURLField.enablesReturnKeyAutomatically = YES;
-    
+
     _usernameField = [UITextField new];
     _usernameField.placeholder = @"Username";
     _usernameField.textColor = [UIColor colorWithRed:56.0f / 255.0f green:84.0f / 255.0f blue:135.0f / 255.0f alpha:1.0f];
@@ -144,7 +144,7 @@
     _usernameField.returnKeyType = UIReturnKeyNext;
     _usernameField.clearButtonMode = UITextFieldViewModeWhileEditing;
     _usernameField.enablesReturnKeyAutomatically = YES;
-    
+
     self.passwordField = [UITextField new];
     _passwordField.placeholder = @"Password";
     _passwordField.textColor = [UIColor colorWithRed:56.0f / 255.0f green:84.0f / 255.0f blue:135.0f / 255.0f alpha:1.0f];
@@ -153,18 +153,18 @@
     _passwordField.returnKeyType = UIReturnKeyDone;
     _passwordField.clearButtonMode = UITextFieldViewModeWhileEditing;
     _passwordField.enablesReturnKeyAutomatically = YES;
-    
+
     [_usernameField addTarget:self action:@selector(returnOnKeyboard:) forControlEvents:UIControlEventEditingDidEndOnExit];
     [_passwordField addTarget:self action:@selector(returnOnKeyboard:) forControlEvents:UIControlEventEditingDidEndOnExit];
-    
+
     [self.view addSubview:_baseURLField];
     [self.view addSubview:_usernameField];
     [self.view addSubview:_passwordField];
-    
+
     _apiTypeSwitch = [[UISwitch alloc] init];
     [_apiTypeSwitch addTarget:self action:@selector(doSwitch) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_apiTypeSwitch];
-    
+
     _loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _loginButton.titleLabel.font = [UIFont systemFontOfSize:17];
     _loginButton.backgroundColor = [UIColor colorWithHex:0x428bd1];
@@ -172,7 +172,7 @@
     [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
     [_loginButton addTarget:self action:@selector(loginMyBlog) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_loginButton];
-    
+
     _messageInfo = [TTTAttributedLabel new];
     _messageInfo.delegate = self;
     _messageInfo.numberOfLines = 0;
@@ -183,16 +183,17 @@
     _messageInfo.text = info;
     NSRange range1 = [info rangeOfString:@"XML-RPC MetaWeblog API"];
     _messageInfo.linkAttributes = @{
-                                    (NSString *) kCTForegroundColorAttributeName : [UIColor colorWithHex:0x428bd1]
-                                    };
+            (NSString *) kCTForegroundColorAttributeName: [UIColor colorWithHex:0x428bd1]
+    };
     [_messageInfo addLinkToURL:[NSURL URLWithString:@"https://en.wikipedia.org/wiki/MetaWeblog"] withRange:range1];
     NSRange range2 = [info rangeOfString:@"详情看这里"];
-    [_messageInfo addLinkToURL:[NSURL URLWithString:@"呜呜呜"] withRange:range2];http:
+    [_messageInfo addLinkToURL:[NSURL URLWithString:@"呜呜呜"] withRange:range2];
+    http:
     [self.view addSubview:_messageInfo];
     NSRange range3 = [info rangeOfString:@"Wordpress JSON API"];
     [_messageInfo addLinkToURL:[NSURL URLWithString:@"http://git.oschina.net/terwergreen/gist/blob/master/wordpress-json-api-http-sample-data.md"] withRange:range3];
     [self.view addSubview:_messageInfo];
-    
+
     //添加手势，点击屏幕其他区域关闭键盘的操作
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hidenKeyboard)];
     gesture.numberOfTapsRequired = 1;
@@ -206,39 +207,39 @@
 - (void)setLayout {
     UIImageView *url = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login-url"]];
     url.contentMode = UIViewContentModeScaleAspectFill;
-    
+
     UIImageView *email = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login-email"]];
     email.contentMode = UIViewContentModeScaleAspectFill;
-    
+
     UIImageView *password = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login-password"]];
     password.contentMode = UIViewContentModeScaleAspectFit;
-    
+
     UILabel *tips = [[UILabel alloc] init];
     tips.font = [UIFont systemFontOfSize:14];
     tips.text = @"是否启用JSON API";
-    
+
     [self.view addSubview:url];
     [self.view addSubview:email];
     [self.view addSubview:password];
     [self.view addSubview:tips];
-    
+
     for (UIView *view in [self.view subviews]) {view.translatesAutoresizingMaskIntoConstraints = NO;}
-    
-    
+
+
     NSDictionary *views = NSDictionaryOfVariableBindings(url, email, password, tips, _baseURLField, _usernameField, _passwordField, _apiTypeSwitch, _loginButton, _messageInfo);
-    
+
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual
                                                              toItem:_loginButton attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual
                                                              toItem:_loginButton attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
-    
+
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[url(20)]-20-[email(20)]-20-[password(20)]-20-[tips(20)]-20-[_loginButton(40)]"
                                                                       options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-20-[_loginButton]-20-|" options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_loginButton]-10-[_messageInfo]"
                                                                       options:NSLayoutFormatAlignAllLeft | NSLayoutFormatAlignAllRight
                                                                       metrics:nil views:views]];
-    
+
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-40-[url(20)]-[_baseURLField]-60-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-40-[email(20)]-[_usernameField]-60-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-40-[password(20)]-[_passwordField]-60-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
@@ -272,10 +273,13 @@
     NSString *baseURL = [_baseURLField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSString *username = [_usernameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSString *password = [_passwordField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    
+
+    // 默认博客园
+    _baseURLField.text = [NSString stringWithFormat:@"%@/%@", self.footerPrefix, self.footerApi];
+
     //登陆提示
     _HUD = [Utils createHUD];
-    
+
     //登陆验证
     if ([baseURL isEqualToString:@""]) {
         _HUD.labelText = @"博客API地址不能为空！";
@@ -285,16 +289,16 @@
         [_HUD hide:YES afterDelay:1];
         return;
     }
-    
-    if ([baseURL hasPrefix:@"http"]) {
-        _HUD.labelText = @"博客地址勿带http";
-        _HUD.mode = MBProgressHUDModeCustomView;
-        _HUD.userInteractionEnabled = NO;
-        //隐藏提示
-        [_HUD hide:YES afterDelay:1];
-        return;
-    }
-    
+
+//    if ([baseURL hasPrefix:@"http"]) {
+//        _HUD.labelText = @"博客地址勿带http";
+//        _HUD.mode = MBProgressHUDModeCustomView;
+//        _HUD.userInteractionEnabled = NO;
+//        //隐藏提示
+//        [_HUD hide:YES afterDelay:1];
+//        return;
+//    }
+
     if ([username isEqualToString:@""]) {
         _HUD.labelText = @"用户名不能为空！";
         _HUD.mode = MBProgressHUDModeCustomView;
@@ -303,7 +307,7 @@
         [_HUD hide:YES afterDelay:1];
         return;
     }
-    
+
     if (username.length < 5 || username.length > 20) {
         _HUD.labelText = @"用户名只能在5-20之间！";
         _HUD.mode = MBProgressHUDModeCustomView;
@@ -312,7 +316,7 @@
         [_HUD hide:YES afterDelay:1];
         return;
     }
-    
+
     if ([password isEqualToString:@""]) {
         _HUD.labelText = @"密码不能为空！";
         _HUD.mode = MBProgressHUDModeCustomView;
@@ -321,7 +325,7 @@
         [_HUD hide:YES afterDelay:1];
         return;
     }
-    
+
     if (password.length < 5 || password.length > 20) {
         _HUD.labelText = @"密码只能在5-20之间！";
         _HUD.mode = MBProgressHUDModeCustomView;
@@ -330,33 +334,31 @@
         [_HUD hide:YES afterDelay:1];
         return;
     }
-    
+
     _HUD.labelText = @"正在登录";
     _HUD.userInteractionEnabled = NO;
-    
+
     if (_apiTypeSwitch.on) {
         NSLog(@"JSON API");
         [self loginWithJOSNAPI:baseURL username:username password:password];
     } else {
         NSLog(@"XMLRPC API");
         //对baseUrl进行包装  暂时不支持Https
-        KLog(@"url尾巴是%@",self.footerPrefix);
+        KLog(@"url尾巴是%@", self.footerPrefix);
         if ([self.footerPrefix isEqualToString:KWordPress]) {
             //wordpress
-            baseURL = [NSString stringWithFormat:@"http://%@/%@",baseURL,self.footerApi];
-        }else if ([self.footerPrefix isEqualToString:KZBlog]){
+            baseURL = [NSString stringWithFormat:@"http://%@/%@", baseURL, self.footerApi];
+        } else if ([self.footerPrefix isEqualToString:KZBlog]) {
             // ZBlog
-            baseURL = [NSString stringWithFormat:@"http://%@:8080/%@",baseURL,self.footerApi];
-        }else if ([self.footerPrefix isEqualToString:KOtherBlog]){
-            
-            baseURL = [NSString stringWithFormat:@"http://%@/%@",baseURL,self.footerApi];
-        }else{
+            baseURL = [NSString stringWithFormat:@"http://%@:8080/%@", baseURL, self.footerApi];
+        } else if ([self.footerPrefix isEqualToString:KOtherBlog]) {
+            baseURL = [NSString stringWithFormat:@"http://%@/%@", baseURL, self.footerApi];
+        } else {
             // CnBlog 博客
-            baseURL = [NSString stringWithFormat:@"%@/%@/%@",KCnBlog,baseURL,self.footerApi];
-            
+            baseURL = [NSString stringWithFormat:@"%@/%@", self.footerPrefix, self.footerApi];
         }
-        
-        KLog(@"最后的地址是%@",baseURL);
+
+        KLog(@"最后的地址是%@", baseURL);
         [self loginWithXmlrpc:baseURL username:username password:password];
     }
 }
@@ -402,9 +404,9 @@
  *  @param password password
  */
 - (void)loginWithJOSNAPI:(NSString *)baseURL username:(NSString *)username password:(NSString *)password {
-    
+
     NSString *requestURL = [NSString stringWithFormat:@"%@user/generate_auth_cookie/?username=%@&password=%@", baseURL, username, password];
-    
+
     NSLog(@"login request URL:%@", requestURL);
     //获取作者数据
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -417,15 +419,15 @@
                  NSString *status = [result objectForKey:@"status"];
                  if ([status isEqualToString:@"ok"]) {
                      NSString *cookie = result[@"cookie"];
-                     
+
                      NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                      [userDefaults setObject:cookie forKey:@"generate_auth_cookie"];
                      [userDefaults synchronize];
-                     
+
                      NSLog(@"JSON API login ok");
-                     
+
                      [_HUD hide:YES afterDelay:1];
-                     
+
                      //登陆成功，跳转到主界面
                      [Utils goToMainViewController];
                  } else {
@@ -443,7 +445,7 @@
              _HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HUD-error"]];
              _HUD.labelText = [NSString stringWithFormat:@"错误：%@", [error localizedDescription]];
              [_HUD hide:YES afterDelay:1];
-             
+
          }];
 }
 
@@ -485,10 +487,7 @@
     if (_apiTypeSwitch.on) {
         _baseURLField.placeholder = @"请输入JSON API入口地址";
     } else {
-        //        _baseURLField.placeholder = @"请输入MetaWeblog API入口地址";
-        _baseURLField.placeholder = @"www.jack_blog.com";
-        
-        
+        _baseURLField.placeholder = @"请输入MetaWeblog API入口地址";
     }
 }
 @end

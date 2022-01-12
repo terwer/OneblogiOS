@@ -181,8 +181,7 @@
     [def setObject:_xmlrpcURLSuffix forKey:@"xmlrpcURLSuffix"];
     [def setObject:_xmlrpcURLPrefix forKey:@"xmlrpcURLPrefix"];
     [def synchronize];
-    
-    
+
     [self.navigationController popViewControllerAnimated:YES];
 }
 
