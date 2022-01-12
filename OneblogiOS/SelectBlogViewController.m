@@ -118,7 +118,8 @@
             break;
         case 3:
             NSLog(@"Cnblogs");
-            _xmlrpcURL = @"http://www.cnblogs.com/tangyouwei/services/metaweblog.aspx";
+            // _xmlrpcURL = @"http://www.cnblogs.com/tangyouwei/services/metaweblog.aspx";
+            _xmlrpcURL = @"https://rpc.cnblogs.com/metaweblog/tangyouwei";
             break;
         case 4:
             NSLog(@"OSChina");

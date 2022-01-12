@@ -1,3 +1,4 @@
+target 'OneblogiOS' do
 platform :ios, "7.0"
 # ignore all warnings
 inhibit_all_warnings!
@@ -11,3 +12,4 @@ pod 'MBProgressHUD'                 #
 pod 'Reachability'                  #
 pod 'TTTAttributedLabel'            #
 pod 'GHMarkdownParser','~> 0.1.2'   # 解析Markdwn
+end

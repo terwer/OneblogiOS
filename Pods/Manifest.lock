@@ -42,6 +42,18 @@ DEPENDENCIES:
   - TTTAttributedLabel
   - wpxmlrpc (~> 0.7)
 
+SPEC REPOS:
+  trunk:
+    - AFNetworking
+    - GHMarkdownParser
+    - GPUImage
+    - MBProgressHUD
+    - Reachability
+    - RESideMenu
+    - SDWebImage
+    - TTTAttributedLabel
+    - wpxmlrpc
+
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   GHMarkdownParser: 14cbf59d0ab9450017d843dffd4a3ef691e5bd77
@@ -53,4 +65,6 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
   wpxmlrpc: 053c9cbed13dcec08515a4ffeb51780f6e858cc7
 
-COCOAPODS: 0.38.2
+PODFILE CHECKSUM: 9ac4d95d5f9c26ae8e1b93fe34eda177fe079ccc
+
+COCOAPODS: 1.11.2
